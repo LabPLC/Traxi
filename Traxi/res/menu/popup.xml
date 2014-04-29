@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+<item
+    android:id="@+id/configuracion"
+    android:showAsAction="ifRoom"
+    android:title="@string/action_settings"/>
+
+<item
+    android:id="@+id/cuenta"
+    android:showAsAction="ifRoom"
+    android:title="@string/action_cuenta"/>
+
+<item
+    android:id="@+id/ayuda"
+    android:showAsAction="ifRoom"
+    android:title="@string/action_help"
+    />
+
+
+
+</menu>

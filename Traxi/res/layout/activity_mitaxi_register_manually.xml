@@ -1,0 +1,293 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/gradient_drawable1"
+    android:gravity="center"
+    tools:context=".MitaxiRegisterManuallyActivity" >
+
+    <TextView
+        android:id="@+id/mitaxiregistermanually_tv_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="@string/mitaxiregister_name"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <Button
+            android:id="@+id/mitaxiregistermanually_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_generic"
+            android:text="@string/mitaxiregister_btn_cancel"
+            android:textColor="@drawable/selector_txt_boton_redondo"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/mitaxiregistermanually_btn_ok"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_btn_generic"
+            android:text="@string/mitaxiregister_btn_ok"
+            android:textColor="@drawable/selector_txt_boton_redondo"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/mitaxiregistermanually_tv_label"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal"
+        android:paddingLeft="3dp" >
+
+        <ImageView
+            android:id="@+id/mitaxiregistermanually_im_fotousuario"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight=".25"
+            android:src="@drawable/ic_launcher_perfil" />
+
+        <ScrollView
+            android:id="@+id/mitaxiregistermanually_sv_container_infouser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/mitaxiregistermanually_tv_label"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight=".75"
+            android:background="@drawable/rounded_background"
+            android:fillViewport="true"
+            android:paddingBottom="3dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:paddingTop="3dp" >
+
+            <LinearLayout
+                android:id="@+id/mitaxiregistermanually_ll_container_infouser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/mitaxiregistermanually_et_infousername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/mitaxiregister_et_name_hint"
+                    android:inputType="textPersonName|textCapWords"
+                    android:paddingLeft="3dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+
+                <EditText
+                    android:id="@+id/mitaxiregistermanually_et_infouseremail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/mitaxiregister_et_email_hint"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="3dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mitaxiregistermanually_tv_emergencia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mitaxiregistermanually_sv_container_infouser_emer"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginTop="10dp"
+        android:text="@string/mitaxiregister_et_emergencias"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:id="@+id/mitaxiregistermanually_sv_container_infouser_emer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/mitaxiregistermanually_im_info"
+        android:layout_below="@+id/mitaxiregistermanually_tv_emergencia"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:fillViewport="true"
+        android:paddingBottom="3dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="3dp"
+        android:overScrollMode="never" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/mitaxiregistermanually_ll_container_infouser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_background"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/mitaxiregistermanually_et_telemer"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_weight=".8"
+                        android:background="@drawable/rounded_edittext"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/mitaxiregister_et_telemergency_hint"
+                        android:inputType="phone"
+                        android:paddingLeft="3dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textCursorDrawable="@drawable/color_cursor" />
+
+                    <Button
+                        android:id="@+id/mitaxiregistermanually_btn_contactos"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/selector_btn_generic"
+                        android:text="@string/mitaxiregistermanually_btn_contactos"
+                        android:textColor="@drawable/selector_txt_boton_redondo" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/mitaxiregistermanually_et_correoemer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/mitaxiregister_et_mailemergency_hint"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="3dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mitaxiregistermanually_ll_container_infouser_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_background"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <EditText
+                        android:id="@+id/mitaxiregistermanually_et_telemer_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_weight=".8"
+                        android:background="@drawable/rounded_edittext"
+                        android:ems="10"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:hint="@string/mitaxiregister_et_telemergency_hint_2"
+                        android:inputType="phone"
+                        android:paddingLeft="3dp"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textCursorDrawable="@drawable/color_cursor" />
+
+                    <Button
+                        android:id="@+id/mitaxiregistermanually_btn_contactos_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="3dp"
+                        android:layout_weight=".2"
+                        android:background="@drawable/selector_btn_generic"
+                        android:text="@string/mitaxiregistermanually_btn_contactos"
+                        android:textColor="@drawable/selector_txt_boton_redondo" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/mitaxiregistermanually_et_correoemer_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:background="@drawable/rounded_edittext"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/mitaxiregister_et_mailemergency_hint_2"
+                    android:inputType="textEmailAddress"
+                    android:paddingLeft="3dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/mitaxiregistermanually_im_info"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignRight="@+id/mitaxiregistermanually_sv_container_infouser_emer"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_help" />
+
+</RelativeLayout>

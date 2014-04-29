@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_update_setting" >
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/syncFrequency"
+            android:entryValues="@array/syncFrequencyValues"
+            android:key="prefSyncFrequency"
+            android:summary="@string/pref_sync_frequency_summary"
+            android:title="@string/pref_sync_frequency" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/syncFrequencyParanoia"
+            android:entryValues="@array/syncFrequencyValuesParanoia"
+            android:key="prefSyncFrequencyParanoia"
+            android:summary="@string/pref_sync_frequency_summary_paranoia"
+            android:title="@string/pref_sync_frequency_paranoia" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_update_setting_ayuda" >
+        
+        <codigo.labplc.mx.trackxi.configuracion.OptionDialogPreference
+            android:key="@string/prefKeyResetQuests"
+            android:dialogIcon="@android:drawable/ic_dialog_info"
+            android:title="@string/prefKeyResetQuests_titulo"
+            android:summary="@string/prefKeyResetQuests_subtitulo"
+            android:dialogMessage="@string/prefKeyResetQuests_texto"
+            android:positiveButtonText="@string/prefKeyResetQuests_boton"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="prefSendReport"
+            android:summary="@string/pref_send_report_summary"
+            android:title="@string/pref_send_report" >
+        </CheckBoxPreference>
+    </PreferenceCategory>
+
+</PreferenceScreen>

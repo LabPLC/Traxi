@@ -1,0 +1,99 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Datos" >
+
+    <TextView
+        android:id="@+id/datos_general_tv_titulo_principal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/titulo_uno_general" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/datos_general_tv_titulo_principal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/datos_general_auto_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/datos_tv_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/datos_tv_titulo" />
+
+            <TextView
+                android:id="@+id/datos_tv_marca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@string/datos_tv_marca"
+                android:textColor="@color/generic_amarillo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/datos_tv_niveles_confianza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/datos_tv_niveles_confianza"
+            android:textColor="@color/gris_obscuro" />
+
+        <LinearLayout
+            android:id="@+id/Thermometer_Container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight=".50"
+            android:gravity="center"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight=".30"
+            android:background="@drawable/rounded_background"
+            android:orientation="vertical"
+            android:paddingTop="2dp" >
+
+            <TextView
+                android:id="@+id/datos_tv_titulo_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/texto_significado_calif" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" >
+
+                <TextView
+                    android:id="@+id/datos_tv_descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/datos_tv_descripcion"
+                    android:textColor="@color/rojo_logo" />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

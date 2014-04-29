@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/marco" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp" >
+
+        <TextView
+            android:id="@+id/dialogo_paraque_tv_titulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/paraque_titulo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/marco"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_subtitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/paraque_subtitulo" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gris_claro" />
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_nombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paraque_nombre" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_correo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paraque_correo" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_telefonoemer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paraque_telemer" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_correoemer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paraque_correoemer" />
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                 android:id="@+id/dialogo_paraque_tv_foto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/paraque_foto"/>
+
+            <View
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/dialogo_paraque_btnAceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/selector_btn_generic"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/paraque_aceptar"
+            android:textColor="@drawable/selector_txt_boton_redondo" >
+        </Button>
+    </LinearLayout>
+
+</FrameLayout>

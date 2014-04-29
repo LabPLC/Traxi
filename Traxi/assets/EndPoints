@@ -1,0 +1,81 @@
+Muestra de los end points
+
+Dar De alta usuario
+Metodo Post
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addpost"
+add nombre (nombre del usuario o NickName)
+add correo (correo del usuario)
+add telemer (telefono del contacto de emergencia)
+add os      (Sistema operativo 1 IOS. 2 Android)//estatico
+add correoemer	(correo del contacto de emergencia)
+add foto (foto del perfil)
+
+-------------------------------------------------------------------------------
+
+Editar usuario
+Metodo Post
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addpost"
+add nombre (nombre del usuario o NickName) //no es editable
+add correo (correo del usuario) //no es editable
+add telemer (telefono del contacto de emergencia)
+add os      (Sistema operativo 1 IOS. 2 Android)//estatico
+add correoemer	(correo del contacto de emergencia)
+add foto (foto del perfil)
+
+
+-------------------------------------------------------------------------------
+
+Enviar foto para OCR
+Metodo POST
+URL: "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=identificaplaca"
+add foto (foto de la placa, esta debe estar en escala a grises)
+
+-------------------------------------------------------------------------------
+
+
+Comentarios de una placa
+Metodo GET
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=getcomentario&placa="+placa
+
+
+---------------------------------------------------------------------------------
+
+Verifica los adeudos de un taxi
+Metodo GET
+URL: "http://dev.datos.labplc.mx/movilidad/vehiculos/"+placa+".json"
+
+---------------------------------------------------------------------------------
+Datos de un txi si esta en la revista vehicular
+Metodo GET
+URL: "http://mikesaurio.dev.datos.labplc.mx/movilidad/taxis/"+placa+".json"
+
+
+---------------------------------------------------------------------------------
+Obtener Distancia y tiempo de un trayecto 
+Metodo GET
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
+								+latfin+"&lngo="+lonfin
+								+"&latd="+latini+"&lngd="+lonini+"&filtro=velocidad"
+
+
+---------------------------------------------------------------------------------
+Obtener las coordenadas de un lugar
+Metodo GET
+URL: "http://maps.googleapis.com/maps/api/geocode/json?address="+destino+"&sensor=true"
+
+
+---------------------------------------------------------------------------------
+Calificar el servicio
+Metodo GET
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentario"
+							+"&id_usuario="+id_usuario
+							+"&calificacion="+Scalificacion
+							+"&comentario="+Scomentario
+							+"&placa="+placa
+							+"&id_face="+face
+							+"&pointinilat="+latitud_inicial
+							+"&pointinilon="+longitud_inicial
+							+"&pointfinlat="+latitud
+							+"&pointfinlon="+longitud
+							+"&horainicio="+horaInicio
+							+"&horafin="+finViaje;

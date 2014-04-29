@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape android:shape="rectangle" >
+            <solid android:color="@color/rojo_logo" />
+        </shape>
+    </item>
+
+    <item>
+        <inset
+            android:insetBottom="2dp" 
+            android:insetRight="2dp" >
+            <shape android:shape="rectangle" >
+                <solid android:color="@color/white" />
+            </shape>
+        </inset>
+    </item>
+
+</layer-list>
