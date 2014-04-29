@@ -73,7 +73,7 @@ ___________________
 ___________________
 Desarrollada en Eclipse Kepler y ADT para android 4.0 y superiores
 
-# LIBRERIAS EXTERNAS 
+# BIBLIOTECAS EXTERNAS 
 
     google_play_services_lib
     FacebookSDK
@@ -86,7 +86,7 @@ AYUDA PARA AGREGAR FacebookSDK
     se encuentra en https://developers.facebook.com/docs/android/
 
 
-# LIBRERIAS INTERNAS
+# BIBLIOTECAS INTERNAS
 
     acra-4.5.jar
     activation.jar
@@ -99,6 +99,8 @@ AYUDA PARA AGREGAR FacebookSDK
     socketio.jar
     
 Estas se encuentran en la carpeta libs del proyecto.
+
+Debido a problemas de compativilidad con las versiones de Android acra-4.5.jar también debe ser agregada en caso de que no la reconozca dando clic derecho al proyecto-> Properties ->Java Build Path -> Libraries -> add JARs.. y agregarla de la carpeta libs que esta dentro del proyecto. 
 ___________________
 ___________________
 # ¿QUIÉRES PROBAR LA APP?
