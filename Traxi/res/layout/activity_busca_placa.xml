@@ -163,5 +163,11 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textColorHint="@android:color/darker_gray"
         android:textCursorDrawable="@drawable/color_cursor" />
+    <RelativeLayout 
+		android:layout_width="wrap_content" android:id="@+id/xK1"
+		android:layout_height="wrap_content" android:orientation="vertical"
+		android:visibility="gone">
+		<include android:id="@+id/xKeyBoard" layout="@layout/keyboard"></include>
+	</RelativeLayout>
 
 </RelativeLayout>

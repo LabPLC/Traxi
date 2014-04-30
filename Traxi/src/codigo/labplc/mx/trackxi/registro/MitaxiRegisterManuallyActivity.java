@@ -350,8 +350,7 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 		if(origen!=null&&origen.equals("menu")){
 			
 		}else{
-			Intent mainIntent = new Intent().setClass(
-			MitaxiRegisterManuallyActivity.this, Paginador.class);
+			Intent mainIntent = new Intent().setClass(MitaxiRegisterManuallyActivity.this, Paginador.class);
 			startActivity(mainIntent);
 		}
 		
@@ -563,7 +562,7 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 		protected void onPreExecute() {
 			super.onPreExecute();
 			pDialog = new ProgressDialog(MitaxiRegisterManuallyActivity.this);
-			pDialog.setMessage("Subiendo la información, espere.");
+			pDialog.setMessage(getResources().getString(R.string.mitaxiregistermanually_subiendo_la_info));
 			pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 			pDialog.setCancelable(true);
 			pDialog.show();

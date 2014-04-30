@@ -33,6 +33,8 @@
     <string name="mitaxiregister_et_telemergency_hint">celular emergencia</string>
     <string name="mitaxiregistermanually_btn_contactos">+</string>
      <string name="no_foto_add">Agrega una imagen</string>
+          <string name="mitaxiregistermanually_subiendo_la_info">Subiendo la información, espere.</string>
+     
 
     <!-- tipo de imagen -->
     <string name="dialogo_tipo_de_imagen_tv_texto">¿Qué quieres abrir?</string>
@@ -79,6 +81,9 @@
     <string name="paraque_cancelar">Cancelar</string>
     <string name="salir_subtitulo">TRAXI</string>
     <string name="salir_texto">¿Realmente quieres salir?</string>
+    
+    <!-- Teclado -->
+        <string name="keyboard_borrar">Borrar</string>
 
     <!-- GPS -->
     <string name="gps_subtitulo">GPS apagado</string>

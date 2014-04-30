@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
@@ -42,12 +43,18 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.trackxi.R;
@@ -57,7 +64,8 @@ import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
 import codigo.labplc.mx.trackxi.utils.Utils;
 
-public class BuscaPlaca extends View implements SurfaceHolder.Callback {
+public class BuscaPlaca extends View implements SurfaceHolder.Callback, OnTouchListener, OnClickListener,
+OnFocusChangeListener{
 
 	public final String TAG = this.getClass().getSimpleName();
 	private Camera camera;
@@ -72,6 +80,13 @@ public class BuscaPlaca extends View implements SurfaceHolder.Callback {
 	private View view;
 	private String foto;
 	private String resultado="";
+	//teclado
+	private Button mBack;
+	private static RelativeLayout mLayout;
+	private static RelativeLayout mKLayout;
+	private boolean isEdit = false;
+	private Button mB[] = new Button[13];
+	public static boolean tecladoIs = false;
 	
 
 
@@ -138,31 +153,23 @@ public class BuscaPlaca extends View implements SurfaceHolder.Callback {
 		});
 
 
+		
+		mLayout = (RelativeLayout) view.findViewById(R.id.xK1);
+		mKLayout = (RelativeLayout) view.findViewById(R.id.xKeyBoard);
+		
+		mBack = (Button) view.findViewById(R.id.back);
+		mBack.setOnClickListener(this);
+		
+		setKeys();
+		LettersTrue();
 
 		placa = (EditText)view.findViewById(R.id.inicio_de_trabajo_et_placa);
-		placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_GRIS_OBSCURO));
-		placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME|InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
 		placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 		placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-
-		placa.setFilters(new InputFilter[] {
-				new InputFilter() {
-					public CharSequence filter(CharSequence src, int start,
-							int end, Spanned dst, int dstart, int dend) {
-						if(src.equals("")){ // for backspace
-							return src;
-						}
-						if(src.toString().matches("[a,b,m,A,B,M]?")){
-							return src;
-
-						}else  if(src.toString().matches("[0,1,2,3,4,5,6,7,8,9]*")){
-							return src;
-						}
-						return "";
-					}
-				}
-		});
+		placa.setOnTouchListener(this);
+		placa.setOnFocusChangeListener(this);
+	
 		placa.addTextChangedListener(new TextWatcher() {
 
 			@Override
@@ -193,9 +200,11 @@ public class BuscaPlaca extends View implements SurfaceHolder.Callback {
 				}
 				else{
 					if(Splaca.length()>=1){
-						placa.setInputType(InputType.TYPE_CLASS_NUMBER);
+						NumbersTrue();
+					}else if(placa.length()<1){
+						LettersTrue();
 					}else{
-						placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+						
 					}
 				}
 
@@ -211,9 +220,6 @@ public class BuscaPlaca extends View implements SurfaceHolder.Callback {
 			}
 		});
 	}
-
-
-
 
 
 
@@ -444,7 +450,200 @@ public class BuscaPlaca extends View implements SurfaceHolder.Callback {
 					}
 				}
 
+				
+				
+////para e teclado
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					if (v == placa) {
+						tecladoIs= true;
+						hideDefaultKeyboard();
+						enableKeyboard();
 
+					}
+
+					return true;
+				}
+
+				@Override
+				public void onClick(View v) {
+
+					if (v != mBack) {
+						addText(v);
+					} else if (v == mBack) {
+						isBack(v);
+					}
+				}
+
+				private void isBack(View v) {
+					if (isEdit == true) {
+						CharSequence cc = placa.getText();
+						if (cc != null && cc.length() > 0) {
+							{
+								placa.setText("");
+								placa.append(cc.subSequence(0, cc.length() - 1));
+							}
+
+						}
+					}
+				}
+
+				@Override
+				public void onFocusChange(View v, boolean hasFocus) {
+					if (v == placa && hasFocus == true) {
+						isEdit = true;
+					}
+
+				}
+
+				private void addText(View v) {
+					if (isEdit == true) {
+						String b = "";
+						b = (String) v.getTag();
+						if (b != null) {
+							placa.append(b);
+
+						}
+					}
+
+				}
+
+				// activamos el teclado personalizado
+				private void enableKeyboard() {
+
+					mLayout.setVisibility(RelativeLayout.VISIBLE);
+					mKLayout.setVisibility(RelativeLayout.VISIBLE);
+
+				}
+
+				// Disable customized keyboard
+				public static void disableKeyboard() {
+					mLayout.setVisibility(RelativeLayout.INVISIBLE);
+					mKLayout.setVisibility(RelativeLayout.INVISIBLE);
+
+				}
+
+				private void hideDefaultKeyboard() {
+					context.getWindow().setSoftInputMode(
+							WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
+				}
+
+				private void setKeys() {
+
+					mB[0] = (Button) view.findViewById(R.id.xA);
+					mB[1] = (Button)view.findViewById(R.id.xB);
+					mB[2] = (Button) view.findViewById(R.id.xM);
+					mB[3] = (Button) view.findViewById(R.id.x1);
+					mB[4] = (Button) view.findViewById(R.id.x2);
+					mB[5] = (Button) view.findViewById(R.id.x3);
+					mB[6] = (Button) view.findViewById(R.id.x4);
+					mB[7] = (Button) view.findViewById(R.id.x5);
+					mB[8] = (Button) view.findViewById(R.id.x6);
+					mB[9] = (Button) view.findViewById(R.id.x7);
+					mB[10] = (Button) view.findViewById(R.id.x8);
+					mB[11] = (Button) view.findViewById(R.id.x9);
+					mB[12] = (Button) view.findViewById(R.id.x0);
+
+					for (int i = 0; i < mB.length; i++){
+						mB[i].setOnClickListener(this);
+					}
+				}
+				
+				private void LettersTrue(){
+					mBack.setEnabled(false);
+					mBack.setBackground(null);
+					mBack.setTextColor(getResources().getColor(R.color.gris_obscuro));
+
+					mB[0].setEnabled(true);
+					mB[0].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[0].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[1].setEnabled(true);
+					mB[1].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[1].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[2].setEnabled(true);
+					mB[2].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[2].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[3].setEnabled(false);
+					mB[3].setBackground(null);
+					mB[3].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[4].setEnabled(false);
+					mB[4].setBackground(null);
+					mB[4].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[5].setEnabled(false);
+					mB[5].setBackground(null);
+					mB[5].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[6].setEnabled(false);
+					mB[6].setBackground(null);
+					mB[6].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[7].setEnabled(false);
+					mB[7].setBackground(null);
+					mB[7].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[8].setEnabled(false);
+					mB[8].setBackground(null);
+					mB[8].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[9].setEnabled(false);
+					mB[9].setBackground(null);
+					mB[9].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[10].setEnabled(false);
+					mB[10].setBackground(null);
+					mB[10].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[11].setEnabled(false);
+					mB[11].setBackground(null);
+					mB[11].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[12].setEnabled(false);	
+					mB[12].setBackground(null);
+					mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
+				}
+				
+				private void NumbersTrue(){
+
+					
+					mBack.setEnabled(true);
+					mBack.setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mBack.setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					
+					mB[0].setEnabled(false);
+					mB[0].setBackground(null);
+					mB[0].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[1].setEnabled(false);
+					mB[1].setBackground(null);
+					mB[1].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[2].setEnabled(false);
+					mB[2].setBackground(null);
+					mB[2].setTextColor(getResources().getColor(R.color.gris_obscuro));
+					mB[3].setEnabled(true);
+					mB[3].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[3].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[4].setEnabled(true);
+					mB[4].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[4].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[5].setEnabled(true);
+					mB[5].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[5].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[6].setEnabled(true);
+					mB[6].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[6].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[7].setEnabled(true);
+					mB[7].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[7].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[8].setEnabled(true);
+					mB[8].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[8].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[9].setEnabled(true);
+					mB[9].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[9].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[10].setEnabled(true);
+					mB[10].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[10].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[11].setEnabled(true);
+					mB[11].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[11].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+					mB[12].setEnabled(true);	
+					mB[12].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+					mB[12].setTextColor(getContext().getResources().getColor(R.drawable.selector_txt_boton_redondo));
+				}
+				
 
 
 

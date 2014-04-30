@@ -19,6 +19,7 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import codigo.labplc.mx.trackxi.R;
+import codigo.labplc.mx.trackxi.buscarplaca.BuscaPlaca;
 import codigo.labplc.mx.trackxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
@@ -86,12 +87,12 @@ public class Paginador extends FragmentActivity {
 
 	@Override
 	public void onBackPressed() {
-
-		// Return to previous page when we press back button
-		if (this.pager.getCurrentItem() == 0)
+		if (BuscaPlaca.tecladoIs){
+			BuscaPlaca.disableKeyboard();
+			BuscaPlaca.tecladoIs=false;
+		}else{
 			super.onBackPressed();
-		else
-			this.pager.setCurrentItem(this.pager.getCurrentItem() - 1);
+		}
 
 	}
 	 public void clickEvent(View v) {
