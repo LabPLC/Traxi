@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Traxi.iml" filepath="$PROJECT_DIR$/Traxi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/traxi/traxi.iml" filepath="$PROJECT_DIR$/traxi/traxi.iml" />
+    </modules>
+  </component>
+</project>
+

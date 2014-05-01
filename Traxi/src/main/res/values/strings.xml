@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        <!-- textNuevos -->
+    <string name="mitaxiregister_et_mailemergency_hint_2">emergency contact email</string>
+    <string name="mitaxiregister_et_telemergency_hint_2">Emergency number</string>
+    
+    <!-- general -->
+    <string name="app_name">Traxi</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_cuenta">Acount</string>
+    <string name="action_help">Guia</string>
+
+
+    <!-- actionBar -->
+    <string name="abs_layout_tv_titulo">Search</string>
+
+    <!-- Registro -->
+    <string name="mitaxiregister_btn_manually">Sign up</string>
+    <string name="title_activity_busca_placa">SearchPlate</string>
+
+    <!-- Registro manualmente -->
+    <string name="mitaxiregister_name">Sign up</string>
+    <string name="mitaxiregister_error">Check your data to continue.</string>
+    <string name="mitaxiregister_error_string">Write a valid word [a-z A-Z].</string>
+    <string name="mitaxiregister_error_number">Write a valid number [0 9].</string>
+    <string name="mitaxiregister_error_email">Your email is wrong.</string>
+    <string name="mitaxiregister_empty">You can not leave any blank fields.</string>
+    <string name="mitaxiregister_tv_title">Sign up</string>
+    <string name="mitaxiregister_et_name_hint">user</string>
+    <string name="mitaxiregister_et_email_hint">example@mail.com</string>
+    <string name="mitaxiregister_et_teluser_hint">Telephone</string>
+    <string name="mitaxiregister_et_telemergency_hint">Emergency number</string>
+    <string name="mitaxiregistermanually_btn_contactos">+</string>
+    <string name="no_foto_add">Add a picture</string>
+    <string name="mitaxiregistermanually_subiendo_la_info">Uploading....  please wait</string>
+
+    <!-- tipo de imagen -->
+    <string name="dialogo_tipo_de_imagen_tv_texto">What do you want to open?</string>
+    <string name="dialogo_tipo_de_imagen_btnCancelar">Camera</string>
+    <string name="dialogo_tipo_de_imagen_btnAceptar">Gallery</string>
+
+    <!-- adeudos_ROw -->
+    <string name="adeudos_row_titulo">Title</string>
+    <string name="adeudos_row_descripcion">Description</string>
+    <string name="mitaxiregister_et_mailemergency_hint">emergency contact email</string>
+    <string name="mitaxiregister_et_paraque">Why?</string>
+    <string name="mitaxiregister_et_emergencias">Emergency contacts</string>
+    <string name="mitaxiregister_btn_cancel">Cancel</string>
+    <string name="mitaxiregister_btn_ok">Sign up</string>
+
+    <!-- Validations EditText -->
+    <string name="edittext_emtpy">Fill all the fields.</string>
+    <string name="edittext_wrong_info">Check the fields with errors.</string>
+    <string name="edittext_error_string">Write a valid word [a-z A-Z].</string>
+    <string name="edittext_error_number">Write a valid numner [0&#8211;9].</string>
+    <string name="edittext_error_nickname">Write only [a-z A-Z 0&#8211;9 .-_ ].</string>
+    <string name="edittext_error_email">Write a valid email.</string>
+    <string name="edittext_error_telephone_repeated">The user phone number and emergency number must not be the same</string>
+
+    <!-- Network -->
+    <string name="no_internet_connection">No Internet access.</string>
+    <string name="transaction_wrong">Ops#8230; There was something wrong connecting to the server.</string>
+
+    <!-- Para que DIALOGO -->
+    <string name="paraque_subtitulo">REQUIRED DATA.</string>
+    <string name="paraque_titulo">WARNING</string>
+    <string name="paraque_nombre">Name: To know how we will call you.</string>
+    <string name="paraque_correo">Email: To identify you in the app.</string>
+    <string name="paraque_telemer">Emergency cellphone number: To call someone in the case you feel in danger.</string>
+    <string name="paraque_correoemer">Emergency email: To track your status and path in the case you feel in danger.</string>
+    <string name="paraque_foto">Picture: To personalize your profile.</string>
+    <string name="paraque_aceptar">Accept</string>
+    <string name="title_activity_buscar_chofer">SearchDriver</string>
+    <string name="title_activity_datos">Data</string>
+    <string name="title_activity_adeudos">Pending payment</string>
+    <string name="title_activity_comentarios">Comments</string>
+
+    <!-- salir -->
+    <string name="paraque_cancelar">Cancel</string>
+    <string name="salir_subtitulo">TRAXI</string>
+    <string name="salir_texto">Do you really want to exit?</string>
+    
+        <!-- Teclado -->
+        <string name="keyboard_borrar">Delete</string>
+
+    <!-- GPS -->
+    <string name="gps_subtitulo">GPS is off</string>
+    <string name="gps_texto">Do you want to turn it on?</string>
+
+    <!-- Textos Datos Auto -->
+    <string name="texto_calificacion_25">This vehicle has a below average score because itis not registered as a taxi and it has some other problems. If you decide to get in, we advice you to extreme precautions and stay extreme alert.</string>
+    <string name="texto_calificacion_49">This vehicle has a below average score because it is not registered as a taxi and has some other inconsistencies. If you decide to get in, we advice you to extreme precautions and stay extremely alert.</string>
+    <string name="texto_calificacion_60">This vehicle is a low risk taxi because it is registered as a taxi but has some inconsistencies. If you decide to board it, we advice you to stay alert.</string>
+    <string name="texto_calificacion_80">This is a trusted vehicle because it is registered as a taxi but has some problems. We advice you to stay alert </string>
+    <string name="texto_calificacion_90">This is a well-trusted vehicle but it can get better. We advice you as always to stay alert</string>
+    <string name="texto_calificacion_100">Congratulations! You found a very trusted taxi and you will have a pleasant trip. However, since your security comes first, stay alert!</string>
+    <string name="texto_significado_calif"> What does this score means?</string>
+
+    <!-- buscar placa -->
+    <string name="inicio_de_trabajo_tv_foto">Or take a picture</string>
+    <string name="busca_placa_btn_tomarfoto">Photo ..</string>
+    <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
+    <string name="inicio_de_trabajo_et_placa">License plate</string>
+
+    <!-- Tenencia -->
+    <string name="sin_adeudo_tenencia">This taxi does not have any pending payments</string>
+    <string name="con_adeudo_tenencia">This is an irregular taxi.</string>
+
+    <!-- Revista -->
+    <string name="sin_revista">This taxi is not in the vehicle registry.</string>
+    <string name="con_revista">This is a regular vehicle.</string>
+
+    <!-- año carro -->
+    <string name="carro_viejo">This is not an optimal taxi.</string>
+    <string name="carro_nuevo">This taxi is still optimal.</string>
+
+    <!-- infraccion -->
+    <string name="tiene_infraccion">This taxi has fines</string>
+    <string name="no_tiene_infraccion">This taxi does not has fines</string>
+
+    <!-- verificaciones -->
+    <string name="tiene_verificaciones">This taxi has been emission tested.</string>
+    <string name="no_tiene_verificaciones">This taxi does not have emission tests</string>
+    <string name="title_activity_trackxi_setting">TrackxiSettingActivity</string>
+
+    <!-- Preferencias -->
+    <string name="pref_send_report">Send crash reports</string>
+    <string name="pref_send_report_summary">Help us improve Traxi</string>
+    <string name="pref_sync_frequency">Tracking frequency</string>
+    <string name="pref_sync_frequency_summary">Choose the frecuencia</string>
+    <string name="pref_sync_frequency_paranoia">Notification frequency</string>
+    <string name="pref_sync_frequency_summary_paranoia">How many notifications would you like to get during a trip?</string>
+    <string name="pref_user_profile">Settings</string>
+    <string name="pref_update_setting">Tracking</string>
+    <string name="pref_update_setting_ayuda">Help</string>
+    <string name="title_activity_mapa_tracking">tracking_map</string>
+    <string name="title_activity_califica_chofer">rate_driver</string>
+    <string name="title_activity_califica_taxi">rate_taxi</string>
+
+    <!-- titulos paginador -->
+    <string name="titulo_uno_general">INFO</string>
+    <string name="titulo_dos_detalles">DETAILS</string>
+    <string name="titulo_tres_comentarios">COMMENTS</string>
+    <string name="title_activity_activity_null">null_Activity</string>
+    <string name="title_activity_send_foto">SendFoto</string>
+    <!-- activity_adeudos -->
+    <string name="adeudos_titulo_tv_amigos">My friends in this taxi:</string>
+    <string name="mitaxiregistermanually_btn_facebook">Login to Facebook</string>
+
+    <!-- Latitude, longitude format -->
+    <string name="latitude_longitude">%1$.8f, %2$.8f</string>
+
+    <!-- dialogo calificar taxis -->
+    <string name="califica_taxi_tv_titulo">Help us rate the service</string>
+    <string name="califica_taxi_tv_titulo_calif">Did you like this service?</string>
+    <string name="califica_taxi_tv_titulo_opinion">Give us your feedback</string>
+    <string name="dialogo_califica_servicio_et_comentario">This service was...</string>
+    <string name="dialogo_califica_servicio_btnCancelar">End</string>
+    <string name="dialogo_califica_servicio_btnAceptar">Send</string>
+
+    <!-- mapa_tracking -->
+    <string name="mitaxi_googlemaps_tv_destination">Destination</string>
+    <string name="mitaxi_googlemaps_btn_destino">Go</string>
+    <string name="mitaxi_googlemaps_actv_destination">Neiborhood (example Calle 13)</string>
+    <string name="mapa_tracking_terminoviaje">Trip ended...</string>
+
+    <!-- activity_datos -->
+    <string name="datos_tv_titulo">Vehicle info</string>
+    <string name="datos_tv_marca">Brand: </string>
+    <string name="datos_tv_niveles_confianza">Trust level</string>
+    <string name="datos_tv_descripcion">blablablabla</string>
+
+    <!-- TOAST -->
+    <string name="foto_fallida">We could not upload your photo! Try again</string>
+    <string name="le_puso"> rated </string>
+    <string name="estrellas"> stars</string>
+    <string name="imagen_muy_grande">The image is too big!</string>
+    <string name="falla_facebook">Something failed when loging to Facebook</string>
+    <string name="GPS_OFF">GPS was turned off</string>
+
+    <!-- setText -->
+    <string name="datos_del_taxi">TAXI INFO</string>
+    <string name="Anio"> Year </string>
+
+    <!-- mensajes -->
+
+    <string name="cargando_info">Loading, please wait....</string>
+    <string name="cargando_foto">Processing picture, please wait....</string>
+    <string name="sms_emer">I am in danger! You are my emergency contact, please check your email</string>
+
+    <!-- Mapa -->
+    <string name="mapa_inicio_de_viaje">Trip start</string>
+    <string name="mapa_mi_posicion">My location</string>
+    <string name="mapa_estas">You are \t</string>
+    <string name="mapa_tu_destino">\tfrom your destiny</string>
+    <string name="mapa_mi_destino">My destiny</string>
+
+    <!-- notificaciones -->
+    <string name="notificacion_que_quieres_hacer">What do you want to do?</string>
+    <string name="notificacion_viaje">Travel</string>
+    <string name="notificacion_finalizar">End trip</string>
+
+    <!-- panic -->
+    <string name="panic_estoy_en_peligro">I am in danger in a taxi with licence plates:</string>
+    <string name="panic_ubicacion">\tmy location is https://www.google.com.mx/maps/place/</string>
+    <string name="panic_bateria">\tbattery:</string>
+    <string name="panic_todo_bien">Are you OK?</string>
+    <string name="panic_tocame">Press me if you are fine.</string>
+
+    <!-- mail -->
+    <string name="correo">mitraxisaurio@gmail.com</string>
+    
+      <!-- comentario -->
+    <string name="sin_comentario">there ara no comments for this taxi</string>
+    
+    <!-- sh1 -->
+    <string name="envio_mail">gpzaTMeNjYsUdxsZUbLXng==</string>
+
+    <!-- Facebook -->
+    <string name="facebook_id">622752297805514</string>
+    <string name="exception">Exception: %1$s</string>
+    <string name="face_no_amigos">Nobody of your friends had taken this taxi</string>
+
+    <!-- preferences -->
+    <string name="prefKeyResetQuests">resetQuests</string>
+    <string name="prefKeyResetQuests_titulo">About</string>
+    <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
+    <string name="prefKeyResetQuests_texto">This app was made in CÓDIGO.CDMX fellowship\n\n
+        Developers:\n
+        \tMike Morán @yosoymikesaurio\n
+        \tAntuan Chávez @ntuanChavez\n
+        \tEdgar Zavala @zace3d\n\n
+        Graphical designer:\n
+        \tSergio Beltrán @ssbeltran</string>
+    <string name="prefKeyResetQuests_boton">OK</string>
+
+</resources>

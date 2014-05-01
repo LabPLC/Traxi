@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="facebook-android-sdk-3.8.0">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/traxi/build/exploded-aar/com.facebook/facebook-android-sdk/3.8.0/res" />
+      <root url="jar://$PROJECT_DIR$/traxi/build/exploded-aar/com.facebook/facebook-android-sdk/3.8.0/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
