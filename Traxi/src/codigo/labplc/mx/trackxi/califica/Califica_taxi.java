@@ -14,7 +14,9 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 import codigo.labplc.mx.trackxi.R;
+import codigo.labplc.mx.trackxi.dialogos.Dialogos;
 import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
 import codigo.labplc.mx.trackxi.services.ServicioGeolocalizacion;
@@ -75,9 +77,6 @@ public class Califica_taxi extends Activity {
 		});
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
-			
-			
-
 			@Override
 			public void onClick(View v) {
 				SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
@@ -102,22 +101,19 @@ public class Califica_taxi extends Activity {
 							+"&pointfinlon="+ServicioGeolocalizacion.longitud
 							+"&horainicio="+ServicioGeolocalizacion.horaInicio
 							+"&horafin="+finViaje;
-					
-					
-					//Log.d("**************", url+"");
+
 					Utils.doHttpConnection(url);	
 				}
-
 				Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 				stopService(svc);
+				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_enviar_comentario), Toast.LENGTH_LONG);
 				Califica_taxi.this.finish();
-				
 				
 			}
 		});
-		calificar_cancelar = (Button)findViewById(R.id.dialogo_califica_servicio_btnCancelar);
+		
+	/*	calificar_cancelar = (Button)findViewById(R.id.dialogo_califica_servicio_btnCancelar);
 		calificar_cancelar.setOnClickListener(new View.OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
@@ -126,7 +122,7 @@ public class Califica_taxi extends Activity {
 			}
 		});
 		
-		
+		*/
 		
 	}
 

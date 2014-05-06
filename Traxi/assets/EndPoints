@@ -8,6 +8,8 @@ add correo (correo del usuario)
 add telemer (telefono del contacto de emergencia)
 add os      (Sistema operativo 1 IOS. 2 Android)//estatico
 add correoemer	(correo del contacto de emergencia)
+add telemer2 (telefono 2 del contacto de emergencia)
+add correoemer2	(correo 2 del contacto de emergencia)
 add foto (foto del perfil)
 
 -------------------------------------------------------------------------------
@@ -20,6 +22,8 @@ add correo (correo del usuario) //no es editable
 add telemer (telefono del contacto de emergencia)
 add os      (Sistema operativo 1 IOS. 2 Android)//estatico
 add correoemer	(correo del contacto de emergencia)
+add telemer2 (telefono 2 del contacto de emergencia)
+add correoemer2	(correo 2 del contacto de emergencia)
 add foto (foto del perfil)
 
 

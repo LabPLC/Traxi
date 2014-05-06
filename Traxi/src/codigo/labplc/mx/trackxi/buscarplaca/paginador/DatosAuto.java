@@ -29,11 +29,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import codigo.labplc.mx.trackxi.R;
 import codigo.labplc.mx.trackxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.trackxi.buscarplaca.bean.ComentarioBean;
+import codigo.labplc.mx.trackxi.califica.Califica_taxi;
 import codigo.labplc.mx.trackxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.trackxi.dialogos.Dialogos;
 import codigo.labplc.mx.trackxi.facebook.FacebookLogin;
@@ -130,6 +132,7 @@ public class DatosAuto extends FragmentActivity{
 				}else{
 					ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
 					startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
+					Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.texto_significado_el_viaje_inicio), Toast.LENGTH_LONG);
 					DatosAuto.this.finish();
 				}
 				

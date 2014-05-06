@@ -211,8 +211,8 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 			latitud = Double.parseDouble(currentLocation.getLatitude() + "");
 			longitud = Double.parseDouble(currentLocation.getLongitude() + "");
 			
-			Log.d(TAG, "latitud"+latitud);
-			Log.d(TAG, "longitud"+longitud);
+		//	Log.d(TAG, "latitud"+latitud);
+		//	Log.d(TAG, "longitud"+longitud);
 
 			if (isFirstLocation) {
 				latitud_inicial = latitud;
@@ -540,7 +540,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		}
      }
     	}catch(Exception e){
-    		e.printStackTrace();
+    		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
     	}
      }
      

@@ -96,6 +96,7 @@
     <string name="texto_calificacion_90">This is a well-trusted vehicle but it can get better. We advice you as always to stay alert</string>
     <string name="texto_calificacion_100">Congratulations! You found a very trusted taxi and you will have a pleasant trip. However, since your security comes first, stay alert!</string>
     <string name="texto_significado_calif"> What does this score means?</string>
+     <string name="texto_significado_el_viaje_inicio">Beginning trip</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">Or take a picture</string>
@@ -158,6 +159,7 @@
     <string name="dialogo_califica_servicio_et_comentario">This service was...</string>
     <string name="dialogo_califica_servicio_btnCancelar">End</string>
     <string name="dialogo_califica_servicio_btnAceptar">Send</string>
+     <string name="dialogo_califica_servicio_enviar_comentario">Your comment was sent</string>
 
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destination</string>

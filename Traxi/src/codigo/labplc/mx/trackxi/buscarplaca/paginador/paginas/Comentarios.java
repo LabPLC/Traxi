@@ -39,6 +39,7 @@ public class Comentarios extends View {
 	private FacebookLogin facebookLogin;
 	private Button btnLogin;
 	private boolean foundFriend = true;
+	String id_usuario_face;
 	
 	public Comentarios(Activity context) {
 		super(context);
@@ -64,7 +65,6 @@ public class Comentarios extends View {
 
 	public void init() {
 		
-
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_adeudos, null);
 		
@@ -128,6 +128,9 @@ public class Comentarios extends View {
 	final	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view_row = inflater.inflate(R.layout.comentarios_row, null);
 		
+	/*	if(id_user.equals(id_usuario_uuid)){
+			Dialogos.Toast(context, "me encontre", Toast.LENGTH_LONG);
+		}*/ 
 	final	TextView comentarios_row_tv_descripcion = (TextView)view_row.findViewById(R.id.comentarios_row_tv_descripcion);
 	comentarios_row_tv_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 	comentarios_row_tv_descripcion.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));

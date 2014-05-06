@@ -75,7 +75,7 @@
             android:orientation="horizontal"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" >
-
+<!-- 
             <Button
                 android:id="@+id/dialogo_califica_servicio_btnCancelar"
                 android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                 android:background="@drawable/selector_btn_generic"
                 android:text="@string/dialogo_califica_servicio_btnCancelar"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
-
+-->
             <Button
                 android:id="@+id/dialogo_califica_servicio_btnAceptar"
                 android:layout_width="wrap_content"
