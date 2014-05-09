@@ -9,14 +9,17 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,7 +30,6 @@ import codigo.labplc.mx.trackxi.R;
 import codigo.labplc.mx.trackxi.dialogos.Dialogos;
 import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
-import codigo.labplc.mx.trackxi.registro.validador.EditTextValidator;
 import codigo.labplc.mx.trackxi.utils.Utils;
 
 public class MitaxiRegisterManuallyActivity extends Activity {
@@ -38,9 +40,7 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 	private TextView mitaxiregistermanually_tv_agregar;
 	 ArrayList<View> views = new ArrayList<View>();
 	private View mitaxiregistermanually_iv_quitar;
-	private int RESULT_LOAD_CONTACT = 300;
-	private int RESULT_LOAD_CONTACT_2 = 400;
-	private boolean[] emergenciaOcupado= {true,true};
+	private boolean[] emergenciaOcupado= {true,true};//maneja los contactos
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -111,6 +111,31 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 				
 			}
 		});
+		 
+		 
+		 CheckBox mitaxiregistermanually_cv_paranoico = (CheckBox) findViewById(R.id.mitaxiregistermanually_cv_paranoico); 
+		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+          boolean panic = prefs.getBoolean("panico", false);
+        	  mitaxiregistermanually_cv_paranoico.setChecked(panic); 
+        	  
+          
+		 mitaxiregistermanually_cv_paranoico.setOnCheckedChangeListener(new OnCheckedChangeListener() { 
+
+		 @Override 
+		 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { 
+			 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+				SharedPreferences.Editor editor = prefs.edit();
+			 if (buttonView.isChecked()){ 
+					editor.putBoolean("panico", true);
+					editor.commit();
+			 } 
+			 else{
+				 editor.putBoolean("panico", false);
+				 editor.commit();
+			 } 
+
+		 }
+		 });
 		 
 		 
 		addContact();
@@ -197,7 +222,6 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 	 */
 	public void getContactInfo(Intent intent, int tag)
 	{
-		//Dialogos.Toast(MitaxiRegisterManuallyActivity.this,tag+": llego" , Toast.LENGTH_SHORT);
 		try{
 			  Cursor   cursor =  managedQuery(intent.getData(), null, null, null, null);      
 			  if(!cursor.isClosed()&&cursor!=null){
@@ -264,6 +288,42 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 		}
 	}
 	
+
+	@Override
+	public void onBackPressed() {
+		if(validaEditText()){
+			
+			super.onBackPressed();
+		}
+	
+	}
+
+	public boolean validaEditText() {
+		for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
+      	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
+      	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+      	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
+      	  EditText et = (EditText) ll3.getChildAt(0);
+      	  EditText et2 = (EditText) ll3.getChildAt(1);
+      	 //validamos que no esten vacios
+      	  if(et.getText().toString().equals("")){
+      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "Debes llenar los campos", Toast.LENGTH_LONG);
+      		  return false;
+      	  }
+    	  if(et2.getText().toString().equals("")){
+    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "Debes llenar los campos", Toast.LENGTH_LONG);
+    		  return false;
+    	  }
+    	  //validamos que esten bien escritos
+    	  if(et.getText().toString().length()!=10){
+      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "El celular debe ser de 10 dígitos", Toast.LENGTH_LONG);
+      		  return false;
+      	  }
+        }
+		
+		
+		return true;
+	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,9 +1,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_group"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true" 
-    android:id="@+id/my_group">
+    android:fillViewport="true" >
 
     <ViewFlipper
         android:id="@+id/viewflipper"
@@ -94,11 +94,7 @@
                 </LinearLayout>
             </ScrollView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-            </LinearLayout>
+ 
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -121,10 +117,11 @@
                     android:text="Activar modo paranóico" />
 
                 <CheckBox
-                    android:id="@+id/checkBox1"
+                    android:id="@+id/mitaxiregistermanually_cv_paranoico"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".2"
+                    android:button="@drawable/checkbox_selector"
                     android:gravity="left|center" />
             </LinearLayout>
         </RelativeLayout>

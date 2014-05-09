@@ -95,6 +95,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     private int intervaloLocationParanoia =0;
     private boolean algoPaso=true;
    private boolean isMailFirst=true;
+private boolean panico;
     
     
     
@@ -117,9 +118,12 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		timer = new Timer();//timer para el boton de panico
 		timerParanoico = new Timer();//timer para el modo paranohico
 
+		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+           panico = prefs.getBoolean("panico", false);
 		intervaloLocation = getPreferencia("prefSyncFrequency");//intervalo de busqueda
-		intervaloLocationParanoia  = getPreferencia("prefSyncFrequencyParanoia");//intervalo para mostrar el mensaje paranohico
-
+		if(panico){
+		intervaloLocationParanoia  = 120000;//intervalo para mostrar el mensaje paranohico
+		}
 		// para le panic
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
 		filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -220,7 +224,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 				isFirstLocation = false;
 				showNotification();
 				//si es que activo el nivel paranoico
-				if(intervaloLocationParanoia!=10000){
+				if(panico){
 					mensajeParanoico();
 				}
 			}          

@@ -27,15 +27,11 @@ public class TrackxiMainActivity extends Activity {
 	
 		//guardamos el Tag
 		BeanDatosLog.setTagLog(TAG);		
-	
+		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putString("uuid", "dab7fe0d-83b9-43d5-92b9-3f9ec1f1fbd9");
+		editor.commit();
 		
-		//solicitamos las preferencias del usuario para saber si esta registrado
-	//	SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-	//	String uuid = prefs.getString("uuid", null);
-		//si aun no tiene datos guardados en preferencias lo registramos
-	/*	if(uuid == null){
-			iniciarSplash(2);
-		}else{ *///si ya se registro de muestra splash y luego la activity para buscar placas
 			if(ServicioGeolocalizacion.serviceIsIniciado==true){
 				iniciarSplash(3);
 			}else{
