@@ -21,7 +21,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -29,19 +28,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 import codigo.labplc.mx.trackxi.R;
+import codigo.labplc.mx.trackxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.trackxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.trackxi.buscarplaca.bean.ComentarioBean;
-import codigo.labplc.mx.trackxi.califica.Califica_taxi;
 import codigo.labplc.mx.trackxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.trackxi.dialogos.Dialogos;
 import codigo.labplc.mx.trackxi.facebook.FacebookLogin;
 import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
-import codigo.labplc.mx.trackxi.paginador.Paginador;
 import codigo.labplc.mx.trackxi.registro.MitaxiRegisterManuallyActivity;
 import codigo.labplc.mx.trackxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.trackxi.utils.Utils;
@@ -356,7 +354,7 @@ public class DatosAuto extends FragmentActivity{
 	
 	@Override
 	public void onBackPressed() {
-		Intent mainIntent = new Intent().setClass(DatosAuto.this, Paginador.class);
+		Intent mainIntent = new Intent().setClass(DatosAuto.this, BuscaPlacaTexto.class);
 		startActivity(mainIntent);
 		pager=null;
 		DatosAuto.this.finish();
@@ -485,14 +483,6 @@ public class DatosAuto extends FragmentActivity{
 					Intent i = new Intent(DatosAuto.this, UserSettingActivity.class);
 					startActivityForResult(i, RESULT_SETTINGS);
 					return true;
-
-				case R.id.cuenta:
-				Intent intentManually = new Intent(DatosAuto.this, MitaxiRegisterManuallyActivity.class);
- 				intentManually.putExtra("origen", "menu");
- 				startActivity(intentManually);
- 				overridePendingTransition(0,0);
-					return true;
-
 				}
 					 return false;
 				}

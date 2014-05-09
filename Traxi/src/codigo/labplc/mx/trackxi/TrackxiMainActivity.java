@@ -1,12 +1,7 @@
 package codigo.labplc.mx.trackxi;
 
-import java.security.SecureRandom;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.spec.SecretKeySpec;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,16 +9,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.Window;
-import android.widget.TextView;
+import codigo.labplc.mx.trackxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
-import codigo.labplc.mx.trackxi.paginador.Paginador;
 import codigo.labplc.mx.trackxi.registro.MitaxiRegisterManuallyActivity;
 import codigo.labplc.mx.trackxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.trackxi.tracking.map.Mapa_tracking;
-import codigo.labplc.mx.trackxi.utils.Utils;
 
 public class TrackxiMainActivity extends Activity {
 
@@ -39,19 +30,19 @@ public class TrackxiMainActivity extends Activity {
 	
 		
 		//solicitamos las preferencias del usuario para saber si esta registrado
-		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-		String uuid = prefs.getString("uuid", null);
+	//	SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+	//	String uuid = prefs.getString("uuid", null);
 		//si aun no tiene datos guardados en preferencias lo registramos
-		if(uuid == null){
+	/*	if(uuid == null){
 			iniciarSplash(2);
-		}else{ //si ya se registro de muestra splash y luego la activity para buscar placas
+		}else{ *///si ya se registro de muestra splash y luego la activity para buscar placas
 			if(ServicioGeolocalizacion.serviceIsIniciado==true){
 				iniciarSplash(3);
 			}else{
 				iniciarSplash(1);
 			}
 			
-		}
+	//	}
 	}
 	
 	/**
@@ -67,7 +58,7 @@ public class TrackxiMainActivity extends Activity {
 	            @Override
 	            public void run() {
 	            	if(flag==1){//Inicia la actividad de revisado de placas
-	            		Intent mainIntent = new Intent().setClass(TrackxiMainActivity.this, Paginador.class);
+	            		Intent mainIntent = new Intent().setClass(TrackxiMainActivity.this, BuscaPlacaTexto.class);
 	            		 startActivity(mainIntent);
 	            	}else if(flag==2){ //Inicia la actividad de registro
 	    				Intent intentManually = new Intent(TrackxiMainActivity.this, MitaxiRegisterManuallyActivity.class);

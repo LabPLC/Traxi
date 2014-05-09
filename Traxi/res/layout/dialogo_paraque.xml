@@ -23,14 +23,15 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="10dp"
+            android:layout_weight=".8"
             android:background="@drawable/marco"
             android:orientation="vertical"
             android:padding="10dp" >
 
             <TextView
-                 android:id="@+id/dialogo_paraque_tv_subtitulo"
+                android:id="@+id/dialogo_paraque_tv_subtitulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -44,10 +45,10 @@
                 android:background="@color/gris_claro" />
 
             <TextView
-                 android:id="@+id/dialogo_paraque_tv_nombre"
+                android:id="@+id/dialogo_paraque_tv_nombre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/paraque_nombre" />
+                android:text="@string/mensaje_para_panic_titulo" />
 
             <View
                 android:layout_width="30dp"
@@ -55,47 +56,17 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="2dp" />
 
-            <TextView
-                 android:id="@+id/dialogo_paraque_tv_correo"
+            <ScrollView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/paraque_correo" />
+                android:overScrollMode="never" >
 
-            <View
-                android:layout_width="30dp"
-                android:layout_height="2dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp" />
-
-            <TextView
-                 android:id="@+id/dialogo_paraque_tv_telefonoemer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/paraque_telemer" />
-
-            <View
-                android:layout_width="30dp"
-                android:layout_height="2dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp" />
-
-            <TextView
-                 android:id="@+id/dialogo_paraque_tv_correoemer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/paraque_correoemer" />
-
-            <View
-                android:layout_width="30dp"
-                android:layout_height="2dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp" />
-
-            <TextView
-                 android:id="@+id/dialogo_paraque_tv_foto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/paraque_foto"/>
+                <TextView
+                    android:id="@+id/dialogo_paraque_tv_correo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mensaje_para_panic_dialog" />
+            </ScrollView>
 
             <View
                 android:layout_width="30dp"
@@ -107,9 +78,10 @@
         <Button
             android:id="@+id/dialogo_paraque_btnAceptar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="right"
             android:layout_marginRight="20dp"
+            android:layout_weight=".2"
             android:background="@drawable/selector_btn_generic"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"

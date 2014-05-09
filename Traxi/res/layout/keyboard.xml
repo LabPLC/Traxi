@@ -226,7 +226,6 @@
                 android:soundEffectsEnabled="true"
                 android:tag="bk"
                 android:text="@string/keyboard_borrar"
-                android:textColor="@drawable/selector_txt_boton_redondo"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

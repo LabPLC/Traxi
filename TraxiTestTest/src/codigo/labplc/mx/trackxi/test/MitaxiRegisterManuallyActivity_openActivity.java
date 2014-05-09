@@ -3,7 +3,7 @@ package codigo.labplc.mx.trackxi.test;
 import android.app.Instrumentation.ActivityMonitor;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.Button;
-import codigo.labplc.mx.trackxi.buscarplaca.BuscaPlaca;
+import codigo.labplc.mx.trackxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.trackxi.paginador.Paginador;
 import codigo.labplc.mx.trackxi.registro.MitaxiRegisterManuallyActivity;
 
@@ -52,7 +52,7 @@ public class MitaxiRegisterManuallyActivity_openActivity extends	ActivityInstrum
 		
 				
 		  // register next activity that need to be monitored.
-		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(BuscaPlaca.class.getName(), null, false);
+		  ActivityMonitor activityMonitor = getInstrumentation().addMonitor(BuscaPlacaTexto.class.getName(), null, false);
 
 		  // open current activity.
 		  solo.clickOnButton("Registrar");

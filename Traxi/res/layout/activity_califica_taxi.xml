@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="@string/califica_taxi_tv_titulo"
-            android:textColor="@color/generic_amarillo" />
+            android:textColor="@color/gris_obscuro" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:id="@+id/califica_taxi_tv_titulo_calif"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/generic_amarillo"
+                android:textColor="@color/gris_obscuro"
                 android:text="@string/califica_taxi_tv_titulo_calif" />
 
             <RatingBar

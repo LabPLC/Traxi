@@ -53,10 +53,10 @@ public class Califica_taxi extends Activity {
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_ROJO));
 	     
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo_calif)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_calif)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_AMARILLO));
+		((TextView) findViewById(R.id.califica_taxi_tv_titulo_calif)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 			
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_AMARILLO));
+		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 
 		
 		

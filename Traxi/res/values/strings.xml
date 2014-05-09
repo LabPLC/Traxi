@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <!-- textNuevos -->
+    <!-- textNuevos -->
     <string name="mitaxiregister_et_mailemergency_hint_2">emergency contact email</string>
     <string name="mitaxiregister_et_telemergency_hint_2">Emergency number</string>
-    
+
     <!-- general -->
     <string name="app_name">Traxi</string>
     <string name="action_settings">Settings</string>
@@ -20,7 +20,7 @@
     <string name="title_activity_busca_placa">SearchPlate</string>
 
     <!-- Registro manualmente -->
-    <string name="mitaxiregister_name">Sign up</string>
+    <string name="mitaxiregister_name">Recuerda que el correo y el celular deben ser de la misma persona</string>
     <string name="mitaxiregister_error">Check your data to continue.</string>
     <string name="mitaxiregister_error_string">Write a valid word [a-z A-Z].</string>
     <string name="mitaxiregister_error_number">Write a valid number [0 9].</string>
@@ -47,7 +47,7 @@
     <string name="mitaxiregister_et_paraque">Why?</string>
     <string name="mitaxiregister_et_emergencias">Emergency contacts</string>
     <string name="mitaxiregister_btn_cancel">Cancel</string>
-    <string name="mitaxiregister_btn_ok">Sign up</string>
+    <string name="mitaxiregister_btn_ok">Aceptar</string>
 
     <!-- Validations EditText -->
     <string name="edittext_emtpy">Fill all the fields.</string>
@@ -63,7 +63,7 @@
     <string name="transaction_wrong">Ops#8230; There was something wrong connecting to the server.</string>
 
     <!-- Para que DIALOGO -->
-    <string name="paraque_subtitulo">REQUIRED DATA.</string>
+    <string name="paraque_subtitulo">Opciones de seguridad</string>
     <string name="paraque_titulo">WARNING</string>
     <string name="paraque_nombre">Name: To know how we will call you.</string>
     <string name="paraque_correo">Email: To identify you in the app.</string>
@@ -80,9 +80,9 @@
     <string name="paraque_cancelar">Cancel</string>
     <string name="salir_subtitulo">TRAXI</string>
     <string name="salir_texto">Do you really want to exit?</string>
-    
-        <!-- Teclado -->
-        <string name="keyboard_borrar">Delete</string>
+
+    <!-- Teclado -->
+    <string name="keyboard_borrar">Delete</string>
 
     <!-- GPS -->
     <string name="gps_subtitulo">GPS is off</string>
@@ -96,10 +96,10 @@
     <string name="texto_calificacion_90">This is a well-trusted vehicle but it can get better. We advice you as always to stay alert</string>
     <string name="texto_calificacion_100">Congratulations! You found a very trusted taxi and you will have a pleasant trip. However, since your security comes first, stay alert!</string>
     <string name="texto_significado_calif"> What does this score means?</string>
-     <string name="texto_significado_el_viaje_inicio">Beginning trip</string>
+    <string name="texto_significado_el_viaje_inicio">Beginning trip</string>
 
     <!-- buscar placa -->
-    <string name="inicio_de_trabajo_tv_foto">Or take a picture</string>
+    <string name="inicio_de_trabajo_tv_foto">Take a picture</string>
     <string name="busca_placa_btn_tomarfoto">Photo ..</string>
     <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
     <string name="inicio_de_trabajo_et_placa">License plate</string>
@@ -159,7 +159,7 @@
     <string name="dialogo_califica_servicio_et_comentario">This service was...</string>
     <string name="dialogo_califica_servicio_btnCancelar">End</string>
     <string name="dialogo_califica_servicio_btnAceptar">Send</string>
-     <string name="dialogo_califica_servicio_enviar_comentario">Your comment was sent</string>
+    <string name="dialogo_califica_servicio_enviar_comentario">Your comment was sent</string>
 
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destination</string>
@@ -212,10 +212,10 @@
 
     <!-- mail -->
     <string name="correo">mitraxisaurio@gmail.com</string>
-    
-      <!-- comentario -->
+
+    <!-- comentario -->
     <string name="sin_comentario">there ara no comments for this taxi</string>
-    
+
     <!-- sh1 -->
     <string name="envio_mail">gpzaTMeNjYsUdxsZUbLXng==</string>
 
@@ -236,5 +236,44 @@
         Graphical designer:\n
         \tSergio Beltrán @ssbeltran</string>
     <string name="prefKeyResetQuests_boton">OK</string>
+    <string name="title_activity_tips_activity">Tips_activity</string>
+    <string name="title_activity_emergencia_activity">Emergencia_activity</string>
 
+    
+      <!-- Tips -->
+    <string name="tip_1">Nunca tomes un taxi que no tenga placas \n\n
+        Recuerda que deben de empezar con A, B ó M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
+    <string name="tip_2">Revisa que el taxi al que te subas tenga visible el tarjeton verde y que la foto coincida con el chofer y que no este vencido</string>
+    <string name="tip_3">La tarifa nocuturna aplica de 11 de la noche a 5:59 de la mañana</string>
+    <string name="tip_4">Existen 3 tipos de tarifas\n\n 
+    Libre:\n
+    Banderazo $8.74\n
+    Ficha $1.07\n\n
+    Sitio:\n
+    Banderazo $13.10\n
+    Ficha $1.30\n\n
+    Radio:\n
+    Banderazo $27.30\n
+    Ficha $1.84\n\n</string>
+    <string name="tip_5">Evita conversaciones relacionadas con tus actividades</string>
+    <string name="tip_6">De preferencia indíquele la ruta a seguir al chofer del taxi.</string>
+    <string name="tip_7">Nunca subestimen su sexto sentido. Si algo las hace sentir inseguras o nerviosas, bájense. No tengan miedo a terminar su recorrido antes, siempre pueden usar un pretexto</string>
+    <string name="tip_8">Inmediatamente después de que se suban asegúrense de que ambas puertas traseras tienen el seguro puesto, eviten agresiones externas de esta manera. Y si sienten que la agresión puede venir de adentro, ¡bájense inmediatamente!</string>
+    <string name="tip_9">Nunca compartas tu taxi con extraños ni con personas que acabas de conocer en un bar, en una terminal de buses o "la chica linda" que también espera taxi en tu misma esquina.</string>
+    <string name="tip_10">Teléfonos de emergencia:\n\n
+        SETRAVI: 52099913\n\n
+        SSP: 066\n\n
+        Cruz Roja: 065\n\n
+        Locatel: 56581111
+        </string>
+        
+  <string  name="mensaje_para_panic">
+            BOTÓN DE PANICO: El cuál se funciona sólo durante el viaje, en caso de que te sientas amenazado durante el viaje puedes presionar 5 veces el boton de encendido de tu celular y se enviá un SMS al contacto que nos indiques y correos electronicos con tu posición, en que taxi te encuentras, tu nivel de bateria y unas recomendaciones de acción.\n\n
+            PARANÓICO: Sí activas este módo la aplicación te estará preguntando cada determinados minutos(que tu seleccionas) si te encuentras bien, si no contestas en por lo menos un minuto se activara el botón de panico.\n\n\n
+            IMPORTANTE: ESTA ES UNA PRUEA BETA DE LA APLICAIÓN POR LO QUE AUN PUEDE PRESENTAR FALLAS POR LO QUE DEBES TOMAR TODAS TUS PRECAUCIÓNES.\n
+            PARA EL ENVIO DE SMS DEBES TENER SALDO Y SE HARA EL COBRO DEPENDIENDO DE TU COMPAÑIA DE TELÉFONO, Y LOS CORREOS REQUIEREN QUE ESTES CONECTADO A UNA RED DE DATOS.</string>
+ <string name="mensaje_para_panic_boton_aceptar">Acepto</string>
+  <string name="mensaje_para_panic_boton_cancelar">Cancelar</string>
+    <string name="mensaje_para_panic_titulo">Traxi cuenta con 2 niveles de seguridad:</string>
+    
 </resources>
