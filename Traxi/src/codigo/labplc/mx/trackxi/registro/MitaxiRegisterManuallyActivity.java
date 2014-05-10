@@ -14,6 +14,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +32,10 @@ import codigo.labplc.mx.trackxi.R;
 import codigo.labplc.mx.trackxi.dialogos.Dialogos;
 import codigo.labplc.mx.trackxi.fonts.fonts;
 import codigo.labplc.mx.trackxi.log.BeanDatosLog;
+import codigo.labplc.mx.trackxi.registro.validador.EditTextValidator;
 import codigo.labplc.mx.trackxi.utils.Utils;
+
+import com.facebook.android.Util;
 
 public class MitaxiRegisterManuallyActivity extends Activity {
 	
@@ -199,16 +204,36 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(Intent.ACTION_PICK,Contacts.CONTENT_URI);
-				startActivityForResult(intent, tag);
-				//Dialogos.Toast(MitaxiRegisterManuallyActivity.this,mitaxiregistermanually_btn_contactos_2.getTag()+"" , Toast.LENGTH_SHORT);
-				
+				startActivityForResult(intent, tag);		
 			}
 		});
-		EditText mitaxiregistermanually_et_telemer_2 =(EditText)view.findViewById(R.id.mitaxiregistermanually_et_telemer_2);
+	final EditText mitaxiregistermanually_et_telemer_2 =(EditText)view.findViewById(R.id.mitaxiregistermanually_et_telemer_2);
 		mitaxiregistermanually_et_telemer_2.setTag(tag+"");
-		EditText mitaxiregistermanually_et_correoemer_2 =(EditText)view.findViewById(R.id.mitaxiregistermanually_et_correoemer_2);
-		mitaxiregistermanually_et_correoemer_2.setTag(tag+"");
+		mitaxiregistermanually_et_telemer_2.addTextChangedListener(new TextWatcher() {
+			 @Override
+			 public void onTextChanged(CharSequence s, int start, int before, int count) {}
+
+			  @Override
+			  public void beforeTextChanged(CharSequence s, int start, int count,int after) {}
+
+			  @Override
+			  public void afterTextChanged(Editable s) {
+			     String valor= mitaxiregistermanually_et_telemer_2 .getText().toString();
+			     try{	
+				  new EditTextValidator();
+				EditTextValidator.esNumero(valor, 10, 0, false);
+			     }catch(Exception e){
+			    	 if(valor.length() != 0){	 
+			    		 mitaxiregistermanually_et_telemer_2 .getText().delete(valor.length() - 1, valor.length());
+				 }	
+			     }	
+			 }
+		});
+
 		
+		
+		final	EditText mitaxiregistermanually_et_correoemer_2 =(EditText)view.findViewById(R.id.mitaxiregistermanually_et_correoemer_2);
+		mitaxiregistermanually_et_correoemer_2.setTag(tag+"");
 			views.add(view);
 			mitaxiregistermanually_ll_contactos.addView(view);
 			emergenciaOcupado[tag]=false;
@@ -250,7 +275,7 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 			        	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
 			        	  EditText et = (EditText) ll3.getChildAt(0);
 			        	  if(et.getTag().toString().equals(tag+"")){
-			        		  et.setText(phoneNumber);
+			        		  et.setText(phoneNumber.replaceAll(" ", ""));
 			        	  }
 			          }
 			          
@@ -292,12 +317,25 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		if(validaEditText()){
+			if(guardaLasPreferencias()){
+				super.onBackPressed();
+			}
 			
-			super.onBackPressed();
 		}
 	
 	}
 
+	
+	public boolean guardaLasPreferencias() {
+		//pone en blanco las preferencias
+		//llena las preferencias de nuevo
+		return true;
+	}
+
+	/**
+	 * valida todos los editText 
+	 * @return
+	 */
 	public boolean validaEditText() {
 		for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
       	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
@@ -319,6 +357,10 @@ public class MitaxiRegisterManuallyActivity extends Activity {
       		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "El celular debe ser de 10 dígitos", Toast.LENGTH_LONG);
       		  return false;
       	  }
+    	  if(!EditTextValidator.esCorreo(et2)){
+			  et2.setError(getResources().getString(R.string.edittext_error_email));
+			  return false;
+		  }
         }
 		
 		

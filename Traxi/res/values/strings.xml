@@ -275,5 +275,5 @@
  <string name="mensaje_para_panic_boton_aceptar">Acepto</string>
   <string name="mensaje_para_panic_boton_cancelar">Cancelar</string>
     <string name="mensaje_para_panic_titulo">Traxi cuenta con 2 niveles de seguridad:</string>
-    
+         <string name="adeudos_row_no_hay_datos">No existen datos</string>
 </resources>

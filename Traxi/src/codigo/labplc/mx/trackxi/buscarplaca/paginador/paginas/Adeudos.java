@@ -79,6 +79,10 @@ public class Adeudos extends View {
 
 	
 	public void llenarAdeudo(String titulo, String concepto, int imagen) {
+		if(concepto.equals("")){
+			concepto= getResources().getString(R.string.adeudos_row_no_hay_datos);
+		}
+		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view_row = inflater.inflate(R.layout.adeudos_row, null);
 

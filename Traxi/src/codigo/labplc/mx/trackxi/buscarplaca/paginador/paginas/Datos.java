@@ -84,6 +84,10 @@ public class Datos extends View {
 		marca.append(autoBean.getSubmarca()+", ");
 		marca.append(autoBean.getAnio());
 		
+		if(marca.getText().toString().equals(", , ")){
+			marca.setText(getResources().getString(R.string.adeudos_row_no_hay_datos));
+		}
+		
 		descripcion.setText(autoBean.getDescripcion_calificacion_app());
 		
 		crearTermometro();
