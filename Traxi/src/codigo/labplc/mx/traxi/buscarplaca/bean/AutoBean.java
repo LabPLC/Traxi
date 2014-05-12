@@ -7,6 +7,7 @@ public class AutoBean {
 	private String submarca="";
 	private String anio="";
 	private String tipo="";
+	private String placa;
 	private int calificaion_app = 0;
 	private int calificacion_usuarios =0;
 	private int calificacion_final =0;
@@ -24,6 +25,12 @@ public class AutoBean {
 	private ArrayList<ComentarioBean> arrayComentarioBean = new ArrayList<ComentarioBean>();
 	
 	
+	public String getPlaca() {
+		return placa;
+	}
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
 	public int getCalificacion_final() {
 		return calificacion_final;
 	}

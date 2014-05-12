@@ -53,46 +53,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/datos_tv_niveles_confianza"
-            android:textColor="@color/gris_obscuro" />
+            android:textColor="@color/gris_obscuro"
+            android:paddingTop="10dp" />
 
         <LinearLayout
             android:id="@+id/Thermometer_Container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_gravity="center"
-            android:layout_weight=".50"
-            android:gravity="center"
-            android:orientation="vertical" >
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:padding="@dimen/activity_vertical_margin">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="3dp"
-            android:layout_weight=".30"
-            android:background="@drawable/rounded_background"
-            android:orientation="vertical"
-            android:paddingTop="2dp" >
 
-            <TextView
-                android:id="@+id/datos_tv_titulo_desc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/texto_significado_calif" />
-
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never" >
-
-                <TextView
-                    android:id="@+id/datos_tv_descripcion"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="@string/datos_tv_descripcion"
-                    android:textColor="@color/rojo_logo" />
-            </ScrollView>
         </LinearLayout>
     </LinearLayout>
 

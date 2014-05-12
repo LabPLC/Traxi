@@ -7,7 +7,7 @@
 
     <!-- general -->
     <string name="app_name">Traxi</string>
-    <string name="action_settings">Configuración</string>
+    <string name="action_settings">Herramientas</string>
     <string name="action_cuenta">Cuenta</string>
     <string name="action_help">Guía</string>
     <string name="hello_world">Hello world!</string>
@@ -71,15 +71,13 @@
     <string name="paraque_correoemer">Correo emergencia: Para hacer el seguimiento de tu camino y estado mientras te sientas amenazado.</string>
     <string name="paraque_foto">Foto: Para personaliar tu perfil.</string>
     <string name="paraque_aceptar">Aceptar</string>
+        <string name="paraque_cancelar">Cancelar</string>
     <string name="title_activity_buscar_chofer">BuscarChofer</string>
     <string name="title_activity_datos">Datos</string>
     <string name="title_activity_adeudos">Adeudos</string>
     <string name="title_activity_comentarios">Comentarios</string>
 
-    <!-- salir -->
-    <string name="paraque_cancelar">Cancelar</string>
-    <string name="salir_subtitulo">TRAXI</string>
-    <string name="salir_texto">¿Realmente quieres salir?</string>
+   
 
     <!-- Teclado -->
     <string name="keyboard_borrar">Borrar</string>
@@ -156,7 +154,7 @@
     <string name="califica_taxi_tv_titulo">Ayudanos a evaluar el servicio</string>
     <string name="califica_taxi_tv_titulo_calif">¿Qué tal te pareció el servicio del taxi?</string>
     <string name="califica_taxi_tv_titulo_opinion">Danos tu opinión</string>
-    <string name="dialogo_califica_servicio_et_comentario">El servicio me pareció..</string>
+    <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">Finalizar</string>
     <string name="dialogo_califica_servicio_btnAceptar">Enviar</string>
     <string name="dialogo_califica_servicio_enviar_comentario">Tu comentario ha sido enviado</string>

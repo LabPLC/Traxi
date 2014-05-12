@@ -30,9 +30,11 @@ public class ShieldView extends View {
     private Paint textPaint;
     
     private int backgroundColor = Color.rgb(0xE0, 0xE0, 0xE0);
-    private int progressColor = Color.rgb(0xEF, 0x41, 0x47);
+   // private  int progressColor = Color.rgb(0xEF, 0x41, 0x47);
     
-    private Bitmap bitmap;
+   
+
+	private Bitmap bitmap;
     Context context;
     
     /**
@@ -82,21 +84,21 @@ public class ShieldView extends View {
 	 * @param i 
 	 * @param j 
 	 */
-	public void initUI(int i, int j)
+	public void initUI(int i, int j, int color)
 	{
 		LayoutParams params = new LayoutParams(i, j);
 		params.leftMargin = (int) Utils.convertDpToPixel(getContext(), 0);
 		params.rightMargin = (int) Utils.convertDpToPixel(getContext(), 0);
 		params.topMargin = (int) Utils.convertDpToPixel(getContext(), 0);
 		params.bottomMargin = (int) Utils.convertDpToPixel(getContext(), 0);
-		params.gravity= Gravity.CENTER|Gravity.BOTTOM;
+		params.gravity= Gravity.CENTER;
 		setLayoutParams(params);
 		
 		setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 		
 		progressPaint = new Paint();
         progressPaint.setAntiAlias(true);
-        progressPaint.setColor(progressColor);
+        progressPaint.setColor(getResources().getColor(color));
         progressPaint.setStyle(Paint.Style.FILL);
         
         backgroundPaint = new Paint();
@@ -108,7 +110,7 @@ public class ShieldView extends View {
         backgroundPaint.setAntiAlias(true);
 		textPaint.setColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		textPaint.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		textPaint.setTextSize(35);
+		textPaint.setTextSize(50);
 		
 		bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.escudo);
 	}
@@ -211,4 +213,6 @@ public class ShieldView extends View {
         imageSize = width < DefaultWidth ? DefaultWidth : width;
         setMeasuredDimension(imageSize, imageSize);
     }
+    
+   
 }

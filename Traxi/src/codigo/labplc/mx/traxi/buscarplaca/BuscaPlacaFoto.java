@@ -47,7 +47,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
@@ -60,7 +62,7 @@ import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.utils.Utils;
 
-public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback{
+public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,OnClickListener{
 	
 	
 	private static final int RESULT_SETTINGS = 1;
@@ -101,6 +103,8 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback{
 	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(BuscaPlacaFoto.this).getTypeFace(fonts.FLAG_MAMEY));
 	     ab.setDisplayShowCustomEnabled(true);
 	     
+	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
+	     abs_layout_iv_menu.setOnClickListener(this);
 	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 	     ab.setCustomView(view);
 
@@ -360,8 +364,8 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback{
 				}
 
 				
-	
-				 public void clickEvent(View v) {
+				@Override
+				public void onClick(View v) {
 				        if (v.getId() == R.id.abs_layout_iv_menu) {
 				            showPopup(v);
 				        }
@@ -370,66 +374,53 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback{
 				    }
 				
 				 public void showPopup(View v) {
-					    PopupMenu popup = new PopupMenu(BuscaPlacaFoto.this, v);
-					    MenuInflater inflater = popup.getMenuInflater();
-					    inflater.inflate(R.menu.popup, popup.getMenu());
-					    int positionOfMenuItem = 0; // or whatever...
-					    MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-					    SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-					    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
-					    item.setTitle(s);
-					    positionOfMenuItem = 1; // or whatever...
-					    item = popup.getMenu().getItem(positionOfMenuItem);
-					    SpannableString s2 = new SpannableString(getResources().getString(R.string.action_cuenta));
-					    s2.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s2.length(), 0);
-					    item.setTitle(s2);
-					    positionOfMenuItem = 2; // or whatever...
-					    item = popup.getMenu().getItem(positionOfMenuItem);
-					    SpannableString s3 = new SpannableString(getResources().getString(R.string.action_help));
-					    s3.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s3.length(), 0);
-					    item.setTitle(s3);
-					    
-					    
-					    
-					    
-					    popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-							
+						PopupMenu popup = new PopupMenu(BuscaPlacaFoto.this, v);
+						MenuInflater inflater = popup.getMenuInflater();
+						inflater.inflate(R.menu.popup, popup.getMenu());
+						int positionOfMenuItem = 0; 
+						MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
+						SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+						s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+						item.setTitle(s);
+
+						popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 							@Override
 							public boolean onMenuItemClick(MenuItem item) {
-								 switch (item.getItemId()) {
-								 
-							case R.id.configuracion:
-								Intent i = new Intent(BuscaPlacaFoto.this, UserSettingActivity.class);
-								startActivityForResult(i, RESULT_SETTINGS);
-								return true;
+								switch (item.getItemId()) {
 
-							
+								case R.id.configuracion_pref:
 
-							}
-								 return false;
+										Intent i = new Intent(BuscaPlacaFoto.this,UserSettingActivity.class);
+										startActivityForResult(i, RESULT_SETTINGS);
+										return true;
+									
+								}
+								return false;
 							}
 						});
-					    
-					    popup.show();
+
+						popup.show();
 					}
-				 
-				
-				 @Override
+
+					@Override
 					protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 						super.onActivityResult(requestCode, resultCode, data);
 						switch (requestCode) {
 						case RESULT_SETTINGS:
+						
 							showUserSettings();
+						
 							break;
 						}
 					}
-				 
-				 private void showUserSettings() {
+
+					/**
+					 * mustra las preferencias guardadas
+					 */
+					private void showUserSettings() {
 						SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 						StringBuilder builder = new StringBuilder();
 						builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
-						builder.append("\n Sync Frequency: "+ sharedPrefs.getString("prefSyncFrequency", "NULL"));
-						builder.append("\n Sync FrequencyMensajes: "+ sharedPrefs.getString("prefSyncFrequencyParanoia", "NULL"));
 					}
 
 				

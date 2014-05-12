@@ -19,6 +19,7 @@ import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -163,10 +164,8 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 						try {
 							LettersTrue();
 						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						}
 					} 
@@ -438,27 +437,17 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
 		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
 		item.setTitle(s);
-		positionOfMenuItem = 1; // or whatever...
-		item = popup.getMenu().getItem(positionOfMenuItem);
-		SpannableString s3 = new SpannableString(getResources().getString(R.string.action_help));
-		s3.setSpan(	new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s3.length(), 0);
-		item.setTitle(s3);
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
 				switch (item.getItemId()) {
 
-				case R.id.configuracion:
-					Intent i = new Intent(BuscaPlacaTexto.this,UserSettingActivity.class);
-					startActivityForResult(i, RESULT_SETTINGS);
-					return true;
-
-			//	case R.id.cuenta:
-				
-				//	return true;
-
+				case R.id.configuracion_pref:
+						Intent i = new Intent(BuscaPlacaTexto.this,UserSettingActivity.class);
+						startActivityForResult(i, RESULT_SETTINGS);
+						return true;
+					
 				}
 				return false;
 			}
@@ -472,7 +461,9 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		super.onActivityResult(requestCode, resultCode, data);
 		switch (requestCode) {
 		case RESULT_SETTINGS:
+		
 			showUserSettings();
+		
 			break;
 		}
 	}
@@ -484,8 +475,6 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		StringBuilder builder = new StringBuilder();
 		builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
-		builder.append("\n Sync Frequency: "+ sharedPrefs.getString("prefSyncFrequency", "NULL"));
-		builder.append("\n Sync FrequencyMensajes: "+ sharedPrefs.getString("prefSyncFrequencyParanoia", "NULL"));
 	}
 
 

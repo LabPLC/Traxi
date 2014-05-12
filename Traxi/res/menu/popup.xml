@@ -1,16 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
 <item
-    android:id="@+id/configuracion"
+    android:id="@+id/configuracion_pref"
     android:showAsAction="ifRoom"
     android:title="@string/action_settings"/>
 
-
-<item
-    android:id="@+id/ayuda"
-    android:showAsAction="ifRoom"
-    android:title="@string/action_help"
-    />
 
 
 

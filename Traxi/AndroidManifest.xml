@@ -9,10 +9,10 @@
         android:targetSdkVersion="19" />
 
     <permission
-        android:name="codigo.labplc.mx.trackxi.permission.MAPS_RECEIVE"
+        android:name="codigo.labplc.mx.traxi.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="codigo.labplc.mx.trackxi.maps.googlev2.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="codigo.labplc.mx.traxi.maps.googlev2.permission.MAPS_RECEIVE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
@@ -69,12 +69,7 @@
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait" >
         </activity>
-        <activity
-            android:name="codigo.labplc.mx.trackxi.paginador.Paginador"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_busca_placa"
-            android:screenOrientation="portrait" >
-        </activity>
+      
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto"
             android:configChanges="orientation"
@@ -84,16 +79,11 @@
         <activity
             android:name="codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity"
             android:configChanges="orientation"
-           android:windowSoftInputMode="stateVisible|adjustResize"
             android:label="@string/title_activity_busca_placa"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
-        <activity
-            android:name="codigo.labplc.mx.trackxi.buscarchofer.BuscarChofer"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_buscar_chofer"
-            android:screenOrientation="portrait" >
-        </activity>
+      
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.Datos"
             android:configChanges="orientation"
@@ -118,7 +108,8 @@
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-
+        
+        
         <service android:name="codigo.labplc.mx.traxi.services.ServicioGeolocalizacion" />
 
         <activity
@@ -127,7 +118,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.tracking.califica.Califica_chofer"
+            android:name="codigo.labplc.mx.traxi.tracking.califica.Califica_chofer"
             android:label="@string/title_activity_califica_chofer"
             android:screenOrientation="portrait" >
         </activity>
@@ -175,6 +166,13 @@
             android:label="@string/title_activity_emergencia_activity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="codigo.labplc.mx.traxi.dialogos.Descripcion_Escudo"
+            android:label="@string/title_activity_descripcion__escudo" 
+                        android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
         </activity>
     </application>
 

@@ -12,13 +12,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.Contacts;
 import android.text.Editable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.util.Log;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -27,16 +32,19 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.registro.validador.EditTextValidator;
 import codigo.labplc.mx.traxi.utils.Utils;
 
-public class MitaxiRegisterManuallyActivity extends Activity {
+public class MitaxiRegisterManuallyActivity extends Activity implements OnClickListener{
 	
 	public final String TAG = this.getClass().getSimpleName();
 	private LinearLayout mitaxiregistermanually_ll_contactos;
@@ -44,6 +52,8 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 	 ArrayList<View> views = new ArrayList<View>();
 	private View mitaxiregistermanually_iv_quitar;
 	private boolean[] emergenciaOcupado= {true,true};//maneja los contactos
+	private int RESULT_SETTINGS =10;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -63,6 +73,8 @@ public class MitaxiRegisterManuallyActivity extends Activity {
 	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(MitaxiRegisterManuallyActivity.this).getTypeFace(fonts.FLAG_MAMEY));
 	     ab.setDisplayShowCustomEnabled(true);
 	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+		ImageView abs_layout_iv_menu = (ImageView) findViewById(R.id.abs_layout_iv_menu);
+		abs_layout_iv_menu.setOnClickListener(this);
 	     ab.setCustomView(view);
 	     
 	     
@@ -424,6 +436,60 @@ public class MitaxiRegisterManuallyActivity extends Activity {
  			getContactInfo(data,0);
  		}else if (requestCode == 1) {
  			getContactInfo(data,1);
+ 		}else if(requestCode==RESULT_SETTINGS){
+ 			showUserSettings();
  		}
 	}
+	
+
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.abs_layout_iv_menu) {
+			showPopup(v);
+		}
+		
+	}
+
+	       
+	    
+	public void showPopup(View v) {
+		PopupMenu popup = new PopupMenu(MitaxiRegisterManuallyActivity.this, v);
+		MenuInflater inflater = popup.getMenuInflater();
+		inflater.inflate(R.menu.popup, popup.getMenu());
+		int positionOfMenuItem = 0; 
+		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
+		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+		item.setTitle(s);
+
+		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				switch (item.getItemId()) {
+
+				case R.id.configuracion_pref:
+
+						Intent i = new Intent(MitaxiRegisterManuallyActivity.this,UserSettingActivity.class);
+						startActivityForResult(i, RESULT_SETTINGS);
+						return true;
+					
+				}
+				return false;
+			}
+		});
+
+		popup.show();
+	}
+
+	
+
+	/**
+	 * mustra las preferencias guardadas
+	 */
+	private void showUserSettings() {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+		StringBuilder builder = new StringBuilder();
+		builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
+	}
+
 }

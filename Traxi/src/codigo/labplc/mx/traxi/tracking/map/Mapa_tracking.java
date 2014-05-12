@@ -12,27 +12,34 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
+import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.utils.Utils;
 
@@ -46,7 +53,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-public class Mapa_tracking extends Activity implements OnItemClickListener {
+public class Mapa_tracking extends Activity implements OnItemClickListener, OnClickListener {
+	
+	
 	
 	@Override
 	protected void onStart() {
@@ -56,6 +65,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 
 	public final String TAG = this.getClass().getSimpleName();
 	
+	private static final int RESULT_SETTINGS = 1; //resultado del menu
 	 private GoogleMap map;
 	private double latitud=0;
 	private double longitud=0;
@@ -77,6 +87,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 	private String tiempo;
 	private String distancia;
 	private boolean isButtonExit = true;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -101,6 +112,8 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 	     
 	     //instancias en  
 	     ab.setDisplayShowCustomEnabled(true);
+	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
+	     abs_layout_iv_menu.setOnClickListener(this);
 	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 	     ab.setCustomView(view);
 
@@ -306,6 +319,8 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 					}
 			}
 		};
+
+	
 	
 		
 		@Override
@@ -328,21 +343,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 
 		       
 		    }
-		
-		 public void showPopup(View v) {
-			    PopupMenu popup = new PopupMenu(Mapa_tracking.this, v);
-			    MenuInflater inflater = popup.getMenuInflater();
-			    inflater.inflate(R.menu.popup_ayuda, popup.getMenu());
-			    int positionOfMenuItem = 0; // or whatever...
-			    MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-			    SpannableString s = new SpannableString(getResources().getString(R.string.action_help));
-			    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
-			    item.setTitle(s);
-
-			    
-			    
-			    popup.show();
-			}
+	
 		
 		 @Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -488,6 +489,63 @@ public class Mapa_tracking extends Activity implements OnItemClickListener {
 		    }   
 		    
 		    
-		   
+		    public void showPopup(View v) {
+				PopupMenu popup = new PopupMenu(Mapa_tracking.this, v);
+				MenuInflater inflater = popup.getMenuInflater();
+				inflater.inflate(R.menu.popup, popup.getMenu());
+				int positionOfMenuItem = 0; 
+				MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
+				SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+				s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+				item.setTitle(s);
+
+				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+					@Override
+					public boolean onMenuItemClick(MenuItem item) {
+						switch (item.getItemId()) {
+
+						case R.id.configuracion_pref:
+
+								Intent i = new Intent(Mapa_tracking.this,UserSettingActivity.class);
+								startActivityForResult(i, RESULT_SETTINGS);
+								return true;
+							
+						}
+						return false;
+					}
+				});
+
+				popup.show();
+			}
+
+		    @Override
+			protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+				super.onActivityResult(requestCode, resultCode, data);
+				switch (requestCode) {
+				case RESULT_SETTINGS:
+				
+					showUserSettings();
+				
+					break;
+				}
+			}
+
+			/**
+			 * mustra las preferencias guardadas
+			 */
+			private void showUserSettings() {
+				SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+				StringBuilder builder = new StringBuilder();
+				builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
+			}  
+			
+			
+			@Override
+			public void onClick(View v) {
+				if (v.getId() == R.id.abs_layout_iv_menu) {
+					showPopup(v);
+				}
+				
+			}
 
 }

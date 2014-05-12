@@ -101,49 +101,7 @@ public class Dialogos {
         return (customDialog=builder.create());// return customDialog;//regresamos el di‡logo
     }   
 	
-	/**
-	 * Dialogo para asegurar que quieres salir de la app
-	 *
-	 * @param Activity (actividad que llama al di‡logo)
-	 * @return Dialog (regresa el dialogo creado)
-	 **/
 	
-	public Dialog seguroQuiereSalir(final Activity activity)
-    {
-		
-		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-	    View view = activity.getLayoutInflater().inflate(R.layout.dialogo_salir, null);
-	    builder.setView(view);
-	    builder.setCancelable(true);
-        //tipografias
-	    ((Button) view.findViewById(R.id.dialogo_salir_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
-	    ((Button) view.findViewById(R.id.dialogo_salir_btnCancelar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
-	    
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-	    
-	    
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_nombre)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_nombre)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-	  //escucha del boton aceptar
-        ((Button) view.findViewById(R.id.dialogo_salir_btnAceptar)).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-            	 customDialog.dismiss(); 
-            	activity.finish();
-            }
-        });
-
-        ((Button) view.findViewById(R.id.dialogo_salir_btnCancelar)).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view)
-            {
-                customDialog.dismiss();    
-            }
-        });
-        return (customDialog=builder.create());// return customDialog;//regresamos el di‡logo
-    }   
 	
 	
 	

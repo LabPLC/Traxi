@@ -98,8 +98,8 @@
 
     <ImageView
         android:id="@+id/tips_activity_iv_cerrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/closerojo" />

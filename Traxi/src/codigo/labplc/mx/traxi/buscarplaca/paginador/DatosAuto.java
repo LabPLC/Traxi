@@ -25,8 +25,10 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
@@ -41,11 +43,12 @@ import codigo.labplc.mx.traxi.facebook.FacebookLogin;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
+import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class DatosAuto extends FragmentActivity{
+public class DatosAuto extends FragmentActivity implements OnClickListener{
 	
 	public final String TAG = this.getClass().getSimpleName();
 
@@ -95,7 +98,9 @@ public class DatosAuto extends FragmentActivity{
 		View view = inflater.inflate(R.layout.abs_layout,null);   
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(DatosAuto.this).getTypeFace(fonts.FLAG_MAMEY));
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(getResources().getString(R.string.datos_del_taxi));
-		ab.setDisplayShowCustomEnabled(true);     
+		ab.setDisplayShowCustomEnabled(true);  
+	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
+	     abs_layout_iv_menu.setOnClickListener(this);
 		ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);
 		
@@ -156,15 +161,6 @@ public class DatosAuto extends FragmentActivity{
 	}
 	
 	
-	private void showUserSettings() {
-		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-
-		StringBuilder builder = new StringBuilder();
-
-		builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", false));
-
-		builder.append("\n Sync Frequency: "+ sharedPrefs.getString("prefSyncFrequency", "NULL"));
-	}
 	
 
 	/**
@@ -384,6 +380,8 @@ public class DatosAuto extends FragmentActivity{
 				DatosAuto.this.pager.setOffscreenPageLimit(4);
 				autoBean= new AutoBean();
 
+				autoBean.setPlaca(placa);
+
 				if(!estaEnRevista()){
 					 PUNTOS_APP-=PUNTOS_REVISTA;
 					 autoBean.setDescripcion_revista(getResources().getString(R.string.sin_revista));
@@ -443,7 +441,8 @@ public class DatosAuto extends FragmentActivity{
 
 	}
 	
-	 public void clickEvent(View v) {
+	@Override
+	 public void onClick(View v) {
 	        if (v.getId() == R.id.abs_layout_iv_menu) {
 	            showPopup(v);
 	        }
@@ -451,44 +450,46 @@ public class DatosAuto extends FragmentActivity{
 	       
 	    }
 	
-	 public void showPopup(View v) {
-		    PopupMenu popup = new PopupMenu(DatosAuto.this, v);
-		    MenuInflater inflater = popup.getMenuInflater();
-		    inflater.inflate(R.menu.popup, popup.getMenu());
-		    
-		    
-		    int positionOfMenuItem = 0; // or whatever...
-		    MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-		    SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-		    s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
-		    item.setTitle(s);
-		    positionOfMenuItem = 1; // or whatever...
-		    item = popup.getMenu().getItem(positionOfMenuItem);
-		    SpannableString s2 = new SpannableString(getResources().getString(R.string.action_cuenta));
-		    s2.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s2.length(), 0);
-		    item.setTitle(s2);
-		    positionOfMenuItem = 2; // or whatever...
-		    item = popup.getMenu().getItem(positionOfMenuItem);
-		    SpannableString s3 = new SpannableString(getResources().getString(R.string.action_help));
-		    s3.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s3.length(), 0);
-		    item.setTitle(s3);
-		    
-		    popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-				
+	    
+	    public void showPopup(View v) {
+			PopupMenu popup = new PopupMenu(DatosAuto.this, v);
+			MenuInflater inflater = popup.getMenuInflater();
+			inflater.inflate(R.menu.popup, popup.getMenu());
+			int positionOfMenuItem = 0; 
+			MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
+			SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+			s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+			item.setTitle(s);
+
+			popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 				@Override
 				public boolean onMenuItemClick(MenuItem item) {
-					 switch (item.getItemId()) {
-				case R.id.configuracion:
-					Intent i = new Intent(DatosAuto.this, UserSettingActivity.class);
-					startActivityForResult(i, RESULT_SETTINGS);
-					return true;
-				}
-					 return false;
+					switch (item.getItemId()) {
+
+					case R.id.configuracion_pref:
+
+							Intent i = new Intent(DatosAuto.this,UserSettingActivity.class);
+							startActivityForResult(i, RESULT_SETTINGS);
+							return true;
+						
+					}
+					return false;
 				}
 			});
-		    
-		    popup.show();
+
+			popup.show();
 		}
+
+	 
+
+		/**
+		 * mustra las preferencias guardadas
+		 */
+		private void showUserSettings() {
+			SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+			StringBuilder builder = new StringBuilder();
+			builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
+		}  
 	 
 		
 	

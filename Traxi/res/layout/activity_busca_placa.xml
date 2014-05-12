@@ -48,7 +48,7 @@
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_tips"
             android:text="Tips"
-            android:textColor="@color/rojo_logo"
+            android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
 
         <Button
@@ -59,7 +59,7 @@
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_estadisticas"
             android:text="Estadísticas"
-            android:textColor="@color/rojo_logo"
+            android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -81,7 +81,7 @@
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_foto"
             android:text="Tomar foto"
-            android:textColor="@color/rojo_logo"
+            android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
     </LinearLayout>
 
