@@ -37,8 +37,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
-import codigo.labplc.mx.trackxi.R;
-import codigo.labplc.mx.trackxi.fonts.fonts;
+import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.fonts.fonts;
 
 
 /**

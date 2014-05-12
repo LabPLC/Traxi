@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="codigo.labplc.mx.trackxi"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="codigo.labplc.mx.traxi"
+    android:versionCode="2"
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -34,19 +34,19 @@
         android:required="true" />
 
     <application
-        android:name="codigo.labplc.mx.trackxi.Traxi"
+        android:name="codigo.labplc.mx.traxi.Traxi"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyAS8_xCUR0keLIzN1CkpLw4DkIRgtmgI84" />
+            android:value="AIzaSyATL8HbP256OWPlghhBvyXIos5VfHEEbkY" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="codigo.labplc.mx.trackxi.TrackxiMainActivity"
+            android:name="codigo.labplc.mx.traxi.TrackxiMainActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -58,13 +58,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.BuscaPlacaTexto"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto"
             android:configChanges="orientation"
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.BuscaPlacaFoto"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaFoto"
             android:configChanges="orientation"
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait" >
@@ -76,13 +76,13 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.paginador.DatosAuto"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto"
             android:configChanges="orientation"
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.registro.MitaxiRegisterManuallyActivity"
+            android:name="codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity"
             android:configChanges="orientation"
            android:windowSoftInputMode="stateVisible|adjustResize"
             android:label="@string/title_activity_busca_placa"
@@ -95,23 +95,23 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.paginador.paginas.Datos"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.Datos"
             android:configChanges="orientation"
             android:label="@string/title_activity_datos"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.paginador.paginas.Adeudos"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.Adeudos"
             android:label="@string/title_activity_adeudos"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.paginador.paginas.Comentarios"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.Comentarios"
             android:label="@string/title_activity_comentarios"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.configuracion.UserSettingActivity"
+            android:name="codigo.labplc.mx.traxi.configuracion.UserSettingActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_buscar_chofer"
             android:screenOrientation="portrait"
@@ -119,10 +119,10 @@
             android:windowSoftInputMode="adjustPan" >
         </activity>
 
-        <service android:name="codigo.labplc.mx.trackxi.services.ServicioGeolocalizacion" />
+        <service android:name="codigo.labplc.mx.traxi.services.ServicioGeolocalizacion" />
 
         <activity
-            android:name="codigo.labplc.mx.trackxi.tracking.map.Mapa_tracking"
+            android:name="codigo.labplc.mx.traxi.tracking.map.Mapa_tracking"
             android:label="@string/title_activity_mapa_tracking"
             android:screenOrientation="portrait" >
         </activity>
@@ -132,21 +132,21 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.califica.Califica_taxi"
+            android:name="codigo.labplc.mx.traxi.califica.Califica_taxi"
             android:label="@string/title_activity_califica_taxi"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
         </activity>
 
-        <receiver android:name="codigo.labplc.mx.trackxi.panic.MyReceiver" >
+        <receiver android:name="codigo.labplc.mx.traxi.panic.MyReceiver" >
         </receiver>
 
         <activity
-            android:name="codigo.labplc.mx.trackxi.tracking.Activity_null"
+            android:name="codigo.labplc.mx.traxi.tracking.Activity_null"
             android:label="@string/title_activity_activity_null" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.SendFoto"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.SendFoto"
             android:configChanges="orientation"
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait"
@@ -163,14 +163,14 @@
             android:value="@string/facebook_id" />
 
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.tips.Tips_activity"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.tips.Tips_activity"
             android:configChanges="orientation"
             android:label="@string/title_activity_tips_activity"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.trackxi.buscarplaca.emergencia.Emergencia_activity"
+            android:name="codigo.labplc.mx.traxi.buscarplaca.emergencia.Emergencia_activity"
             android:configChanges="orientation"
             android:label="@string/title_activity_emergencia_activity"
             android:screenOrientation="portrait"
