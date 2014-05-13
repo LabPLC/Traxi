@@ -4,8 +4,15 @@ public class ComentarioBean {
  private float calificacion = 0;
  private String comentario ="";
  private String id_face= "0";
+ private String fecha_comentario;
  
  
+public String getFecha_comentario() {
+	return fecha_comentario;
+}
+public void setFecha_comentario(String fecha_comentario) {
+	this.fecha_comentario = fecha_comentario;
+}
 public String getId_facebook() {
 	return id_face;
 }

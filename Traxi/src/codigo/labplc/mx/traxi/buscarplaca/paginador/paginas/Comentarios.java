@@ -1,5 +1,6 @@
 package codigo.labplc.mx.traxi.buscarplaca.paginador.paginas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -42,6 +43,8 @@ public class Comentarios extends View {
 	String id_usuario_face;
 	float valorTotal =0.0f;
 	private TextView comentarios_tv_cinco_estrellas;
+	private ArrayList<String>array_id_facebook = new ArrayList<String>();
+
 	
 	public Comentarios(Activity context) {
 		super(context);
@@ -71,10 +74,10 @@ public class Comentarios extends View {
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_comentarios, null);
 		
-		TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.comentarios_titulo_main);
+	/*	TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.comentarios_titulo_main);
 		adeudos_titulo_main.setText(getResources().getString(R.string.titulo_tres_comentarios));
 		adeudos_titulo_main.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));*/
 		container=(LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor);
 		
 		comentarios_ll_contenedor_fotos = (LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor_fotos);
@@ -100,7 +103,8 @@ public class Comentarios extends View {
 		});
 		
 		for(int i = 0;i< autoBean.getArrayComentarioBean().size();i++){
-		llenarComentario(autoBean.getArrayComentarioBean().get(i).getComentario(),autoBean.getArrayComentarioBean().get(i).getCalificacion(),i);
+		llenarComentario(autoBean.getArrayComentarioBean().get(i).getComentario(),
+				autoBean.getArrayComentarioBean().get(i).getCalificacion(),i,autoBean.getArrayComentarioBean().get(i).getFecha_comentario());
 		}
 		if(autoBean.getArrayComentarioBean().size()<=0){
 			TextView tv = new TextView(context);
@@ -209,7 +213,7 @@ public class Comentarios extends View {
 	}
 
 	
-	public void llenarComentario( String concepto, float valor,int i) {
+	public void llenarComentario( String concepto, float valor,int i, String hora) {
 	final	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view_row = inflater.inflate(R.layout.comentarios_row, null);
 		
@@ -220,6 +224,14 @@ public class Comentarios extends View {
 	comentarios_row_tv_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 	comentarios_row_tv_descripcion.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 	comentarios_row_tv_descripcion.setText(concepto);
+	
+	final	TextView comentarios_row_tv_horario = (TextView)view_row.findViewById(R.id.comentarios_row_tv_horario);
+	comentarios_row_tv_horario.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
+	comentarios_row_tv_horario.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_CLARO));
+	comentarios_row_tv_horario.setText(hora);
+	
+	
+	
 
 		
 	valorTotal+=valor;
@@ -269,7 +281,7 @@ public class Comentarios extends View {
 								comentarios_ll_contenedor_fotos.removeAllViews();
 								foundFriend=false;
 							}
-							View viewFriend = addUserFriend(user,i,autoBean.getArrayComentarioBean().get(j).getCalificacion());
+							View viewFriend = addUserFriend(user,i,autoBean.getArrayComentarioBean().get(j).getComentario());
 								if(viewFriend != null) {
 									comentarios_ll_contenedor_fotos.addView(viewFriend);
 						}
@@ -298,7 +310,7 @@ public class Comentarios extends View {
 	 * @param calif 
 	 * @return a view
 	 */
-	public View addUserFriend(final GraphUser user, int id, final float calif) {
+	public View addUserFriend(final GraphUser user, int id, final String calif) {
 		View viewFriend = context.getLayoutInflater().inflate(R.layout.listitem, null);
 		ImageView ivFriendImageProfile = (ImageView) viewFriend.findViewById(R.id.iv_FriendImageProfile);
 		ivFriendImageProfile.setTag(id);
@@ -307,11 +319,16 @@ public class Comentarios extends View {
 			
 			@Override
 			public void onClick(View v) {
-				Dialogos.Toast(context, user.getName()+getResources().getString(R.string.le_puso)+calif +getResources().getString(R.string.estrellas), Toast.LENGTH_LONG);
+				Dialogos.Toast(context, user.getName()+": "+calif , Toast.LENGTH_LONG);
 			}
 		});
-		facebookLogin.loadImageProfileToImageView(user.getId(), ivFriendImageProfile);
-		return viewFriend;
+		if(array_id_facebook.contains(user.getId())){
+			return null;
+		}else{
+			array_id_facebook.add(user.getId());
+			facebookLogin.loadImageProfileToImageView(user.getId(), ivFriendImageProfile);
+			return viewFriend;
+		}
 	}
 
 	

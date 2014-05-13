@@ -36,6 +36,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 
 /**
  * Draws circles (one for each view). The current view position is filled and
@@ -404,6 +405,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
 
         if (mListener != null) {
             mListener.onPageScrollStateChanged(state);
+
         }
     }
 
@@ -412,7 +414,16 @@ public class CirclePageIndicator extends View implements PageIndicator {
         mCurrentPage = position;
         mPageOffset = positionOffset;
         invalidate();
-
+        if(position==0){
+        	  DatosAuto.abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.titulo_uno_general));
+        }
+        if(position==1){
+      	  DatosAuto.abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.titulo_dos_detalles));
+        }
+        if(position==2){
+      	  DatosAuto.abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.titulo_tres_comentarios));
+        }
+      
         if (mListener != null) {
             mListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
         }

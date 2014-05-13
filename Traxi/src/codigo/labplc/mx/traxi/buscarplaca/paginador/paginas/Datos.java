@@ -60,15 +60,11 @@ public class Datos extends View {
 		((TextView) view.findViewById(R.id.datos_tv_niveles_confianza)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) view.findViewById(R.id.datos_tv_niveles_confianza)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		
-	//	((TextView) view.findViewById(R.id.datos_tv_calif_usuario)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));	
-	//	((TextView) view.findViewById(R.id.datos_tv_calif_usuario)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_AMARILLO));
-		
-	//	((TextView) view.findViewById(R.id.datos_tv_titulo_desc)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_GRIS_CLARO));	
-		//((TextView) view.findViewById(R.id.datos_tv_titulo_desc)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+
 		
 		
-		((TextView) view.findViewById(R.id.datos_general_tv_titulo_principal)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) view.findViewById(R.id.datos_general_tv_titulo_principal)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+	//	((TextView) view.findViewById(R.id.datos_general_tv_titulo_principal)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));	
+	//	((TextView) view.findViewById(R.id.datos_general_tv_titulo_principal)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		
 
 		TextView datos_tv_titulo = (TextView)view.findViewById(R.id.datos_tv_titulo);

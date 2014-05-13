@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.Window;
 import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
-import codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 
@@ -25,7 +24,7 @@ public class TrackxiMainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	
-		//guardamos el Tag
+		//guardamos un Tag
 		BeanDatosLog.setTagLog(TAG);		
 		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();
@@ -38,7 +37,7 @@ public class TrackxiMainActivity extends Activity {
 				iniciarSplash(1);
 			}
 			
-	//	}
+
 	}
 	
 	/**
@@ -56,11 +55,6 @@ public class TrackxiMainActivity extends Activity {
 	            	if(flag==1){//Inicia la actividad de revisado de placas
 	            		Intent mainIntent = new Intent().setClass(TrackxiMainActivity.this, BuscaPlacaTexto.class);
 	            		 startActivity(mainIntent);
-	            	}else if(flag==2){ //Inicia la actividad de registro
-	    				Intent intentManually = new Intent(TrackxiMainActivity.this, MitaxiRegisterManuallyActivity.class);
-	    				intentManually.putExtra("origen", "splash");
-	    				startActivity(intentManually);
-	    				overridePendingTransition(0,0);
 	            	}else if(flag==3){//Inicia la actividad del mapa
 	            		Intent intent_mapa = new Intent(TrackxiMainActivity.this, Mapa_tracking.class);
 	            		intent_mapa.putExtra("latitud_inicial", ServicioGeolocalizacion.latitud_inicial);

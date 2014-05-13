@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_drawable1"
+    android:background="@color/white"
     tools:context=".InicioDeTrabajo" >
 
     <RelativeLayout
@@ -69,15 +69,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout2"
-        android:paddingBottom="5dp"
         android:paddingLeft="5dp"
         android:paddingRight="5dp" >
 
         <Button
             android:id="@+id/activity_buscar_placa_btn_foto"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_foto"
             android:text="Tomar foto"
@@ -91,7 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout3"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/activity_vertical_margin"
+        android:layout_margin="10dp"
         android:background="@drawable/marco"
         android:orientation="vertical"
         android:padding="5dp" >
@@ -100,10 +98,10 @@
             android:id="@+id/inicio_de_trabajo_tv_nombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="10dp"
             android:text="@string/inicio_de_trabajo_tv_nombre"
             android:textColor="@color/gris_obscuro"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <EditText
@@ -117,9 +115,7 @@
             android:paddingLeft="3dp"
             android:textColorHint="@android:color/darker_gray"
             android:textCursorDrawable="@drawable/color_cursor"
-            android:textSize="30sp" />
+            android:textSize="28sp" />
     </LinearLayout>
-
-    
 
 </RelativeLayout>

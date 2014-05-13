@@ -146,6 +146,7 @@
     <!-- activity_adeudos -->
     <string name="adeudos_titulo_tv_amigos">Mis amigos en este taxi:</string>
     <string name="mitaxiregistermanually_btn_facebook">Acceder a Facebook</string>
+      <string name="tv_adeudos_estrellas">Calificación 0.0 de 5.0</string>
 
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>

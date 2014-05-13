@@ -4,20 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".Adeudos" >
 
-    <TextView
-        android:id="@+id/comentarios_titulo_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/titulo_dos_detalles"/>
-     <LinearLayout
-             android:id="@+id/comentarios_ll_estrellas"
+    <LinearLayout
+        android:id="@+id/comentarios_ll_estrellas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/comentarios_titulo_main"
-        android:layout_below="@+id/comentarios_titulo_main" >
+        android:layout_toLeftOf="@+id/comentarios_tv_cuantos" >
 
         <ImageView
             android:id="@+id/rating1_comentarios"
@@ -48,7 +39,6 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_launcher_star1" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -86,9 +76,9 @@
             android:id="@+id/comentarios_svh"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:padding="1dp"
             android:layout_weight=".25"
-            android:overScrollMode="never" >
+            android:overScrollMode="never"
+            android:padding="1dp" >
 
             <LinearLayout
                 android:id="@+id/comentarios_ll_contenedor_fotos"
@@ -102,9 +92,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:background="@drawable/selector_btn_generic"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
-                    android:background="@drawable/selector_btn_generic"
                     android:text="@string/mitaxiregistermanually_btn_facebook"
                     android:textColor="@drawable/selector_txt_boton_redondo" />
             </LinearLayout>
@@ -118,10 +108,10 @@
         android:layout_alignBottom="@+id/comentarios_ll_estrellas"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/comentarios_ll_estrellas"
-        android:layout_toRightOf="@+id/comentarios_ll_estrellas"
         android:gravity="center|left"
-        android:paddingLeft="5dp"
-        android:text="(0)" />
+        android:paddingRight="5dp"
+        android:text="(0)"
+        android:textColor="@color/gris_obscuro" />
 
     <TextView
         android:id="@+id/comentarios_tv_cinco_estrellas"
@@ -129,7 +119,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/comentarios_ll_estrellas"
-        android:text="" 
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginBottom="5dp"
+        android:gravity="right"
+        android:paddingRight="5dp"
+        android:text="@string/tv_adeudos_estrellas"
+        android:textColor="@color/gris_obscuro" />
 
 </RelativeLayout>

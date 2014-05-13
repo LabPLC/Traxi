@@ -17,6 +17,14 @@
         android:id="@+id/comentarios_row_tv_descripcion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:lines="2"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/comentarios_row_tv_horario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
         android:text="" />
 
 </LinearLayout>

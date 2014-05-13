@@ -5,19 +5,10 @@
     android:background="@color/white"
     tools:context=".Datos" >
 
-    <TextView
-        android:id="@+id/datos_general_tv_titulo_principal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/titulo_uno_general" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/datos_general_tv_titulo_principal"
         android:orientation="vertical" >
 
         <LinearLayout

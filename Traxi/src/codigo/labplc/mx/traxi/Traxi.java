@@ -23,6 +23,12 @@ public class Traxi extends Application{
 		super.onCreate();
 	}
 
+	
+	/**
+	 * metodo que crea y regresa ek estado de as oreferencias
+	 * @param preferencia
+	 * @return
+	 */
 	private boolean getPreferencia(String preferencia) {
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		return sharedPrefs.getBoolean(preferencia, true);

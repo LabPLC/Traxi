@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import codigo.labplc.mx.traxi.facebook.FacebookLogin;
  * @author amatellanes
  * 
  */
-public class ScreenSlidePageFragmentDialog extends Fragment {
+public class ScreenSlidePageFragmentDialog extends Fragment   {
 
 	/**
 	 * Key to insert the background color into the mapping of a Bundle.
@@ -124,4 +125,7 @@ public class ScreenSlidePageFragmentDialog extends Fragment {
 		}
 
 	}
+
+	
+	
 }

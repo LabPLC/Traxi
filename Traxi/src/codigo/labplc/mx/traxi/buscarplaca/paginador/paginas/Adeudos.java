@@ -53,9 +53,9 @@ public class Adeudos extends View {
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_adeudos, null);
 		
-		TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.adeudos_titulo_main);
+		/*TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.adeudos_titulo_main);
 		adeudos_titulo_main.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));*/
 		
 		
 		container=(LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor);

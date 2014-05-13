@@ -190,10 +190,6 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 			public void onClick(View v) {
 				Intent intentManually = new Intent(BuscaPlacaTexto.this,Emergencia_activity.class);
 				startActivity(intentManually);
-				/*Intent intentManually = new Intent(BuscaPlacaTexto.this,MitaxiRegisterManuallyActivity.class);
-				intentManually.putExtra("origen", "menu");
-				startActivity(intentManually);
-				overridePendingTransition(0, 0);*/
 			}
 		});
 		

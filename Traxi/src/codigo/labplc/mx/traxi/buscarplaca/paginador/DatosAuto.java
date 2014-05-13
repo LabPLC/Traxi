@@ -19,8 +19,10 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -43,12 +45,11 @@ import codigo.labplc.mx.traxi.facebook.FacebookLogin;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
-import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
-public class DatosAuto extends FragmentActivity implements OnClickListener{
+public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	
 	public final String TAG = this.getClass().getSimpleName();
 
@@ -72,7 +73,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener{
 	private CirclePageIndicator titleIndicator;
 	private ViewPager pager = null;
 	private FacebookLogin facebookLogin;
-	
+	public static TextView abs_layout_tv_titulo_datosAutos;
 	
 	@Override
 	protected void onDestroy() {
@@ -96,8 +97,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener{
 		final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
 		
 		View view = inflater.inflate(R.layout.abs_layout,null);   
-		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(DatosAuto.this).getTypeFace(fonts.FLAG_MAMEY));
-		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(getResources().getString(R.string.datos_del_taxi));
+		
+		abs_layout_tv_titulo_datosAutos=(TextView)view.findViewById(R.id.abs_layout_tv_titulo);
+		abs_layout_tv_titulo_datosAutos.setTypeface(new fonts(DatosAuto.this).getTypeFace(fonts.FLAG_MAMEY));
+		abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.datos_del_taxi));
 		ab.setDisplayShowCustomEnabled(true);  
 	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
 	     abs_layout_iv_menu.setOnClickListener(this);
@@ -182,6 +185,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener{
 							 Float calif =Float.parseFloat((String) oneObject.getString("calificacion"));
 							 comentarioBean.setCalificacion(calif);
 							 comentarioBean.setId_facebook((String) oneObject.getString("id_face"));
+							 comentarioBean.setFecha_comentario((String) oneObject.getString("hora_fin"));
 							 arrayComenario.add(comentarioBean);
 							 sumaCalificacion+=calif;
 							 entreComentarios=true;
@@ -434,8 +438,9 @@ public class DatosAuto extends FragmentActivity implements OnClickListener{
 			adapter.addFragment(ScreenSlidePageFragmentDialog.newInstance(getResources().getColor(R.color.android_red), 2,DatosAuto.this,autoBean));
 			adapter.addFragment(ScreenSlidePageFragmentDialog.newInstance(getResources().getColor(R.color.android_darkpink), 3,DatosAuto.this,autoBean,facebookLogin));
 
-			
+
 			DatosAuto.this.pager.setAdapter(adapter);
+
 			titleIndicator.setViewPager(pager);
 		}
 
@@ -489,8 +494,12 @@ public class DatosAuto extends FragmentActivity implements OnClickListener{
 			SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 			StringBuilder builder = new StringBuilder();
 			builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
-		}  
-	 
+		}
+
+
+
+
+		
 		
 	
 }

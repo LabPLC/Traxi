@@ -27,17 +27,20 @@
             android:id="@+id/adeudos_row_descripcion"
             android:layout_width="0dp"
             android:layout_marginTop="3dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight=".8"
             android:padding="3dp"
+            android:lines="2"
             android:text="@string/adeudos_row_no_hay_datos"
             android:textColor="@color/gris_obscuro" />
 
         <ImageView
             android:id="@+id/adeudos_row_iv"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_weight=".2"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
             android:src="@drawable/ic_launcher_tache" />
     </LinearLayout>
 

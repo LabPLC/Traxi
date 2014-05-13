@@ -6,13 +6,14 @@ import java.util.List;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
 /**
  * 
  * @author amatellanes
  * 
  */
-public class FragmentPagerAdapterDialog extends FragmentPagerAdapter {
+public class FragmentPagerAdapterDialog extends FragmentPagerAdapter  {
 
 	// List of fragments which are going to set in the view pager widget
 	List<Fragment> fragments;
@@ -48,18 +49,27 @@ public class FragmentPagerAdapterDialog extends FragmentPagerAdapter {
 	public int getCount() {
 		return this.fragments.size();
 	}
+	
 
 	@Override
 	public CharSequence getPageTitle(int position) {
 		int posicion = position +1;
 		if(posicion==1){
+			DatosAuto.abs_layout_tv_titulo_datosAutos.setText("1");
 			return "General";
 		}else if(posicion==2){
+			DatosAuto.abs_layout_tv_titulo_datosAutos.setText("2");
 			return "Detalles";
 		}else if(posicion==3){
+			DatosAuto.abs_layout_tv_titulo_datosAutos.setText("3");
 			return "M‡s";
 		}
 	
 		return "falla";
 	}
+
+	
+
+	
+	
 }
