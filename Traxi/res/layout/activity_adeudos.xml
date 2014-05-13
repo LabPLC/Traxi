@@ -38,39 +38,7 @@
             </LinearLayout>
         </ScrollView>
 
-        <TextView
-            android:id="@+id/adeudos_titulo_tv_amigos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adeudos_titulo_tv_amigos" />
 
-        <HorizontalScrollView
-            android:id="@+id/adeudos_svh"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:padding="1dp"
-            android:layout_weight=".25"
-            android:overScrollMode="never" >
-
-            <LinearLayout
-                android:id="@+id/adeudos_ll_contenedor_fotos"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal" >
-
-                <Button
-                    android:id="@+id/mitaxiregistermanually_btn_facebook"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:background="@drawable/selector_btn_generic"
-                    android:text="@string/mitaxiregistermanually_btn_facebook"
-                    android:textColor="@drawable/selector_txt_boton_redondo" />
-            </LinearLayout>
-        </HorizontalScrollView>
     </LinearLayout>
 
 </RelativeLayout>

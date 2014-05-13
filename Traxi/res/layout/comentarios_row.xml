@@ -5,41 +5,7 @@
     android:orientation="vertical"
     android:padding="5dp" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-
-        <ImageView
-            android:id="@+id/rating1_comentarios"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_launcher_star1" />
-
-        <ImageView
-            android:id="@+id/rating2_comentarios"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_launcher_star1" />
-
-        <ImageView
-            android:id="@+id/rating3_comentarios"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_launcher_star1" />
-
-        <ImageView
-            android:id="@+id/rating4_comentarios"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_launcher_star1" />
-
-        <ImageView
-            android:id="@+id/rating5_comentarios"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_launcher_star1" />
-
-    </LinearLayout>
+   
 
     <View
         android:id="@+id/textView1"

@@ -59,14 +59,6 @@ public class Adeudos extends View {
 		
 		
 		container=(LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor);
-		
-		HorizontalScrollView adeudos_svh = (HorizontalScrollView)view.findViewById(R.id.adeudos_svh);
-		adeudos_svh.setVisibility(LinearLayout.GONE);
-		
-		TextView adeudos_titulo_tv_amigos=(TextView)view.findViewById(R.id.adeudos_titulo_tv_amigos);
-		adeudos_titulo_tv_amigos.setVisibility(TextView.GONE);
-		
-		
 
 		
 		llenarAdeudo("Revista vehicular",autoBean.getDescripcion_revista(),autoBean.getImagen_revista());

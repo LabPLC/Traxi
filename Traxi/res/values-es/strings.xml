@@ -173,7 +173,7 @@
 
     <!-- TOAST -->
     <string name="foto_fallida">¡La foto a fallado!, intenta de nuevo</string>
-    <string name="le_puso"> le pusó </string>
+    <string name="le_puso"> le puso </string>
     <string name="estrellas"> estrellas</string>
     <string name="imagen_muy_grande">¡La imagen es muy grande!</string>
     <string name="falla_facebook">Algo falló al conectar con facebook</string>

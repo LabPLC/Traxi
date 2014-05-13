@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,11 +35,13 @@ public class Comentarios extends View {
 	private Activity context;
 	private LinearLayout container;
 	private AutoBean autoBean;
-	LinearLayout adeudos_ll_contenedor_fotos;
+	LinearLayout comentarios_ll_contenedor_fotos;
 	private FacebookLogin facebookLogin;
 	private Button btnLogin;
 	private boolean foundFriend = true;
 	String id_usuario_face;
+	float valorTotal =0.0f;
+	private TextView comentarios_tv_cinco_estrellas;
 	
 	public Comentarios(Activity context) {
 		super(context);
@@ -66,22 +69,22 @@ public class Comentarios extends View {
 	public void init() {
 		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		view = inflater.inflate(R.layout.activity_adeudos, null);
+		view = inflater.inflate(R.layout.activity_comentarios, null);
 		
-		TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.adeudos_titulo_main);
+		TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.comentarios_titulo_main);
 		adeudos_titulo_main.setText(getResources().getString(R.string.titulo_tres_comentarios));
 		adeudos_titulo_main.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-		container=(LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor);
+		container=(LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor);
 		
-		adeudos_ll_contenedor_fotos = (LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor_fotos);
+		comentarios_ll_contenedor_fotos = (LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor_fotos);
 		
 		
-		TextView adeudos_titulo_tv_amigos=(TextView)view.findViewById(R.id.adeudos_titulo_tv_amigos);
+		TextView adeudos_titulo_tv_amigos=(TextView)view.findViewById(R.id.comentarios_titulo_tv_amigos);
 		adeudos_titulo_tv_amigos.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 		adeudos_titulo_tv_amigos.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		
-		btnLogin = (Button)view.findViewById(R.id.mitaxiregistermanually_btn_facebook);
+		btnLogin = (Button)view.findViewById(R.id.comentarios_btn_facebook);
 		btnLogin.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -108,7 +111,17 @@ public class Comentarios extends View {
 			tv.setLayoutParams(lp);
 			tv.setText(getResources().getString(R.string.sin_comentario));
 			container.addView(tv);
+			
+		}else{
+			TextView comentarios_tv_cuantos=(TextView)view.findViewById(R.id.comentarios_tv_cuantos);
+			comentarios_tv_cuantos.setText("("+autoBean.getArrayComentarioBean().size()+")");
+			
+			comentarios_tv_cinco_estrellas =(TextView)view.findViewById(R.id.comentarios_tv_cinco_estrellas);
+	
+			llenarEstrellas(valorTotal/autoBean.getArrayComentarioBean().size());
 		}
+	
+	
 		
 		if(facebookLogin.isSession()){
 			facebookLogin.loginFacebook();
@@ -121,6 +134,78 @@ public class Comentarios extends View {
 		}
 		
 
+	}
+
+	
+	public void llenarEstrellas(float valor) {
+		 ImageView rating1_comentarios = (ImageView)view.findViewById(R.id.rating1_comentarios);
+		 ImageView rating2_comentarios = (ImageView)view.findViewById(R.id.rating2_comentarios);
+		 ImageView rating3_comentarios = (ImageView)view.findViewById(R.id.rating3_comentarios);
+		 ImageView rating4_comentarios = (ImageView)view.findViewById(R.id.rating4_comentarios);
+		 ImageView rating5_comentarios = (ImageView)view.findViewById(R.id.rating5_comentarios);
+		 
+
+			if(valor<=0.5){
+			comentarios_tv_cinco_estrellas.setText("Calificaci—n "+0.5+" de 5.0");
+			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
+			}
+			if(valor<=1.0&&valor>0.5){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+1.0+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+			}
+			if(valor<=1.5&&valor>1.0){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+1.5+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
+				}
+			if(valor<=2.0&&valor>1.5){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+2.0+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				}
+			if(valor<=2.5&&valor>2.0){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+2.5+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
+				}
+			if(valor<=3.0&&valor>2.5){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+3.0+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				}
+			if(valor<=3.5&&valor>3.0){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+3.5+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
+				}
+			if(valor<=4.0&&valor>3.5){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+4.0+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				}
+			if(valor<=4.5&&valor>4.0){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+4.5+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating5_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
+				}
+			if(valor>4.5){
+				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+5.0+" de 5.0");
+				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				rating5_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
+				}
+		
 	}
 
 	
@@ -137,69 +222,9 @@ public class Comentarios extends View {
 	comentarios_row_tv_descripcion.setText(concepto);
 
 		
-	final ImageView rating1_comentarios = (ImageView)view_row.findViewById(R.id.rating1_comentarios);
-	rating1_comentarios.setTag(i+"img1");
-	final ImageView rating2_comentarios = (ImageView)view_row.findViewById(R.id.rating2_comentarios);
-	rating1_comentarios.setTag(i+"img2");
-	final ImageView rating3_comentarios = (ImageView)view_row.findViewById(R.id.rating3_comentarios);
-	rating1_comentarios.setTag(i+"img3");
-	final ImageView rating4_comentarios = (ImageView)view_row.findViewById(R.id.rating4_comentarios);
-	rating1_comentarios.setTag(i+"img4");
-	final ImageView rating5_comentarios = (ImageView)view_row.findViewById(R.id.rating5_comentarios);
-	rating1_comentarios.setTag(i+"img5");
-		
-		
-		if(valor==0.5){
-		rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
-		}
-		if(valor==1.0){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-		}
-		if(valor==1.5){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
-			}
-		if(valor==2.0){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			}
-		if(valor==2.5){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
-			}
-		if(valor==3.0){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			}
-		if(valor==3.5){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
-			}
-		if(valor==4.0){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			}
-		if(valor==4.5){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating5_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
-			}
-		if(valor==5.0){
-			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			rating5_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
-			}
-		container.addView(view_row,i);
+	valorTotal+=valor;
+	
+	container.addView(view_row,i);
 		
 	}
 
@@ -236,17 +261,17 @@ public class Comentarios extends View {
 				for (GraphUser user : users) {
 					i+=1;
 					if(i==0){
-						adeudos_ll_contenedor_fotos.removeAllViews();
+						comentarios_ll_contenedor_fotos.removeAllViews();
 					}
 					for(int j = 0;j< autoBean.getArrayComentarioBean().size();j++){
 						if(autoBean.getArrayComentarioBean().get(j).getId_facebook().equals(user.getId())){
 							if(foundFriend){
-								adeudos_ll_contenedor_fotos.removeAllViews();
+								comentarios_ll_contenedor_fotos.removeAllViews();
 								foundFriend=false;
 							}
 							View viewFriend = addUserFriend(user,i,autoBean.getArrayComentarioBean().get(j).getCalificacion());
 								if(viewFriend != null) {
-									adeudos_ll_contenedor_fotos.addView(viewFriend);
+									comentarios_ll_contenedor_fotos.addView(viewFriend);
 						}
 				}
 					}
@@ -260,7 +285,7 @@ public class Comentarios extends View {
 					lp.gravity= Gravity.CENTER;
 					tv.setLayoutParams(lp);
 					tv.setText(getResources().getString(R.string.face_no_amigos));
-					adeudos_ll_contenedor_fotos.addView(tv);
+					comentarios_ll_contenedor_fotos.addView(tv);
 				}
 			}
 		});

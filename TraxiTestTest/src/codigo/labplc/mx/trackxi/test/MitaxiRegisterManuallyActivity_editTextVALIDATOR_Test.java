@@ -1,7 +1,8 @@
 package codigo.labplc.mx.trackxi.test;
 
 import android.test.ActivityInstrumentationTestCase2;
-import codigo.labplc.mx.trackxi.registro.MitaxiRegisterManuallyActivity;
+import codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity;
+
 import com.robotium.solo.Solo;
 
 /*

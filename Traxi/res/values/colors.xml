@@ -30,7 +30,8 @@
     <color name="android_darkpink">#FFc3325f</color>
     <color name="android_purple">#FFaa66cc</color>
     <color name="android_darkpurple">#FF9933cc</color>
-    <color name="generic_amarillo">#EACC98</color>
+    <color name="generic_amarillo_mostaza">#EACC98</color>
+    <color name="generic_amarillo">#DAAA2A</color>
     <color name="generic_rojo_alfa">#BBEF4147</color>
     <color name="rojo_logo">#EF4147</color>
     <color name="mamey">#EB8C6B</color>
