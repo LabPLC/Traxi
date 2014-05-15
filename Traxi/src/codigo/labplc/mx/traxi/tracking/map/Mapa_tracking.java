@@ -8,6 +8,7 @@ import org.json.JSONObject;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,18 +30,17 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
-import codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.utils.Utils;
 
@@ -87,6 +88,8 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	private String tiempo;
 	private String distancia;
 	private boolean isButtonExit = true;
+
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +102,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		 final ActionBar ab = getActionBar();
 	     ab.setDisplayShowHomeEnabled(false);
 	     ab.setDisplayShowTitleEnabled(false);     
-	     
 
-	     
 	     //instancias
 	     final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
 	     View view = inflater.inflate(R.layout.abs_layout,null);   
@@ -122,12 +123,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		if(bundle!=null){
 			latitud = bundle.getDouble("latitud_inicial");	
 			longitud = bundle.getDouble("longitud_inicial");
-
-
 		}
-		
-		setUpMapIfNeeded();
-		
 		
 		//escucha de botones
 		mapa_tracking_terminoviaje =(Button)findViewById(R.id.mapa_tracking_terminoviaje);
@@ -167,6 +163,11 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				
 			}
 		});
+	     
+	    		
+			setUpMapIfNeeded();		
+			
+
 		
 	}
 
@@ -205,7 +206,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			map.getUiSettings().setTiltGesturesEnabled(true); //TILT GESTURES
 			
 			// create marker
-			marker = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_inicio_de_viaje));
+			marker = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_tu_inicio));
 			marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_chinche_llena));
 			
 			CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(21).build();
@@ -240,9 +241,12 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 
 			@Override
 			public void onReceive(Context ctxt, Intent t) {
-				
+	
 				 pointsLat = t.getStringArrayListExtra("latitud");
 				 pointsLon = t.getStringArrayListExtra("longitud");
+				 
+				// Log.d("************", pointsLat+","+pointsLon);
+				 
 				 latini= Double.parseDouble(pointsLat.get(0));
 				 lonini= Double.parseDouble(pointsLon.get(0));
 				 latfin= Double.parseDouble(pointsLat.get(pointsLat.size()-1));
@@ -548,4 +552,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				
 			}
 
+			
+			
+			
 }

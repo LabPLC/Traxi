@@ -1,30 +1,17 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".InicioDeTrabajo" >
-
-    <RelativeLayout
-        android:id="@+id/xK1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone" >
-
-        <include
-            android:id="@+id/xKeyBoard"
-            layout="@layout/keyboard" >
-        </include>
-    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="0dp"
+        android:layout_weight="0.20"
         android:padding="5dp" >
 
         <Button
@@ -50,72 +37,73 @@
             android:text="Tips"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
-
-        <Button
-            android:id="@+id/ImageButton01"
+         <Button
+            android:id="@+id/activity_buscar_placa_btn_foto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight=".33"
-            android:background="@color/gris_claro"
-            android:drawableTop="@drawable/ic_launcher_estadisticas"
-            android:text="Estadísticas"
-            android:textColor="@color/gris_obscuro"
-            android:textSize="12sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout2"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp" >
-
-        <Button
-            android:id="@+id/activity_buscar_placa_btn_foto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:layout_weight=".33"
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_foto"
             android:text="Tomar foto"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
+
+       
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout3"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"
-        android:background="@drawable/marco"
-        android:orientation="vertical"
-        android:padding="5dp" >
+        android:layout_height="0dp"
+        android:layout_weight="0.39" >
 
-        <TextView
-            android:id="@+id/inicio_de_trabajo_tv_nombre"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="@string/inicio_de_trabajo_tv_nombre"
-            android:textColor="@color/gris_obscuro"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:background="@drawable/marco"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp" >
 
-        <EditText
-            android:id="@+id/inicio_de_trabajo_et_placa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_edittext_blanco"
-            android:ems="10"
-            android:hint="@string/inicio_de_trabajo_et_placa"
-            android:paddingBottom="2dp"
-            android:paddingLeft="3dp"
-            android:textColorHint="@android:color/darker_gray"
-            android:textCursorDrawable="@drawable/color_cursor"
-            android:textSize="28sp" />
+            <TextView
+                android:id="@+id/inicio_de_trabajo_tv_nombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/inicio_de_trabajo_tv_nombre"
+                android:textColor="@color/gris_obscuro"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/inicio_de_trabajo_et_placa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edittext_blanco"
+                android:ems="10"
+                android:hint="@string/inicio_de_trabajo_et_placa"
+                android:paddingBottom="2dp"
+                android:paddingLeft="3dp"
+                android:textColorHint="@android:color/darker_gray"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="30sp" />
+        </LinearLayout>
     </LinearLayout>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/xK1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.62"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/xKeyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/keyboard" />
+    </LinearLayout>
+
+</LinearLayout>

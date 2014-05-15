@@ -123,8 +123,8 @@ public class Dialogos {
 	    ((Button) view.findViewById(R.id.dialogo_salir_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
 	    ((Button) view.findViewById(R.id.dialogo_salir_btnCancelar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
 	    
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
-	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+	  //  ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
+	   // ((TextView) view.findViewById(R.id.dialogo_salir_tv_titulo)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 	    
 	    
 	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_nombre)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));

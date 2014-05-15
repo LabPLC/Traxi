@@ -94,7 +94,7 @@
     <string name="texto_calificacion_90">Este vehículo es un taxi altamente confiable, pero aún tiene áreas de oportunidad para mejorar. Es un taxi confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
     <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, así como que está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
-    <string name="texto_significado_el_viaje_inicio">El viaje inicio</string>
+    <string name="texto_significado_el_viaje_inicio">El viaje inicio\nEspera a que te localicemos</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">Toma una foto</string>
@@ -179,6 +179,7 @@
     <string name="imagen_muy_grande">¡La imagen es muy grande!</string>
     <string name="falla_facebook">Algo falló al conectar con facebook</string>
     <string name="GPS_OFF">GPS apagado inesperadamente</string>
+    <string name="wifi_OFF">Falla! no te puedes localizar</string>
 
     <!-- setText -->
     <string name="datos_del_taxi">DATOS DEL TAXI</string>
@@ -191,7 +192,10 @@
     <string name="sms_emer">Estoy en peligro!, eres mi contacto de emergencia, revisa tu correo por favor</string>
 
     <!-- Mapa -->
-    <string name="mapa_inicio_de_viaje">Inicio del viaje</string>
+    <string name="mapa_inicio_de_viaje">¡Lo tomo!</string>
+        <string name="mapa_tu_inicio">Inicio del viaje</string>
+        <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
+      <string name="mapa_inicio_de_viaje_no">¡No lo tomo!</string>
     <string name="mapa_mi_posicion">Mi posición</string>
     <string name="mapa_estas">Estas a\t</string>
     <string name="mapa_tu_destino">\tde tu destino</string>

@@ -179,6 +179,7 @@
     <string name="imagen_muy_grande">The image is too big!</string>
     <string name="falla_facebook">Something failed when loging to Facebook</string>
     <string name="GPS_OFF">GPS was turned off</string>
+     <string name="wifi_OFF">Falla! no te puedes localizar</string>
 
     <!-- setText -->
     <string name="datos_del_taxi">TAXI INFO</string>
@@ -191,7 +192,11 @@
     <string name="sms_emer">I am in danger! You are my emergency contact, please check your email</string>
 
     <!-- Mapa -->
-    <string name="mapa_inicio_de_viaje">Trip start</string>
+    <string name="mapa_tu_inicio">Inicio del viaje</string>
+    
+    <string name="mapa_inicio_de_viaje">Take it!</string>
+        <string name="mapa_inicio_de_viaje_no">Dont take it!</string>
+          <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
     <string name="mapa_mi_posicion">My location</string>
     <string name="mapa_estas">You are \t</string>
     <string name="mapa_tu_destino">\tfrom your destiny</string>

@@ -90,6 +90,7 @@ public class Datos extends View {
 		
 		if(marca.getText().toString().equals(", , ")){
 			marca.setText(getResources().getString(R.string.adeudos_row_no_hay_datos));
+			autoBean.setCalificacion_final(0);
 		}
 		
 	//	descripcion.setText(autoBean.getDescripcion_calificacion_app());
@@ -105,15 +106,15 @@ public class Datos extends View {
 		
 		LinearLayout verticalLayout = new LinearLayout(context);
 		verticalLayout.setOrientation(LinearLayout.VERTICAL);
-		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT,1);
-		params.gravity=Gravity.CENTER;
+		verticalLayout.setGravity(Gravity.CENTER);
+		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		verticalLayout.setLayoutParams(params);
 		 
 		final ShieldView shield = new ShieldView(context);
 		Display display = context.getWindowManager().getDefaultDisplay(); 
 		int actionBarHeight = context.getActionBar().getHeight();
 		int newProgress = shield.getProgressWithJump(autoBean.getCalificacion_final(), ThermometerView.JUMP_PROGRESS_ANIMATION); // Progress with jump
-		int size= display.getHeight()-actionBarHeight;
+		int size= display.getHeight()-actionBarHeight-actionBarHeight;
 		if(newProgress<=30){
 			shield.initUI(size/2,size/2,R.color.rojo_logo);
 			}else if(newProgress <=70 && newProgress>30){

@@ -45,6 +45,7 @@ import codigo.labplc.mx.traxi.facebook.FacebookLogin;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
+import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 import com.viewpagerindicator.CirclePageIndicator;
@@ -124,6 +125,19 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		
 		Upload nuevaTarea = new Upload();
 		nuevaTarea.execute();
+		
+		
+		
+		Button dialogo_datos_correctos_btn_noViajo = (Button) findViewById(R.id.dialogo_datos_correctos_btn_noViajo);
+		dialogo_datos_correctos_btn_noViajo.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
+		dialogo_datos_correctos_btn_noViajo.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				back();
+			}
+		});
 
 		Button dialogo_datos_correctos_btn_iniciar = (Button) findViewById(R.id.dialogo_datos_correctos_btn_iniciar);
 		dialogo_datos_correctos_btn_iniciar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
@@ -138,6 +152,8 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 					ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
 					startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
 					Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.texto_significado_el_viaje_inicio), Toast.LENGTH_LONG);
+				
+					
 					DatosAuto.this.finish();
 				}
 				
@@ -353,10 +369,20 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	
 	@Override
 	public void onBackPressed() {
+		back();
+		
+	}
+	
+	/**
+	 * al dar atras en la actividad
+	 */
+	public void back(){
 		Intent mainIntent = new Intent().setClass(DatosAuto.this, BuscaPlacaTexto.class);
 		startActivity(mainIntent);
 		pager=null;
 		DatosAuto.this.finish();
+		Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.mapa_inicio_de_viaje_no_tomado), Toast.LENGTH_LONG);
+		
 		super.onBackPressed();
 	}
 	

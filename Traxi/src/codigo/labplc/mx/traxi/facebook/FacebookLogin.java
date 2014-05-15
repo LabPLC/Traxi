@@ -71,11 +71,9 @@ public class FacebookLogin {
 	 */
 	public void loginFacebook() {
 		if (isSession()) {
-			Log.d(TAG, "sessionValid");
 			asyncRunner.request("me", new IDRequestListener());
 		} else {
 			// no logged in, so relogin
-			Log.d(TAG, "sessionNOTValid, relogin");
 			facebook.authorize(activity, PERMS, new LoginDialogListener());
 		}
 	}
@@ -101,11 +99,8 @@ public class FacebookLogin {
 	private class LoginDialogListener implements DialogListener {
 		@Override
 		public void onComplete(Bundle values) {
-			Log.d(TAG, "LoginONComplete");
 			String token = facebook.getAccessToken();
 			long token_expires = facebook.getAccessExpires();
-			Log.d(TAG, "AccessToken: " + token);
-			Log.d(TAG, "AccessExpires: " + token_expires);
 			sharedPrefs = PreferenceManager.getDefaultSharedPreferences(activity);
 			sharedPrefs.edit().putLong("access_expires", token_expires).commit();
 			sharedPrefs.edit().putString("access_token", token).commit();
@@ -134,8 +129,6 @@ public class FacebookLogin {
 			Message message = new Message();
 			
 			try {
-				Log.d(TAG, "IDRequestONComplete");
-				Log.d(TAG, "Response: " + response.toString());
 				JSONObject json = Util.parseJson(response);
 				
 				userId = json.getString("id"); // Get userId

@@ -33,6 +33,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.RelativeLayout;
@@ -60,7 +61,7 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 	// teclado
 	private Button mBack;
 	ImageView abs_layout_iv_menu;
-	private static RelativeLayout mLayout;
+	private static LinearLayout mLayout;
 	private static RelativeLayout mKLayout;
 	private boolean isEdit = true;
 	private Button mB[] = new Button[13];
@@ -98,7 +99,7 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 
-		mLayout = (RelativeLayout) findViewById(R.id.xK1);
+		mLayout = (LinearLayout) findViewById(R.id.xK1);
 		mKLayout = (RelativeLayout) findViewById(R.id.xKeyBoard);
 
 		mBack = (Button) findViewById(R.id.back);

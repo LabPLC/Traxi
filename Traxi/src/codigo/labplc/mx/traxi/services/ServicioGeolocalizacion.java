@@ -27,6 +27,7 @@ import android.os.Message;
 import android.os.ResultReceiver;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
@@ -112,9 +113,10 @@ private boolean panico;
 		timer = new Timer();//timer para el boton de panico
 		timerParanoico = new Timer();//timer para el modo paranohico
 
-		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-           panico = prefs.getBoolean("panico", false);
+		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+        panico = prefs.getBoolean("panico", false);
 		intervaloLocation = getPreferencia("prefSyncFrequency");//intervalo de busqueda
+		
 		if(panico){
 		intervaloLocationParanoia  = 120000;//intervalo para mostrar el mensaje paranohico
 		}
@@ -209,6 +211,7 @@ private boolean panico;
 			latitud = Double.parseDouble(currentLocation.getLatitude() + "");
 			longitud = Double.parseDouble(currentLocation.getLongitude() + "");
 			
+			// Log.d("************", "enviando");
 		//	Log.d(TAG, "latitud"+latitud);
 		//	Log.d(TAG, "longitud"+longitud);
 
@@ -261,8 +264,8 @@ private boolean panico;
 			taxiActivity.runOnUiThread(new Runnable() {
 				@Override
 				public void run() {
-					Dialogos.Toast(taxiActivity,
-							getResources().getString(R.string.GPS_OFF), Toast.LENGTH_LONG);
+					Dialogos.Toast(taxiActivity,getResources().getString(R.string.GPS_OFF), Toast.LENGTH_LONG);
+					
 				}
 			});
 		}
