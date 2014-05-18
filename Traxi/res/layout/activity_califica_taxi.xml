@@ -1,81 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_group"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:background="@drawable/marco" >
+    android:background="@color/gris_obscuro_trans"
+    android:fillViewport="true"
+    android:overScrollMode="never" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp" >
+    <ViewFlipper
+        android:id="@+id/viewflipper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" >
 
-        <TextView
-            android:id="@+id/califica_taxi_tv_titulo"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/califica_taxi_tv_titulo"
-            android:textColor="@color/gris_obscuro" />
+            android:layout_margin="10dp"
+            android:background="@drawable/marco" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/marco"
-            android:orientation="vertical"
-            android:padding="5dp" >
-
-            <TextView
-                android:id="@+id/califica_taxi_tv_titulo_calif"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/gris_obscuro"
-                android:text="@string/califica_taxi_tv_titulo_calif" />
-
-            <RatingBar
-                android:id="@+id/dialogo_califica_servicio_ratingBarServicio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/StarRatingBar" />
-
-            <View
-                android:layout_width="30dp"
-                android:layout_height="2dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="2dp" />
-
-            <TextView
-                android:id="@+id/califica_taxi_tv_titulo_opinion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/califica_taxi_tv_titulo_opinion" />
-
-            <EditText
-                android:id="@+id/dialogo_califica_servicio_et_comentario"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
-                android:hint="@string/dialogo_califica_servicio_et_comentario"
-                android:background="@drawable/rounded_background"
-                android:layout_marginTop="5dp"
-                android:lines="5"
-                android:maxLength="49"
-                 android:textCursorDrawable="@drawable/color_cursor" 
-                 />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="5dp" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
-<!-- 
+                <TextView
+                    android:id="@+id/califica_taxi_tv_titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:paddingLeft="3dp"
+                    android:text="@string/califica_taxi_tv_titulo"
+                    android:textColor="@color/gris_obscuro" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/marco"
+                    android:orientation="vertical"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/califica_taxi_tv_titulo_calif"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/califica_taxi_tv_titulo_calif"
+                        android:textColor="@color/gris_obscuro" />
+
+                    <RatingBar
+                        android:id="@+id/dialogo_califica_servicio_ratingBarServicio"
+                        style="@style/StarRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <View
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="2dp" />
+
+                    <TextView
+                        android:id="@+id/califica_taxi_tv_titulo_opinion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/califica_taxi_tv_titulo_opinion" />
+
+                    <EditText
+                        android:id="@+id/dialogo_califica_servicio_et_comentario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/rounded_background"
+                        android:hint="@string/dialogo_califica_servicio_et_comentario"
+                        android:lines="5"
+                        android:maxLength="49"
+                        android:padding="2dp"
+                        android:textCursorDrawable="@drawable/color_cursor" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+
+                    <!--
             <Button
                 android:id="@+id/dialogo_califica_servicio_btnCancelar"
                 android:layout_width="wrap_content"
@@ -86,18 +101,19 @@
                 android:background="@drawable/selector_btn_generic"
                 android:text="@string/dialogo_califica_servicio_btnCancelar"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
--->
-            <Button
-                android:id="@+id/dialogo_califica_servicio_btnAceptar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/selector_btn_generic"
-                android:text="@string/dialogo_califica_servicio_btnAceptar"
-                android:textColor="@drawable/selector_txt_boton_redondo"  />
-        </LinearLayout>
-    </LinearLayout>
+                    -->
 
-</FrameLayout>
+                    <Button
+                        android:id="@+id/dialogo_califica_servicio_btnAceptar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="3dp"
+                        android:background="@drawable/selector_btn_generic"
+                        android:text="@string/dialogo_califica_servicio_btnAceptar"
+                        android:textColor="@drawable/selector_txt_boton_redondo" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </ViewFlipper>
+
+</ScrollView>

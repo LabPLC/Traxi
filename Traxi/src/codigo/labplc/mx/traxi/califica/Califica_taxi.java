@@ -60,7 +60,7 @@ public class Califica_taxi extends Activity {
 	  		finish();
 		}
 		
-	
+		setFinishOnTouchOutside(false);
 		 Mapa_tracking.fa.finish();
 		
 		
@@ -131,32 +131,13 @@ public class Califica_taxi extends Activity {
 				ServicioGeolocalizacion.serviceIsIniciado=false;
 				
 				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_enviar_comentario), Toast.LENGTH_LONG);
-				
-				
-				
 			
-				//matamos todo
-			/*	Intent intent = new Intent(Intent.ACTION_MAIN); 
-				intent.addCategory(Intent.CATEGORY_HOME); 
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
-				startActivity(intent); */
-				
 				Califica_taxi.this.finish();
 				
 			}
 		});
 		
-	/*	calificar_cancelar = (Button)findViewById(R.id.dialogo_califica_servicio_btnCancelar);
-		calificar_cancelar.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
-				stopService(svc);
-				Califica_taxi.this.finish();
-			}
-		});
-		
-		*/
+	
 		
 	}
 

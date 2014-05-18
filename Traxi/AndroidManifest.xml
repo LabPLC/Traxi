@@ -118,15 +118,11 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.traxi.tracking.califica.Califica_chofer"
-            android:label="@string/title_activity_califica_chofer"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
             android:name="codigo.labplc.mx.traxi.califica.Califica_taxi"
             android:label="@string/title_activity_califica_taxi"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar" >
+            android:screenOrientation="portrait" 
+              android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
+                 android:windowSoftInputMode="stateVisible|adjustResize">
         </activity>
 
         <receiver android:name="codigo.labplc.mx.traxi.panic.MyReceiver" >
