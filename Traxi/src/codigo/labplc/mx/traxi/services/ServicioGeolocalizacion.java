@@ -10,6 +10,7 @@ import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -91,7 +92,8 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     private boolean algoPaso=true;
    private boolean isMailFirst=true;
 private boolean panico;
-    
+private boolean isActivado= false;
+
     
     
 
@@ -99,6 +101,10 @@ private boolean panico;
 	public void onCreate() {
 		super.onCreate();
 
+		
+	
+
+		
 		//obtenemos la hora en la que inicia el servicio
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
@@ -111,15 +117,11 @@ private boolean panico;
 		
 		
 		timer = new Timer();//timer para el boton de panico
-		timerParanoico = new Timer();//timer para el modo paranohico
 
-		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-        panico = prefs.getBoolean("panico", false);
+
+	/*	SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 		intervaloLocation = getPreferencia("prefSyncFrequency");//intervalo de busqueda
-		
-		if(panico){
-		intervaloLocationParanoia  = 120000;//intervalo para mostrar el mensaje paranohico
-		}
+		*/
 		// para le panic
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
 		filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -176,10 +178,16 @@ private boolean panico;
 		CancelNotification(this, 0);
 		timer.cancel();
 		CancelNotification(this, 1);
-		timerParanoico.cancel();
+		
+		if(timerParanoico!=null){
+			timerParanoico.cancel();
+		}
 		
 		serviceIsIniciado= false;
+		 Mapa_tracking.isButtonExit = true;
 		Mapa_tracking.direccion_destino= null;
+		
+	
 		// panic
 		unregisterReceiver(mReceiver);
 	}
@@ -189,7 +197,8 @@ private boolean panico;
 		return null;
 	}
 
-/*	/**
+
+	/**
 	 * handler
 	 */
 	private Handler handler = new Handler() {
@@ -210,21 +219,31 @@ private boolean panico;
 		if (currentLocation != null) {
 			latitud = Double.parseDouble(currentLocation.getLatitude() + "");
 			longitud = Double.parseDouble(currentLocation.getLongitude() + "");
-			
-			// Log.d("************", "enviando");
-		//	Log.d(TAG, "latitud"+latitud);
-		//	Log.d(TAG, "longitud"+longitud);
+
 
 			if (isFirstLocation) {
 				latitud_inicial = latitud;
 				longitud_inicial = longitud;
 				isFirstLocation = false;
-				showNotification();
-				//si es que activo el nivel paranoico
-				if(panico){
-					mensajeParanoico();
-				}
-			}          
+			//	showNotification();//mike
+			}  
+			
+			SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+	        panico = prefs.getBoolean("panico", false);
+	        if(panico&&!isActivado){//si se da clic para activar modo paranoico
+	        	timerParanoico = new Timer();//timer para el modo paranohico
+	        	intervaloLocationParanoia  = 120000;
+				mensajeParanoico();
+			}else if(!panico&&isActivado){//si se desactiva el modo paranoico
+				isActivado=false;
+				intervaloLocationParanoia =0;
+				CancelNotification(this, 1);
+				timerParanoico.cancel();//dejamos de mostrar si esta bien dado que no lo est‡
+				timerParanoico.purge();
+				timerParanoico = null;
+				
+			}
+	       
 
 			pointsLat.add(latitud + "");
 			pointsLon.add(longitud + "");
@@ -256,8 +275,7 @@ private boolean panico;
 	public void run() {
 		if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			Looper.prepare();
-			mLocationManager.requestLocationUpdates(
-					LocationManager.GPS_PROVIDER, intervaloLocation, 1, mLocationListener);
+			mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, intervaloLocation, 0, mLocationListener);
 			Looper.loop();
 			Looper.myLooper().quit();
 		} else {
@@ -323,8 +341,6 @@ private boolean panico;
 
 	public static  void showNotification() {
 		// notification is selected
-		Vibrator v = (Vibrator) taxiActivity.getSystemService(Context.VIBRATOR_SERVICE);
-    	v.vibrate(3000);
 
 		Intent intent_mapa = new Intent(taxiActivity, Mapa_tracking.class);
 		intent_mapa.putExtra("latitud_inicial", ServicioGeolocalizacion.latitud_inicial);
@@ -415,6 +431,7 @@ private boolean panico;
     
     
    public void mensajeParanoico(){
+	   isActivado=true;
     	timerParanoico.scheduleAtFixedRate(new TimerTask() {
     	    @Override
     	    public void run() {
@@ -553,6 +570,7 @@ private boolean panico;
     	}
      }
      
-
+     
+  
     
 }

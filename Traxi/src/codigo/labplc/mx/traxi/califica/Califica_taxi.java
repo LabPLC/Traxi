@@ -16,10 +16,13 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.TrackxiMainActivity;
+import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
+import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
@@ -40,6 +43,8 @@ public class Califica_taxi extends Activity {
 	
 	
 	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +52,18 @@ public class Califica_taxi extends Activity {
 		setContentView(R.layout.activity_califica_taxi);
 
 		BeanDatosLog.setTagLog(TAG);
+		
+		//en caso de que se active si ya no existe el servicio
+		if(ServicioGeolocalizacion.serviceIsIniciado!=true){
+	  		Intent mainIntent = new Intent().setClass(Califica_taxi.this, TrackxiMainActivity.class);
+	  		startActivity(mainIntent);
+	  		finish();
+		}
+		
+	
+		 Mapa_tracking.fa.finish();
+		
+		
 		
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
@@ -79,6 +96,9 @@ public class Califica_taxi extends Activity {
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
+				
+				
 				SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 				String placa = prefs.getString("placa", null);
 				String face = prefs.getString("facebook","0");
@@ -104,9 +124,23 @@ public class Califica_taxi extends Activity {
 
 					Utils.doHttpConnection(url);	
 				}
+				Mapa_tracking.isButtonExit= false;
+			
 				Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 				stopService(svc);
+				ServicioGeolocalizacion.serviceIsIniciado=false;
+				
 				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_enviar_comentario), Toast.LENGTH_LONG);
+				
+				
+				
+			
+				//matamos todo
+			/*	Intent intent = new Intent(Intent.ACTION_MAIN); 
+				intent.addCategory(Intent.CATEGORY_HOME); 
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 
+				startActivity(intent); */
+				
 				Califica_taxi.this.finish();
 				
 			}
@@ -125,6 +159,11 @@ public class Califica_taxi extends Activity {
 		*/
 		
 	}
+
+	
+
+	
+
 
 	@Override
 	public void onBackPressed() {

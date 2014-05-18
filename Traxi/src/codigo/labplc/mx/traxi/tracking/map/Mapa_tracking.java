@@ -17,6 +17,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -32,9 +33,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
@@ -75,10 +81,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	private Button mapa_tracking_terminoviaje;
 	private AutoCompleteTextView actvDestination;
 	private MarkerOptions marker_taxi_destino;
-	Double latini;
-	Double lonini;
-	Double latfin;
-	Double lonfin;
+	Double latini=0.0;
+	Double lonini=0.0;
+	Double  latfin=0.0;
+	Double  lonfin=0.0;
 	ArrayList<String> pointsLat;
 	ArrayList<String> pointsLon;
 	ArrayList<InfoPoint> InfoPoint = null;
@@ -87,17 +93,30 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	private boolean isFirstLocation= true;
 	private String tiempo;
 	private String distancia;
-	private boolean isButtonExit = true;
+	public static boolean isButtonExit = true;
+	private SlidingDrawer Drawer;
+	public static Activity fa;
 
 
 	
+	
+	Handler updateBarHandler;
+	private ProgressDialog pDialog;
+
+
+	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mapa_tracking);
-		
+
 		
 		BeanDatosLog.setTagLog(TAG);
+		 
+		
+		fa = Mapa_tracking.this;
+		
 		//propiedades del action bar
 		 final ActionBar ab = getActionBar();
 	     ab.setDisplayShowHomeEnabled(false);
@@ -123,12 +142,84 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		if(bundle!=null){
 			latitud = bundle.getDouble("latitud_inicial");	
 			longitud = bundle.getDouble("longitud_inicial");
+
 		}
+		
+
+		
+		ImageButton mitaxi_googlemaps_ibtn_gps = (ImageButton)findViewById(R.id.mitaxi_googlemaps_ibtn_gps);
+		mitaxi_googlemaps_ibtn_gps.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				CameraPosition cameraPosition;
+				if(latfin==0.0){
+					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(21).build();
+					
+				}else{
+					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(21).build();
+				}
+				map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+			}
+		});
+		
+		
+		
+		 CheckBox mitaxi_googlemaps_cv_paranoico = (CheckBox) findViewById(R.id.mitaxi_googlemaps_cv_paranoico); 
+		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+         boolean panic = prefs.getBoolean("panico", false);
+         mitaxi_googlemaps_cv_paranoico.setChecked(panic); 
+       	  
+         
+         mitaxi_googlemaps_cv_paranoico.setOnCheckedChangeListener(new OnCheckedChangeListener() { 
+
+		 @Override 
+		 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { 
+			 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+				SharedPreferences.Editor editor = prefs.edit();
+			 if (buttonView.isChecked()){ 
+					editor.putBoolean("panico", true);
+					editor.commit();
+			 } 
+			 else{
+				 editor.putBoolean("panico", false);
+				 editor.commit();
+			 } 
+
+		 }
+		 });
+		
+		
+
+		 Drawer = (SlidingDrawer) findViewById (R.id.drawer);
+
+	        final ImageView  tab = (ImageView) findViewById (R.id.handle);
+
+	        Drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
+
+	            @Override
+	            public void onDrawerOpened() {
+	                tab.setImageResource(R.drawable.ic_launcher_cerrar);
+
+	            }
+	        });
+
+	        Drawer.setOnDrawerCloseListener(new SlidingDrawer.OnDrawerCloseListener() {
+
+	            @Override
+	            public void onDrawerClosed() {
+	                // TODO Auto-generated method stub
+	                tab.setImageResource(R.drawable.ic_launcher_abrir);
+
+	            }
+	        });
+
+		
 		
 		//escucha de botones
 		mapa_tracking_terminoviaje =(Button)findViewById(R.id.mapa_tracking_terminoviaje);
 		mapa_tracking_terminoviaje.setOnClickListener(new View.OnClickListener() {
-		
 			@Override
 			public void onClick(View v) {
 				isButtonExit= false;
@@ -157,6 +248,8 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		        	   InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 		        	   imm.hideSoftInputFromWindow(actvDestination.getWindowToken(), 0);
 		        	   llenarMapaConDestino();
+		        	   
+		       		Drawer.animateClose();
 		           }else{
 		        	  
 		           }
@@ -164,10 +257,19 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			}
 		});
 	     
+	     
+	   
+	    
+	     if(lonfin==0.0){
+	    	 updateBarHandler = new Handler();
+	    	 launchRingDialog();
+	     }
 	    		
-			setUpMapIfNeeded();		
+		setUpMapIfNeeded();		
 			
-
+		
+		
+		
 		
 	}
 
@@ -175,9 +277,11 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	
 	 @Override
 	protected void onStop() {
-		 if(isButtonExit){
+		if(isButtonExit){
 		ServicioGeolocalizacion.showNotification();
+		isButtonExit= false;
 		 }
+		
 		super.onStop();
 	}
 
@@ -204,6 +308,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			map.getUiSettings().setRotateGesturesEnabled(true); //ROTATE GESTURES
 			map.getUiSettings().setScrollGesturesEnabled(true); //SCROLL GESTURES
 			map.getUiSettings().setTiltGesturesEnabled(true); //TILT GESTURES
+			map.getUiSettings().setZoomControlsEnabled(false);
 			
 			// create marker
 			marker = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_tu_inicio));
@@ -244,9 +349,6 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	
 				 pointsLat = t.getStringArrayListExtra("latitud");
 				 pointsLon = t.getStringArrayListExtra("longitud");
-				 
-				// Log.d("************", pointsLat+","+pointsLon);
-				 
 				 latini= Double.parseDouble(pointsLat.get(0));
 				 lonini= Double.parseDouble(pointsLon.get(0));
 				 latfin= Double.parseDouble(pointsLat.get(pointsLat.size()-1));
@@ -257,7 +359,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			   	 map.addMarker(marker);
 			   	 
 			 	marker_taxi.position(new LatLng(latfin,lonfin));
-					
+			 	
+			 	if(pDialog!=null){
+			 		pDialog.dismiss();
+			 	}
 				 if(InfoPoint!=null){//
 					 try{
 					 String consulta2 = "http://datos.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
@@ -336,6 +441,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		@Override
 		protected void onResume() {
 			registerReceiver(onBroadcast, new IntentFilter("key"));
+			isButtonExit= true;
+			ServicioGeolocalizacion.stopNotification();
+
+
 			super.onResume();
 		}
 		
@@ -493,7 +602,17 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		    }   
 		    
 		    
-		    public void showPopup(View v) {
+		    @Override
+			protected void onDestroy() {
+			if(pDialog!=null){
+		    	pDialog.dismiss();
+		    	}
+				super.onDestroy();
+			}
+
+
+
+			public void showPopup(View v) {
 				PopupMenu popup = new PopupMenu(Mapa_tracking.this, v);
 				MenuInflater inflater = popup.getMenuInflater();
 				inflater.inflate(R.menu.popup, popup.getMenu());
@@ -553,6 +672,19 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			}
 
 			
+			/**
+			 * crea el dialogo de espera al cargar el mpa
+			 */
+			public void launchRingDialog() {
+
+				pDialog = new ProgressDialog(Mapa_tracking.this);
+				pDialog.setCanceledOnTouchOutside(false);
+				pDialog.setMessage(getResources().getString(R.string.cargando_info));
+				pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+				pDialog.setCancelable(true);
+				pDialog.show();
+			}	
 			
 			
+	
 }
