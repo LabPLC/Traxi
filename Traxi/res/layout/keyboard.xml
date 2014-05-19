@@ -13,20 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="#252625"
         android:clipChildren="true"
-            android:background="#252625"
         android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="40sp"
             android:fitsSystemWindows="true" >
 
             <Button
                 android:id="@+id/xA"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_marginTop="0.5dp"
                 android:layout_weight=".3"
                 android:padding="0sp"
                 android:tag="A"
@@ -38,7 +41,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_marginTop="0.5dp"
                 android:layout_weight=".3"
                 android:padding="0sp"
                 android:soundEffectsEnabled="true"
@@ -51,7 +56,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
+                android:layout_marginTop="0.5dp"
                 android:layout_weight=".3"
                 android:fitsSystemWindows="true"
                 android:padding="0sp"
@@ -63,7 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="40sp"
             android:fitsSystemWindows="true" >
 
             <Button
@@ -71,7 +78,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -84,6 +93,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -96,27 +107,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
                 android:tag="3"
                 android:text="3"
                 android:textStyle="bold" />
-
-           
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="40sp"
             android:fitsSystemWindows="true" >
-             <Button
+
+            <Button
                 android:id="@+id/x4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -129,7 +142,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -142,28 +156,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
                 android:tag="6"
                 android:text="6"
                 android:textStyle="bold" />
-
-           
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="40sp"
             android:fitsSystemWindows="true" >
-            
-             <Button
+
+            <Button
                 android:id="@+id/x7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -176,7 +191,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -189,7 +205,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".25"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -197,9 +214,10 @@
                 android:text="9"
                 android:textStyle="bold" />
         </LinearLayout>
-         <LinearLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="45sp"
+            android:layout_height="40sp"
             android:fitsSystemWindows="true" >
 
             <Button
@@ -207,7 +225,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginLeft="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".33"
                 android:fitsSystemWindows="true"
                 android:soundEffectsEnabled="true"
@@ -220,7 +240,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical|center"
-                android:layout_margin="0.5dp"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginRight="0.5dp"
                 android:layout_weight=".67"
                 android:background="@drawable/selector_btn_generic"
                 android:fitsSystemWindows="true"
