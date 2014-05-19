@@ -158,7 +158,8 @@
     <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">Finalizar</string>
     <string name="dialogo_califica_servicio_btnAceptar">Enviar</string>
-    <string name="dialogo_califica_servicio_enviar_comentario">Tu comentario ha sido enviado</string>
+        <string name="dialogo_califica_servicio_enviar_comentario">Tu coemntario ha sido enviado</string>
+    <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
 
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destino del viaje</string>

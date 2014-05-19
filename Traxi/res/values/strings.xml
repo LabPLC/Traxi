@@ -159,6 +159,7 @@
     <string name="dialogo_califica_servicio_btnCancelar">End</string>
     <string name="dialogo_califica_servicio_btnAceptar">Send</string>
     <string name="dialogo_califica_servicio_enviar_comentario">Your comment was sent</string>
+        <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
 
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destination</string>

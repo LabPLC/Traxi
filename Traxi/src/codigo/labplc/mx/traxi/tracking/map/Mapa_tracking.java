@@ -43,6 +43,7 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.TrackxiMainActivity;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.fonts.fonts;
@@ -116,6 +117,16 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		 
 		
 		fa = Mapa_tracking.this;
+		//en caso de que se active si ya no existe el servicio
+				if(ServicioGeolocalizacion.serviceIsIniciado!=true){
+					Mapa_tracking.isButtonExit= false;
+					ServicioGeolocalizacion.CancelNotification(Mapa_tracking.this, 0);
+					Intent svc = new Intent(Mapa_tracking.this, ServicioGeolocalizacion.class);
+					stopService(svc);
+			  		Intent mainIntent = new Intent().setClass(Mapa_tracking.this, TrackxiMainActivity.class);
+			  		startActivity(mainIntent);
+			  		finish();
+				}
 		
 		//propiedades del action bar
 		 final ActionBar ab = getActionBar();

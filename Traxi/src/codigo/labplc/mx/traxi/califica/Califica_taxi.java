@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
@@ -55,16 +56,22 @@ public class Califica_taxi extends Activity {
 		
 		//en caso de que se active si ya no existe el servicio
 		if(ServicioGeolocalizacion.serviceIsIniciado!=true){
+			Mapa_tracking.isButtonExit= false;
+			ServicioGeolocalizacion.CancelNotification(Califica_taxi.this, 0);
+			Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
+			stopService(svc);
 	  		Intent mainIntent = new Intent().setClass(Califica_taxi.this, TrackxiMainActivity.class);
 	  		startActivity(mainIntent);
 	  		finish();
 		}
 		
 		setFinishOnTouchOutside(false);
+		
+		try{
 		 Mapa_tracking.fa.finish();
-		
-		
-		
+		}catch(Exception e){
+			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		}
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_ROJO));
@@ -75,6 +82,16 @@ public class Califica_taxi extends Activity {
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 
+		
+		ImageView califica_taxi_iv_no_calif=(ImageView)findViewById(R.id.califica_taxi_iv_no_calif);
+		califica_taxi_iv_no_calif.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				cerrarDialog(R.string.dialogo_califica_servicio_NO_enviar_comentario);
+				
+			}
+		});
 		
 		
 		comentario = (EditText)findViewById(R.id.dialogo_califica_servicio_et_comentario);
@@ -96,8 +113,6 @@ public class Califica_taxi extends Activity {
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
-				
 				
 				SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 				String placa = prefs.getString("placa", null);
@@ -124,16 +139,8 @@ public class Califica_taxi extends Activity {
 
 					Utils.doHttpConnection(url);	
 				}
-				Mapa_tracking.isButtonExit= false;
-			
-				Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
-				stopService(svc);
-				ServicioGeolocalizacion.serviceIsIniciado=false;
-				
-				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_enviar_comentario), Toast.LENGTH_LONG);
-			
-				Califica_taxi.this.finish();
-				
+	
+				cerrarDialog(R.string.dialogo_califica_servicio_enviar_comentario);
 			}
 		});
 		
@@ -142,7 +149,14 @@ public class Califica_taxi extends Activity {
 	}
 
 	
-
+public void cerrarDialog(int cadena ){
+	Mapa_tracking.isButtonExit= false;
+	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
+	stopService(svc);
+	ServicioGeolocalizacion.serviceIsIniciado=false;
+	Dialogos.Toast(Califica_taxi.this, getResources().getString(cadena), Toast.LENGTH_LONG);
+	Califica_taxi.this.finish();
+}
 	
 
 
