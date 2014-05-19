@@ -349,9 +349,11 @@ private boolean isActivado= false;
 
 		Intent intent_califica = new Intent(taxiActivity, Califica_taxi.class);
 		PendingIntent pIntent_cal = PendingIntent.getActivity(taxiActivity, 0,intent_califica, PendingIntent.FLAG_UPDATE_CURRENT);
+		
 
 		Notification noti = new Notification.Builder(taxiActivity)
-				.setContentTitle("Traxi").setContentText(taxiActivity.getResources().getString(R.string.notificacion_que_quieres_hacer))
+				.setContentTitle("Traxi")
+				.setContentText(taxiActivity.getResources().getString(R.string.notificacion_que_quieres_hacer))
 				.setSmallIcon(R.drawable.ic_launcher)
 		
 				// .setContentIntent(pIntent)

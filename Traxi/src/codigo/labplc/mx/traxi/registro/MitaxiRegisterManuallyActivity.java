@@ -69,12 +69,14 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	     ab.setDisplayShowHomeEnabled(false);
 	     ab.setDisplayShowTitleEnabled(false);     
 	     final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
-	     View view = inflater.inflate(R.layout.abs_layout,null);   
+	     View view = inflater.inflate(R.layout.abs_layout_back,null);   
 	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(MitaxiRegisterManuallyActivity.this).getTypeFace(fonts.FLAG_MAMEY));
 	     ab.setDisplayShowCustomEnabled(true);
 	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-		ImageView abs_layout_iv_menu = (ImageView) findViewById(R.id.abs_layout_iv_menu);
-		abs_layout_iv_menu.setOnClickListener(this);
+	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
+	     abs_layout_iv_menu.setOnClickListener(this);
+	     ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
+	     abs_layout_iv_logo.setOnClickListener(this);
 	     ab.setCustomView(view);
 	     
 	     
@@ -345,15 +347,19 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 
 	@Override
 	public void onBackPressed() {
+		back();
+	
+	}
+
+	
+	public void back(){
 		if(validaEditText()){
 			if(guardaLasPreferencias()){
 				super.onBackPressed();
 			}
-			
 		}
-	
 	}
-
+	
 	
 	/**
 	 * guarda en preferencias los contactos de emergencia 
@@ -446,6 +452,8 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	public void onClick(View v) {
 		if (v.getId() == R.id.abs_layout_iv_menu) {
 			showPopup(v);
+		} else if (v.getId() == R.id.abs_layout_iv_logo) {
+			back();
 		}
 		
 	}

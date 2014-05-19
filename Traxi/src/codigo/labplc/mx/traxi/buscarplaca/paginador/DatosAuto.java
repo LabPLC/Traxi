@@ -97,14 +97,17 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	    ab.setDisplayShowTitleEnabled(false);     
 		final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
 		
-		View view = inflater.inflate(R.layout.abs_layout,null);   
+		View view = inflater.inflate(R.layout.abs_layout_back,null);   
 		
 		abs_layout_tv_titulo_datosAutos=(TextView)view.findViewById(R.id.abs_layout_tv_titulo);
 		abs_layout_tv_titulo_datosAutos.setTypeface(new fonts(DatosAuto.this).getTypeFace(fonts.FLAG_MAMEY));
 		abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.datos_del_taxi));
+		
 		ab.setDisplayShowCustomEnabled(true);  
 	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
 	     abs_layout_iv_menu.setOnClickListener(this);
+	     ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
+	     abs_layout_iv_logo.setOnClickListener(this);
 		ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);
 		
@@ -481,7 +484,9 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	 public void onClick(View v) {
 	        if (v.getId() == R.id.abs_layout_iv_menu) {
 	            showPopup(v);
-	        }
+	        }else if (v.getId() == R.id.abs_layout_iv_logo) {
+				back();
+			}
 
 	       
 	    }
