@@ -355,6 +355,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	public void back(){
 		if(validaEditText()){
 			if(guardaLasPreferencias()){
+				Dialogos.Toast(MitaxiRegisterManuallyActivity.this, MitaxiRegisterManuallyActivity.this.getResources().getString(R.string.Registro_manual_datos_guardados), Toast.LENGTH_SHORT);
 				super.onBackPressed();
 			}
 		}
@@ -414,16 +415,16 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
       	  EditText et2 = (EditText) ll3.getChildAt(1);
       	 //validamos que no esten vacios
       	  if(et.getText().toString().equals("")){
-      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "Debes llenar los campos", Toast.LENGTH_LONG);
+      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_llena_todos_los_campos), Toast.LENGTH_LONG);
       		  return false;
       	  }
     	  if(et2.getText().toString().equals("")){
-    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "Debes llenar los campos", Toast.LENGTH_LONG);
+    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_llena_todos_los_campos), Toast.LENGTH_LONG);
     		  return false;
     	  }
     	  //validamos que esten bien escritos
     	  if(et.getText().toString().length()!=10){
-      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, "El celular debe ser de 10 dígitos", Toast.LENGTH_LONG);
+      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular), Toast.LENGTH_LONG);
       		  return false;
       	  }
     	  if(!EditTextValidator.esCorreo(et2)){
@@ -453,6 +454,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		if (v.getId() == R.id.abs_layout_iv_menu) {
 			showPopup(v);
 		} else if (v.getId() == R.id.abs_layout_iv_logo) {
+			
 			back();
 		}
 		

@@ -52,7 +52,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/datos_tv_niveles_confianza"
                 android:textColor="@color/gris_obscuro" />
+
         </LinearLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/datos_iv_info"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="3dp"
+        android:paddingBottom="3dp"
+        android:src="@drawable/ic_help" />
 
 </RelativeLayout>

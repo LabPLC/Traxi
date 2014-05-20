@@ -9,6 +9,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
@@ -72,6 +73,19 @@ public class Datos extends View {
 		datos_tv_titulo.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		datos_tv_titulo.append(" "+autoBean.getPlaca());
 		
+		ImageView datos_iv_info =(ImageView)view.findViewById(R.id.datos_iv_info);
+		datos_iv_info.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(context,Descripcion_Escudo.class);
+				intent.putExtra("descripcion_escudo", autoBean.getDescripcion_calificacion_app());
+				context.startActivity(intent);
+				
+			}
+		});
+		
+		
 		marca = (TextView)view.findViewById(R.id.datos_tv_marca);
 		marca.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 		marca.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
@@ -122,19 +136,6 @@ public class Datos extends View {
 			}else if(newProgress>70){
 				shield.initUI(size/2,size/2,R.color.android_green);
 			}
-		
-		shield.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(context,Descripcion_Escudo.class);
-				intent.putExtra("descripcion_escudo", autoBean.getDescripcion_calificacion_app());
-				context.startActivity(intent);
-			//	Dialogos.Toast(context, autoBean.getDescripcion_calificacion_app(), Toast.LENGTH_LONG);	
-			}
-		});
-	
-		
 		
 		shield.setProgress(newProgress);
 		verticalLayout.addView(shield);
