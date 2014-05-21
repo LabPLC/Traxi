@@ -19,6 +19,7 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -70,7 +71,9 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	     ab.setDisplayShowTitleEnabled(false);     
 	     final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
 	     View view = inflater.inflate(R.layout.abs_layout_back,null);   
+	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(getResources().getString(R.string.mitaxiregister_et_emergencias));
 	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(MitaxiRegisterManuallyActivity.this).getTypeFace(fonts.FLAG_MAMEY));
+	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTextSize(15.0f);
 	     ab.setDisplayShowCustomEnabled(true);
 	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
@@ -93,12 +96,12 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	public void initUI() {
 		
 		TextView mitaxiregistermanually_tv_label= (TextView)findViewById(R.id.mitaxiregistermanually_tv_label);
-		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		 mitaxiregistermanually_tv_label.setTextColor(new fonts(this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		 
-		 TextView mitaxiregistermanually_tv_emergencia= (TextView)findViewById(R.id.mitaxiregistermanually_tv_emergencia);
+		/* TextView mitaxiregistermanually_tv_emergencia= (TextView)findViewById(R.id.mitaxiregistermanually_tv_emergencia);
 		 mitaxiregistermanually_tv_emergencia.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
-		 mitaxiregistermanually_tv_emergencia.setTextColor(new fonts(this).getColorTypeFace(fonts.FLAG_ROJO));
+		 mitaxiregistermanually_tv_emergencia.setTextColor(new fonts(this).getColorTypeFace(fonts.FLAG_ROJO));*/
 		 
 		 mitaxiregistermanually_ll_contactos =(LinearLayout)findViewById(R.id.mitaxiregistermanually_ll_contactos);
 		
@@ -427,6 +430,11 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
       		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular), Toast.LENGTH_LONG);
       		  return false;
       	  }
+    	  if(Utils.isNumeric(et.getText().toString())){
+    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular_signo), Toast.LENGTH_LONG);
+      		  return false;  
+    	  }
+    	  
     	  if(!EditTextValidator.esCorreo(et2)){
 			  et2.setError(getResources().getString(R.string.edittext_error_email));
 			  return false;
@@ -501,5 +509,6 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		StringBuilder builder = new StringBuilder();
 		builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
 	}
+	
 
 }

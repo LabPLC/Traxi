@@ -37,18 +37,17 @@
             android:text="Tips"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
-         <Button
+
+        <Button
             android:id="@+id/activity_buscar_placa_btn_foto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-        android:layout_weight=".33"
+            android:layout_weight=".33"
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_foto"
             android:text="Tomar foto"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
-
-       
     </LinearLayout>
 
     <LinearLayout
@@ -60,10 +59,10 @@
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
             android:background="@drawable/marco"
             android:gravity="center"
-            android:layout_gravity="center"
             android:orientation="vertical"
             android:padding="5dp" >
 
@@ -77,18 +76,34 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/inicio_de_trabajo_et_placa"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_edittext_blanco"
-                android:ems="10"
-                android:hint="@string/inicio_de_trabajo_et_placa"
-                android:paddingBottom="2dp"
-                android:paddingLeft="3dp"
-                android:textColorHint="@android:color/darker_gray"
-                android:textCursorDrawable="@drawable/color_cursor"
-                android:textSize="30sp" />
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/inicio_de_trabajo_et_placa"
+                    android:layout_width="0dp"
+                    android:layout_weight=".8"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext_blanco"
+                    android:ems="10"
+                    android:hint="@string/inicio_de_trabajo_et_placa"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="3dp"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textCursorDrawable="@drawable/color_cursor"
+                    android:textSize="30sp" />
+                
+            <ImageView
+                android:id="@+id/inicio_de_trabajo_iv_adelante"
+                android:layout_width="0dp"
+                android:layout_weight=".2"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher_adelante" />
+                
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

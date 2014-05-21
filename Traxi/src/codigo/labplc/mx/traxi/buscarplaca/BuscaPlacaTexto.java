@@ -1,9 +1,8 @@
 package codigo.labplc.mx.traxi.buscarplaca;
 
 import java.io.IOException;
-
 import org.xmlpull.v1.XmlPullParserException;
-
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
@@ -49,6 +48,7 @@ import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.utils.Utils;
 
+
 public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClickListener {
 
 	private static final int RESULT_SETTINGS = 1; //resultado del menu
@@ -66,6 +66,7 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 	private boolean isEdit = true;
 	private Button mB[] = new Button[13];
 	public static boolean tecladoIs = false;
+	public boolean puedoAvanzar=false;
 
 	
 	
@@ -92,6 +93,7 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		final LayoutInflater inflater = (LayoutInflater) getSystemService("layout_inflater");
 		View view = inflater.inflate(R.layout.abs_layout, null);
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(BuscaPlacaTexto.this).getTypeFace(fonts.FLAG_MAMEY));
+		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(getResources().getString(R.string.app_name));
 		ab.setDisplayShowCustomEnabled(true);
 		ab.setCustomView(view, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);
@@ -128,48 +130,37 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 			public void onTextChanged(CharSequence s, int start, int before,
 					int count) {
 				Splaca = placa.getText().toString();
-
 				if (Splaca.length() == 6) {
-					// buscando datos del carro en el servidor
 					try {
-						// cerramos el teclado
-						if (Utils.hasInternet(context)) {
-							InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-							imm.hideSoftInputFromWindow(placa.getWindowToken(),	0);
-							Intent intent = new Intent().setClass(context,DatosAuto.class);
-							intent.putExtra("placa", Splaca);
-							context.startActivityForResult(intent, 0);
-							context.finish();
-							placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
-						} else {
-							Dialogos.Toast(context, "No tienes Internet",Toast.LENGTH_LONG);
-						}
-						placa.setText("");
-
-					} catch (Exception e) {
+						placa.setError(null);
+						puedoAvanzar=true;
+						BorrarTrue();
+					} catch (XmlPullParserException e) {
 						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
-						placa.setText("");
+					} catch (IOException e) {
+						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 					}
+					
 				} else {
-					if (Splaca.length() >= 1) {
+					if (Splaca.length() >= 1&&Splaca.length()<6) {
 						try {
+							puedoAvanzar=false;
 							NumbersTrue();
 						} catch (XmlPullParserException e) {
-							// TODO Auto-generated catch block
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						}
 					} else if (placa.length() < 1) {
 						try {
+							puedoAvanzar=false;
 							LettersTrue();
 						} catch (XmlPullParserException e) {
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						} catch (IOException e) {
 							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						}
-					} 
+					}
 				}
 
 			}
@@ -182,6 +173,39 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 			@Override
 			public void afterTextChanged(Editable s) {
 
+			}
+		});
+		
+		ImageView inicio_de_trabajo_iv_adelante = (ImageView)findViewById(R.id.inicio_de_trabajo_iv_adelante);
+		inicio_de_trabajo_iv_adelante.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if(puedoAvanzar){
+					// buscando datos del carro en el servidor
+					try {
+						// cerramos el teclado
+						if (Utils.hasInternet(context)) {
+							InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+							imm.hideSoftInputFromWindow(placa.getWindowToken(),	0);
+							Intent intent = new Intent().setClass(context,DatosAuto.class);
+							intent.putExtra("placa", Splaca);
+							context.startActivityForResult(intent, 0);
+							context.finish();
+							placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+						} else {
+							Dialogos.Toast(context, getResources().getString(R.string.no_internet_connection),Toast.LENGTH_LONG);
+						}
+						placa.setText("");
+
+					} catch (Exception e) {
+						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+						placa.setText("");
+					}
+				}else{
+					placa.setError(getResources().getString(R.string.edittext_error_formato_placa));
+				}
+				
 			}
 		});
 		
@@ -314,7 +338,7 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 			mB[i].setOnClickListener(this);
 		}
 	}
-
+	@SuppressLint("NewApi")
 	private void LettersTrue() throws XmlPullParserException, IOException {
 		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
 	    ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);
@@ -362,7 +386,57 @@ public class BuscaPlacaTexto extends Activity implements OnTouchListener,OnClick
 		mB[12].setBackground(null);
 		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
 	}
+	
+	@SuppressLint("NewApi")
+	private void BorrarTrue() throws XmlPullParserException, IOException {
+		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
+	    ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);
+		
+		mBack.setEnabled(true);
+		mBack.setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		mBack.setTextColor(colors);
+		mB[0].setEnabled(false);
+		mB[0].setBackground(null);
+		mB[0].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[1].setEnabled(false);
+		mB[1].setBackground(null);
+		mB[1].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[2].setEnabled(false);
+		mB[2].setBackground(null);
+		mB[2].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[3].setEnabled(false);
+		mB[3].setBackground(null);
+		mB[3].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[4].setEnabled(false);
+		mB[4].setBackground(null);
+		mB[4].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[5].setEnabled(false);
+		mB[5].setBackground(null);
+		mB[5].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[6].setEnabled(false);
+		mB[6].setBackground(null);
+		mB[6].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[7].setEnabled(false);
+		mB[7].setBackground(null);
+		mB[7].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[8].setEnabled(false);
+		mB[8].setBackground(null);
+		mB[8].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[9].setEnabled(false);
+		mB[9].setBackground(null);
+		mB[9].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[10].setEnabled(false);
+		mB[10].setBackground(null);
+		mB[10].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[11].setEnabled(false);
+		mB[11].setBackground(null);
+		mB[11].setTextColor(getResources().getColor(R.color.gris_obscuro));
+		mB[12].setEnabled(false);
+		mB[12].setBackground(null);
+		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
+	}
 
+	@SuppressLint("NewApi")
 	private void NumbersTrue() throws XmlPullParserException, IOException {
 		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
 	    ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);

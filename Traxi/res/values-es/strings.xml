@@ -45,7 +45,7 @@
     <string name="adeudos_row_descripcion">Descripción</string>
     <string name="mitaxiregister_et_mailemergency_hint">correo emergencia</string>
     <string name="mitaxiregister_et_paraque">¿Para qué?</string>
-    <string name="mitaxiregister_et_emergencias">Datos de emergencia</string>
+    <string name="mitaxiregister_et_emergencias">Contacto de emergencia</string>
     <string name="mitaxiregister_btn_cancel">Cancelar</string>
     <string name="mitaxiregister_btn_ok">Aceptar</string>
 
@@ -56,6 +56,7 @@
     <string name="edittext_error_number">Escribe número válido [0&#8211;9].</string>
     <string name="edittext_error_nickname">Escribe sólo [a-z A-Z 0&#8211;9 .-_ ].</string>
     <string name="edittext_error_email">Escribe sintaxis de correo válida.</string>
+      <string name="edittext_error_formato_placa">Placa incompleta ejemplo: A12345</string>
     <string name="edittext_error_telephone_repeated">Teléfono de usuario y emergencia no debe ser el mismo</string>
 
     <!-- Network -->
@@ -280,7 +281,10 @@
     
     <string name="Registro_manual_llena_todos_los_campos">Debes llenar los campos</string>
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
+    <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
+       <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
+   
 
 
 </resources>

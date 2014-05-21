@@ -10,24 +10,32 @@
     tools:context="codigo.labplc.mx.traxi.Tips_activity$PlaceholderFragment" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/tips_activity_ll_tips"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:background="@drawable/marco"
         android:orientation="vertical" >
-
+ <ImageView
+        android:id="@+id/tips_activity_iv_cerrar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/tips_activity_ll_tips"
+        android:layout_alignLeft="@+id/tips_activity_ll_tips"
+        android:background="@drawable/marco_rojo"
+        android:src="@drawable/closerojo" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight=".85"
             android:orientation="vertical"
             android:padding="5dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-               android:orientation="horizontal" >
+                android:orientation="horizontal" >
 
                 <ImageView
                     android:id="@+id/imageView1"
@@ -40,33 +48,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center|left"
-                    android:text="Traxi"
+                    android:text="@string/app_name"
                     android:textSize="22sp" />
             </LinearLayout>
 
-            <ScrollView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="5dp" >
+                android:background="@drawable/marco"
+                android:orientation="horizontal" >
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/marco"
-                    android:padding="5dp" >
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:overScrollMode="never" >
 
-                    <TextView
-                        android:id="@+id/tips_activity_tv_contenido"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
-                </LinearLayout>
-            </ScrollView>
+                        android:padding="5dp" >
+
+                        <TextView
+                            android:id="@+id/tips_activity_tv_contenido"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_gravity="center_vertical"
+                            android:text="" />
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="0dp"
+            android:layout_weight=".15" >
 
             <ImageView
                 android:id="@+id/tips_activity_iv_back"
@@ -74,8 +92,8 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight=".5"
-                android:textColor="@drawable/selector_txt_boton_redondo"
-                android:src="@drawable/ic_launcher_back" />
+                android:src="@drawable/ic_launcher_back"
+                android:textColor="@drawable/selector_txt_boton_redondo" />
 
             <TextView
                 android:id="@+id/tips_activity_tv_cuantos"
@@ -91,17 +109,11 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
                 android:layout_weight=".5"
-                android:textColor="@drawable/selector_txt_boton_redondo"
-                android:src="@drawable/ic_launcher_next" />
+                android:src="@drawable/ic_launcher_next"
+                android:textColor="@drawable/selector_txt_boton_redondo" />
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/tips_activity_iv_cerrar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/closerojo" />
+   
 
 </RelativeLayout>

@@ -4,9 +4,13 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.fonts.fonts;
@@ -26,6 +30,16 @@ public class Tips_activity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_tips_activity);
 		
+
+		DisplayMetrics displaymetrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+		int height = displaymetrics.heightPixels/2;
+		LinearLayout tips_activity_ll_tips =(LinearLayout)findViewById(R.id.tips_activity_ll_tips);
+		RelativeLayout.LayoutParams lp= new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,height);
+		lp.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		lp.addRule(RelativeLayout.CENTER_VERTICAL);
+		tips_activity_ll_tips.setLayoutParams(lp);
+
 		
 	    ((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTextColor(new fonts(Tips_activity.this).getColorTypeFace(fonts.FLAG_ROJO));

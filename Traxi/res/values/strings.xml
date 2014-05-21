@@ -56,6 +56,7 @@
     <string name="edittext_error_number">Write a valid numner [0&#8211;9].</string>
     <string name="edittext_error_nickname">Write only [a-z A-Z 0&#8211;9 .-_ ].</string>
     <string name="edittext_error_email">Write a valid email.</string>
+    <string name="edittext_error_formato_placa">Placa incompleta ejemplo: A12345</string>
     <string name="edittext_error_telephone_repeated">The user phone number and emergency number must not be the same</string>
 
     <!-- Network -->
@@ -71,13 +72,11 @@
     <string name="paraque_correoemer">Emergency email: To track your status and path in the case you feel in danger.</string>
     <string name="paraque_foto">Picture: To personalize your profile.</string>
     <string name="paraque_aceptar">Accept</string>
-           <string name="paraque_cancelar">Cancel</string>
+    <string name="paraque_cancelar">Cancel</string>
     <string name="title_activity_buscar_chofer">SearchDriver</string>
     <string name="title_activity_datos">Data</string>
     <string name="title_activity_adeudos">Pending payment</string>
     <string name="title_activity_comentarios">Comments</string>
-
-  
 
     <!-- Teclado -->
     <string name="keyboard_borrar">Delete</string>
@@ -146,7 +145,7 @@
     <!-- activity_adeudos -->
     <string name="adeudos_titulo_tv_amigos">My friends in this taxi:</string>
     <string name="mitaxiregistermanually_btn_facebook">Login to Facebook</string>
-          <string name="tv_adeudos_estrellas">Calificación 0.0 de 5.0</string>
+    <string name="tv_adeudos_estrellas">Calificación 0.0 de 5.0</string>
 
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
@@ -155,11 +154,11 @@
     <string name="califica_taxi_tv_titulo">Help us rate the service</string>
     <string name="califica_taxi_tv_titulo_calif">Did you like this service?</string>
     <string name="califica_taxi_tv_titulo_opinion">Give us your feedback</string>
-  <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
+    <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">End</string>
     <string name="dialogo_califica_servicio_btnAceptar">Send</string>
     <string name="dialogo_califica_servicio_enviar_comentario">Your comment was sent</string>
-        <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
+    <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
 
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destination</string>
@@ -180,7 +179,7 @@
     <string name="imagen_muy_grande">The image is too big!</string>
     <string name="falla_facebook">Something failed when loging to Facebook</string>
     <string name="GPS_OFF">GPS was turned off</string>
-     <string name="wifi_OFF">Falla! no te puedes localizar</string>
+    <string name="wifi_OFF">Falla! no te puedes localizar</string>
 
     <!-- setText -->
     <string name="datos_del_taxi">TAXI INFO</string>
@@ -194,10 +193,9 @@
 
     <!-- Mapa -->
     <string name="mapa_tu_inicio">Inicio del viaje</string>
-    
     <string name="mapa_inicio_de_viaje">Take it!</string>
-        <string name="mapa_inicio_de_viaje_no">Dont take it!</string>
-          <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
+    <string name="mapa_inicio_de_viaje_no">Dont take it!</string>
+    <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
     <string name="mapa_mi_posicion">My location</string>
     <string name="mapa_estas">You are \t</string>
     <string name="mapa_tu_destino">\tfrom your destiny</string>
@@ -278,8 +276,10 @@
     <string name="mensaje_para_panic_titulo">Traxi cuenta con 2 niveles de seguridad:</string>
     <string name="adeudos_row_no_hay_datos">No existen datos</string>
     <string name="title_activity_descripcion__escudo">Descripcion_Escudo</string>
-      <string name="Registro_manual_llena_todos_los_campos">Debes llenar los campos</string>
+    <string name="Registro_manual_llena_todos_los_campos">Debes llenar los campos</string>
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
+      <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
+    <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
 
 </resources>

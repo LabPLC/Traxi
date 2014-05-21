@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
-
+import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -20,6 +20,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -339,16 +340,18 @@ private boolean isActivado= false;
 		}
 	}
 
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	public static  void showNotification() {
 		// notification is selected
 
 		Intent intent_mapa = new Intent(taxiActivity, Mapa_tracking.class);
 		intent_mapa.putExtra("latitud_inicial", ServicioGeolocalizacion.latitud_inicial);
 		intent_mapa.putExtra("longitud_inicial", ServicioGeolocalizacion.longitud_inicial);
+		
 		PendingIntent pIntent = PendingIntent.getActivity(taxiActivity, 0, intent_mapa,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
 
 		Intent intent_califica = new Intent(taxiActivity, Califica_taxi.class);
-		PendingIntent pIntent_cal = PendingIntent.getActivity(taxiActivity, 0,intent_califica, PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent pIntent_cal = PendingIntent.getActivity(taxiActivity, 0,intent_califica, PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_CANCEL_CURRENT);
 		
 
 		Notification noti = new Notification.Builder(taxiActivity)
@@ -358,8 +361,8 @@ private boolean isActivado= false;
 		
 				// .setContentIntent(pIntent)
 				.addAction(R.drawable.ic_launcher_chinche, taxiActivity.getResources().getString(R.string.notificacion_viaje), pIntent)
-				.addAction(R.drawable.ic_launcher_fin_viaje, taxiActivity.getResources().getString(R.string.notificacion_finalizar),
-						pIntent_cal).build();
+				.addAction(R.drawable.ic_launcher_fin_viaje, taxiActivity.getResources().getString(R.string.notificacion_finalizar),pIntent_cal)
+				.build();
 		
 		
 		noti.flags += Notification.FLAG_ONGOING_EVENT;

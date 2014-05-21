@@ -295,6 +295,19 @@ public class Utils {
 		
 		}
 	  
-	  
-	
+	  /**
+	   * valid si es nummero o no
+	   * @return (true) si es numero
+	   * 		(false) si no es numero
+	   */
+		public static boolean isNumeric(String cadena){
+			try {
+				Integer.parseInt(cadena);
+				
+				return true;
+			} catch (NumberFormatException nfe){
+			
+				return false;
+			}
+		}
 }
