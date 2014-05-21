@@ -56,7 +56,7 @@
     <string name="edittext_error_number">Escribe número válido [0&#8211;9].</string>
     <string name="edittext_error_nickname">Escribe sólo [a-z A-Z 0&#8211;9 .-_ ].</string>
     <string name="edittext_error_email">Escribe sintaxis de correo válida.</string>
-      <string name="edittext_error_formato_placa">Placa incompleta ejemplo: A12345</string>
+    <string name="edittext_error_formato_placa">Placa incompleta ejemplo: A12345</string>
     <string name="edittext_error_telephone_repeated">Teléfono de usuario y emergencia no debe ser el mismo</string>
 
     <!-- Network -->
@@ -93,7 +93,7 @@
     <string name="texto_calificacion_90">Este vehículo es un taxi altamente confiable, pero aún tiene áreas de oportunidad para mejorar. Es un taxi confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
     <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, así como que está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
-    <string name="texto_significado_el_viaje_inicio">El viaje inicio\nEspera a que te localicemos</string>
+    <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos...</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">Toma una foto</string>
@@ -152,7 +152,7 @@
 
     <!-- dialogo calificar taxis -->
     <string name="califica_taxi_tv_titulo">Ayudanos a evaluar el servicio</string>
-    <string name="califica_taxi_tv_titulo_calif">¿Qué tal te pareció el servicio del taxi?</string>
+    <string name="califica_taxi_tv_titulo_calif">¿Qué tal el servicio del taxi?</string>
     <string name="califica_taxi_tv_titulo_opinion">Danos tu opinión</string>
     <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">Finalizar</string>
@@ -164,7 +164,7 @@
     <string name="mitaxi_googlemaps_tv_destination">Destino del viaje</string>
     <string name="mitaxi_googlemaps_btn_destino">Ir</string>
     <string name="mitaxi_googlemaps_actv_destination">Colonia Ejemplo calle 37</string>
-    <string name="mapa_tracking_terminoviaje">Terminó viaje..</string>
+    <string name="mapa_tracking_terminoviaje">Terminó viaje.</string>
 
     <!-- activity_datos -->
     <string name="datos_tv_titulo">Datos del vehículo</string>
@@ -192,10 +192,10 @@
     <string name="sms_emer">Estoy en peligro!, eres mi contacto de emergencia, revisa tu correo por favor</string>
 
     <!-- Mapa -->
-    <string name="mapa_inicio_de_viaje">¡Lo tomo!</string>
+    <string name="mapa_inicio_de_viaje">Lo tomo</string>
     <string name="mapa_tu_inicio">Inicio del viaje</string>
     <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
-    <string name="mapa_inicio_de_viaje_no">¡No lo tomo!</string>
+    <string name="mapa_inicio_de_viaje_no">No lo tomo</string>
     <string name="mapa_mi_posicion">Mi posición</string>
     <string name="mapa_estas">Estas a\t</string>
     <string name="mapa_tu_destino">\tde tu destino</string>
@@ -232,12 +232,12 @@
     <string name="prefKeyResetQuests_titulo">Acerca de</string>
     <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
     <string name="prefKeyResetQuests_texto">Aplicación realizada dentro del programa CÓDIGO.CDMX\n\n
-        Desarrolladores:\n
-        \tMike Morán @yosoymikesaurio\n
+        Desarrollador:\n
+        \tMike Morán @yosoymikesaurio\n\n
+        Colaboradores:\n
         \tAntuan Chávez @ntuanChavez\n
-        \tEdgar Zavala @zace3d\n\n
-        Diseñador:\n
-        \tSergio Beltrán @ssbeltran</string>
+        \tSergio Beltrán @ssbeltran\n
+        \tEdgar Zavala @zace3d</string>
     <string name="prefKeyResetQuests_boton">Aceptar</string>
 
     <!-- Tips -->
@@ -278,13 +278,22 @@
     <string name="mensaje_para_panic_boton_cancelar">Cancelar</string>
     <string name="mensaje_para_panic_titulo">Traxi cuenta con 2 niveles de seguridad:</string>
     <string name="adeudos_row_no_hay_datos">No existen datos</string>
-    
     <string name="Registro_manual_llena_todos_los_campos">Debes llenar los campos</string>
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
     <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
-       <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
-   
-
+    <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
+    <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
+    <string name="Califica_taxi_0">Muy deficiente servicio</string>
+    <string name="Califica_taxi_05">Deficiente servicio</string>
+    <string name="Califica_taxi_10">Muy mal servicio</string>
+    <string name="Califica_taxi_15">Mal servicio</string>
+    <string name="Califica_taxi_20">Servicio regular malo</string>
+    <string name="Califica_taxi_25">Servicio regular</string>
+    <string name="Califica_taxi_30">Servicio regular bueno</string>
+    <string name="Califica_taxi_35">Buen servicio</string>
+    <string name="Califica_taxi_40">Muy buen servicio</string>
+    <string name="Califica_taxi_45">Excelente servicio</string>
+    <string name="Califica_taxi_50">Servicio insuperable</string>
 
 </resources>

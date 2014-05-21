@@ -27,7 +27,7 @@
         android:text="@string/mapa_tracking_terminoviaje"
         android:textColor="@drawable/selector_txt_boton_redondo" />
 
-   <SlidingDrawer
+    <SlidingDrawer
         android:id="@+id/drawer"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
@@ -78,15 +78,13 @@
                         android:background="@drawable/selector_btn_generic"
                         android:text="@string/mitaxi_googlemaps_btn_destino"
                         android:textColor="@drawable/selector_txt_boton_redondo" />
-
-                  
-
                 </LinearLayout>
 
                 <AutoCompleteTextView
                     android:id="@+id/mitaxi_googlemaps_actv_destination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:background="@drawable/rounded_edittext_blanco"
                     android:ellipsize="end"
@@ -146,5 +144,5 @@
         android:layout_marginRight="5dp"
         android:background="#00FFFFFF"
         android:src="@drawable/ic_launcher_gps" />
- 
+
 </RelativeLayout>

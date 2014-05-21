@@ -41,6 +41,8 @@ public class Califica_taxi extends Activity {
 	RatingBar rank;
 	private String Scalificacion = "0";
 	private String Scomentario;
+
+	private TextView califica_taxi_tv_titulo_calif;
 	
 	
 	
@@ -76,18 +78,20 @@ public class Califica_taxi extends Activity {
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_ROJO));
 	     
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_calif)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_calif)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		 califica_taxi_tv_titulo_calif= (TextView)findViewById(R.id.califica_taxi_tv_titulo_calif);
+		califica_taxi_tv_titulo_calif.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
+		califica_taxi_tv_titulo_calif.setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 			
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
+	/*	((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-
+*/
 		
 		ImageView califica_taxi_iv_no_calif=(ImageView)findViewById(R.id.califica_taxi_iv_no_calif);
 		califica_taxi_iv_no_calif.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				
 				cerrarDialog(R.string.dialogo_califica_servicio_NO_enviar_comentario);
 				
 			}
@@ -101,13 +105,44 @@ public class Califica_taxi extends Activity {
 		rank = (RatingBar)findViewById(R.id.dialogo_califica_servicio_ratingBarServicio);
 		rank.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
 			
-
-			public void onRatingChanged(RatingBar ratingBar, float rating,
-				boolean fromUser) {
-	 
+			public void onRatingChanged(RatingBar ratingBar, float rating,boolean fromUser) {
 				Scalificacion=(String.valueOf(rating));
-	 
+				if(rating==0.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_0));
+				}
+				if(rating==0.5){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_05));
+				}
+				if(rating==1.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_10));
+				}
+				if(rating==1.5){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_15));
+				}
+				if(rating==2.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_20));
+				}
+				if(rating==2.5){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_25));
+				}
+				if(rating==3.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_30));
+				}
+				if(rating==3.5){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_35));
+				}
+				if(rating==4.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_40));
+				}
+				if(rating==4.5){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_45));
+				}
+				if(rating==5.0){
+					califica_taxi_tv_titulo_calif.setText(getResources().getString(R.string.Califica_taxi_50));
+				}
 			}
+
+			
 		});
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +185,13 @@ public class Califica_taxi extends Activity {
 
 	
 public void cerrarDialog(int cadena ){
+	
 	Mapa_tracking.isButtonExit= false;
+	try{
+		 Mapa_tracking.fa.finish();
+		}catch(Exception e){
+			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		}
 	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 	stopService(svc);
 	ServicioGeolocalizacion.serviceIsIniciado=false;
@@ -169,5 +210,7 @@ public void cerrarDialog(int cadena ){
 		ServicioGeolocalizacion.stopNotification();
 		super.onStart();
 	}
+	
+
 	
 }

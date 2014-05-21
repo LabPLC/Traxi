@@ -5,14 +5,7 @@
     android:orientation="vertical"
     android:padding="5dp" >
 
-   
-
-    <View
-        android:id="@+id/textView1"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/gris_claro" />
-
+  
     <TextView
         android:id="@+id/comentarios_row_tv_descripcion"
         android:layout_width="match_parent"
@@ -25,6 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
+        android:layout_marginBottom="5dp"
         android:text="" />
+      <View
+        android:id="@+id/textView1"
+        android:layout_width="150dp"
+        android:layout_height="2dp"
+        android:background="@color/gris_claro"
+        android:layout_gravity="right" />
+    
 
 </LinearLayout>

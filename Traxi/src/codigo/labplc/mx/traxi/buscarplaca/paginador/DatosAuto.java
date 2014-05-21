@@ -154,7 +154,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				}else{
 					ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
 					startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
-					Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.texto_significado_el_viaje_inicio), Toast.LENGTH_LONG);
+				//	Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.texto_significado_el_viaje_inicio), Toast.LENGTH_LONG);
 				
 					
 					Intent intent_mapa = new Intent(DatosAuto.this, Mapa_tracking.class);

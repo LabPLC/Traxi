@@ -93,7 +93,7 @@
     <string name="texto_calificacion_90">This is a well-trusted vehicle but it can get better. We advice you as always to stay alert</string>
     <string name="texto_calificacion_100">Congratulations! You found a very trusted taxi and you will have a pleasant trip. However, since your security comes first, stay alert!</string>
     <string name="texto_significado_calif"> What does this score means?</string>
-    <string name="texto_significado_el_viaje_inicio">Beginning trip</string>
+    <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">Take a picture</string>
@@ -152,7 +152,7 @@
 
     <!-- dialogo calificar taxis -->
     <string name="califica_taxi_tv_titulo">Help us rate the service</string>
-    <string name="califica_taxi_tv_titulo_calif">Did you like this service?</string>
+    <string name="califica_taxi_tv_titulo_calif">Did you enjoy the trip?</string>
     <string name="califica_taxi_tv_titulo_opinion">Give us your feedback</string>
     <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">End</string>
@@ -193,8 +193,8 @@
 
     <!-- Mapa -->
     <string name="mapa_tu_inicio">Inicio del viaje</string>
-    <string name="mapa_inicio_de_viaje">Take it!</string>
-    <string name="mapa_inicio_de_viaje_no">Dont take it!</string>
+    <string name="mapa_inicio_de_viaje">Take it</string>
+    <string name="mapa_inicio_de_viaje_no">Dont take it</string>
     <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
     <string name="mapa_mi_posicion">My location</string>
     <string name="mapa_estas">You are \t</string>
@@ -232,12 +232,12 @@
     <string name="prefKeyResetQuests_titulo">About</string>
     <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
     <string name="prefKeyResetQuests_texto">This app was made in CÓDIGO.CDMX fellowship\n\n
-        Developers:\n
-        \tMike Morán @yosoymikesaurio\n
+       Developer:\n
+        \tMike Morán @yosoymikesaurio\n\n
+        Collaborators:\n
         \tAntuan Chávez @ntuanChavez\n
-        \tEdgar Zavala @zace3d\n\n
-        Graphical designer:\n
-        \tSergio Beltrán @ssbeltran</string>
+        \tSergio Beltrán @ssbeltran\n
+        \tEdgar Zavala @zace3d</string>
     <string name="prefKeyResetQuests_boton">OK</string>
     <string name="title_activity_tips_activity">Tips_activity</string>
     <string name="title_activity_emergencia_activity">Emergencia_activity</string>
@@ -278,8 +278,20 @@
     <string name="title_activity_descripcion__escudo">Descripcion_Escudo</string>
     <string name="Registro_manual_llena_todos_los_campos">Debes llenar los campos</string>
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
-      <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
+    <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
     <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
+    <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
+    <string name="Califica_taxi_0">Muy deficiente servicio</string>
+    <string name="Califica_taxi_05">Deficiente servicio</string>
+    <string name="Califica_taxi_10">Muy mal servicio</string>
+    <string name="Califica_taxi_15">Mal servicio</string>
+    <string name="Califica_taxi_20">Servicio regular malo</string>
+    <string name="Califica_taxi_25">Servicio regular</string>
+    <string name="Califica_taxi_30">Servicio regular bueno</string>
+    <string name="Califica_taxi_35">Buen servicio</string>
+    <string name="Califica_taxi_40">Muy buen servicio</string>
+    <string name="Califica_taxi_45">Excelente servicio</string>
+    <string name="Califica_taxi_50">Servicio insuperable</string>
 
 </resources>

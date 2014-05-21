@@ -42,10 +42,12 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.SlidingDrawer;
 import android.widget.TextView;
+import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TrackxiMainActivity;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
+import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
@@ -262,7 +264,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		        	   
 		       		Drawer.animateClose();
 		           }else{
-		        	  
+		        	  Dialogos.Toast(Mapa_tracking.this, getResources().getString(R.string.Mapa_tracking_llena_direccion), Toast.LENGTH_LONG);
 		           }
 				
 			}
@@ -690,7 +692,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 
 				pDialog = new ProgressDialog(Mapa_tracking.this);
 				pDialog.setCanceledOnTouchOutside(false);
-				pDialog.setMessage(getResources().getString(R.string.cargando_info));
+				pDialog.setMessage(getResources().getString(R.string.texto_significado_el_viaje_inicio));
 				pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 				pDialog.setCancelable(true);
 				pDialog.show();

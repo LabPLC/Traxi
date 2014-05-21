@@ -17,24 +17,22 @@
         android:layout_centerVertical="true"
         android:background="@drawable/marco"
         android:orientation="vertical" >
- <ImageView
-        android:id="@+id/tips_activity_iv_cerrar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_above="@+id/tips_activity_ll_tips"
-        android:layout_alignLeft="@+id/tips_activity_ll_tips"
-        android:background="@drawable/marco_rojo"
-        android:src="@drawable/closerojo" />
+
+        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight=".85"
             android:orientation="vertical"
-            android:padding="5dp" >
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal" >
 
                 <ImageView
@@ -45,7 +43,7 @@
 
                 <TextView
                     android:id="@+id/tips_activity_tv_titulo"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center|left"
                     android:text="@string/app_name"
@@ -73,9 +71,9 @@
                             android:id="@+id/tips_activity_tv_contenido"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="18sp"
                             android:layout_gravity="center_vertical"
-                            android:text="" />
+                            android:text=""
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </ScrollView>
             </LinearLayout>
@@ -114,6 +112,13 @@
         </LinearLayout>
     </LinearLayout>
 
-   
+    <ImageView
+        android:id="@+id/tips_activity_iv_cerrar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignLeft="@+id/tips_activity_ll_tips"
+        android:layout_alignTop="@+id/tips_activity_ll_tips"
+        android:src="@drawable/closerojo"
+        android:background="@drawable/marco" />
 
 </RelativeLayout>
