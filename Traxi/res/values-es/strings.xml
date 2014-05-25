@@ -93,7 +93,7 @@
     <string name="texto_calificacion_90">Este vehículo es un taxi altamente confiable, pero aún tiene áreas de oportunidad para mejorar. Es un taxi confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
     <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, así como que está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
-    <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos...</string>
+    <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">Toma una foto</string>
@@ -157,7 +157,7 @@
     <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">Finalizar</string>
     <string name="dialogo_califica_servicio_btnAceptar">Enviar</string>
-    <string name="dialogo_califica_servicio_enviar_comentario">Tu coemntario ha sido enviado</string>
+    <string name="dialogo_califica_servicio_enviar_comentario">Tu comentario ha sido enviado</string>
     <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
 
     <!-- mapa_tracking -->
