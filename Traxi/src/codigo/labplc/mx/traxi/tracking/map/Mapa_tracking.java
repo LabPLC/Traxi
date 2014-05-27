@@ -44,7 +44,7 @@ import android.widget.SlidingDrawer;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.TrackxiMainActivity;
+import codigo.labplc.mx.traxi.TraxiMainActivity;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
@@ -125,7 +125,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 					ServicioGeolocalizacion.CancelNotification(Mapa_tracking.this, 0);
 					Intent svc = new Intent(Mapa_tracking.this, ServicioGeolocalizacion.class);
 					stopService(svc);
-			  		Intent mainIntent = new Intent().setClass(Mapa_tracking.this, TrackxiMainActivity.class);
+			  		Intent mainIntent = new Intent().setClass(Mapa_tracking.this, TraxiMainActivity.class);
 			  		startActivity(mainIntent);
 			  		finish();
 				}

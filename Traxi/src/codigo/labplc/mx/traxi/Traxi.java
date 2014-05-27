@@ -8,6 +8,11 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import codigo.labplc.mx.traxi.log.HockeySender;
 
+/**
+ * clase que extiende de Aplicacion y contola los Log 
+ * @author mikesaurio
+ *
+ */
 @ReportsCrashes(formKey = "traxi", formUri ="http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog" )
 public class Traxi extends Application{
 

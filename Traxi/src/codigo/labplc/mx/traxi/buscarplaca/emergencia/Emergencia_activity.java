@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class Emergencia_activity extends Activity {
 	     
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTextColor(new fonts(Emergencia_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-
+		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setText((getResources().getText(R.string.mensaje_para_panic)));
 		Button activity_emergencia_btn_ok = (Button) findViewById(R.id.activity_emergencia_btn_ok);
 		activity_emergencia_btn_ok.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		activity_emergencia_btn_ok.setOnClickListener(new View.OnClickListener() {

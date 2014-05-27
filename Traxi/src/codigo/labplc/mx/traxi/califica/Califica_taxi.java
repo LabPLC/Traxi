@@ -17,7 +17,7 @@ import android.widget.RatingBar.OnRatingBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.TrackxiMainActivity;
+import codigo.labplc.mx.traxi.TraxiMainActivity;
 import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
@@ -62,7 +62,7 @@ public class Califica_taxi extends Activity {
 			ServicioGeolocalizacion.CancelNotification(Califica_taxi.this, 0);
 			Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 			stopService(svc);
-	  		Intent mainIntent = new Intent().setClass(Califica_taxi.this, TrackxiMainActivity.class);
+	  		Intent mainIntent = new Intent().setClass(Califica_taxi.this, TraxiMainActivity.class);
 	  		startActivity(mainIntent);
 	  		finish();
 		}

@@ -1,32 +1,13 @@
 Muestra de los end points
 
-Dar De alta usuario
-Metodo Post
-URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addpost"
-add nombre (nombre del usuario o NickName)
-add correo (correo del usuario)
-add telemer (telefono del contacto de emergencia)
-add os      (Sistema operativo 1 IOS. 2 Android)//estatico
-add correoemer	(correo del contacto de emergencia)
-add telemer2 (telefono 2 del contacto de emergencia)
-add correoemer2	(correo 2 del contacto de emergencia)
-add foto (foto del perfil)
+					
+-----------------------------------------END POINTS-----------------------------------------
+Clase: Traxi.java
+Descripcion: En caso de la aplicacion falle enbvia un reporte de fallo
+metodo: GET
+URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog"							
 
--------------------------------------------------------------------------------
-
-Editar usuario
-Metodo Post
-URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addpost"
-add nombre (nombre del usuario o NickName) //no es editable
-add correo (correo del usuario) //no es editable
-add telemer (telefono del contacto de emergencia)
-add os      (Sistema operativo 1 IOS. 2 Android)//estatico
-add correoemer	(correo del contacto de emergencia)
-add telemer2 (telefono 2 del contacto de emergencia)
-add correoemer2	(correo 2 del contacto de emergencia)
-add foto (foto del perfil)
-
-
+							
 -------------------------------------------------------------------------------
 
 Enviar foto para OCR
@@ -83,3 +64,4 @@ URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentari
 							+"&pointfinlon="+longitud
 							+"&horainicio="+horaInicio
 							+"&horafin="+finViaje;
+							

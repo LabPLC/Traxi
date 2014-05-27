@@ -29,8 +29,10 @@ import org.json.JSONObject;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
@@ -40,7 +42,14 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.util.Base64;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
+import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 
 public class Utils {
@@ -222,7 +231,8 @@ public class Utils {
 	public static boolean hasInternet(Activity a) {
 		boolean hasConnectedWifi = false;
 		boolean hasConnectedMobile = false;
-		ConnectivityManager cm = (ConnectivityManager) a.getSystemService(Context.CONNECTIVITY_SERVICE);
+		ConnectivityManager cm = (ConnectivityManager) a
+				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo[] netInfo = cm.getAllNetworkInfo();
 		for (NetworkInfo ni : netInfo) {
 			if (ni.getTypeName().equalsIgnoreCase("wifi"))
@@ -234,80 +244,115 @@ public class Utils {
 		}
 		return hasConnectedWifi || hasConnectedMobile;
 	}
-	
-	
-	public static String getMAilKey(Context a){
-		
-	     try{
-	     final String ALGORITMO = "AES";
-	     final byte[] valor_clave = "0000000000000000".getBytes();
-		Key key = new SecretKeySpec(valor_clave, ALGORITMO);
-		Cipher cipher = Cipher.getInstance("AES");
-		     cipher.init(Cipher.DECRYPT_MODE, key);
-		     byte[] decodificar_texto = Base64.decode(a.getResources().getString(R.string.envio_mail).getBytes("UTF-8"), Base64.DEFAULT);
-		     byte[] desencriptado = cipher.doFinal(decodificar_texto);
-		return new String(desencriptado, "UTF-8");
-	     }catch(Exception e){
-	    	 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
-	    	 return "falla";
-	     }
-		 	}
 
-	
+	public static String getMAilKey(Context a) {
+
+		try {
+			final String ALGORITMO = "AES";
+			final byte[] valor_clave = "0000000000000000".getBytes();
+			Key key = new SecretKeySpec(valor_clave, ALGORITMO);
+			Cipher cipher = Cipher.getInstance("AES");
+			cipher.init(Cipher.DECRYPT_MODE, key);
+			byte[] decodificar_texto = Base64.decode(a.getResources()
+					.getString(R.string.envio_mail).getBytes("UTF-8"),
+					Base64.DEFAULT);
+			byte[] desencriptado = cipher.doFinal(decodificar_texto);
+			return new String(desencriptado, "UTF-8");
+		} catch (Exception e) {
+			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			return "falla";
+		}
+	}
+
 	public static String getEmail(Context context) {
-	    AccountManager accountManager = AccountManager.get(context); 
-	    Account account = getAccount(accountManager);
+		AccountManager accountManager = AccountManager.get(context);
+		Account account = getAccount(accountManager);
 
-	    if (account == null) {
-	      return null;
-	    } else {
-	      return account.name;
-	    }
-	  }
+		if (account == null) {
+			return null;
+		} else {
+			return account.name;
+		}
+	}
 
-	  private static Account getAccount(AccountManager accountManager) {
-	    Account[] accounts = accountManager.getAccountsByType("com.google");
-	    Account account;
-	    if (accounts.length > 0) {
-	      account = accounts[0];      
-	    } else {
-	      account = null;
-	    }
-	    return account;
-	  }
-	  
-	  /**
-	   * encripta una cadena dada 
-	   * @param texto_a_encriptar
-	   * @return
-	   * @throws Exception
-	   */
-	  public static String encriptar (String texto_a_encriptar) throws Exception 
-		{
-		   	final byte[] valor_clave = "0000000000000000".getBytes(); 
-			Key key = new SecretKeySpec(valor_clave, "AES");
-			Cipher cipher = Cipher.getInstance("AES"); 
-			cipher.init(Cipher.ENCRYPT_MODE, key );
-			byte[] encrypted = cipher.doFinal(texto_a_encriptar.getBytes("UTF-8"));
-			String texto_encriptado = Base64.encodeToString(encrypted, Base64.DEFAULT);//new String(encrypted, "UTF-8");
-			return texto_encriptado;
-		
-		
+	private static Account getAccount(AccountManager accountManager) {
+		Account[] accounts = accountManager.getAccountsByType("com.google");
+		Account account;
+		if (accounts.length > 0) {
+			account = accounts[0];
+		} else {
+			account = null;
 		}
-	  
-	  /**
-	   * valid si es nummero o no
-	   * @return (true) si es numero
-	   * 		(false) si no es numero
-	   */
-		public static boolean isNumeric(String cadena){
-			try {
-				Integer.parseInt(cadena);
-				
-				return true;
-			} catch (NumberFormatException nfe){
-			
-				return false;
-			}
+		return account;
+	}
+
+	/**
+	 * encripta una cadena dada
+	 * 
+	 * @param texto_a_encriptar
+	 * @return
+	 * @throws Exception
+	 */
+	public static String encriptar(String texto_a_encriptar) throws Exception {
+		final byte[] valor_clave = "0000000000000000".getBytes();
+		Key key = new SecretKeySpec(valor_clave, "AES");
+		Cipher cipher = Cipher.getInstance("AES");
+		cipher.init(Cipher.ENCRYPT_MODE, key);
+		byte[] encrypted = cipher.doFinal(texto_a_encriptar.getBytes("UTF-8"));
+		String texto_encriptado = Base64.encodeToString(encrypted,
+				Base64.DEFAULT);// new String(encrypted, "UTF-8");
+		return texto_encriptado;
+
+	}
+
+	/**
+	 * valid si es nummero o no
+	 * 
+	 * @return (true) si es numero (false) si no es numero
+	 */
+	public static boolean isNumeric(String cadena) {
+		try {
+			Integer.parseInt(cadena);
+
+			return true;
+		} catch (NumberFormatException nfe) {
+
+			return false;
 		}
+	}
+
+	public static float convertDpToPixel(Context context, float dp) {
+		Resources resources = context.getResources();
+		DisplayMetrics metrics = resources.getDisplayMetrics();
+		float px = dp * (metrics.densityDpi / 160f);
+		return px;
+	}
+
+	public static float convertPixelsToDp(Context context, float px) {
+		Resources resources = context.getResources();
+		DisplayMetrics metrics = resources.getDisplayMetrics();
+		float dp = px / (metrics.densityDpi / 160f);
+		return dp;
+	}
+	
+	
+	/**
+	 * prepara el Action Bar custom
+	 * @param activity
+	 * @return
+	 */
+	public static ActionBar crearActionBar(Activity activity, String nombre){
+		ActionBar ab	= activity.getActionBar();
+		ab.setDisplayShowHomeEnabled(false);
+		ab.setDisplayShowTitleEnabled(false);
+		final LayoutInflater inflater = (LayoutInflater) activity.getSystemService("layout_inflater");
+		View view = inflater.inflate(R.layout.abs_layout, null);
+		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_MAMEY));
+		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(nombre);
+		ab.setDisplayShowCustomEnabled(true);
+		ab.setCustomView(view, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+		ab.setCustomView(view);
+		return ab;
+	}
+
 }

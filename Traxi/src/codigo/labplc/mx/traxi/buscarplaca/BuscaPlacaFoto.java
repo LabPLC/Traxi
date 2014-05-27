@@ -66,6 +66,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 	
 	
 	private static final int RESULT_SETTINGS = 1;
+	private static final int RESULT_FOTO = 2;
 	 public final String TAG = this.getClass().getSimpleName();
 	private Camera camera;
 	private SurfaceView surfaceView;
@@ -131,7 +132,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 					if(Utils.hasInternet(context)){
 						camera.takePicture(myShutterCallback,myPictureCallback_RAW, myPictureCallback_JPG);
 					}else{
-						Dialogos.Toast(context, "No tienes Internet", Toast.LENGTH_LONG);
+						Dialogos.Toast(context,getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
 					}
 				}catch(Exception e){
 					BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
@@ -170,9 +171,8 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 					Runtime.getRuntime().gc();
 					Matrix mat = new Matrix();
 					mat.postRotate(90);
-					//Bitmap bMapRotate = Bitmap.createBitmap(bitmapPicture, 0, 0,bitmapPicture.getWidth(), bitmapPicture.getHeight(), mat, true);
-					int alto_num = bitmapPicture.getHeight()/12;
-					Bitmap esizedbitmap1 = Bitmap.createBitmap(bitmapPicture,0,(alto_num*5),bitmapPicture.getWidth(),(alto_num*2),mat,true);
+					int alto_num = bitmapPicture.getWidth()/12;
+					Bitmap esizedbitmap1 = Bitmap.createBitmap(bitmapPicture,(alto_num*5),0,(alto_num*2),bitmapPicture.getHeight(),mat,true);
 					Bitmap	resized = Utils.toGrayscale(Bitmap.createScaledBitmap(esizedbitmap1,(int)(esizedbitmap1.getWidth()*0.5), (int)(esizedbitmap1.getHeight()*0.5), true));
 					try{
 						File file = new File(foto);
@@ -358,10 +358,14 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 							Dialogos.Toast(context, getResources().getString(R.string.foto_fallida), Toast.LENGTH_LONG);
 						}else{
 							Dialogos.Toast(context, resultado, Toast.LENGTH_LONG);
-							Intent intent= new Intent().setClass(context,DatosAuto.class);
-							intent.putExtra("placa", resultado);
-							context.startActivityForResult(intent, 0);
-							context.finish();
+							
+							Intent returnIntent = new Intent();
+							returnIntent.putExtra("result",resultado);
+							setResult(RESULT_FOTO,returnIntent);
+							finish();
+							
+							
+							
 						}
 						pDialog.dismiss();
 					}
@@ -373,13 +377,31 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 				        if (v.getId() == R.id.abs_layout_iv_menu) {
 				            showPopup(v);
 				        }else if (v.getId() == R.id.abs_layout_iv_logo) {
-							BuscaPlacaFoto.this.onBackPressed();
+				        	atras();
 						}
 
 				       
 				    }
 				
-				 public void showPopup(View v) {
+				
+				
+				
+				public void atras(){
+					Intent returnIntent = new Intent();
+					returnIntent.putExtra("result",resultado);
+					setResult(RESULT_FOTO,returnIntent);
+					finish();
+				}
+				
+				 @Override
+				public void onBackPressed() {
+					 atras();
+				}
+
+
+
+
+				public void showPopup(View v) {
 						PopupMenu popup = new PopupMenu(BuscaPlacaFoto.this, v);
 						MenuInflater inflater = popup.getMenuInflater();
 						inflater.inflate(R.menu.popup, popup.getMenu());
@@ -429,5 +451,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
 					}
 
+					
+					
 				
 }

@@ -100,6 +100,9 @@
     <string name="busca_placa_btn_tomarfoto">Photo ..</string>
     <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
     <string name="inicio_de_trabajo_et_placa">License plate</string>
+        <string name="busca_placa_btn_emergencia">Emergencia</string>
+    <string name="busca_placa_btn_tips">Tips</string>
+    <string name="busca_placa_btn_tomar_foto">Tomar foto</string>  
 
     <!-- Tenencia -->
     <string name="sin_adeudo_tenencia">This taxi does not have any pending payments</string>

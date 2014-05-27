@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.widget.LinearLayout.LayoutParams;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.utlileria.Utils;
+import codigo.labplc.mx.traxi.utils.Utils;
 
 public class ThermometerView extends View {
 	private int DefaultHeight = 20;

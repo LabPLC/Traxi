@@ -21,9 +21,9 @@
             android:layout_marginRight="5dp"
             android:layout_weight=".33"
             android:background="@color/gris_claro"
-            android:drawableTop="@drawable/ic_launcher_alerta"
-            android:text="Emergencia"
-            android:textColor="@color/rojo_logo"
+            android:drawableTop="@drawable/ic_launcher_alerta_gris"
+            android:text="@string/busca_placa_btn_emergencia"
+            android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
 
         <Button
@@ -34,7 +34,7 @@
             android:layout_weight=".33"
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_tips"
-            android:text="Tips"
+            android:text="@string/busca_placa_btn_tips"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
 
@@ -45,7 +45,7 @@
             android:layout_weight=".33"
             android:background="@color/gris_claro"
             android:drawableTop="@drawable/ic_launcher_foto"
-            android:text="Tomar foto"
+            android:text="@string/busca_placa_btn_tomar_foto"
             android:textColor="@color/gris_obscuro"
             android:textSize="12sp" />
     </LinearLayout>
