@@ -99,6 +99,7 @@
     <string name="inicio_de_trabajo_tv_foto">¡Solo funciona en la puerta!</string>
     <string name="busca_placa_btn_tomarfoto">Take a picture</string>
         <string name="busca_placa_btn_tomarfoto_entendi">Entendí</string>
+        
        <string name="camara_guia_foto">Manera correcta de tomar una foto</string>
     <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
     <string name="inicio_de_trabajo_et_placa">License plate</string>
@@ -169,7 +170,7 @@
     <string name="mitaxi_googlemaps_tv_destination">Destination</string>
     <string name="mitaxi_googlemaps_btn_destino">Go</string>
     <string name="mitaxi_googlemaps_actv_destination">Neiborhood (example Calle 13)</string>
-    <string name="mapa_tracking_terminoviaje">Trip ended...</string>
+    <string name="mapa_tracking_terminoviaje">Trip ended</string>
 
     <!-- activity_datos -->
     <string name="datos_tv_titulo">Vehicle info</string>

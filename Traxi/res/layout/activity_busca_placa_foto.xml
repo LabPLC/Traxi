@@ -14,7 +14,6 @@
         android:id="@+id/inicio_de_trabajo_tv_foto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
         android:layout_marginBottom="3dp"
         android:text="@string/inicio_de_trabajo_tv_foto"
         android:textColor="@color/gris_obscuro"
@@ -123,7 +122,7 @@
                     android:layout_height="match_parent"
                     android:paddingRight="2dp"
                     android:gravity="center"
-                    android:text="Manera correcta de tomar una foto"
+                    android:text="@string/camara_guia_foto"
                     android:textColor="@color/black" />
 
                 

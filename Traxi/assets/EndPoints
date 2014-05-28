@@ -30,7 +30,7 @@ Metodo GET
 URL: "http://dev.datos.labplc.mx/movilidad/vehiculos/"+placa+".json"
 
 ---------------------------------------------------------------------------------
-Datos de un txi si esta en la revista vehicular
+Datos de un taxi si esta en la revista vehicular
 Metodo GET
 URL: "http://mikesaurio.dev.datos.labplc.mx/movilidad/taxis/"+placa+".json"
 

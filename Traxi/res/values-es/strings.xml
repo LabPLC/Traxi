@@ -86,7 +86,7 @@
     <string name="texto_calificacion_60">Este vehículo está registrado como un taxi, pero presenta varios problemas en otros rubros. Es un taxi de bajo riesgo, pero se sugiere que en caso de abordar el vehículo, lo hagas con todas las precauciones posibles y mantenerte alerta.</string>
     <string name="texto_calificacion_80">Este vehículo está registrado como un taxi, pero presenta algunos problemas en otros rubros. Es un taxi de confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
     <string name="texto_calificacion_90">Este vehículo es un taxi altamente confiable, pero aún tiene áreas de oportunidad para mejorar. Es un taxi confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
-    <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, así como que está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
+    <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio y está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
     <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
@@ -121,7 +121,7 @@
 
     <!-- verificaciones -->
     <string name="tiene_verificaciones">Este vehículo tiene calcomanía: </string>
-    <string name="no_tiene_verificaciones">Este vehículo no tiene verificaciones</string>
+    <string name="no_tiene_verificaciones">Este vehículo no tiene verificacion</string>
     <string name="title_activity_trackxi_setting">TrackxiSettingActivity</string>
 
     <!-- Preferencias -->
@@ -227,7 +227,7 @@
     <!-- Facebook -->
     <string name="facebook_id">622752297805514</string>
     <string name="exception">Exception: %1$s</string>
-    <string name="face_no_amigos">Ningun amigo a tomado este taxi</string>
+    <string name="face_no_amigos">Ningún amigo a tomado este taxi</string>
 
     <!-- preferences -->
     <string name="prefKeyResetQuests">resetQuests</string>

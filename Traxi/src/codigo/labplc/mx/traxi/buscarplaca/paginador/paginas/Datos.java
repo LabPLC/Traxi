@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,14 +14,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.R.color;
 import codigo.labplc.mx.traxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.termometro.ShieldView;
-import codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.termometro.ThermometerView;
 import codigo.labplc.mx.traxi.dialogos.Descripcion_Escudo;
-import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 
 public class Datos extends View {
@@ -127,7 +124,7 @@ public class Datos extends View {
 		final ShieldView shield = new ShieldView(context);
 		Display display = context.getWindowManager().getDefaultDisplay(); 
 		int actionBarHeight = context.getActionBar().getHeight();
-		int newProgress = shield.getProgressWithJump(autoBean.getCalificacion_final(), ThermometerView.JUMP_PROGRESS_ANIMATION); // Progress with jump
+		int newProgress = shield.getProgressWithJump(autoBean.getCalificacion_final(), ShieldView.JUMP_PROGRESS_ANIMATION); // Progress with jump
 		int size= display.getHeight()-actionBarHeight-actionBarHeight;
 		if(newProgress<=30){
 			shield.initUI(size/2,size/2,R.color.rojo_logo);
@@ -137,7 +134,7 @@ public class Datos extends View {
 				shield.initUI(size/2,size/2,R.color.android_green);
 			}
 		
-		shield.setProgress(newProgress);
+		shield.setProgress(autoBean.getCalificacion_final());
 		verticalLayout.addView(shield);
 		container.addView(verticalLayout);
 		

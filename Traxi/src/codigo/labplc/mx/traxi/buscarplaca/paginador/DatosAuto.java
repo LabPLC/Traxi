@@ -1,13 +1,17 @@
 package codigo.labplc.mx.traxi.buscarplaca.paginador;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -19,10 +23,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -61,35 +63,28 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	public final String TAG = this.getClass().getSimpleName();
 
 	//private int PUNTOS=0;
-	private int PUNTOS_APP = 80;
+	private int PUNTOS_APP = 95;
 	private int PUNTOS_USUARIO = 0;
 	private int PUNTOS_REVISTA = 50;
-	private int PUNTOS_INFRACCIONES = 15;
+	private int PUNTOS_INFRACCIONES = 25;
 	private int PUNTOS_TENENCIA = 5;
 	private int PUNTOS_VERIFICACION = 5;
-	private int PUNTOS_ANIO_VEHICULO = 5;
+	private int PUNTOS_ANIO_VEHICULO = 10;
 	private AutoBean autoBean;
 	private  String placa;
 	private int imagen_verde = 1;
 	private int imagen_rojo = 2;
 	private boolean hasRevista=true;
 	private float sumaCalificacion =0.0f;
-	private boolean entreComentarios=false;
 	private static final int RESULT_SETTINGS = 1;
 	private LocationManager mLocationManager;
 	private CirclePageIndicator titleIndicator;
 	private ViewPager pager = null;
 	private FacebookLogin facebookLogin;
 	public static TextView abs_layout_tv_titulo_datosAutos;
+	private boolean hasVerificacion=false;
 	
-	@Override
-	protected void onDestroy() {
-		pager=null;
-		super.onDestroy();
-	}
-	
-	
-	
+
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -110,10 +105,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.datos_del_taxi));
 		
 		ab.setDisplayShowCustomEnabled(true);  
-	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
-	     abs_layout_iv_menu.setOnClickListener(this);
-	     ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
-	     abs_layout_iv_logo.setOnClickListener(this);
+	    ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
+	    abs_layout_iv_menu.setOnClickListener(this);
+	    ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
+	    abs_layout_iv_logo.setOnClickListener(this);
 		ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);
 		
@@ -160,8 +155,6 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				}else{
 					ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
 					startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
-				//	Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.texto_significado_el_viaje_inicio), Toast.LENGTH_LONG);
-				
 					
 					Intent intent_mapa = new Intent(DatosAuto.this, Mapa_tracking.class);
 					intent_mapa.putExtra("latitud_inicial", 19.0);
@@ -177,6 +170,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -218,16 +212,15 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 							 comentarioBean.setFecha_comentario((String) oneObject.getString("hora_fin"));
 							 arrayComenario.add(comentarioBean);
 							 sumaCalificacion+=calif;
-							 entreComentarios=true;
 						 } catch (JSONException e) {  
 							 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 						 }
 			      }
 			      autoBean.setArrayComentarioBean(arrayComenario);
-			      if(entreComentarios){
+			      if(cast2.length()>0){
 			    	  float califParcial = (sumaCalificacion/cast2.length());
-			    	  PUNTOS_USUARIO = (int) (califParcial * 20 /5);
-			    	  autoBean.setCalificacion_usuarios(PUNTOS_USUARIO);
+			    	  PUNTOS_USUARIO =usuarioCalifica(califParcial); //(int) (califParcial * 20 /5);
+			    	  autoBean.setCalificacion_usuarios(califParcial);
 			      }else{
 			    	  autoBean.setCalificacion_usuarios(0);
 			      }
@@ -239,6 +232,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	/**
 	 * metodo que verifica los datos de adeudos de un taxi
 	 */
+	@SuppressLint("SimpleDateFormat")
 	private void datosVehiculo(boolean esta_en_revista) {
 		try{
 			  String Sjson=  Utils.doHttpConnection("http://dev.datos.labplc.mx/movilidad/vehiculos/"+placa+".json");
@@ -285,11 +279,26 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 					  autoBean.setImagen_verificacion(imagen_rojo);
 					  PUNTOS_APP-=PUNTOS_VERIFICACION;
 			      }
+					 Date lm = new Date();
+					 String lasmod = new SimpleDateFormat("yyyy-MM-dd").format(lm);
+					 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+					
 				      for (int i=0; i<cast2.length(); i++) {
 				          	JSONObject oneObject = cast2.getJSONObject(i);
 							 try {
-								 autoBean.setDescripcion_verificacion(getResources().getString(R.string.tiene_verificaciones)+oneObject.getString("resultado").toString());
-								 autoBean.setImagen_verificacion(imagen_verde);
+								 Date date1 = formatter.parse(lasmod);
+								 Date date2 = formatter.parse(oneObject.getString("vigencia").toString());
+								 int comparison = date2.compareTo(date1);
+								 if(comparison==1||comparison==0){
+									 autoBean.setDescripcion_verificacion(getResources().getString(R.string.tiene_verificaciones)+" "+oneObject.getString("resultado").toString());
+									 autoBean.setImagen_verificacion(imagen_verde); 
+									 hasVerificacion=true;
+								 }else{
+									 autoBean.setDescripcion_verificacion(getResources().getString(R.string.no_tiene_verificaciones));
+									 autoBean.setImagen_verificacion(imagen_rojo);
+									 hasVerificacion=false;
+									 
+								 }
 								if(!esta_en_revista){
 									 autoBean.setMarca((String) oneObject.getString("marca"));
 									 autoBean.setSubmarca((String)  oneObject.getString("submarca"));
@@ -310,12 +319,16 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 										 PUNTOS_APP-=PUNTOS_ANIO_VEHICULO;
 									 }
 								}
-								
+								break;
 							 } catch (JSONException e) { 
 								 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
-							 }
+							 } catch (ParseException e) {
+								 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							}
 				      }
-				
+				      if(!hasVerificacion){
+				    	  PUNTOS_APP-=PUNTOS_VERIFICACION;
+				      }
 			    
 			}catch(JSONException e){
 				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
@@ -436,7 +449,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				datosVehiculo(hasRevista);
 				cargaComentarios();
 				
-				 int PUNTOS = (PUNTOS_APP+PUNTOS_USUARIO);
+				 int PUNTOS = (PUNTOS_APP+PUNTOS_USUARIO); 
 				if(PUNTOS<=25){
 					autoBean.setDescripcion_calificacion_app(getResources().getString(R.string.texto_calificacion_25));
 				}else if(PUNTOS<=49 && PUNTOS>25){
@@ -497,7 +510,19 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	       
 	    }
 	
-	    
+	@Override
+	protected void onDestroy() {
+		pager=null;
+		super.onDestroy();
+	}
+	
+	
+	
+	
+	    /**
+	     * muestra popup en forma de menu
+	     * @param v
+	     */
 	    public void showPopup(View v) {
 			PopupMenu popup = new PopupMenu(DatosAuto.this, v);
 			MenuInflater inflater = popup.getMenuInflater();
@@ -541,7 +566,39 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 
 
 
-		
+		/**
+		 * ponderacion para las calificaciones de los usuarios
+		 * @param parcial
+		 * @return
+		 */
+		public int usuarioCalifica(float parcial) {
+			if(parcial<0.5)
+				return -15;
+			if(parcial<1.0&&parcial>=0.5)
+				return -13;
+			if(parcial<1.5&&parcial>=1.0)
+				return -10;
+			if(parcial<2.0&&parcial>=1.5)
+				return -8;
+			if(parcial<2.5&&parcial>=2.0)
+				return -5;
+			if(parcial<3.0&&parcial>=2.5)
+				return -3;
+			if(parcial<3.5&&parcial>=3.0)
+				return 1;
+			if(parcial<4.0&&parcial>=3.5)
+				return 2;
+			if(parcial<4.5&&parcial>=4.0)
+				return 3;
+			if(parcial<5.0&&parcial>=4.5)
+				return 4;
+			if(parcial>=5)
+				return 5;
+			
+			return 0;
+		}
+
+
 		
 	
 }

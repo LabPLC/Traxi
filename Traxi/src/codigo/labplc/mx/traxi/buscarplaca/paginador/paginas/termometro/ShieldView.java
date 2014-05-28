@@ -19,11 +19,11 @@ public class ShieldView extends View {
     private int DefaultWidth = 120;
     private int imageSize;
     
-    private int startProgress = 0;
+    private int startProgress = -1;
     private int progress = 50;
-    public static final int JUMP_PROGRESS_ANIMATION = 10;
+    public static final int JUMP_PROGRESS_ANIMATION = 1;
     
-    private int duration = 2000; //duration in millis
+    private int duration = 1; //duration in millis
     
     private Paint backgroundPaint;
     private Paint progressPaint;
@@ -170,7 +170,8 @@ public class ShieldView extends View {
 		canvas.drawBitmap(getResizedBitmap(bitmap, imageSize, imageSize), 0, 0, null);
 		
 		if(startProgress != progress) {
-			postInvalidateDelayed((int) Math.abs(progress - startProgress) / duration);
+			invalidate();
+			//postInvalidateDelayed(0);
         }
 	}
 	

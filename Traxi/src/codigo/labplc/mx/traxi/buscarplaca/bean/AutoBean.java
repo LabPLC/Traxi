@@ -14,7 +14,7 @@ public class AutoBean {
 	private String tipo="";
 	private String placa;
 	private int calificaion_app = 0;
-	private int calificacion_usuarios =0;
+	private float calificacion_usuarios =0;
 	private int calificacion_final =0;
 	private String descripcion_calificacion_app="";
 	private String descripcion_revista="";
@@ -257,7 +257,7 @@ public class AutoBean {
 	 * GET calificacion usuarios
 	 * @return (int)  calificacion de un vehiculo dada por los usuarios
 	 */
-	public int getCalificacion_usuarios() {
+	public float getCalificacion_usuarios() {
 		return calificacion_usuarios;
 	}
 	
@@ -265,8 +265,8 @@ public class AutoBean {
 	 * SET calificacion usuarios
 	 * @param Calificacion_usuarios (int)  calificacion de un vehiculo dada por los usuarios
 	 */
-	public void setCalificacion_usuarios(int calificacion_usuarios) {
-		this.calificacion_usuarios = calificacion_usuarios;
+	public void setCalificacion_usuarios(float califParcial) {
+		this.calificacion_usuarios = califParcial;
 	}
 	
 	

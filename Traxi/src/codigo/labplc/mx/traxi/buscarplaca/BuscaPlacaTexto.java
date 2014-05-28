@@ -20,7 +20,6 @@ import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -69,7 +68,6 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	
 	// teclado
 	private Button mBack;
-	private ImageView abs_layout_iv_menu;
 	private static LinearLayout mLayout;
 	private static RelativeLayout mKLayout;
 	private Button mB[] = new Button[13];

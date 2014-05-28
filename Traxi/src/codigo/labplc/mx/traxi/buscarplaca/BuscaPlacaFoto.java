@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.UUID;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -33,7 +32,6 @@ import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
-import android.media.CamcorderProfile;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -67,6 +65,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
+@SuppressWarnings("deprecation")
 public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,OnClickListener{
 	
 	
@@ -228,7 +227,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 					}
 					try {
 						if (camera != null) {
-						CamcorderProfile profile ;
+					//	CamcorderProfile profile ;
 						Camera.Parameters parameters = camera.getParameters();
 						camera.setParameters(parameters);
 						camera.setPreviewDisplay(holder);
