@@ -75,6 +75,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="3dp"
         android:paddingBottom="3dp"
-        android:src="@drawable/ic_help" />
+        android:src="@drawable/ic_help" 
+        android:contentDescription="@string/app_name"/>
 
 </RelativeLayout>

@@ -19,7 +19,6 @@ import android.text.Editable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -38,6 +37,7 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaFoto;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
@@ -45,6 +45,11 @@ import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.registro.validador.EditTextValidator;
 import codigo.labplc.mx.traxi.utils.Utils;
 
+/**
+ * clase para que el usuario ingrese sus ontactos de emergencia 
+ * @author mikesaurio
+ *
+ */
 public class MitaxiRegisterManuallyActivity extends Activity implements OnClickListener{
 	
 	public final String TAG = this.getClass().getSimpleName();
@@ -54,6 +59,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	private View mitaxiregistermanually_iv_quitar;
 	private boolean[] emergenciaOcupado= {true,true};//maneja los contactos
 	private int RESULT_SETTINGS =10;
+	private CheckBox mitaxiregistermanually_cv_paranoico;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,29 +72,24 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		BeanDatosLog.setTagLog(TAG);
 	
 		
-		 final ActionBar ab = getActionBar();
-	     ab.setDisplayShowHomeEnabled(false);
-	     ab.setDisplayShowTitleEnabled(false);     
-	     final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
-	     View view = inflater.inflate(R.layout.abs_layout_back,null);   
-	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(getResources().getString(R.string.mitaxiregister_et_emergencias));
-	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(MitaxiRegisterManuallyActivity.this).getTypeFace(fonts.FLAG_MAMEY));
-	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTextSize(15.0f);
-	     ab.setDisplayShowCustomEnabled(true);
-	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
-	     abs_layout_iv_menu.setOnClickListener(this);
-	     ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
-	     abs_layout_iv_logo.setOnClickListener(this);
-	     ab.setCustomView(view);
+		Utils.crearActionBar(MitaxiRegisterManuallyActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),15.0f);//creamos el ActionBAr
 	     
-	     
+		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
+		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
 	     
 	 
 		
 		initUI();
 
 	}
+
+	
+	@Override
+	protected void onPause() {
+
+		super.onPause();
+	}
+
 
 	/**
 	 * metodo que inicia la vista
@@ -128,7 +129,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		});
 		 
 		 
-		 CheckBox mitaxiregistermanually_cv_paranoico = (CheckBox) findViewById(R.id.mitaxiregistermanually_cv_paranoico); 
+		  mitaxiregistermanually_cv_paranoico = (CheckBox) findViewById(R.id.mitaxiregistermanually_cv_paranoico); 
 		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
           boolean panic = prefs.getBoolean("panico", false);
         	  mitaxiregistermanually_cv_paranoico.setChecked(panic); 
@@ -141,8 +142,17 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 			 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
 				SharedPreferences.Editor editor = prefs.edit();
 			 if (buttonView.isChecked()){ 
-					editor.putBoolean("panico", true);
-					editor.commit();
+				 if(validaEditText(R.string.Registro_manual_datos_paranoico_sin_contac)){
+					 if((!emergenciaOcupado[0]||!emergenciaOcupado[1])){
+							editor.putBoolean("panico", true);
+							editor.commit();
+				 }else{
+					 buttonView.setChecked(false);
+					Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
+				 	}
+				 }else{
+					 buttonView.setChecked(false);
+				 }
 			 } 
 			 else{
 				 editor.putBoolean("panico", false);
@@ -201,6 +211,14 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 				emergenciaOcupado[i]=true;
 				if(emergenciaOcupado[0]||emergenciaOcupado[1]){
 				mitaxiregistermanually_tv_agregar.setVisibility(TextView.VISIBLE);
+				}
+				if((emergenciaOcupado[0]&&emergenciaOcupado[1])){{
+					mitaxiregistermanually_cv_paranoico.setChecked(false);
+					 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+					 SharedPreferences.Editor editor = prefs.edit();
+					 editor.putBoolean("panico", false);
+					 editor.commit();
+				}
 				}		
 			}
 		}
@@ -353,15 +371,16 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 
 	
 	public void back(){
-		if(validaEditText()){
+		if(validaEditText(R.string.Registro_manual_llena_todos_los_campos)){
 			if(guardaLasPreferencias()){
-				Dialogos.Toast(MitaxiRegisterManuallyActivity.this, MitaxiRegisterManuallyActivity.this.getResources().getString(R.string.Registro_manual_datos_guardados), Toast.LENGTH_SHORT);
-				super.onBackPressed();
+					Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_datos_guardados), Toast.LENGTH_SHORT);
+					super.onBackPressed();
+				
 			}
 		}
 	}
 	
-	
+
 	/**
 	 * guarda en preferencias los contactos de emergencia 
 	 * @return
@@ -406,7 +425,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	 * valida todos los editText 
 	 * @return
 	 */
-	public boolean validaEditText() {
+	public boolean validaEditText(int texto) {
 		for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
       	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
       	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
@@ -415,11 +434,11 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
       	  EditText et2 = (EditText) ll3.getChildAt(1);
       	 //validamos que no esten vacios
       	  if(et.getText().toString().equals("")){
-      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_llena_todos_los_campos), Toast.LENGTH_LONG);
+      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
       		  return false;
       	  }
     	  if(et2.getText().toString().equals("")){
-    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_llena_todos_los_campos), Toast.LENGTH_LONG);
+    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
     		  return false;
     	  }
     	  //validamos que esten bien escritos

@@ -4,6 +4,12 @@ import android.content.Context;
 import android.graphics.Typeface;
 import codigo.labplc.mx.traxi.R;
 
+/**
+ * clase que controla las fuentes y color de textos
+ * 
+ * @author mikesaurio
+ *
+ */
 public class fonts {
 
 	public static final int FLAG_ROJO = 1;
@@ -13,13 +19,17 @@ public class fonts {
 	public static final int FLAG_MAMEY = 5;
 
 
-
 	private static Context activity;
 
 	public fonts(Context context) {
-		this.activity = context;
+		fonts.activity = context;
 	}
 
+	/**
+	 * tipo de fuente
+	 * @param tipo (int) tipo de la fuente
+	 * @return (Typeface) fuente
+	 */
 	public Typeface getTypeFace(int tipo) {
 		Typeface tf = null;
 		if (tipo == FLAG_GRIS_CLARO) {
@@ -41,6 +51,11 @@ public class fonts {
 		return tf;
 	}
 
+	/**
+	 * color de la fuente
+	 * @param tipo (int) tipo de la fuente
+	 * @return (int) color
+	 */
 	public int getColorTypeFace(int tipo) {
 
 		if (tipo == FLAG_GRIS_CLARO) {

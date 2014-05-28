@@ -285,6 +285,7 @@
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
     <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
+        <string name="Registro_manual_datos_paranoico_sin_contac">No puedes activar el modo paranoico sin contactos</string>
     <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
     <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
     <string name="Califica_taxi_0">Muy deficiente servicio</string>

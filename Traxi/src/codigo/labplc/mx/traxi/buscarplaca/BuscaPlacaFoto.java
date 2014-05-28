@@ -101,7 +101,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 		
 		
-		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name));//creamos el ActionBAr
+		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
 		
 		
 		

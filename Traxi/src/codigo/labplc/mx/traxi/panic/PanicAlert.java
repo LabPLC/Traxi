@@ -8,11 +8,13 @@ import android.os.BatteryManager;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.telephony.SmsManager;
-import android.util.Log;
-import android.widget.Toast;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.utils.Utils;
-
+/**
+ * Clase que envia los SMS y correos al haber un mensaje de panico
+ * @author mikesaurio
+ *
+ */
 public class PanicAlert {
 
 	Context context;
@@ -22,6 +24,9 @@ public class PanicAlert {
        this.context=context;
     }
 
+	/**
+	 * al activarse el selular vibra
+	 */
     public void activate() {
     	Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
     	v.vibrate(3000);
@@ -29,32 +34,41 @@ public class PanicAlert {
 
     }
     
-      
+      /**
+       * obtiene el nivel de la bateria
+       * @return (int) nivel de bateria
+       */
      public int getLevelBattery(){
     	 Intent i = new ContextWrapper(context).registerReceiver(null, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
     	return i.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
      }
      
      
-
+     /**
+      * envia un SMS
+      * @param phoneNumber (String) numero de emergencia
+      * @param message (String) mensaje de emergencia
+      */ 
      public void sendSMS(String phoneNumber, String message)
      {
     	 SmsManager smsManager = SmsManager.getDefault();
-    	//Toast.makeText(context, "numero:"+phoneNumber+".. message"+message, Toast.LENGTH_SHORT).show(); 
     	 smsManager.sendTextMessage(phoneNumber, null, message, null, null);
 
       }
 
-     
+     /**
+      * envia un correo de emergencia
+      * @param cabecera (String) titulo del correo
+      * @param mensaje (String) mensaje del correo
+      * @param correoRemitente (String) correo que envia
+      * @param correoDestino (String) correo que recibe
+      */
      public void sendMail(String cabecera,String mensaje,String correoRemitente,String correoDestino ){
     	 try {   
     		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
     		 StrictMode.setThreadPolicy(policy); 
-    	      //  Log.d("llave",(Utils.getMAilKey(context))+" tam:"+(Utils.getMAilKey(context).length()) );
              GMailSender sender = new GMailSender(correoRemitente,Utils.getMAilKey(context));
              sender.sendMail(cabecera, mensaje,correoRemitente, correoDestino);  
-            // Log.d("enviando mail ", "correo:"+correoDestino+".. message"+mensaje);
-           //  Toast.makeText(context, "correo:"+correoDestino+".. message"+mensaje, Toast.LENGTH_SHORT).show(); 
          } catch (Exception e) {   
         	 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));  
          } 

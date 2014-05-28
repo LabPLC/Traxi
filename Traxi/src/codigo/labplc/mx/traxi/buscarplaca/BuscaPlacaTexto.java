@@ -93,7 +93,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		BeanDatosLog.setTagLog(TAG);
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 
-		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name));//creamos el ActionBAr
+		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
 
 		
 		

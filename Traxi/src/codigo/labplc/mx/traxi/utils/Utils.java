@@ -341,7 +341,7 @@ public class Utils {
 	 * @param activity
 	 * @return
 	 */
-	public static ActionBar crearActionBar(Activity activity, int vista,String nombre){
+	public static ActionBar crearActionBar(Activity activity, int vista,String nombre,float tamano){
 		ActionBar ab	= activity.getActionBar();
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
@@ -351,7 +351,9 @@ public class Utils {
 		
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_MAMEY));
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(nombre);
-		
+		if(tamano!=0.0f){
+			((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTextSize(tamano);
+		}
 		ab.setDisplayShowCustomEnabled(true);
 		ab.setCustomView(view, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);

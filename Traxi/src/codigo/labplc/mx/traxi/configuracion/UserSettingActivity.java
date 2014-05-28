@@ -2,9 +2,14 @@ package codigo.labplc.mx.traxi.configuracion;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.util.Log;
 import codigo.labplc.mx.traxi.R;
 
+/**
+ * crea las preferencias de la configuracion de la app
+ * 
+ * @author mikesaurio
+ *
+ */
 public class UserSettingActivity extends PreferenceActivity {
 
 	@SuppressWarnings("deprecation")

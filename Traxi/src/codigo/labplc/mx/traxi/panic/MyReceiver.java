@@ -6,6 +6,7 @@ import android.content.Intent;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 
 /**
+ * revisa si la pantalla esta encendida o apagada
  * Created by mikesaurio on 04/12/13.
  */
 public class MyReceiver extends BroadcastReceiver {

@@ -65,3 +65,17 @@ URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentari
 							+"&horainicio="+horaInicio
 							+"&horafin="+finViaje;
 							
+--------------------------------------------------------------------------------
+Viaje no tomado
+Metodo GET
+URL:"http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addnoviaje"
+						+"&id_usuario="+uuid
+						+"&id_face="+face
+						+"&calificacion_final="Calificacion_final
+						+"&placa="+placa
+						+"&revista="+revista
+						+"&infraccion="+infracciones
+						+"&anio="+autoBean.anio
+						+"&verificacion="+verificacion
+						+"&tenencia="+tenencia;"
+							

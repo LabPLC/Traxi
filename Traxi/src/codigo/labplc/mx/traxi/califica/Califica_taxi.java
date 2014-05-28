@@ -3,6 +3,7 @@ package codigo.labplc.mx.traxi.califica;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +19,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
-import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
@@ -28,6 +28,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
  * Actividad que muestra un dialogo el cual sirve para calificar el servicio
+ * 
  * @author mikesaurio
  *
  */
@@ -43,9 +44,6 @@ public class Califica_taxi extends Activity {
 	private String Scomentario;
 
 	private TextView califica_taxi_tv_titulo_calif;
-	
-	
-	
 	
 	
 	@Override
@@ -81,11 +79,7 @@ public class Califica_taxi extends Activity {
 		 califica_taxi_tv_titulo_calif= (TextView)findViewById(R.id.califica_taxi_tv_titulo_calif);
 		califica_taxi_tv_titulo_calif.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
 		califica_taxi_tv_titulo_calif.setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-			
-	/*	((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo_opinion)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-*/
-		
+					
 		ImageView califica_taxi_iv_no_calif=(ImageView)findViewById(R.id.califica_taxi_iv_no_calif);
 		califica_taxi_iv_no_calif.setOnClickListener(new View.OnClickListener() {
 			
@@ -144,8 +138,11 @@ public class Califica_taxi extends Activity {
 
 			
 		});
+		
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
+		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
+			@SuppressLint("SimpleDateFormat")
 			@Override
 			public void onClick(View v) {
 				
@@ -184,7 +181,11 @@ public class Califica_taxi extends Activity {
 	}
 
 	
-public void cerrarDialog(int cadena ){
+	/**
+	 * termina la actividad y muestra un mensaje
+	 * @param cadena (int) String al cerrar la actividad
+	 */
+	public void cerrarDialog(int cadena ){
 	
 	Mapa_tracking.isButtonExit= false;
 	try{

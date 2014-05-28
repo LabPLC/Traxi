@@ -29,13 +29,15 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
 
                     <ImageView
                         android:id="@+id/califica_taxi_iv_no_calif"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:background="@drawable/marco"
+                        android:contentDescription="@string/app_name"
                         android:src="@drawable/closerojo" />
 
                     <TextView
@@ -45,7 +47,8 @@
                         android:gravity="center"
                         android:paddingLeft="3dp"
                         android:text="@string/califica_taxi_tv_titulo_calif"
-                        android:textColor="@color/gris_obscuro" />
+                        android:textColor="@color/gris_obscuro"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -95,19 +98,6 @@
                     android:orientation="horizontal"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp" >
-
-                    <!--
-            <Button
-                android:id="@+id/dialogo_califica_servicio_btnCancelar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_marginRight="10dp"
-                android:layout_weight="1"
-                android:background="@drawable/selector_btn_generic"
-                android:text="@string/dialogo_califica_servicio_btnCancelar"
-                android:textColor="@drawable/selector_txt_boton_redondo" />
-                    -->
 
                     <Button
                         android:id="@+id/dialogo_califica_servicio_btnAceptar"

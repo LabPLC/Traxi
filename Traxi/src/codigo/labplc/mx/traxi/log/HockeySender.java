@@ -17,7 +17,15 @@ import android.os.StrictMode;
 import android.util.Log;
 import codigo.labplc.mx.traxi.Traxi;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
+import codigo.labplc.mx.traxi.utils.Utils;
  
+/**
+ * Envia el reporte de fallo en caso de que la aplicacion se rompa
+ * 
+ * @author mikesaurio
+ *
+ */
+@SuppressWarnings("deprecation")
 public  class HockeySender implements ReportSender {
   public static final int HTTP_TIMEOUT = 30 * 1000;
   Traxi activity;
@@ -34,8 +42,6 @@ public  class HockeySender implements ReportSender {
     try {
     	Intent svc = new Intent(activity, ServicioGeolocalizacion.class);
     	activity.stopService(svc);
-    	
-    	
     	System.setProperty("http.keepAlive", "false");
 		HttpClient httpclient = new DefaultHttpClient();
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -60,7 +66,7 @@ public  class HockeySender implements ReportSender {
 		
     }
     catch (Exception e) {
-      e.printStackTrace();
+    	BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
     } 
    
   }
