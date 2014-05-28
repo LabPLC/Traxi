@@ -9,12 +9,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.fonts.fonts;
 
+/**
+ * Actividd que muestra tips de uso a los usuarios 
+ * 
+ * @author mikesaurio
+ *
+ */
 public class Tips_activity extends Activity {
 	 public final String TAG = this.getClass().getSimpleName();
 	
@@ -50,9 +55,6 @@ public class Tips_activity extends Activity {
 		tv_contenido.setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_ROJO));	
 		tv_contenido.setTextColor(new fonts(Tips_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		tv_contenido.setText(getResources().getString(stips[randInt(0,stips.length-1)]));
-		
-
-		
 		
 		ImageView	tips_activity_iv_cerrar	=(ImageView)findViewById(R.id.tips_activity_iv_cerrar);
 		tips_activity_iv_cerrar.setOnClickListener(new View.OnClickListener() {

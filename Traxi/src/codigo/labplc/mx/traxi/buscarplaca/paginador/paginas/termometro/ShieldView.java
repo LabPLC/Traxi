@@ -15,6 +15,11 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.utils.Utils;
 
+/**
+ * vista que controla el escudo
+ * @author zaced
+ *
+ */
 public class ShieldView extends View {
     private int DefaultWidth = 120;
     private int imageSize;
@@ -23,14 +28,13 @@ public class ShieldView extends View {
     private int progress = 50;
     public static final int JUMP_PROGRESS_ANIMATION = 1;
     
-    private int duration = 1; //duration in millis
+ //   private int duration = 1; //duration in millis
     
     private Paint backgroundPaint;
     private Paint progressPaint;
     private Paint textPaint;
     
     private int backgroundColor = Color.rgb(0xE0, 0xE0, 0xE0);
-   // private  int progressColor = Color.rgb(0xEF, 0x41, 0x47);
     
    
 
@@ -153,8 +157,8 @@ public class ShieldView extends View {
 	public void updateProgress(Canvas canvas)
 	{
 		if(startProgress < progress) {
-            startProgress += JUMP_PROGRESS_ANIMATION;
-            
+           // startProgress += JUMP_PROGRESS_ANIMATION;
+            startProgress= progress;
         } else if(startProgress > progress) {
         	startProgress -= JUMP_PROGRESS_ANIMATION;
         }

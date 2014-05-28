@@ -138,7 +138,25 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			
 			@Override
 			public void onClick(View v) {
-				
+				SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+				String face = prefs.getString("facebook", "0");
+				String UUID_local = prefs.getString("uuid", null);
+				try{
+				String url= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addnoviaje"
+						+"&id_usuario="+UUID_local
+						+"&id_face="+face
+						+"&calificacion_final="+autoBean.getCalificacion_final()
+						+"&placa="+placa
+						+"&revista="+autoBean.isHasrevista_()
+						+"&infraccion="+autoBean.isHasinfracciones_()
+						+"&anio="+autoBean.isHasanio_()
+						+"&verificacion="+autoBean.isHasverificacion_()
+						+"&tenencia="+autoBean.isHastenencia_();
+
+				Utils.doHttpConnection(url);	
+				}catch(Exception e){
+					BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				}
 				back();
 			}
 		});

@@ -28,7 +28,93 @@ public class AutoBean {
 	private String descripcion_tenencia="";
 	private int imagen_teencia = 0;
 	private ArrayList<ComentarioBean> arrayComentarioBean = new ArrayList<ComentarioBean>();
+	private boolean hasrevista_ =false;
+	private boolean hasinfracciones_ =false;
+	private boolean hasanio_ =false;
+	private boolean hasverificacion_ =false;
+	private boolean hastenencia_ =false;
 	
+	/**
+	 * GET revita
+	 * @return (boolean) true si tiene revista
+	 */
+	public boolean isHasrevista_() {
+		return hasrevista_;
+	}
+
+	/**
+	 * SET revista
+	 * @param hasrevista_ (boolean) true si tiene revista
+	 */
+	public void setHasrevista_(boolean hasrevista_) {
+		this.hasrevista_ = hasrevista_;
+	}
+
+	/**
+	 * GET infracciones
+	 * 
+	 * @return (boolean) true si no tiene infracciones
+	 */
+	public boolean isHasinfracciones_() {
+		return hasinfracciones_;
+	}
+
+	/**
+	 * SET infracciones
+	 * @param hasinfracciones_ (boolean) true si no tiene infracciones
+	 */
+	public void setHasinfracciones_(boolean hasinfracciones_) {
+		this.hasinfracciones_ = hasinfracciones_;
+	}
+
+	/**
+	 * GET anio
+	 * @return (true) si el anio esoptimo
+	 */
+	public boolean isHasanio_() {
+		return hasanio_;
+	}
+
+	/**
+	 * SET anio
+	 * @param hasanio_ (boolean) true si el anio es optimo
+	 */
+	public void setHasanio_(boolean hasanio_) {
+		this.hasanio_ = hasanio_;
+	}
+
+	/**
+	 * GET verificacion
+	 * @return (boolean) true si  tiene verificacion
+	 */
+	public boolean isHasverificacion_() {
+		return hasverificacion_;
+	}
+
+	/**
+	 * SET verificacion
+	 * @param hasverificacion_ (boolean) true si tiene verificacion
+	 */
+	public void setHasverificacion_(boolean hasverificacion_) {
+		this.hasverificacion_ = hasverificacion_;
+	}
+
+	/**
+	 * GET tenencia
+	 * @return (TRUE) si tiene tenencia
+	 */
+	public boolean isHastenencia_() {
+		return hastenencia_;
+	}
+
+	/**
+	 * SET tiene tenencia
+	 * @param hastenencia_ (boolean) true si tiene tenencia
+	 */
+	public void setHastenencia_(boolean hastenencia_) {
+		this.hastenencia_ = hastenencia_;
+	}
+
 	/**
 	 * GET placa
 	 * @return (String placa)

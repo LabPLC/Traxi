@@ -64,11 +64,11 @@ public class Adeudos extends View {
 		container=(LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor);
 
 		
-		llenarAdeudo(getResources().getString(R.string.adeudo_revista),autoBean.getDescripcion_revista(),autoBean.getImagen_revista());
-		llenarAdeudo(getResources().getString(R.string.adeudo_infracciones),autoBean.getDescripcion_infracciones(),autoBean.getImagen_infraccones());
-		llenarAdeudo(getResources().getString(R.string.adeudo_anio),autoBean.getDescripcion_vehiculo(),autoBean.getImagen_vehiculo());
-		llenarAdeudo(getResources().getString(R.string.adeudo_verificaciones),autoBean.getDescripcion_verificacion(),autoBean.getImagen_verificacion());
-		llenarAdeudo(getResources().getString(R.string.adeudo_tenencia),autoBean.getDescripcion_tenencia(),autoBean.getImagen_teencia());
+		autoBean.setHasrevista_(llenarAdeudo(getResources().getString(R.string.adeudo_revista),autoBean.getDescripcion_revista(),autoBean.getImagen_revista()));
+		autoBean.setHasinfracciones_(llenarAdeudo(getResources().getString(R.string.adeudo_infracciones),autoBean.getDescripcion_infracciones(),autoBean.getImagen_infraccones()));
+		autoBean.setHasanio_(llenarAdeudo(getResources().getString(R.string.adeudo_anio),autoBean.getDescripcion_vehiculo(),autoBean.getImagen_vehiculo()));
+		autoBean.setHasverificacion_(llenarAdeudo(getResources().getString(R.string.adeudo_verificaciones),autoBean.getDescripcion_verificacion(),autoBean.getImagen_verificacion()));
+		autoBean.setHastenencia_(llenarAdeudo(getResources().getString(R.string.adeudo_tenencia),autoBean.getDescripcion_tenencia(),autoBean.getImagen_teencia()));
 
 	}
 
@@ -78,9 +78,8 @@ public class Adeudos extends View {
 	 * @param concepto (String) concepto del row
 	 * @param imagen (int) recurso de la imagen
 	 */
-	public void llenarAdeudo(String titulo, String concepto, int imagen) {
-		
-		
+	public boolean llenarAdeudo(String titulo, String concepto, int imagen) {
+		boolean resp=true;
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view_row = inflater.inflate(R.layout.adeudos_row, null);
 		
@@ -99,17 +98,21 @@ public class Adeudos extends View {
 		
 		if(imagen==imagen_verde){
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_paloma);
+			resp=true;
 		}else if(imagen==imagen_rojo){
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
+			resp=false;
 		}
 		
 		if(concepto.equals("")||autoBean.getCalificacion_final()==0){
 			adeudos_row_descripcion.setText(getResources().getString(R.string.adeudos_row_no_hay_datos));
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
+			resp=false;
 		}
 		
 		
 		container.addView(view_row);
+		return resp;
 		
 	}
 
