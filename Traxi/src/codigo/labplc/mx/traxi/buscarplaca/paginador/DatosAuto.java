@@ -50,6 +50,12 @@ import codigo.labplc.mx.traxi.utils.Utils;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
+/**
+ * FragmentActivity que funge como paginador
+ * 
+ * @author mikesaurio
+ *
+ */
 public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	
 	public final String TAG = this.getClass().getSimpleName();

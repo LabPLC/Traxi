@@ -341,17 +341,21 @@ public class Utils {
 	 * @param activity
 	 * @return
 	 */
-	public static ActionBar crearActionBar(Activity activity, String nombre){
+	public static ActionBar crearActionBar(Activity activity, int vista,String nombre){
 		ActionBar ab	= activity.getActionBar();
 		ab.setDisplayShowHomeEnabled(false);
 		ab.setDisplayShowTitleEnabled(false);
+		
 		final LayoutInflater inflater = (LayoutInflater) activity.getSystemService("layout_inflater");
-		View view = inflater.inflate(R.layout.abs_layout, null);
+		View view = inflater.inflate(vista, null);
+		
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_MAMEY));
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(nombre);
+		
 		ab.setDisplayShowCustomEnabled(true);
 		ab.setCustomView(view, new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
 		ab.setCustomView(view);
+
 		return ab;
 	}
 

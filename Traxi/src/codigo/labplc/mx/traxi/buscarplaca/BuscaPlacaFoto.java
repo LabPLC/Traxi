@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.UUID;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,9 +19,10 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
-import android.app.ActionBar;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -33,6 +35,7 @@ import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.ShutterCallback;
 import android.media.CamcorderProfile;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
@@ -40,34 +43,36 @@ import android.preference.PreferenceManager;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.BeanDatosLog;
 import codigo.labplc.mx.traxi.utils.Utils;
-
+/**
+ * toma una foto a la puerta del taxi y regresa el numero
+ * @author mikesaurio
+ *
+ */
 public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,OnClickListener{
 	
 	
 	private static final int RESULT_SETTINGS = 1;
 	private static final int RESULT_FOTO = 2;
-	 public final String TAG = this.getClass().getSimpleName();
+	public final String TAG = this.getClass().getSimpleName();
 	private Camera camera;
 	private SurfaceView surfaceView;
 	private SurfaceHolder surfaceHolder;
@@ -96,23 +101,18 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 		
-		 final ActionBar ab = getActionBar();
-	     ab.setDisplayShowHomeEnabled(false);
-	     ab.setDisplayShowTitleEnabled(false);     
-	     final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
-	     View view = inflater.inflate(R.layout.abs_layout_back,null);   
-	     ((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(BuscaPlacaFoto.this).getTypeFace(fonts.FLAG_MAMEY));
-	     ab.setDisplayShowCustomEnabled(true);
-
-	     
-	     ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
-	     abs_layout_iv_menu.setOnClickListener(this);
-	     ImageView abs_layout_iv_logo = (ImageView) view.findViewById(R.id.abs_layout_iv_logo);
-	     abs_layout_iv_logo.setOnClickListener(this);
-	     
-	     ab.setCustomView(view,new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-	     ab.setCustomView(view);
-
+		
+		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name));//creamos el ActionBAr
+		
+		
+		
+		
+		
+		
+		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
+		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
+		
+		
 		((TextView)findViewById(R.id.inicio_de_trabajo_tv_foto)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 		((TextView)findViewById(R.id.inicio_de_trabajo_tv_foto)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 
@@ -125,9 +125,17 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		busca_placa_btn_tomarfoto.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_AMARILLO));
 
 		busca_placa_btn_tomarfoto.setOnClickListener(new View.OnClickListener() {
-
+			
 			@Override
 			public void onClick(View v) {
+				if(busca_placa_btn_tomarfoto.getText().toString().equals(getResources().getString(R.string.busca_placa_btn_tomarfoto_entendi))){
+					cerrarGuia();
+					SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+					SharedPreferences.Editor editor = prefs.edit();
+					editor.putString("guia_camara", "aceptar");
+					editor.commit();
+				}else{
+				
 				try{
 					if(Utils.hasInternet(context)){
 						camera.takePicture(myShutterCallback,myPictureCallback_RAW, myPictureCallback_JPG);
@@ -137,13 +145,28 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 				}catch(Exception e){
 					BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
 				}
+				}
 			}
 		});
 
+		SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
+		String guia_camara = prefs.getString("guia_camara", null);
+		if(guia_camara!=null){
+			cerrarGuia();
+		}
+		
+		
+	}
 
-		
-	
-		
+
+/**
+ * elimina 
+ */
+	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	public void cerrarGuia() {
+		busca_placa_btn_tomarfoto.setText(getResources().getString(R.string.busca_placa_btn_tomarfoto));
+		((LinearLayout)findViewById(R.id.busca_placa_ll_guia)).setVisibility(LinearLayout.GONE);
+		surfaceView.setBackground(null);
 	}
 
 
@@ -385,13 +408,17 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 				
 				
 				
-				
+				/**
+				 * sobreEscritura de onBack press
+				 */
 				public void atras(){
 					Intent returnIntent = new Intent();
 					returnIntent.putExtra("result",resultado);
 					setResult(RESULT_FOTO,returnIntent);
 					finish();
 				}
+				
+				
 				
 				 @Override
 				public void onBackPressed() {
@@ -400,7 +427,10 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 
 
 
-
+				/**
+				 *  
+				 * @param v
+				 */
 				public void showPopup(View v) {
 						PopupMenu popup = new PopupMenu(BuscaPlacaFoto.this, v);
 						MenuInflater inflater = popup.getMenuInflater();

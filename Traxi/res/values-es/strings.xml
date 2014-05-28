@@ -91,8 +91,11 @@
     <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
     <!-- buscar placa -->
-    <string name="inicio_de_trabajo_tv_foto">Toma una foto</string>
-    <string name="busca_placa_btn_tomarfoto">Foto ..</string>
+    <string name="inicio_de_trabajo_tv_foto">¡Solo funciona en la puerta!</string>
+    <string name="busca_placa_btn_tomarfoto">Tomar foto</string>
+    <string name="busca_placa_btn_tomarfoto_entendi">Entendí</string>
+       <string name="camara_guia_foto">Manera correcta de tomar una foto</string>
+    
     <string name="inicio_de_trabajo_tv_nombre">Ingresa la placa del taxi</string>
     <string name="inicio_de_trabajo_et_placa">Placa</string>
     <string name="busca_placa_btn_emergencia">Emergencia</string>
@@ -290,6 +293,10 @@
     <string name="Califica_taxi_40">Muy buen servicio</string>
     <string name="Califica_taxi_45">Excelente servicio</string>
     <string name="Califica_taxi_50">Servicio insuperable</string>
+    
+    
+    
+   
     
     
 

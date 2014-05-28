@@ -96,8 +96,10 @@
     <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
     <!-- buscar placa -->
-    <string name="inicio_de_trabajo_tv_foto">Take a picture</string>
-    <string name="busca_placa_btn_tomarfoto">Photo ..</string>
+    <string name="inicio_de_trabajo_tv_foto">¡Solo funciona en la puerta!</string>
+    <string name="busca_placa_btn_tomarfoto">Take a picture</string>
+        <string name="busca_placa_btn_tomarfoto_entendi">Entendí</string>
+       <string name="camara_guia_foto">Manera correcta de tomar una foto</string>
     <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
     <string name="inicio_de_trabajo_et_placa">License plate</string>
         <string name="busca_placa_btn_emergencia">Emergencia</string>

@@ -23,8 +23,10 @@ import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -52,7 +54,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
-public class BuscaPlacaTexto extends Activity implements OnClickListener {
+public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTouchListener{
 
 	
 	
@@ -93,10 +95,8 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener {
 		BeanDatosLog.setTagLog(TAG);
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 
-		Utils.crearActionBar(BuscaPlacaTexto.this,getResources().getString(R.string.app_name));//creamos el ActionBAr
+		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name));//creamos el ActionBAr
 
-		
-		
 		
 		
 		//instancias y escuchas
@@ -109,13 +109,13 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener {
 		mBack = (Button) findViewById(R.id.back);
 		mBack.setOnClickListener(this);
 		
-		abs_layout_iv_menu =(ImageView) findViewById(R.id.abs_layout_iv_menu);
-		abs_layout_iv_menu.setOnClickListener(this);
+		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 
 		placa = (EditText) findViewById(R.id.inicio_de_trabajo_et_placa);
 		placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME| InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
 		placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 		placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		placa.setOnTouchListener(this);
 		placa.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before,
@@ -132,6 +132,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener {
 					} else if (placa.length() < 1) {
 							puedoAvanzar=false;
 							LettersTrue();
+							placa.setError(null);
 					}
 				}
 			}
@@ -554,8 +555,8 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener {
 			break;
 		case RESULT_FOTO:
 			 String resulta=data.getStringExtra("result");
-			Log.d("*******", "placa "+resulta);
-			placa.setText(resulta);
+			 if(resulta.length()==6)
+				 	placa.setText(resulta);
 			break;
 		}
 	}
@@ -575,6 +576,15 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener {
 		super.onResume();
 	}
 
+	// //para e teclado
+		@Override
+		public boolean onTouch(View v, MotionEvent event) {
+			if (v == placa) {
+				activarTeclado();
+			}
+
+			return true;
+		}
 
 	
 }

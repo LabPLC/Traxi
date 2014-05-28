@@ -36,7 +36,8 @@
             <SurfaceView
                 android:id="@+id/camerapreview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/carro" />
 
             <View
                 android:id="@+id/textView1"
@@ -105,6 +106,29 @@
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/degradado_camara" />
 
+            <LinearLayout
+                 android:id="@+id/busca_placa_ll_guia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="43dp"
+                android:background="@drawable/marco"
+                android:orientation="horizontal"
+                android:padding="5dp" >
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingRight="2dp"
+                    android:gravity="center"
+                    android:text="Manera correcta de tomar una foto"
+                    android:textColor="@color/black" />
+
+                
+            </LinearLayout>
+
         </RelativeLayout>
 
         <Button
@@ -114,7 +138,7 @@
             android:layout_marginTop="3dp"
             android:layout_weight=".1"
             android:background="@drawable/selector_btn_generic"
-            android:text="@string/busca_placa_btn_tomarfoto"
+            android:text="@string/busca_placa_btn_tomarfoto_entendi"
             android:textColor="@drawable/selector_txt_boton_redondo" />
     </LinearLayout>
 
