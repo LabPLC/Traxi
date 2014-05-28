@@ -107,25 +107,30 @@
     <string name="busca_placa_btn_tips">Tips</string>
     <string name="busca_placa_btn_tomar_foto">Tomar foto</string>  
 
-    <!-- Tenencia -->
-    <string name="sin_adeudo_tenencia">This taxi does not have any pending payments</string>
-    <string name="con_adeudo_tenencia">This is an irregular taxi.</string>
+ <!-- Tenencia -->
+    <string name="adeudo_tenencia">Tenencia</string>
+    <string name="sin_adeudo_tenencia">Este vehículo no tiene adeudos de tenencia</string>
+    <string name="con_adeudo_tenencia">Este vehículo tiene adeudos de tenencia</string>
 
     <!-- Revista -->
-    <string name="sin_revista">This taxi is not in the vehicle registry.</string>
-    <string name="con_revista">This is a regular vehicle.</string>
+     <string name="adeudo_revista">Revista vehícular</string>
+    <string name="sin_revista">Este vehículo no esta en la revista.</string>
+    <string name="con_revista">Este vehículo esta en la revista</string>
 
     <!-- año carro -->
-    <string name="carro_viejo">This is not an optimal taxi.</string>
-    <string name="carro_nuevo">This taxi is still optimal.</string>
+     <string name="adeudo_anio">Vehículo</string>
+    <string name="carro_viejo">Este vehículo ya no es optimo.</string>
+    <string name="carro_nuevo">Este vehículo aun es optimo.</string>
 
     <!-- infraccion -->
-    <string name="tiene_infraccion">This taxi has fines</string>
-    <string name="no_tiene_infraccion">This taxi does not has fines</string>
+     <string name="adeudo_infracciones">Infracciones</string>
+    <string name="tiene_infraccion">Este vehículo tiene multas</string>
+    <string name="no_tiene_infraccion">Este vehículo no tiene multas</string>
 
     <!-- verificaciones -->
-    <string name="tiene_verificaciones">This taxi has been emission tested.</string>
-    <string name="no_tiene_verificaciones">This taxi does not have emission tests</string>
+     <string name="adeudo_verificaciones">Verificacion</string>
+    <string name="tiene_verificaciones">Este vehículo tiene calcomanía: </string>
+    <string name="no_tiene_verificaciones">Este vehículo no tiene verificacion</string>
     <string name="title_activity_trackxi_setting">TrackxiSettingActivity</string>
 
     <!-- Preferencias -->

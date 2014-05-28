@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,9 +116,9 @@ public class ScreenSlidePageFragmentDialog extends Fragment   {
 			comentarios.init(autoBean,facebookLogin);
 			return comentarios.getView();
 		}else{
-		
 			ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_screen_slide_page, container, false);
 			TextView tvIndex = (TextView) rootView.findViewById(R.id.tvIndex);
+			tvIndex.setText(getResources().getString(R.string.app_name));
 			rootView.setBackgroundColor(this.color);
 			return rootView;
 		}

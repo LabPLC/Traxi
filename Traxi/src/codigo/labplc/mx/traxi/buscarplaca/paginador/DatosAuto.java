@@ -311,10 +311,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 									 int thisYear = calendar.get(Calendar.YEAR);
 									 
 									 if(thisYear-Integer.parseInt(autoBean.getAnio())<=10){
-										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+getResources().getString(R.string.Anio)+autoBean.getAnio());
+										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
 										 autoBean.setImagen_vehiculo(imagen_verde);
 									 }else{
-										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+getResources().getString(R.string.Anio)+autoBean.getAnio());
+										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
 										 autoBean.setImagen_vehiculo(imagen_rojo);
 										 PUNTOS_APP-=PUNTOS_ANIO_VEHICULO;
 									 }
@@ -370,10 +370,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 						 int thisYear = calendar.get(Calendar.YEAR);
 						 
 						 if(thisYear-Integer.parseInt(anio)<=10){
-							 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+getResources().getString(R.string.Anio)+anio);
+							 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+" "+getResources().getString(R.string.Anio)+" "+anio);
 							 autoBean.setImagen_vehiculo(imagen_verde);
 						 }else{
-							 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+getResources().getString(R.string.Anio)+anio);
+							 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+" "+getResources().getString(R.string.Anio)+" "+anio);
 							 autoBean.setImagen_vehiculo(imagen_rojo);
 							 PUNTOS_APP-=PUNTOS_ANIO_VEHICULO;
 						 }

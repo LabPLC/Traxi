@@ -6,7 +6,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +13,13 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.traxi.fonts.fonts;
 
+/**
+ * pagina que muestra en una lista los adeudos de un carro con las secretarias
+ * 
+ * @author mikesaurio
+ *
+ */
+@SuppressLint("ViewConstructor")
 public class Adeudos extends View {
 
 	
@@ -36,7 +42,6 @@ public class Adeudos extends View {
 		this.context = context;
 	}
 
-	@SuppressLint("Instantiatable")
 	public Adeudos(Activity context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		this.context = context;
@@ -47,39 +52,37 @@ public class Adeudos extends View {
 		init();
 	}
 	
+	/**
+	 * init de la pagina
+	 */
 	public void init() {
 
 
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_adeudos, null);
 		
-		/*TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.adeudos_titulo_main);
-		adeudos_titulo_main.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));*/
-		
-		
 		container=(LinearLayout)view.findViewById(R.id.adeudos_ll_contenedor);
 
 		
-		llenarAdeudo("Revista vehicular",autoBean.getDescripcion_revista(),autoBean.getImagen_revista());
-		llenarAdeudo("Infracciones",autoBean.getDescripcion_infracciones(),autoBean.getImagen_infraccones());
-		llenarAdeudo("Vehiculo",autoBean.getDescripcion_vehiculo(),autoBean.getImagen_vehiculo());
-		llenarAdeudo("Verificaciones",autoBean.getDescripcion_verificacion(),autoBean.getImagen_verificacion());
-		llenarAdeudo("Tenencia",autoBean.getDescripcion_tenencia(),autoBean.getImagen_teencia());
+		llenarAdeudo(getResources().getString(R.string.adeudo_revista),autoBean.getDescripcion_revista(),autoBean.getImagen_revista());
+		llenarAdeudo(getResources().getString(R.string.adeudo_infracciones),autoBean.getDescripcion_infracciones(),autoBean.getImagen_infraccones());
+		llenarAdeudo(getResources().getString(R.string.adeudo_anio),autoBean.getDescripcion_vehiculo(),autoBean.getImagen_vehiculo());
+		llenarAdeudo(getResources().getString(R.string.adeudo_verificaciones),autoBean.getDescripcion_verificacion(),autoBean.getImagen_verificacion());
+		llenarAdeudo(getResources().getString(R.string.adeudo_tenencia),autoBean.getDescripcion_tenencia(),autoBean.getImagen_teencia());
 
 	}
 
-	
+	/**
+	 * llena row de adeudo
+	 * @param titulo (String) titulo del row
+	 * @param concepto (String) concepto del row
+	 * @param imagen (int) recurso de la imagen
+	 */
 	public void llenarAdeudo(String titulo, String concepto, int imagen) {
 		
-		if(concepto.equals("")){
-			concepto= getResources().getString(R.string.adeudos_row_no_hay_datos);
-		}
 		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view_row = inflater.inflate(R.layout.adeudos_row, null);
-
-		
 		
 		TextView adeudos_row_titulo = (TextView)view_row.findViewById(R.id.adeudos_row_titulo);
 		adeudos_row_titulo.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_GRIS_CLARO));
@@ -93,15 +96,27 @@ public class Adeudos extends View {
 		
 		adeudos_row_titulo.setText(titulo);
 		adeudos_row_descripcion.setText(concepto);
+		
 		if(imagen==imagen_verde){
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_paloma);
 		}else if(imagen==imagen_rojo){
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
 		}
+		
+		if(concepto.equals("")||autoBean.getCalificacion_final()==0){
+			adeudos_row_descripcion.setText(getResources().getString(R.string.adeudos_row_no_hay_datos));
+			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
+		}
+		
+		
 		container.addView(view_row);
 		
 	}
 
+	/**
+	 * GET view
+	 * @return (view) vista inflada
+	 */
 	public View getView() {
 		return view;
 	}

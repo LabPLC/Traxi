@@ -8,7 +8,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,13 @@ import codigo.labplc.mx.traxi.fonts.fonts;
 
 import com.facebook.Response;
 import com.facebook.model.GraphUser;
-
+/**
+ * pagina que muestra los comentarios y su calificacion
+ * 
+ * @author mikesaurio
+ *
+ */
+@SuppressLint("ViewConstructor")
 public class Comentarios extends View {
 
 	private View view;
@@ -56,28 +61,25 @@ public class Comentarios extends View {
 		this.context = context;
 	}
 
-	@SuppressLint("Instantiatable")
 	public Comentarios(Activity context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		this.context = context;
 	}
 	
-	public void init(AutoBean autoBean,FacebookLogin facebookLogin){
-		this.autoBean=autoBean;
-		this.facebookLogin=facebookLogin;
-		init();
-	}
 	
-
-	public void init() {
+	
+	
+	/**
+	 * init comentarios
+	 * @param autoBean (AutoBean) informacion de la placa
+	 * @param facelog (FacebookLogin) login de facebook
+	 */
+	public void init(AutoBean autoBean,FacebookLogin facelog){
+		this.autoBean=autoBean;
+		this.facebookLogin=facelog;
 		
 		LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		view = inflater.inflate(R.layout.activity_comentarios, null);
-		
-	/*	TextView adeudos_titulo_main = (TextView)view.findViewById(R.id.comentarios_titulo_main);
-		adeudos_titulo_main.setText(getResources().getString(R.string.titulo_tres_comentarios));
-		adeudos_titulo_main.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_titulo_main.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));*/
 		container=(LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor);
 		
 		comentarios_ll_contenedor_fotos = (LinearLayout)view.findViewById(R.id.comentarios_ll_contenedor_fotos);
@@ -140,7 +142,10 @@ public class Comentarios extends View {
 
 	}
 
-	
+	/**
+	 * llena las estrellas de evaluacion del chofer 
+	 * @param valor (float) calificacion final
+	 */
 	public void llenarEstrellas(float valor) {
 		 ImageView rating1_comentarios = (ImageView)view.findViewById(R.id.rating1_comentarios);
 		 ImageView rating2_comentarios = (ImageView)view.findViewById(R.id.rating2_comentarios);
@@ -212,14 +217,16 @@ public class Comentarios extends View {
 		
 	}
 
-	
+	/**
+	 * llena los comentarios row a row
+	 * @param concepto (String) comentario
+	 * @param valor (float) calificacion
+	 * @param i (int) id del row
+	 * @param hora (String) hora del comentario
+	 */
 	public void llenarComentario( String concepto, float valor,int i, String hora) {
 	final	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		view_row = inflater.inflate(R.layout.comentarios_row, null);
-		
-	/*	if(id_user.equals(id_usuario_uuid)){
-			Dialogos.Toast(context, "me encontre", Toast.LENGTH_LONG);
-		}*/ 
+		view_row = inflater.inflate(R.layout.comentarios_row, null); 
 	final	TextView comentarios_row_tv_descripcion = (TextView)view_row.findViewById(R.id.comentarios_row_tv_descripcion);
 	comentarios_row_tv_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 	comentarios_row_tv_descripcion.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
@@ -229,13 +236,8 @@ public class Comentarios extends View {
 	comentarios_row_tv_horario.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 	comentarios_row_tv_horario.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_CLARO));
 	comentarios_row_tv_horario.setText(hora);
-	
-	
-	
-
 		
 	valorTotal+=valor;
-	
 	container.addView(view_row,i);
 		
 	}
@@ -269,7 +271,6 @@ public class Comentarios extends View {
 			@Override
 			public void onGetFriendsFacebook(List<GraphUser> users, Response response) {
 				int i=-1;
-				String usuarios=null;
 				for (GraphUser user : users) {
 					i+=1;
 					if(i==0){
@@ -332,8 +333,9 @@ public class Comentarios extends View {
 	}
 
 	
-	/*
-	 * Regresa la vista ya inflada 
+	/**
+	 * GET view
+	 * @return (view) vista inflada
 	 */
 	public View getView() {
 		return view;
