@@ -12,7 +12,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Window;
 import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 /**
@@ -32,7 +32,7 @@ public class TraxiMainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 	
 		//guardamos un Tag
-		BeanDatosLog.setTagLog(TAG);	
+		DatosLogBean.setTagLog(TAG);	
 	
 		//generamos la llave del dispositivo
 			SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);

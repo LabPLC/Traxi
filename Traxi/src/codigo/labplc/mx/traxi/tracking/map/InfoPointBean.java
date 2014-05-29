@@ -3,7 +3,12 @@ package codigo.labplc.mx.traxi.tracking.map;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class InfoPoint {
+/**
+ * 
+ * @author zaced
+ *
+ */
+public class InfoPointBean {
 	ArrayList<HashMap<String, Object>> addressFields=new ArrayList<HashMap<String, Object>>();
     String strFormattedAddress="";
     double dblLatitude=0;

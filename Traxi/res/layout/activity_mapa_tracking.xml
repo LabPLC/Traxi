@@ -98,7 +98,7 @@
                     android:textCursorDrawable="@drawable/color_cursor" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout3"
+                    android:id="@+id/mitaxi_googlemaps_ll_paranoico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"

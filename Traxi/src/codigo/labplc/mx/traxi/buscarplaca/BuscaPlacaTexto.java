@@ -44,7 +44,7 @@ import codigo.labplc.mx.traxi.buscarplaca.tips.Tips_activity;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
@@ -90,7 +90,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	 * iniciamos la vista
 	 */
 	public void init(Activity con) {
-		BeanDatosLog.setTagLog(TAG);
+		DatosLogBean.setTagLog(TAG);
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 
 		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
@@ -163,7 +163,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 						placa.setText("");
 
 					} catch (Exception e) {
-						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+						DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 						placa.setText("");
 					}
 				}else{
@@ -388,9 +388,9 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		mB[12].setBackground(null);
 		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		} catch (XmlPullParserException e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		} catch (IOException e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 	}
 	
@@ -446,9 +446,9 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		mB[12].setBackground(null);
 		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
 	} catch (XmlPullParserException e) {
-		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	} catch (IOException e) {
-		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	}
 	}
 
@@ -505,9 +505,9 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		mB[12].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
 		mB[12].setTextColor(colors);
 	} catch (XmlPullParserException e) {
-		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	} catch (IOException e) {
-		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	}
 	}
 

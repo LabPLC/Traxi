@@ -140,7 +140,8 @@ public class TitlePageIndicator extends View implements PageIndicator {
     /** Left and right side padding for not active view titles. */
     private float mClipPadding;
     private float mFooterLineHeight;
-    private Context context;
+    @SuppressWarnings("unused")
+	private Context context;
 
     private static final int INVALID_POINTER = -1;
 
@@ -162,7 +163,8 @@ public class TitlePageIndicator extends View implements PageIndicator {
         this.context=context;
     }
 
-    public TitlePageIndicator(Context context, AttributeSet attrs, int defStyle) {
+    @SuppressWarnings("deprecation")
+	public TitlePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context=context;
         if (isInEditMode()) return;
@@ -358,7 +360,8 @@ public class TitlePageIndicator extends View implements PageIndicator {
      *
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
-    @Override
+    @SuppressWarnings("incomplete-switch")
+	@Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
@@ -854,7 +857,6 @@ public class TitlePageIndicator extends View implements PageIndicator {
             dest.writeInt(currentPage);
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator<SavedState>() {
             @Override
             public SavedState createFromParcel(Parcel in) {

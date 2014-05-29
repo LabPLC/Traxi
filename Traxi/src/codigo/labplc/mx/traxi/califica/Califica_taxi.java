@@ -21,7 +21,7 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
@@ -52,7 +52,7 @@ public class Califica_taxi extends Activity {
 	
 		setContentView(R.layout.activity_califica_taxi);
 
-		BeanDatosLog.setTagLog(TAG);
+		DatosLogBean.setTagLog(TAG);
 		
 		//en caso de que se active si ya no existe el servicio
 		if(ServicioGeolocalizacion.serviceIsIniciado!=true){
@@ -70,7 +70,7 @@ public class Califica_taxi extends Activity {
 		try{
 		 Mapa_tracking.fa.finish();
 		}catch(Exception e){
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
@@ -191,7 +191,7 @@ public class Califica_taxi extends Activity {
 	try{
 		 Mapa_tracking.fa.finish();
 		}catch(Exception e){
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 	stopService(svc);

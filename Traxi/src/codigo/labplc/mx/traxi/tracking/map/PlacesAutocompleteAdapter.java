@@ -19,7 +19,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 
 /**
- * 
+ * Clase para autocompletar el edittext de direcciones
  * @author zace3d
  * 
  */

@@ -49,10 +49,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 
+/**
+ * Clase que maneja metodos staticos para ayudar a las demas clases
+ * @author mikesaurio
+ *
+ */
 public class Utils {
 
+	/**
+	 * Revisa si existe coneccion a internet
+	 * @param context
+	 * @return
+	 */
 	public static boolean isNetworkConnectionOk(Context context) {
 		ConnectivityManager connectivityManager = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -79,10 +89,10 @@ public class Utils {
 			// Log.d("RETURN HTTPCLIENT", EntityUtils.toString(httpentiti));
 			return EntityUtils.toString(httpentiti);
 		} catch (ParseException e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			return null;
 		} catch (IOException e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			return null;
 		}
 	}
@@ -101,6 +111,12 @@ public class Utils {
 		return photoCode;
 	}
 
+	/**
+	 * 
+	 * @param URL
+	 * @param jsonObjSend
+	 * @return
+	 */
 	public static JSONObject SendHttpPost(String URL, JSONObject jsonObjSend) {
 
 		try {
@@ -114,15 +130,8 @@ public class Utils {
 			httpPostRequest.setEntity(se);
 			httpPostRequest.setHeader("Accept", "application/json");
 			httpPostRequest.setHeader("Content-type", "application/json");
-			httpPostRequest.setHeader("Accept-Encoding", "gzip"); // only set
-																	// this
-																	// parameter
-																	// if you
-																	// would
-																	// like to
-																	// use gzip
-																	// compression
-
+			httpPostRequest.setHeader("Accept-Encoding", "gzip"); // only set this parameter if you would like to use gzip compression
+			@SuppressWarnings("unused")
 			long t = System.currentTimeMillis();
 			HttpResponse response = (HttpResponse) httpclient
 					.execute(httpPostRequest);
@@ -157,7 +166,7 @@ public class Utils {
 		} catch (Exception e) {
 			// More about HTTP exception handling in another tutorial.
 			// For now we just print the stack trace.
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 		return null;
 	}
@@ -182,12 +191,12 @@ public class Utils {
 				sb.append(line + "\n");
 			}
 		} catch (IOException e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		} finally {
 			try {
 				is.close();
 			} catch (IOException e) {
-				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			}
 		}
 		return sb.toString();
@@ -200,7 +209,7 @@ public class Utils {
 		return sw.getBuffer().toString();
 	}
 
-	/*
+	/**
 	 * metodo que convierte una imagen a grises
 	 * 
 	 * @return bitmap
@@ -244,6 +253,11 @@ public class Utils {
 		return hasConnectedWifi || hasConnectedMobile;
 	}
 
+	/**
+	 * lavve para enviar correos gmail traxi
+	 * @param a
+	 * @return
+	 */
 	public static String getMAilKey(Context a) {
 
 		try {
@@ -258,7 +272,7 @@ public class Utils {
 			byte[] desencriptado = cipher.doFinal(decodificar_texto);
 			return new String(desencriptado, "UTF-8");
 		} catch (Exception e) {
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			return "falla";
 		}
 	}
@@ -292,6 +306,7 @@ public class Utils {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressLint("TrulyRandom")
 	public static String encriptar(String texto_a_encriptar) throws Exception {
 		final byte[] valor_clave = "0000000000000000".getBytes();
 		Key key = new SecretKeySpec(valor_clave, "AES");
@@ -320,6 +335,12 @@ public class Utils {
 		}
 	}
 
+	/**
+	 * convierte DP a pixeles
+	 * @param context
+	 * @param dp
+	 * @return
+	 */
 	public static float convertDpToPixel(Context context, float dp) {
 		Resources resources = context.getResources();
 		DisplayMetrics metrics = resources.getDisplayMetrics();
@@ -327,6 +348,12 @@ public class Utils {
 		return px;
 	}
 
+	/**
+	 * convierte pixeles a DP
+	 * @param context
+	 * @param px
+	 * @return
+	 */
 	public static float convertPixelsToDp(Context context, float px) {
 		Resources resources = context.getResources();
 		DisplayMetrics metrics = resources.getDisplayMetrics();
@@ -337,8 +364,11 @@ public class Utils {
 	
 	/**
 	 * prepara el Action Bar custom
-	 * @param activity
-	 * @return
+	 * @param (Activity)activity
+	 * @param (int) vista para inflar
+	 * @param (String) titulo
+	 * @param (float) tamaño del titulo
+	 * @return (ActionBar) inflado
 	 */
 	public static ActionBar crearActionBar(Activity activity, int vista,String nombre,float tamano){
 		ActionBar ab	= activity.getActionBar();

@@ -175,6 +175,7 @@
     <string name="mitaxi_googlemaps_btn_destino">Go</string>
     <string name="mitaxi_googlemaps_actv_destination">Neiborhood (example Calle 13)</string>
     <string name="mapa_tracking_terminoviaje">Trip ended</string>
+            <string name="mapa_tracking_miviaje">My Trip</string>
 
     <!-- activity_datos -->
     <string name="datos_tv_titulo">Vehicle info</string>

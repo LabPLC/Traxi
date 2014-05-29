@@ -53,11 +53,11 @@ public  class HockeySender implements ReportSender {
 		HttpPost httppost;
 		 httppost = new HttpPost(url);
 		MultipartEntity entity = new MultipartEntity();
-		entity.addPart("modelo", new StringBody(BeanDatosLog.getMarcaCel()+""));
-		entity.addPart("version", new StringBody(BeanDatosLog.getVersionAndroid() + ""));
-		entity.addPart("tag",new StringBody(BeanDatosLog.getTagLog() + ""));
-		entity.addPart("descripcion", new StringBody(BeanDatosLog.getDescripcion() + ""));
-		Log.d(BeanDatosLog.getTagLog(),BeanDatosLog.getDescripcion());
+		entity.addPart("modelo", new StringBody(DatosLogBean.getMarcaCel()+""));
+		entity.addPart("version", new StringBody(DatosLogBean.getVersionAndroid() + ""));
+		entity.addPart("tag",new StringBody(DatosLogBean.getTagLog() + ""));
+		entity.addPart("descripcion", new StringBody(DatosLogBean.getDescripcion() + ""));
+		Log.d(DatosLogBean.getTagLog(),DatosLogBean.getDescripcion());
 		System.setProperty("http.keepAlive", "false");
 		httppost.setEntity(entity);
 		
@@ -66,7 +66,7 @@ public  class HockeySender implements ReportSender {
 		
     }
     catch (Exception e) {
-    	BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+    	DatosLogBean.setDescripcion(Utils.getStackTrace(e));
     } 
    
   }

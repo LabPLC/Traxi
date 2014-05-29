@@ -45,7 +45,7 @@ import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.facebook.FacebookLogin;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
@@ -91,7 +91,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		super.onCreate(arg0);
 		this.setContentView(R.layout.dialogo_datos_correctos);
 		
-		BeanDatosLog.setTagLog(TAG);
+		DatosLogBean.setTagLog(TAG);
 		
 		final ActionBar ab = getActionBar();
 		ab.setDisplayShowHomeEnabled(false);
@@ -155,7 +155,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 
 				Utils.doHttpConnection(url);	
 				}catch(Exception e){
-					BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+					DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 				}
 				back();
 			}
@@ -231,7 +231,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 							 arrayComenario.add(comentarioBean);
 							 sumaCalificacion+=calif;
 						 } catch (JSONException e) {  
-							 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 						 }
 			      }
 			      autoBean.setArrayComentarioBean(arrayComenario);
@@ -243,7 +243,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			    	  autoBean.setCalificacion_usuarios(0);
 			      }
 			}catch(JSONException e){
-				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			}
 	}
 
@@ -280,7 +280,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 							 }
 							
 						 } catch (JSONException e) { 
-							 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 						 }
 			      }
 			      if(hasInfraccion){
@@ -339,9 +339,9 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 								}
 								break;
 							 } catch (JSONException e) { 
-								 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+								 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 							 } catch (ParseException e) {
-								 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+								 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 							}
 				      }
 				      if(!hasVerificacion){
@@ -349,7 +349,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				      }
 			    
 			}catch(JSONException e){
-				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			}
 		
 	}
@@ -403,7 +403,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		      }
 		      
 		}catch(JSONException e){
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			return false;
 		}
 		
@@ -485,7 +485,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				autoBean.setCalificaion_app(PUNTOS_APP);	
 				
 			} catch (Exception e) {
-				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			}
 			return null;
 		}

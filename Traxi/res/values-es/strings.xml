@@ -168,8 +168,9 @@
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destino del viaje</string>
     <string name="mitaxi_googlemaps_btn_destino">Ir</string>
-    <string name="mitaxi_googlemaps_actv_destination">Colonia Ejemplo calle 37</string>
+    <string name="mitaxi_googlemaps_actv_destination">Ejemplo: Colonia x calle 1</string>
     <string name="mapa_tracking_terminoviaje">Terminó viaje.</string>
+        <string name="mapa_tracking_miviaje">Mi viaje</string>
 
     <!-- activity_datos -->
     <string name="datos_tv_titulo">Datos del vehículo</string>

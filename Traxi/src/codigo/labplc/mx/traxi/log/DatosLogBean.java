@@ -6,7 +6,7 @@ package codigo.labplc.mx.traxi.log;
  * @author mikesaurio
  *
  */
-public class BeanDatosLog {
+public class DatosLogBean {
 
 	public static final String marcaCel_log = android.os.Build.MODEL;
 	public static final int versionAndroid_log = android.os.Build.VERSION.SDK_INT;

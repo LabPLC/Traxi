@@ -38,7 +38,7 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.registro.validador.EditTextValidator;
 import codigo.labplc.mx.traxi.utils.Utils;
 
@@ -66,7 +66,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		    
 		setContentView(R.layout.activity_registro_contacto_emergencia);
 		
-		BeanDatosLog.setTagLog(TAG);
+		DatosLogBean.setTagLog(TAG);
 	
 		
 		Utils.crearActionBar(RegistroContactosEmergenciaActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),15.0f);//creamos el ActionBAr
@@ -355,7 +355,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 			  }  
 			  }
 		}catch(Exception e){
-			BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 	}
 	

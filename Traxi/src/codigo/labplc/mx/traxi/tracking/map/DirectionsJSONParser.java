@@ -18,10 +18,15 @@ import org.json.JSONObject;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
-
+/**
+ * 
+ * @author zaced
+ *
+ */
 public class DirectionsJSONParser {
 	
 	/** Receives a JSONObject and returns a list of lists containing latitude and longitude */
+	@SuppressWarnings("unchecked")
 	public List<List<HashMap<String,String>>> parse(JSONObject jObject){
 		
 		List<List<HashMap<String, String>>> routes = new ArrayList<List<HashMap<String,String>>>() ;
@@ -36,6 +41,7 @@ public class DirectionsJSONParser {
 			/** Traversing all routes */
 			for(int i=0;i<jRoutes.length();i++){			
 				jLegs = ( (JSONObject)jRoutes.get(i)).getJSONArray("legs");
+				@SuppressWarnings("rawtypes")
 				List path = new ArrayList<HashMap<String, String>>();
 				
 				/** Traversing all legs */
@@ -171,14 +177,14 @@ public class DirectionsJSONParser {
     
     
     
-	 public ArrayList<InfoPoint> parsePoints(String strResponse) {
-	        ArrayList<InfoPoint> result=new ArrayList<InfoPoint>();
+	 public ArrayList<InfoPointBean> parsePoints(String strResponse) {
+	        ArrayList<InfoPointBean> result=new ArrayList<InfoPointBean>();
 	        try {
 	            JSONObject obj=new JSONObject(strResponse);
 	            JSONArray array=obj.getJSONArray("results");
 	            for(int i=0;i<array.length();i++)
 	            {
-	                InfoPoint point=new InfoPoint();
+	                InfoPointBean point=new InfoPointBean();
 	                JSONObject item=array.getJSONObject(i);
 	                ArrayList<HashMap<String, Object>> tblPoints=new ArrayList<HashMap<String,Object>>();
 	                JSONArray jsonTblPoints=item.getJSONArray("address_components");
@@ -186,7 +192,8 @@ public class DirectionsJSONParser {
 	                {
 	                    JSONObject jsonTblPoint=jsonTblPoints.getJSONObject(j);
 	                    HashMap<String, Object> tblPoint=new HashMap<String, Object>();
-	                    Iterator<String> keys=jsonTblPoint.keys();
+	                    @SuppressWarnings("unchecked")
+						Iterator<String> keys=jsonTblPoint.keys();
 	                    while(keys.hasNext())
 	                    {
 	                        String key=(String) keys.next();

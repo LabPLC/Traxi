@@ -4,11 +4,23 @@ import java.io.IOException;
 
 import android.widget.EditText;
 
+/**
+ * Clase que valida los EditText
+ * @author mikesaurio
+ *
+ */
 public class EditTextValidator {
 	
-	/*
-	 * metodo que valida si es un numero lo que se ingresa al edittext
-	 */
+/**
+ * metodo que valida si es un numero lo que se ingresa al edittext
+ * 
+ * @param valor (String) cadena a evaluar
+ * @param cantidadDeEnteros (long) 
+ * @param cantidadDeDecimales (long)
+ * @param admiteSignoNegativo (boolaen)
+ * @return (double)
+ * @throws IOException
+ */
 	 public static double esNumero(String valor, long cantidadDeEnteros, long cantidadDeDecimales, boolean admiteSignoNegativo)throws IOException{
 			
 			try{
@@ -110,7 +122,11 @@ public class EditTextValidator {
 		}
 	
 	 
-	 
+	 /**
+	  * revisa si el edittext tiene un correo
+	  * @param editText (EditText) 
+	  * @return (boolaen) True= es un corre, False = no es un correo
+	  */
 	 public static boolean esCorreo(EditText editText){
 		 if (editText.getText().toString().matches("[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"))
 	     {

@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -34,7 +35,7 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.panic.MyReceiver;
 import codigo.labplc.mx.traxi.panic.PanicAlert;
 import codigo.labplc.mx.traxi.tracking.Activity_null;
@@ -42,12 +43,15 @@ import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
+ * Servicio que controla todos los procesos en segundo plano
  * 
  * @author mikesaurio
  * 
  */
+@SuppressWarnings("unused")
 public class ServicioGeolocalizacion extends Service implements Runnable {
-	/**
+	
+	/*
 	 * Declaraci—n de variables
 	 */
 	
@@ -70,6 +74,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	private Timer timer,timerParanoico;
 	public static boolean serviceIsIniciado = false;
 	private BroadcastReceiver mReceiver;
+
 	private ResultReceiver resultReceiver;
 	private static int countStart = -1;
 	private Handler handler_time = new Handler();
@@ -91,20 +96,18 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     private int intervaloLocationParanoia =0;
     private boolean algoPaso=true;
    private boolean isMailFirst=true;
-private boolean panico;
-private boolean isActivado= false;
+   private boolean panico;
+   private boolean isActivado= false;
+   private boolean flag_una_vez = true;
 
     
     
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	public void onCreate() {
 		super.onCreate();
 
-		
-	
-
-		
 		//obtenemos la hora en la que inicia el servicio
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
@@ -118,10 +121,6 @@ private boolean isActivado= false;
 		
 		timer = new Timer();//timer para el boton de panico
 
-
-	/*	SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-		intervaloLocation = getPreferencia("prefSyncFrequency");//intervalo de busqueda
-		*/
 		// para le panic
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
 		filter.addAction(Intent.ACTION_SCREEN_OFF);
@@ -132,9 +131,10 @@ private boolean isActivado= false;
 	
 	
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onStart(Intent intent, int startId) {
-		//PAnic
+		//Panic
 		if(isFirstTime){
 			obtenerSenalGPS();
 			isFirstTime=false;
@@ -145,14 +145,22 @@ private boolean isActivado= false;
 	
 					// revisamos si la pantalla esta prendida o apagada y contamos el numero de click al boton de apagado
 					boolean screenOn = intent.getBooleanExtra("screen_state", false);
+					if(!screenOn&&flag_una_vez ){ //si la pantalla esta apagada son 5 veces prendida son 6 veces
+						countStart = 0;
+					}
 					// si damos m‡s de 4 click al boton de apagado se activa la alarma
 					if (countStart >= 4) {
 						countStart = -1;
 						countTimer = true;
-						setPanicoActivado(true);
-						alarmaActivada();
-	
+						flag_una_vez=true;
+						SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+				        String telemer_local = prefs.getString("telemer", null);
+				        if(telemer_local!=null){//revisamos si tiene por lo menos un contactos de emergencia
+							setPanicoActivado(true);
+							alarmaActivada();
+				        }
 					} else {
+						flag_una_vez=false;
 						countStart += 1;
 						// contamos 10 segundos si no reiniciamos los contadores
 						if (countTimer) {
@@ -161,7 +169,7 @@ private boolean isActivado= false;
 						}
 					}
 			}catch(Exception e){
-				BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			}
 				
 		super.onStart(intent, startId);
@@ -173,7 +181,6 @@ private boolean isActivado= false;
 			if (mLocationListener != null)
 				mLocationManager.removeUpdates(mLocationListener);
 
-		//Toast.makeText(this, "Servicio detenido ", Toast.LENGTH_SHORT).show();
 		super.onDestroy();
 		CancelNotification(this, 0);
 		timer.cancel();
@@ -201,6 +208,7 @@ private boolean isActivado= false;
 	/**
 	 * handler
 	 */
+	@SuppressLint("HandlerLeak")
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -264,11 +272,7 @@ private boolean isActivado= false;
 		}
 	}
 
-	public boolean yaPasaronMinutos(){
-		
-		
-		return false;
-	}
+
 	/**
 	 * Hilo de la aplicacion para cargar las cordenadas del usuario
 	 */
@@ -298,7 +302,7 @@ private boolean isActivado= false;
 	}
 
 	/**
-	 * Metodo para asignar las cordenadas del usuario
+	 *  SET Metodo para asignar las cordenadas del usuario
 	 * */
 	private void setCurrentLocation(Location loc) {
 		currentLocation = loc;
@@ -358,7 +362,6 @@ private boolean isActivado= false;
 				.setContentText(taxiActivity.getResources().getString(R.string.notificacion_que_quieres_hacer))
 				.setSmallIcon(R.drawable.ic_launcher)
 		
-				// .setContentIntent(pIntent)
 				.addAction(R.drawable.ic_launcher_chinche, taxiActivity.getResources().getString(R.string.notificacion_viaje), pIntent)
 				.addAction(R.drawable.ic_launcher_fin_viaje, taxiActivity.getResources().getString(R.string.notificacion_finalizar),pIntent_cal)
 				.build();
@@ -367,25 +370,28 @@ private boolean isActivado= false;
 		noti.flags += Notification.FLAG_ONGOING_EVENT;
 		
 		NotificationManager notificationManager = (NotificationManager) taxiActivity.getSystemService(NOTIFICATION_SERVICE);
-		// noti.flags |= Notification.FLAG_AUTO_CANCEL;
 		
-	
 		notificationManager.notify(0, noti);
 		
 		
 	}
 
+	/**
+	 * cancela una notificacion
+	 * @param ctx (Contexto)
+	 * @param notifyId (int) id de la notificacion
+	 */
 	public static void CancelNotification(Context ctx, int notifyId) {
 	try{
 		String ns = Context.NOTIFICATION_SERVICE;
 		NotificationManager nMgr = (NotificationManager) ctx.getSystemService(ns);
 		nMgr.cancel(notifyId);
 	}catch(Exception e){
-		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	}
 	}
 
-	// panic
+
 	 /**
      * hilo que al pasar el tiempo reeinicia los valores
      */
@@ -393,12 +399,15 @@ private boolean isActivado= false;
         @Override
         public void run() {
             //reiniciamos los contadores
+        	flag_una_vez=true;
             countStart = -1;
             countTimer = true;
         }
     };
 
-    
+    /**
+     * holo que envia los correos
+     */
     public void enviaCorreo(){
     	timer.scheduleAtFixedRate(new TimerTask() {
 
@@ -434,6 +443,9 @@ private boolean isActivado= false;
     }
     
     
+    /**
+     *  hilo que muestra la notificacion en modo paranoico
+     */
    public void mensajeParanoico(){
 	   isActivado=true;
     	timerParanoico.scheduleAtFixedRate(new TimerTask() {
@@ -448,6 +460,10 @@ private boolean isActivado= false;
 
     }
     
+   /**
+    * muestra la notificacion de panico
+    */
+   @SuppressWarnings("deprecation")
    public void showNotificationPanic() {
 		// notification is selected
 		Vibrator v = (Vibrator) taxiActivity.getSystemService(Context.VIBRATOR_SERVICE);
@@ -460,7 +476,8 @@ private boolean isActivado= false;
          CharSequence tickerText = "Traxi";
          long when = System.currentTimeMillis();
          int requestID = (int) System.currentTimeMillis();
-         Notification notification = new Notification(icon, tickerText, when);
+
+		Notification notification = new Notification(icon, tickerText, when);
          Context context = getApplicationContext();
          Intent notificationIntent = new Intent(this, Activity_null.class);
 
@@ -502,6 +519,10 @@ private boolean isActivado= false;
 		}
     } 
     
+    /**
+     * SET panico activado
+     * @param flag(boolean) true si esta activado
+     */
     public static  void setPanicoActivado(boolean flag)
 	{
     	ServicioGeolocalizacion.panicoActivado=flag;
@@ -509,18 +530,24 @@ private boolean isActivado= false;
     	
 	}
     
+    /**
+     * GET panico activado
+     * @return (boolean) true si esta activado
+     */
     public  boolean getPanicoActivado()
    	{
        return	ServicioGeolocalizacion.panicoActivado;
    	}
     
-    //detiene la notificacion cuando se abre la actividad mapa
+    /**
+     * detiene la notificacion cuando se abre la actividad mapa
+     */
     public static void  stopNotification(){
     	CancelNotification(taxiActivity, 0);
     }
     
     
- // panic
+
  	 /**
       * hilo que al pasar el tiempo reeinicia los valores
       */
@@ -570,7 +597,7 @@ private boolean isActivado= false;
 		}
      }
     	}catch(Exception e){
-    		BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+    		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
     	}
      }
      

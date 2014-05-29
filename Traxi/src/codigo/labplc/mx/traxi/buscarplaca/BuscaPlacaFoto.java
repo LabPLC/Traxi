@@ -58,7 +58,7 @@ import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.utils.Utils;
 /**
  * toma una foto a la puerta del taxi y regresa el numero
@@ -94,20 +94,14 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 
 	 
 	public void init(Activity con){
-		BeanDatosLog.setTagLog(TAG);
+		DatosLogBean.setTagLog(TAG);
 
 		foto = Environment.getExternalStorageDirectory() + "/imagen"+ Utils.getCode() + ".jpg";
 		
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 		
 		
-		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
-		
-		
-		
-		
-		
-		
+		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.mapa_tracking_miviaje),0.0f);//creamos el ActionBAr
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
 		
@@ -142,7 +136,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						Dialogos.Toast(context,getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
 					}
 				}catch(Exception e){
-					BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+					DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 				}
 				}
 			}
@@ -213,7 +207,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						
 					}
 					catch (Exception e) {
-						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+						DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					}
 				}};
 
@@ -235,7 +229,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						}
 					}
 					catch (IOException e) {
-						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+						DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					}
 					if (camera != null) {
 						try {
@@ -244,7 +238,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 							camera.startPreview();
 							previewing = true;
 						} catch (IOException e) {
-							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 						}
 					}
 					if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
@@ -268,11 +262,11 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 							camera = Camera.open();
 							
 						}catch(Exception e){
-							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 							    try {
 							    	camera = Camera.open(0);
 							    } catch (RuntimeException f) {
-									BeanDatosLog.setDescripcion(Utils.getStackTrace(f));
+									DatosLogBean.setDescripcion(Utils.getStackTrace(f));
 							  }
 							
 						}
@@ -289,7 +283,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 					camera = null;
 					previewing = false;
 					}catch(Exception e){
-						BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+						DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					}
 				}
 
@@ -359,7 +353,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 							}
 							file.delete();
 						} catch (Exception e) {
-							BeanDatosLog.setDescripcion(Utils.getStackTrace(e));
+							DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 						}
 						return null;
 					}

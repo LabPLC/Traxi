@@ -8,7 +8,7 @@ import android.os.BatteryManager;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.telephony.SmsManager;
-import codigo.labplc.mx.traxi.log.BeanDatosLog;
+import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.utils.Utils;
 /**
  * Clase que envia los SMS y correos al haber un mensaje de panico
@@ -70,7 +70,7 @@ public class PanicAlert {
              GMailSender sender = new GMailSender(correoRemitente,Utils.getMAilKey(context));
              sender.sendMail(cabecera, mensaje,correoRemitente, correoDestino);  
          } catch (Exception e) {   
-        	 BeanDatosLog.setDescripcion(Utils.getStackTrace(e));  
+        	 DatosLogBean.setDescripcion(Utils.getStackTrace(e));  
          } 
      }
 }
