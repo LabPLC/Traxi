@@ -77,7 +77,7 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity"
+            android:name="codigo.labplc.mx.traxi.registro.RegistroContactosEmergenciaActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait"

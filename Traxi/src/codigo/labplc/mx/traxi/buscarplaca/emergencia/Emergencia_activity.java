@@ -1,7 +1,6 @@
 package codigo.labplc.mx.traxi.buscarplaca.emergencia;
 
 import android.app.Activity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.fonts.fonts;
-import codigo.labplc.mx.traxi.registro.MitaxiRegisterManuallyActivity;
+import codigo.labplc.mx.traxi.registro.RegistroContactosEmergenciaActivity;
 
 /**
  * clase que muestra un mensaje explicando las funciones de panico de la app
@@ -78,7 +77,7 @@ public class Emergencia_activity extends Activity {
 	 * intent que activa el llenado de contactos de emergencia
 	 */
 	public void datosEmergencia(){
-		Intent intentManually = new Intent(Emergencia_activity.this, MitaxiRegisterManuallyActivity.class);
+		Intent intentManually = new Intent(Emergencia_activity.this, RegistroContactosEmergenciaActivity.class);
 		intentManually.putExtra("origen", "splash");
 		startActivity(intentManually);
 		overridePendingTransition(0,0);

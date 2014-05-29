@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:background="@drawable/gradient_drawable1"
     android:gravity="center"
-    tools:context=".MitaxiRegisterManuallyActivity" >
+    tools:context=".RegistroContactosEmergenciaActivity" >
 
     <TextView
         android:id="@+id/mitaxiregistermanually_tv_label"

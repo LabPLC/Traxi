@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:background="@color/gris_obscuro_trans"
     android:gravity="center"
-    tools:context=".MitaxiRegisterManuallyActivity" >
+    tools:context=".RegistroContactosEmergenciaActivity" >
 
     <LinearLayout
         android:id="@+id/linearLayout1"

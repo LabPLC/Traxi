@@ -98,37 +98,36 @@
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">¡Solo funciona en la puerta!</string>
     <string name="busca_placa_btn_tomarfoto">Take a picture</string>
-        <string name="busca_placa_btn_tomarfoto_entendi">Entendí</string>
-        
-       <string name="camara_guia_foto">Manera correcta de tomar una foto</string>
+    <string name="busca_placa_btn_tomarfoto_entendi">Entendí</string>
+    <string name="camara_guia_foto">Manera correcta de tomar una foto</string>
     <string name="inicio_de_trabajo_tv_nombre">Write taxi license plate</string>
     <string name="inicio_de_trabajo_et_placa">License plate</string>
-        <string name="busca_placa_btn_emergencia">Emergencia</string>
+    <string name="busca_placa_btn_emergencia">Emergencia</string>
     <string name="busca_placa_btn_tips">Tips</string>
-    <string name="busca_placa_btn_tomar_foto">Tomar foto</string>  
+    <string name="busca_placa_btn_tomar_foto">Tomar foto</string>
 
- <!-- Tenencia -->
+    <!-- Tenencia -->
     <string name="adeudo_tenencia">Tenencia</string>
     <string name="sin_adeudo_tenencia">Este vehículo no tiene adeudos de tenencia</string>
     <string name="con_adeudo_tenencia">Este vehículo tiene adeudos de tenencia</string>
 
     <!-- Revista -->
-     <string name="adeudo_revista">Revista vehícular</string>
+    <string name="adeudo_revista">Revista vehícular</string>
     <string name="sin_revista">Este vehículo no esta en la revista.</string>
     <string name="con_revista">Este vehículo esta en la revista</string>
 
     <!-- año carro -->
-     <string name="adeudo_anio">Vehículo</string>
+    <string name="adeudo_anio">Vehículo</string>
     <string name="carro_viejo">Este vehículo ya no es optimo.</string>
     <string name="carro_nuevo">Este vehículo aun es optimo.</string>
 
     <!-- infraccion -->
-     <string name="adeudo_infracciones">Infracciones</string>
+    <string name="adeudo_infracciones">Infracciones</string>
     <string name="tiene_infraccion">Este vehículo tiene multas</string>
     <string name="no_tiene_infraccion">Este vehículo no tiene multas</string>
 
     <!-- verificaciones -->
-     <string name="adeudo_verificaciones">Verificacion</string>
+    <string name="adeudo_verificaciones">Verificacion</string>
     <string name="tiene_verificaciones">Este vehículo tiene calcomanía: </string>
     <string name="no_tiene_verificaciones">Este vehículo no tiene verificacion</string>
     <string name="title_activity_trackxi_setting">TrackxiSettingActivity</string>
@@ -291,6 +290,7 @@
     <string name="Registro_manual_llena_bien_el_celular">El celular debe ser de 10 dígitos</string>
     <string name="Registro_manual_llena_bien_el_celular_signo">El celular NO debe tener signos</string>
     <string name="Registro_manual_datos_guardados">Información guardada</string>
+    <string name="Registro_manual_datos_paranoico_sin_contac">No puedes activar el modo paranoico, los contactos están mal</string>
     <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
     <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
     <string name="Califica_taxi_0">Muy deficiente servicio</string>

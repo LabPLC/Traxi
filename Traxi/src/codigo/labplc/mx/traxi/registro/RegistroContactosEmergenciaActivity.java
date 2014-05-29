@@ -5,7 +5,6 @@ package codigo.labplc.mx.traxi.registro;
 
 import java.util.ArrayList;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -24,7 +23,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
@@ -37,7 +35,6 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaFoto;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
@@ -50,14 +47,14 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
-public class MitaxiRegisterManuallyActivity extends Activity implements OnClickListener{
+public class RegistroContactosEmergenciaActivity extends Activity implements OnClickListener{
 	
 	public final String TAG = this.getClass().getSimpleName();
 	private LinearLayout mitaxiregistermanually_ll_contactos;
 	private TextView mitaxiregistermanually_tv_agregar;
 	 ArrayList<View> views = new ArrayList<View>();
 	private View mitaxiregistermanually_iv_quitar;
-	private boolean[] emergenciaOcupado= {true,true};//maneja los contactos
+	private boolean[] emergencia_esta_Ocupado= {false,false};//maneja los contactos
 	private int RESULT_SETTINGS =10;
 	private CheckBox mitaxiregistermanually_cv_paranoico;
 	
@@ -67,12 +64,12 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		
 		
 		    
-		setContentView(R.layout.activity_mitaxi_register_manually);
+		setContentView(R.layout.activity_registro_contacto_emergencia);
 		
 		BeanDatosLog.setTagLog(TAG);
 	
 		
-		Utils.crearActionBar(MitaxiRegisterManuallyActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),15.0f);//creamos el ActionBAr
+		Utils.crearActionBar(RegistroContactosEmergenciaActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),15.0f);//creamos el ActionBAr
 	     
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
@@ -108,7 +105,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 			
 			@Override
 			public void onClick(View v) {
-				if(emergenciaOcupado[0]||emergenciaOcupado[1]){
+				if(!emergencia_esta_Ocupado[0]||!emergencia_esta_Ocupado[1]){
 					addContact(null,null);
 				}
 			}
@@ -123,7 +120,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 			@Override
 			public void onClick(View v) {
 				
-			new	Dialogos().mostrarParaQue(MitaxiRegisterManuallyActivity.this).show();
+			new	Dialogos().mostrarParaQue(RegistroContactosEmergenciaActivity.this).show();
 				
 			}
 		});
@@ -132,32 +129,24 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		  mitaxiregistermanually_cv_paranoico = (CheckBox) findViewById(R.id.mitaxiregistermanually_cv_paranoico); 
 		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
           boolean panic = prefs.getBoolean("panico", false);
-        	  mitaxiregistermanually_cv_paranoico.setChecked(panic); 
+          mitaxiregistermanually_cv_paranoico.setChecked(panic); 
         	  
           
 		 mitaxiregistermanually_cv_paranoico.setOnCheckedChangeListener(new OnCheckedChangeListener() { 
 
 		 @Override 
 		 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) { 
-			 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
-				SharedPreferences.Editor editor = prefs.edit();
+
 			 if (buttonView.isChecked()){ 
 				 if(validaEditText(R.string.Registro_manual_datos_paranoico_sin_contac)){
-					 if((!emergenciaOcupado[0]||!emergenciaOcupado[1])){
-							editor.putBoolean("panico", true);
-							editor.commit();
-				 }else{
-					 buttonView.setChecked(false);
-					Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
+					 if((!emergencia_esta_Ocupado[0]&&!emergencia_esta_Ocupado[1])){
+						 buttonView.setChecked(false);
+						 Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
 				 	}
 				 }else{
 					 buttonView.setChecked(false);
 				 }
-			 } 
-			 else{
-				 editor.putBoolean("panico", false);
-				 editor.commit();
-			 } 
+			 }
 
 		 }
 		 });
@@ -171,7 +160,9 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	
 	
 	
-	
+	/**
+	 * revisa y manda a llenar los contactos segun falte
+	 */
 	public void llenarContactos() {
 		 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
          String telemer = prefs.getString("telemer", null);
@@ -190,9 +181,10 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	 * metodo que agrega un contacto de emergencia
 	 */
 	public void addContact(String tel, String corr){
-		if(emergenciaOcupado[0]){
+	
+		if(!emergencia_esta_Ocupado[0]){
 			addView(0,tel,corr);
-		}else if(emergenciaOcupado[1]){
+		}else if(!emergencia_esta_Ocupado[1]){
 			addView(1,tel,corr);
 		}
 	} 
@@ -208,18 +200,19 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 			if(tag.equals(views.get(i).getTag()+"")){
 				mitaxiregistermanually_ll_contactos.removeView(views.get(i));
 				views.remove(i);
-				emergenciaOcupado[i]=true;
-				if(emergenciaOcupado[0]||emergenciaOcupado[1]){
-				mitaxiregistermanually_tv_agregar.setVisibility(TextView.VISIBLE);
+				emergencia_esta_Ocupado[Integer.parseInt(tag)]=false;
+				if(emergencia_esta_Ocupado[0]||emergencia_esta_Ocupado[1]){
+					mitaxiregistermanually_tv_agregar.setVisibility(TextView.VISIBLE);
 				}
-				if((emergenciaOcupado[0]&&emergenciaOcupado[1])){{
+				if((!emergencia_esta_Ocupado[0]&&!emergencia_esta_Ocupado[1])){{
 					mitaxiregistermanually_cv_paranoico.setChecked(false);
-					 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi", Context.MODE_PRIVATE);
-					 SharedPreferences.Editor editor = prefs.edit();
-					 editor.putBoolean("panico", false);
-					 editor.commit();
+					 Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
 				}
-				}		
+			
+				}
+				if(!validaEditText(R.string.Registro_manual_datos_paranoico_sin_contac)){
+					mitaxiregistermanually_cv_paranoico.setChecked(false);
+				}
 			}
 		}
 	}
@@ -228,7 +221,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	 * agrega la vista del contacto de emergencua
 	 */
 	public void addView(final int tag,String tel,String corr){
-		
+	//	mitaxiregistermanually_cv_paranoico.setChecked(false);
 		LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.row_contact, null);
 		view.setTag(tag+"");
@@ -285,24 +278,28 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 		}
 		views.add(view);
 		mitaxiregistermanually_ll_contactos.addView(view);
-		emergenciaOcupado[tag]=false;
-		if(!emergenciaOcupado[0]&&!emergenciaOcupado[1]){
+		emergencia_esta_Ocupado[tag]=true;
+		if(emergencia_esta_Ocupado[0]&&emergencia_esta_Ocupado[1]){
 			mitaxiregistermanually_tv_agregar.setVisibility(TextView.INVISIBLE);
 		}
+
 	}
 	
-	/*
+	/**
 	 * metodo que llena tanto el numero celular como correo de emergencia con los contactos del usuario
+	 * @param intent
+	 * @param tag
 	 */
 	public void getContactInfo(Intent intent, int tag)
 	{
 		try{
-			  Cursor   cursor =  managedQuery(intent.getData(), null, null, null, null);      
+			  @SuppressWarnings("deprecation")
+			Cursor   cursor =  managedQuery(intent.getData(), null, null, null, null);      
 			  if(!cursor.isClosed()&&cursor!=null){
 			   while (cursor.moveToNext()) 
 			   {           
 			       String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-			       String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)); 
+			       //String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)); 
 			       String hasPhone = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
 		
 			       if ( hasPhone.equalsIgnoreCase("1")){
@@ -369,11 +366,13 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	
 	}
 
-	
+	/**
+	 * sobrescribe el metodo onBackPressed
+	 */
 	public void back(){
 		if(validaEditText(R.string.Registro_manual_llena_todos_los_campos)){
 			if(guardaLasPreferencias()){
-					Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(R.string.Registro_manual_datos_guardados), Toast.LENGTH_SHORT);
+					Dialogos.Toast(RegistroContactosEmergenciaActivity.this, getResources().getString(R.string.Registro_manual_datos_guardados), Toast.LENGTH_SHORT);
 					super.onBackPressed();
 				
 			}
@@ -414,6 +413,13 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 						      	  editor.putString("correoemer2",et2.getText().toString());
 						     }
 					}
+					
+					if (mitaxiregistermanually_cv_paranoico.isChecked()){ 
+						editor.putBoolean("panico", true);
+					}else{
+						editor.putBoolean("panico", false);
+					}
+						editor.commit();
 					editor.commit();
 		return true;		
 		}catch(Exception e){
@@ -423,7 +429,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 
 	/**
 	 * valida todos los editText 
-	 * @return
+	 * @return (true) si el editText esta bie llenado
 	 */
 	public boolean validaEditText(int texto) {
 		for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
@@ -434,20 +440,20 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
       	  EditText et2 = (EditText) ll3.getChildAt(1);
       	 //validamos que no esten vacios
       	  if(et.getText().toString().equals("")){
-      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
+      		  Dialogos.Toast(RegistroContactosEmergenciaActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
       		  return false;
       	  }
     	  if(et2.getText().toString().equals("")){
-    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
+    		  Dialogos.Toast(RegistroContactosEmergenciaActivity.this, getResources().getString(texto), Toast.LENGTH_LONG);
     		  return false;
     	  }
     	  //validamos que esten bien escritos
     	  if(et.getText().toString().length()!=10){
-      		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular), Toast.LENGTH_LONG);
+      		  Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular), Toast.LENGTH_LONG);
       		  return false;
       	  }
     	  if(Utils.isNumeric(et.getText().toString())){
-    		  Dialogos.Toast(MitaxiRegisterManuallyActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular_signo), Toast.LENGTH_LONG);
+    		  Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_llena_bien_el_celular_signo), Toast.LENGTH_LONG);
       		  return false;  
     	  }
     	  
@@ -485,9 +491,12 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 	}
 
 	       
-	    
+	    /**
+	     * muestra popup en forma de menu
+	     * @param v
+	     */
 	public void showPopup(View v) {
-		PopupMenu popup = new PopupMenu(MitaxiRegisterManuallyActivity.this, v);
+		PopupMenu popup = new PopupMenu(RegistroContactosEmergenciaActivity.this, v);
 		MenuInflater inflater = popup.getMenuInflater();
 		inflater.inflate(R.menu.popup, popup.getMenu());
 		int positionOfMenuItem = 0; 
@@ -503,7 +512,7 @@ public class MitaxiRegisterManuallyActivity extends Activity implements OnClickL
 
 				case R.id.configuracion_pref:
 
-						Intent i = new Intent(MitaxiRegisterManuallyActivity.this,UserSettingActivity.class);
+						Intent i = new Intent(RegistroContactosEmergenciaActivity.this,UserSettingActivity.class);
 						startActivityForResult(i, RESULT_SETTINGS);
 						return true;
 					
