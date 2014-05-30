@@ -92,7 +92,7 @@
         android:id="@+id/mitaxiregistermanually_iv_ayuda"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignRight="@+id/mitaxiregistermanually_sv_container_infouser_emer"
+        android:layout_alignLeft="@+id/mitaxiregistermanually_sv_container_infouser_emer"
         android:layout_below="@+id/mitaxiregistermanually_tv_label"
         android:layout_margin="10dp"
         android:src="@drawable/ic_help" />

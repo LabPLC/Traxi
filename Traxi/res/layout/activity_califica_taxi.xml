@@ -12,7 +12,7 @@
         android:id="@+id/viewflipper"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white" >
+        android:background="@color/color_fondos" >
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -1,5 +1,4 @@
 package codigo.labplc.mx.traxi.buscarplaca;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,7 +16,6 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -60,6 +58,7 @@ import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.utils.Utils;
+
 /**
  * toma una foto a la puerta del taxi y regresa el numero
  * @author mikesaurio
@@ -93,6 +92,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 	
 
 	 
+	
 	public void init(Activity con){
 		DatosLogBean.setTagLog(TAG);
 
@@ -106,16 +106,19 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
 		
 		
-		((TextView)findViewById(R.id.inicio_de_trabajo_tv_foto)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-		((TextView)findViewById(R.id.inicio_de_trabajo_tv_foto)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		((TextView)findViewById(R.id.busca_placa_tv_foto)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
+		((TextView)findViewById(R.id.busca_placa_tv_foto)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 
+		
+		
+		
 
 		surfaceView = (SurfaceView) findViewById(R.id.camerapreview);
 		surfaceHolder = surfaceView.getHolder();
 		surfaceHolder.addCallback(this);
 		surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 		busca_placa_btn_tomarfoto =(Button)findViewById(R.id.busca_placa_btn_tomarfoto_foto);
-		busca_placa_btn_tomarfoto.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_COLOR_BASE));
+		busca_placa_btn_tomarfoto.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 
 		busca_placa_btn_tomarfoto.setOnClickListener(new View.OnClickListener() {
 			
@@ -127,17 +130,17 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 					SharedPreferences.Editor editor = prefs.edit();
 					editor.putString("guia_camara", "aceptar");
 					editor.commit();
+					
 				}else{
-				
-				try{
-					if(Utils.hasInternet(context)){
-						camera.takePicture(myShutterCallback,myPictureCallback_RAW, myPictureCallback_JPG);
-					}else{
-						Dialogos.Toast(context,getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
+					try{
+						if(Utils.hasInternet(context)){
+							camera.takePicture(myShutterCallback,myPictureCallback_RAW, myPictureCallback_JPG);
+						}else{
+							Dialogos.Toast(context,getResources().getString(R.string.no_internet_connection), Toast.LENGTH_LONG);
+						}
+					}catch(Exception e){
+						DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					}
-				}catch(Exception e){
-					DatosLogBean.setDescripcion(Utils.getStackTrace(e));
-				}
 				}
 			}
 		});
@@ -149,6 +152,15 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		}
 		
 		
+		
+		((ImageView) findViewById(R.id.busca_placa_iv_ayuda)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				
+				abrirGuia();
+				((ImageView) findViewById(R.id.busca_placa_iv_ayuda)).setVisibility(ImageView.INVISIBLE);
+			}
+		});
 	}
 
 
@@ -157,11 +169,21 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
  */
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	public void cerrarGuia() {
+		((ImageView) findViewById(R.id.busca_placa_iv_ayuda)).setVisibility(ImageView.VISIBLE);
 		busca_placa_btn_tomarfoto.setText(getResources().getString(R.string.busca_placa_btn_tomarfoto));
 		((LinearLayout)findViewById(R.id.busca_placa_ll_guia)).setVisibility(LinearLayout.GONE);
 		surfaceView.setBackground(null);
 	}
 
+	/**
+	 * abrir 
+	 */
+		@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+		public void abrirGuia() {
+			busca_placa_btn_tomarfoto.setText(getResources().getString(R.string.busca_placa_btn_tomarfoto_entendi));
+			((LinearLayout)findViewById(R.id.busca_placa_ll_guia)).setVisibility(LinearLayout.VISIBLE);
+			surfaceView.setBackground(getResources().getDrawable(R.drawable.carro));
+		}
 
 
 	ShutterCallback myShutterCallback = new ShutterCallback(){
@@ -431,7 +453,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						int positionOfMenuItem = 0; 
 						MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 						SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-						s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+						s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_base)), 0, s.length(), 0);
 						item.setTitle(s);
 
 						popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

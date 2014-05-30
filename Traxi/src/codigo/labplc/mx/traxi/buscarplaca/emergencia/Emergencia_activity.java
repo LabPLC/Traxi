@@ -43,7 +43,7 @@ public class Emergencia_activity extends Activity {
 	public void init(){
 		
 	    ((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTextColor(getResources().getColor(R.color.black));
+		((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
 	     
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTextColor(new fonts(Emergencia_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));

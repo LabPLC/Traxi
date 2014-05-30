@@ -37,7 +37,7 @@ public class Dialogos {
 		LayoutInflater inflater = context.getLayoutInflater();
 		View layouttoast = inflater.inflate(R.layout.toastcustom, (ViewGroup)context.findViewById(R.id.toastcustom));
 		((TextView) layouttoast.findViewById(R.id.texttoast)).setText(text);
-		((TextView) layouttoast.findViewById(R.id.texttoast)).setTextColor(context.getResources().getColor(R.color.black));
+		((TextView) layouttoast.findViewById(R.id.texttoast)).setTextColor(context.getResources().getColor(R.color.color_vivos));
 		Toast mytoast = new Toast(context);
         mytoast.setView(layouttoast);
         mytoast.setDuration(Toast.LENGTH_LONG);
@@ -94,7 +94,7 @@ public class Dialogos {
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_nombre)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 	    
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
-	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTextColor(activity.getResources().getColor(R.color.black));
+	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTextColor(activity.getResources().getColor(R.color.color_vivos));
 	    
 
 	    

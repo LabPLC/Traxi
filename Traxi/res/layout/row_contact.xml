@@ -75,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
-                android:background="@color/white"
+                android:background="@color/color_fondos"
                 android:src="@drawable/ic_launcher_perfil"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
         </LinearLayout>

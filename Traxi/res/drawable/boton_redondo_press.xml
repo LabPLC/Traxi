@@ -13,7 +13,7 @@
         android:top="1dp"
         android:bottom="1dp"/>
 
-    <solid android:color="@color/white"/>
+    <solid android:color="@color/color_fondos"/>
     
     
 

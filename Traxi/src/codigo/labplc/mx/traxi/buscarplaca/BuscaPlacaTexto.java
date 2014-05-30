@@ -224,7 +224,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 					activity_buscar_placa_btn_emergencia.setCompoundDrawablesWithIntrinsicBounds(null,img,null,null);
 				
 			}else{
-				activity_buscar_placa_btn_emergencia.setTextColor(getResources().getColor(R.color.black));
+				activity_buscar_placa_btn_emergencia.setTextColor(getResources().getColor(R.color.color_vivos));
 				Drawable img = getResources().getDrawable( R.drawable.ic_launcher_alerta_gris );
 				activity_buscar_placa_btn_emergencia.setCompoundDrawablesWithIntrinsicBounds(null,img,null,null);
 			}
@@ -525,7 +525,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		int positionOfMenuItem = 0; 
 		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.black)), 0, s.length(), 0);
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 		item.setTitle(s);
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

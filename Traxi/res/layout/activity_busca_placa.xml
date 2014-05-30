@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/color_fondos"
     android:orientation="vertical"
     tools:context=".InicioDeTrabajo" >
 
@@ -23,7 +23,7 @@
             android:background="@drawable/marco"
             android:drawableTop="@drawable/ic_launcher_alerta_gris"
             android:text="@string/busca_placa_btn_emergencia"
-            android:textColor="@color/black"
+            android:textColor="@color/color_vivos"
             android:textSize="12sp" />
 
         <Button
@@ -35,7 +35,7 @@
             android:background="@drawable/marco"
             android:drawableTop="@drawable/ic_launcher_tips"
             android:text="@string/busca_placa_btn_tips"
-            android:textColor="@color/black"
+            android:textColor="@color/color_vivos"
             android:textSize="12sp" />
 
         <Button
@@ -46,7 +46,7 @@
             android:background="@drawable/marco"
             android:drawableTop="@drawable/ic_launcher_foto"
             android:text="@string/busca_placa_btn_tomar_foto"
-            android:textColor="@color/black"
+            android:textColor="@color/color_vivos"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="@string/inicio_de_trabajo_tv_nombre"
-                android:textColor="@color/black"
+                android:textColor="@color/color_vivos"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                     android:paddingLeft="3dp"
                     android:textColorHint="@android:color/darker_gray"
                     android:textCursorDrawable="@drawable/color_cursor"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_vivos"
                     android:textSize="30sp" />
 
                 <ImageView

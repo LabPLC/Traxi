@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_drawable1"
@@ -7,24 +8,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:id="@+id/container"
     tools:context=".InicioDeTrabajo" >
 
-    <TextView
-        android:id="@+id/inicio_de_trabajo_tv_foto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
-        android:text="@string/inicio_de_trabajo_tv_foto"
-        android:textColor="@color/gris_obscuro"
-        android:textStyle="bold" />
-
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/inicio_de_trabajo_tv_foto"
+        android:layout_alignLeft="@+id/busca_placa_tv_foto"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/inicio_de_trabajo_tv_foto"
+        android:layout_below="@+id/busca_placa_tv_foto"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -106,7 +98,7 @@
                 android:background="@drawable/degradado_camara" />
 
             <LinearLayout
-                 android:id="@+id/busca_placa_ll_guia"
+                android:id="@+id/busca_placa_ll_guia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -120,12 +112,12 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingRight="2dp"
                     android:gravity="center"
+                    android:paddingRight="2dp"
+                    android:background="@color/color_fondos"
                     android:text="@string/camara_guia_foto"
-                    android:textColor="@color/black" />
-
-                
+                    android:textColor="@color/color_vivos"
+                    android:drawableLeft="@drawable/ic_launcher"/>
             </LinearLayout>
 
         </RelativeLayout>
@@ -153,5 +145,27 @@
             layout="@layout/keyboard" >
         </include>
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/busca_placa_tv_foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/inicio_de_trabajo_tv_foto"
+        android:textColor="@color/gris_obscuro"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/busca_placa_iv_ayuda"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/busca_placa_tv_foto"
+        android:layout_alignLeft="@+id/busca_placa_tv_foto"
+        android:src="@drawable/ic_help"
+        android:visibility="invisible" />
 
 </RelativeLayout>

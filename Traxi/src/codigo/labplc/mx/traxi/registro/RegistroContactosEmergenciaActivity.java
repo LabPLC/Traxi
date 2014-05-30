@@ -95,7 +95,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		
 		TextView mitaxiregistermanually_tv_label= (TextView)findViewById(R.id.mitaxiregistermanually_tv_label);
 		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
-		 mitaxiregistermanually_tv_label.setTextColor(getResources().getColor(R.color.black));
+		 mitaxiregistermanually_tv_label.setTextColor(getResources().getColor(R.color.color_vivos));
 		 
 		 
 		 mitaxiregistermanually_ll_contactos =(LinearLayout)findViewById(R.id.mitaxiregistermanually_ll_contactos);
@@ -504,7 +504,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		int positionOfMenuItem = 0; 
 		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.black)), 0, s.length(), 0);
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 		item.setTitle(s);
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
