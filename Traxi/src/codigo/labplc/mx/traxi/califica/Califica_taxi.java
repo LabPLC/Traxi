@@ -140,7 +140,7 @@ public class Califica_taxi extends Activity {
 		});
 		
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
-		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
+		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
 			@SuppressLint("SimpleDateFormat")
 			@Override

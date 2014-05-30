@@ -14,7 +14,6 @@
         android:gravity=""
         android:padding="5dp"
         android:layout_margin="5dp"
-        android:background="@drawable/marco"
         android:text="@string/mitaxiregister_name"
         android:textStyle="bold" />
 

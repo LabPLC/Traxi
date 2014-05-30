@@ -26,7 +26,7 @@ import codigo.labplc.mx.traxi.R;
  *
  */
 public class FacebookUtils {
-	
+
 	/**
 	 * Fetch an image from url
 	 * 
@@ -37,7 +37,7 @@ public class FacebookUtils {
 		DownloadImageTask task = new FacebookUtils().new DownloadImageTask(imageProfileFriend);
 		task.execute(urlImage);
 	}
-	
+
 	/**
 	 * Thread to download an image from an url and change the data to an ImageView
 	 * 
@@ -59,12 +59,12 @@ public class FacebookUtils {
 	    @Override
 		protected Bitmap doInBackground(String... urls) {
 			String urldisplay = urls[0];
-			
+
 			InputStream inputStream = retrieveStream(urldisplay);
 			if(inputStream != null) {
 				Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
 		        Log.e("Bitmap","returned");
-		        
+
 		        return bitmap;
 			} else {
 				return null;
@@ -82,7 +82,7 @@ public class FacebookUtils {
 	    	}
 	    }
 	}
-	
+
 	public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
 		int targetWidth = scaleBitmapImage.getWidth() < 200 ? 200 : scaleBitmapImage.getWidth();
 		int targetHeight = scaleBitmapImage.getHeight() < 200 ? 200 : scaleBitmapImage.getHeight();
@@ -99,7 +99,7 @@ public class FacebookUtils {
 				targetHeight), null);
 		return targetBitmap;
 	}
-	
+
 	/**
 	 * Retrieve an InputStream from an url.
 	 * 

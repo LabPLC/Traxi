@@ -48,7 +48,7 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="@string/datos_tv_marca"
-                android:textColor="@color/generic_amarillo" />
+                android:textColor="@color/color_base" />
         </LinearLayout>
 
         <LinearLayout

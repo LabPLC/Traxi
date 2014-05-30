@@ -47,13 +47,13 @@ public class Tips_activity extends Activity {
 
 		
 	    ((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTextColor(new fonts(Tips_activity.this).getColorTypeFace(fonts.FLAG_ROJO));
+		((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTextColor(getResources().getColor(R.color.black));
 		
 		tips_activity_tv_cuantos =(TextView)findViewById(R.id.tips_activity_tv_cuantos);
 		
 		tv_contenido = (TextView) findViewById(R.id.tips_activity_tv_contenido);
 		tv_contenido.setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_ROJO));	
-		tv_contenido.setTextColor(new fonts(Tips_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		tv_contenido.setTextColor(getResources().getColor(R.color.black));
 		tv_contenido.setText(getResources().getString(stips[randInt(0,stips.length-1)]));
 		
 		ImageView	tips_activity_iv_cerrar	=(ImageView)findViewById(R.id.tips_activity_iv_cerrar);

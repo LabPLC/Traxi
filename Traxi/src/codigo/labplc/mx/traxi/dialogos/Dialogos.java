@@ -37,7 +37,7 @@ public class Dialogos {
 		LayoutInflater inflater = context.getLayoutInflater();
 		View layouttoast = inflater.inflate(R.layout.toastcustom, (ViewGroup)context.findViewById(R.id.toastcustom));
 		((TextView) layouttoast.findViewById(R.id.texttoast)).setText(text);
-		((TextView) layouttoast.findViewById(R.id.texttoast)).setTextColor(context.getResources().getColor(R.color.rojo_logo));
+		((TextView) layouttoast.findViewById(R.id.texttoast)).setTextColor(context.getResources().getColor(R.color.black));
 		Toast mytoast = new Toast(context);
         mytoast.setView(layouttoast);
         mytoast.setDuration(Toast.LENGTH_LONG);
@@ -80,7 +80,7 @@ public class Dialogos {
 	    builder.setView(view);
 	    builder.setCancelable(false);
         //tipografias
-	    ((Button) view.findViewById(R.id.dialogo_paraque_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
+	    ((Button) view.findViewById(R.id.dialogo_paraque_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
 	    
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_titulo)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
@@ -94,7 +94,7 @@ public class Dialogos {
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_nombre)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 	    
 	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
-	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_ROJO));
+	    ((TextView) view.findViewById(R.id.dialogo_paraque_tv_subtitulo)).setTextColor(activity.getResources().getColor(R.color.black));
 	    
 
 	    
@@ -128,8 +128,8 @@ public class Dialogos {
 	    builder.setView(view);
 	    builder.setCancelable(true);
         //tipografias
-	    ((Button) view.findViewById(R.id.dialogo_salir_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
-	    ((Button) view.findViewById(R.id.dialogo_salir_btnCancelar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_AMARILLO));
+	    ((Button) view.findViewById(R.id.dialogo_salir_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_COLOR_BASE));
+	    ((Button) view.findViewById(R.id.dialogo_salir_btnCancelar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_COLOR_BASE));
 	    
 	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_nombre)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
 	    ((TextView) view.findViewById(R.id.dialogo_salir_tv_nombre)).setTextColor(new fonts(activity).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));

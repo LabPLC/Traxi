@@ -38,7 +38,7 @@
                         android:layout_height="25dp"
                         android:background="@drawable/marco"
                         android:contentDescription="@string/app_name"
-                        android:src="@drawable/closerojo" />
+                        android:src="@drawable/ic_launcher_tache" />
 
                     <TextView
                         android:id="@+id/califica_taxi_tv_titulo"

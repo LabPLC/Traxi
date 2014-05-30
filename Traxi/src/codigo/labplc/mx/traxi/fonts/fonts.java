@@ -15,7 +15,7 @@ public class fonts {
 	public static final int FLAG_ROJO = 1;
 	public static final int FLAG_GRIS_CLARO = 2;
 	public static final int FLAG_GRIS_OBSCURO = 3;
-	public static final int FLAG_AMARILLO = 4;
+	public static final int FLAG_COLOR_BASE = 4;
 	public static final int FLAG_MAMEY = 5;
 
 
@@ -44,7 +44,7 @@ public class fonts {
 		} else if (tipo == FLAG_MAMEY) {
 			tf = Typeface.createFromAsset(activity.getAssets(),
 					"fonts/HelveticaNeueLTStd-Bd.otf");
-		} else if (tipo == FLAG_AMARILLO) {
+		} else if (tipo == FLAG_COLOR_BASE) {
 			tf = Typeface.createFromAsset(activity.getAssets(),
 					"fonts/HelveticaNeueLTStd-BdIt.otf");
 		}
@@ -66,8 +66,8 @@ public class fonts {
 			return activity.getResources().getColor(R.color.rojo_logo);
 		} else if (tipo == FLAG_MAMEY) {
 			return activity.getResources().getColor(R.color.mamey);
-		} else if (tipo == FLAG_AMARILLO) {
-			return activity.getResources().getColor(R.color.generic_amarillo);
+		} else if (tipo == FLAG_COLOR_BASE) {
+			return activity.getResources().getColor(R.color.color_base);
 		}else{
 			return R.color.rojo_logo;
 		}

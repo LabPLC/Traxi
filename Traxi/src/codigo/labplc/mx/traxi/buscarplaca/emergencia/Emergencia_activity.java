@@ -43,13 +43,13 @@ public class Emergencia_activity extends Activity {
 	public void init(){
 		
 	    ((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTextColor(new fonts(Emergencia_activity.this).getColorTypeFace(fonts.FLAG_ROJO));
+		((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTextColor(getResources().getColor(R.color.black));
 	     
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTextColor(new fonts(Emergencia_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setText((getResources().getText(R.string.mensaje_para_panic)));
 		Button activity_emergencia_btn_ok = (Button) findViewById(R.id.activity_emergencia_btn_ok);
-		activity_emergencia_btn_ok.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		activity_emergencia_btn_ok.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		activity_emergencia_btn_ok.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -63,7 +63,7 @@ public class Emergencia_activity extends Activity {
 		});
 		
 		Button activity_emergencia_btn_cancel = (Button) findViewById(R.id.activity_emergencia_btn_cancel);
-		activity_emergencia_btn_cancel.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		activity_emergencia_btn_cancel.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		activity_emergencia_btn_cancel.setOnClickListener(new View.OnClickListener() {
 
 			@Override

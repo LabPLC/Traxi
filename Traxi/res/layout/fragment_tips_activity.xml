@@ -118,7 +118,9 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/tips_activity_ll_tips"
         android:layout_alignTop="@+id/tips_activity_ll_tips"
-        android:src="@drawable/closerojo"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_launcher_tache"
         android:background="@drawable/marco" />
 
 </RelativeLayout>

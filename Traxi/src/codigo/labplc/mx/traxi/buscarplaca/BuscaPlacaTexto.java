@@ -99,20 +99,21 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		
 		//instancias y escuchas
 		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		//((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		
 		mLayout = (LinearLayout) findViewById(R.id.xK1);
 		mKLayout = (RelativeLayout) findViewById(R.id.xKeyBoard);
 		
 		mBack = (Button) findViewById(R.id.back);
 		mBack.setOnClickListener(this);
+		mBack.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 
 		placa = (EditText) findViewById(R.id.inicio_de_trabajo_et_placa);
 		placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME| InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
 		placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-		placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+	//	placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		placa.setOnTouchListener(this);
 		placa.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -223,7 +224,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 					activity_buscar_placa_btn_emergencia.setCompoundDrawablesWithIntrinsicBounds(null,img,null,null);
 				
 			}else{
-				activity_buscar_placa_btn_emergencia.setTextColor(getResources().getColor(R.color.gris_obscuro));
+				activity_buscar_placa_btn_emergencia.setTextColor(getResources().getColor(R.color.black));
 				Drawable img = getResources().getDrawable( R.drawable.ic_launcher_alerta_gris );
 				activity_buscar_placa_btn_emergencia.setCompoundDrawablesWithIntrinsicBounds(null,img,null,null);
 			}
@@ -333,6 +334,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 
 		for (int i = 0; i < mB.length; i++) {
 			mB[i].setOnClickListener(this);
+			mB[i].setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		}
 	}
 	
@@ -523,7 +525,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		int positionOfMenuItem = 0; 
 		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.black)), 0, s.length(), 0);
 		item.setTitle(s);
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

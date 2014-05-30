@@ -121,7 +121,7 @@ public class Datos extends View {
 		if(newProgress<=30){
 			shield.initUI(size/2,size/2,R.color.rojo_logo);
 		}else if(newProgress <=70 && newProgress>30){
-				shield.initUI(size/2,size/2,R.color.generic_amarillo);
+				shield.initUI(size/2,size/2,R.color.generic_naranja);
 		}else if(newProgress>70){
 				shield.initUI(size/2,size/2,R.color.android_green);
 			}

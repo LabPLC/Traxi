@@ -271,24 +271,26 @@ public class Comentarios extends View {
 			@Override
 			public void onGetFriendsFacebook(List<GraphUser> users, Response response) {
 				int i=-1;
-				for (GraphUser user : users) {
-					i+=1;
-					if(i==0){
-						comentarios_ll_contenedor_fotos.removeAllViews();
-					}
-					for(int j = 0;j< autoBean.getArrayComentarioBean().size();j++){
-						if(autoBean.getArrayComentarioBean().get(j).getId_facebook().equals(user.getId())){
-							if(foundFriend){
-								comentarios_ll_contenedor_fotos.removeAllViews();
-								foundFriend=false;
-							}
-							View viewFriend = addUserFriend(user,i,autoBean.getArrayComentarioBean().get(j).getComentario());
-								if(viewFriend != null) {
-									comentarios_ll_contenedor_fotos.addView(viewFriend);
+				if(users!=null){
+					for (GraphUser user : users) {
+						i+=1;
+						if(i==0){
+							comentarios_ll_contenedor_fotos.removeAllViews();
 						}
-				}
+						for(int j = 0;j< autoBean.getArrayComentarioBean().size();j++){
+							if(autoBean.getArrayComentarioBean().get(j).getId_facebook().equals(user.getId())){
+								if(foundFriend){
+									comentarios_ll_contenedor_fotos.removeAllViews();
+									foundFriend=false;
+								}
+								View viewFriend = addUserFriend(user,i,autoBean.getArrayComentarioBean().get(j).getComentario());
+									if(viewFriend != null) {
+										comentarios_ll_contenedor_fotos.addView(viewFriend);
+							}
 					}
-				}
+						}
+					}
+			}
 				if(foundFriend||i==-1){
 					btnLogin.setVisibility(Button.GONE);
 					TextView tv = new TextView(context);

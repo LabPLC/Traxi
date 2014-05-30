@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/my_group"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" 
-    android:paddingBottom="10dp"
-        android:id="@+id/my_group">
+    android:orientation="vertical"
+    android:paddingBottom="10dp" >
 
     <LinearLayout
         android:id="@+id/mitaxiregistermanually_ll_container_infouser_2"
@@ -26,7 +26,7 @@
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_weight=".9"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/rounded_edittext_blanco"
                 android:drawableLeft="@drawable/ic_launcher_cel"
                 android:ems="10"
                 android:focusable="true"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@drawable/rounded_edittext"
+                android:background="@drawable/rounded_edittext_blanco"
                 android:drawableLeft="@drawable/ic_launcher_mail"
                 android:ems="10"
                 android:focusable="true"
@@ -60,12 +60,14 @@
             android:layout_height="match_parent"
             android:layout_weight=".2"
             android:orientation="vertical" >
-   			<ImageView
+
+            <ImageView
                 android:id="@+id/mitaxiregistermanually_iv_quitar"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="right"
-                android:src="@drawable/closerojo" />
+                android:background="@drawable/marco"
+                android:src="@drawable/ic_launcher_tache" />
 
             <ImageButton
                 android:id="@+id/mitaxiregistermanually_btn_contactos_2"
@@ -73,10 +75,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_margin="3dp"
-                android:background="@color/gris_claro"
+                android:background="@color/white"
                 android:src="@drawable/ic_launcher_perfil"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
-         
         </LinearLayout>
     </LinearLayout>
 

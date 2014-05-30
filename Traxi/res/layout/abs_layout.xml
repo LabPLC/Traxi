@@ -3,14 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="@color/rojo_logo" >
+    android:background="@color/color_base" >
 
     <ImageView
         android:id="@+id/abs_layout_iv_logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight=".2"
-        android:src="@drawable/ic_launcher_trans" />
+        android:src="@drawable/ic_launcher_trans" 
+        android:contentDescription="@string/app_name"/>
 
     <TextView
         android:id="@+id/abs_layout_tv_titulo"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_weight=".2"
         android:src="@drawable/ic_launcher_menu" 
+         android:contentDescription="@string/app_name"
 />
 
 </LinearLayout>

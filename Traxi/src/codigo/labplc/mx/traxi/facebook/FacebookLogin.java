@@ -39,21 +39,21 @@ import com.facebook.model.GraphUser;
 @SuppressWarnings("deprecation")
 public class FacebookLogin {
 	public static final String TAG = FacebookLogin.class.getName();
-	
-	
+
+
 	private Activity activity;
 	private SharedPreferences sharedPrefs;
-	
+
 	private Facebook facebook;
 	private AsyncFacebookRunner asyncRunner;
 	private static final String[] PERMS = new String[] { "read_stream" };
 	private static  final String APP_ID = "622752297805514";
 	private OnLoginFacebookListener onLoginFacebookListener;
 	private OnGetFriendsFacebookListener onGetFriendsFacebookListener;
-	
+
 	protected String userId;
 	protected String userName;
-	
+
 	/**
 	 * Constructor
 	 * 
@@ -61,11 +61,11 @@ public class FacebookLogin {
 	 */
 	public FacebookLogin(Activity activity) {
 		this.activity = activity;
-		
+
 		facebook = new Facebook(APP_ID);
 		asyncRunner = new AsyncFacebookRunner(facebook);
 	}
-	
+
 	/**
 	 * Login in to Facebook
 	 */
@@ -77,7 +77,7 @@ public class FacebookLogin {
 			facebook.authorize(activity, PERMS, new LoginDialogListener());
 		}
 	}
-	
+
 	/**
 	 * Return a Facebook session state
 	 * 
@@ -95,7 +95,7 @@ public class FacebookLogin {
 		}
 		return facebook.isSessionValid();
 	}
-	
+
 	private class LoginDialogListener implements DialogListener {
 		@Override
 		public void onComplete(Bundle values) {
@@ -127,21 +127,21 @@ public class FacebookLogin {
 		@Override
 		public void onComplete(String response, Object state) {
 			Message message = new Message();
-			
+
 			try {
 				JSONObject json = Util.parseJson(response);
-				
+
 				userId = json.getString("id"); // Get userId
 				userName = json.getString("name"); // Get userName
-				
+
 				message.obj = true;
 				HandlerLoginFacebook.sendMessage(message);
-				
+
 			} catch (JSONException e) {
 				Log.d(TAG, "JSONException: " + e.getMessage());
 				message.obj = false;
 				HandlerLoginFacebook.sendMessage(message);
-				
+
 			} catch (FacebookError e) {
 				Log.d(TAG, "FacebookError: " + e.getMessage());
 				message.obj = false;
@@ -169,18 +169,18 @@ public class FacebookLogin {
 			Log.d(TAG, "FacebookError: " + e.getMessage());
 		}
 	}
-	
+
 	@SuppressLint("HandlerLeak")
 	public Handler HandlerLoginFacebook = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			
+
 			boolean status = (Boolean) msg.obj;
 			setOnLoginFacebook(status);
 		}
 	};
-	
+
 	/**
 	 * Get a friends list of the current Facebook session
 	 */
@@ -197,7 +197,7 @@ public class FacebookLogin {
 			}
 		});
 	}
-	
+
 	/**
 	 * Load an image profile from an user id, into an ImageView
 	 * 
@@ -208,7 +208,7 @@ public class FacebookLogin {
 		String urlImage = "http://graph.facebook.com/" + userId + "/picture?type=large";
 		FacebookUtils.fetchImageUrlToImageView(imageView, urlImage);
 	}
-	
+
 	/**
 	 * Get an user id from the open session of Facebook
 	 * 
@@ -226,7 +226,7 @@ public class FacebookLogin {
 	public String getUserName() {
 		return userName;
 	}
-	
+
 	/**
 	 * Get the instance of the current session of Facebook
 	 * 
@@ -235,7 +235,7 @@ public class FacebookLogin {
 	public Facebook getFacebook() {
 		return facebook;
 	}
-	
+
 	/**
 	 * 
 	 * @param users
@@ -246,7 +246,7 @@ public class FacebookLogin {
 			onGetFriendsFacebookListener.onGetFriendsFacebook(users, response);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param onGetFriendsFacebookListener
@@ -254,7 +254,7 @@ public class FacebookLogin {
 	public void setOnGetFriendsFacebookListener(OnGetFriendsFacebookListener onGetFriendsFacebookListener) {
 		this.onGetFriendsFacebookListener = onGetFriendsFacebookListener;
 	}
-	
+
 	/**
 	 * Interface OnGetFriendsFacebookListener
 	 * 
@@ -264,7 +264,7 @@ public class FacebookLogin {
 	public interface OnGetFriendsFacebookListener {
 		public void onGetFriendsFacebook(List<GraphUser> users, Response response);
 	}
-	
+
 	/**
 	 * 
 	 * @param status
@@ -274,7 +274,7 @@ public class FacebookLogin {
 			onLoginFacebookListener.onLoginFacebook(status);
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param onLoginFacebookListener
@@ -282,7 +282,7 @@ public class FacebookLogin {
 	public void setOnLoginFacebookListener(OnLoginFacebookListener onLoginFacebookListener) {
 		this.onLoginFacebookListener = onLoginFacebookListener;
 	}
-	
+
 	/**
 	 * Interface OnLoginFacebookListener
 	 * 

@@ -69,7 +69,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		DatosLogBean.setTagLog(TAG);
 	
 		
-		Utils.crearActionBar(RegistroContactosEmergenciaActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.app_name),15.0f);//creamos el ActionBAr
+		Utils.crearActionBar(RegistroContactosEmergenciaActivity.this, R.layout.abs_layout_back,getResources().getString(R.string.mitaxiregister_et_emergencias),15.0f);//creamos el ActionBAr
 	     
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
@@ -95,7 +95,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		
 		TextView mitaxiregistermanually_tv_label= (TextView)findViewById(R.id.mitaxiregistermanually_tv_label);
 		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
-		 mitaxiregistermanually_tv_label.setTextColor(new fonts(this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		 mitaxiregistermanually_tv_label.setTextColor(getResources().getColor(R.color.black));
 		 
 		 
 		 mitaxiregistermanually_ll_contactos =(LinearLayout)findViewById(R.id.mitaxiregistermanually_ll_contactos);
@@ -205,8 +205,10 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 					mitaxiregistermanually_tv_agregar.setVisibility(TextView.VISIBLE);
 				}
 				if((!emergencia_esta_Ocupado[0]&&!emergencia_esta_Ocupado[1])){{
-					mitaxiregistermanually_cv_paranoico.setChecked(false);
-					 Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
+					if(mitaxiregistermanually_cv_paranoico.isChecked()){
+						mitaxiregistermanually_cv_paranoico.setChecked(false);
+						Dialogos.Toast(RegistroContactosEmergenciaActivity.this,getResources().getString(R.string.Registro_manual_datos_paranoico_sin_contac) , Toast.LENGTH_LONG);
+					}
 				}
 			
 				}
@@ -502,7 +504,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		int positionOfMenuItem = 0; 
 		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.black)), 0, s.length(), 0);
 		item.setTitle(s);
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

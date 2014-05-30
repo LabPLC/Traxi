@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_below="@+id/xsubLayout"
-    android:background="@color/white"
+ android:background="@color/white"
     android:orientation="vertical"
     android:visibility="visible" >
 
@@ -34,7 +34,7 @@
                 android:padding="0sp"
                 android:tag="A"
                 android:text="A"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/xB"
@@ -49,7 +49,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="B"
                 android:text="B"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/xM"
@@ -65,7 +65,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="M"
                 android:text="M"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -86,7 +86,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="1"
                 android:text="1"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x2"
@@ -100,7 +100,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="2"
                 android:text="2"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x3"
@@ -114,7 +114,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="3"
                 android:text="3"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +135,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="4"
                 android:text="4"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x5"
@@ -149,7 +149,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="5"
                 android:text="5"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x6"
@@ -163,7 +163,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="6"
                 android:text="6"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -184,7 +184,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="7"
                 android:text="7"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x8"
@@ -198,7 +198,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="8"
                 android:text="8"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/x9"
@@ -212,7 +212,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="9"
                 android:text="9"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -233,7 +233,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="0"
                 android:text="0"
-                android:textStyle="bold" />
+                />
 
             <Button
                 android:id="@+id/back"
@@ -248,7 +248,7 @@
                 android:soundEffectsEnabled="true"
                 android:tag="bk"
                 android:text="@string/keyboard_borrar"
-                android:textStyle="bold" />
+                />
         </LinearLayout>
     </LinearLayout>
 

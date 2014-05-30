@@ -133,7 +133,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		
 		
 		Button dialogo_datos_correctos_btn_noViajo = (Button) findViewById(R.id.dialogo_datos_correctos_btn_noViajo);
-		dialogo_datos_correctos_btn_noViajo.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
+		dialogo_datos_correctos_btn_noViajo.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
 		dialogo_datos_correctos_btn_noViajo.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -162,7 +162,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		});
 
 		Button dialogo_datos_correctos_btn_iniciar = (Button) findViewById(R.id.dialogo_datos_correctos_btn_iniciar);
-		dialogo_datos_correctos_btn_iniciar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_AMARILLO));
+		dialogo_datos_correctos_btn_iniciar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
 		dialogo_datos_correctos_btn_iniciar.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
