@@ -57,15 +57,15 @@ public class Datos extends View {
 		view = inflater.inflate(R.layout.activity_datos, null);
 		
 		((TextView) view.findViewById(R.id.datos_tv_niveles_confianza)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) view.findViewById(R.id.datos_tv_niveles_confianza)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		((TextView) view.findViewById(R.id.datos_tv_niveles_confianza)).setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		TextView datos_tv_titulo = (TextView)view.findViewById(R.id.datos_tv_titulo);
-		datos_tv_titulo.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_GRIS_CLARO));
-		datos_tv_titulo.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		datos_tv_titulo.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
+		datos_tv_titulo.setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		TextView datos_tv_placa  = (TextView)view.findViewById(R.id.datos_tv_placa);
 		datos_tv_placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		datos_tv_placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		datos_tv_placa.setTextColor(getResources().getColor(R.color.color_vivos));
 		datos_tv_placa.setText(autoBean.getPlaca());
 		
 		ImageView datos_iv_info =(ImageView)view.findViewById(R.id.datos_iv_info);
@@ -83,7 +83,7 @@ public class Datos extends View {
 		
 		marca = (TextView)view.findViewById(R.id.datos_tv_marca);
 		marca.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		marca.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		marca.setTextColor(getResources().getColor(R.color.color_vivos));
 
 		
 		container = (LinearLayout)view.findViewById(R.id.Thermometer_Container);

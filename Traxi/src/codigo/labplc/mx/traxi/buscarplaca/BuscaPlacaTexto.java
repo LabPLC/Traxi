@@ -74,6 +74,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	public static boolean tecladoIs = false;
 	public boolean puedoAvanzar=false;
 	private Button activity_buscar_placa_btn_emergencia;
+	private ImageView inicio_de_trabajo_iv_adelante;
 
 	
 	
@@ -124,7 +125,9 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 						placa.setError(null);
 						puedoAvanzar=true;
 						BorrarTrue();
+						inicio_de_trabajo_iv_adelante.setImageResource(R.drawable.ic_launcher_adelante_verde);
 				} else {
+					inicio_de_trabajo_iv_adelante.setImageResource(R.drawable.ic_launcher_adelante);
 					if (Splaca.length() >= 1&&Splaca.length()<6) {
 							puedoAvanzar=false;
 							NumbersTrue();
@@ -142,7 +145,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 			@Override
 			public void afterTextChanged(Editable s) {}});
 		
-		ImageView inicio_de_trabajo_iv_adelante = (ImageView)findViewById(R.id.inicio_de_trabajo_iv_adelante);
+		inicio_de_trabajo_iv_adelante = (ImageView)findViewById(R.id.inicio_de_trabajo_iv_adelante);
 		inicio_de_trabajo_iv_adelante.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

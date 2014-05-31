@@ -51,14 +51,16 @@
     <color name="mamey">#EB8C6B</color>
     <color name="gris_claro">#E6E7E8</color>
     <color name="gris_obscuro">#6D6E70</color>
+    #efc03f AMARILLO
+    #336699 AZUL
      -->
     <color name="color_base">#efc03f</color>
-     <color name="color_vivos">#FF000000</color>
+     <color name="color_vivos">#000000</color>
       <color name="color_fondos">#FFFFFFFF</color>
     <color name="rojo_logo">#FB0000</color>
      <color name="generic_naranja">#FBA200</color>
     <color name="generic_rojo_alfa">#BBFBA200</color>
-     <color name="generic_verde">#00E03D</color>
+     <color name="generic_verde">#14CC54</color>
     <color name="mamey">#EB8C6B</color>
      <color name="generic_azul">#0000FF</color>
     <color name="gris_claro">#E6E7E8</color>

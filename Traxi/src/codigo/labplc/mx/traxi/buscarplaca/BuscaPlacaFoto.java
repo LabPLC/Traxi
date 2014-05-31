@@ -119,7 +119,6 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		surfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 		busca_placa_btn_tomarfoto =(Button)findViewById(R.id.busca_placa_btn_tomarfoto_foto);
 		busca_placa_btn_tomarfoto.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
-
 		busca_placa_btn_tomarfoto.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

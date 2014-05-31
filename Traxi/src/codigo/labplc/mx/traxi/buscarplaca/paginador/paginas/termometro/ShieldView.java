@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.AttributeSet;
@@ -34,7 +33,7 @@ public class ShieldView extends View {
     private Paint progressPaint;
     private Paint textPaint;
     
-    private int backgroundColor = Color.rgb(0xE0, 0xE0, 0xE0);
+    private int backgroundColor = getResources().getColor(R.color.gris_claro);
     
    
 
@@ -112,11 +111,11 @@ public class ShieldView extends View {
         
         textPaint = new Paint();
         backgroundPaint.setAntiAlias(true);
-		textPaint.setColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		textPaint.setColor(getResources().getColor(R.color.color_vivos));
 		textPaint.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
 		textPaint.setTextSize(50);
 		
-		bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.escudo);
+		bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.shield);
 	}
 	
 	/**

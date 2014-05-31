@@ -25,12 +25,12 @@ public class Descripcion_Escudo extends Activity {
 		String texto = bundle.getString("descripcion_escudo");	
 
 	    ((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTextColor(new fonts(Descripcion_Escudo.this).getColorTypeFace(fonts.FLAG_ROJO));
+		((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
 		
-		TextView tv_contenido = (TextView) findViewById(R.id.descripcion_escudo_tv_contenido);
-		tv_contenido.setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_ROJO));	
-		tv_contenido.setTextColor(new fonts(Descripcion_Escudo.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
-		tv_contenido.setText(texto);
+		
+		((TextView) findViewById(R.id.descripcion_escudo_tv_contenido)).setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_ROJO));	
+		((TextView) findViewById(R.id.descripcion_escudo_tv_contenido)).setTextColor(getResources().getColor(R.color.color_vivos));
+		((TextView) findViewById(R.id.descripcion_escudo_tv_contenido)).setText(texto);
 		
 		RelativeLayout	relative_full_descripcion_escudo	=(RelativeLayout)findViewById(R.id.relative_full_descripcion_escudo);
 		relative_full_descripcion_escudo.setOnClickListener(new View.OnClickListener() {

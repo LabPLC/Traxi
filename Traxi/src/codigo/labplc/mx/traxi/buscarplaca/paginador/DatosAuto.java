@@ -97,13 +97,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		ab.setDisplayShowHomeEnabled(false);
 	    ab.setDisplayShowTitleEnabled(false);     
 		final LayoutInflater inflater = (LayoutInflater)getSystemService("layout_inflater");
-		
 		View view = inflater.inflate(R.layout.abs_layout_back,null);   
-		
 		abs_layout_tv_titulo_datosAutos=(TextView)view.findViewById(R.id.abs_layout_tv_titulo);
 		abs_layout_tv_titulo_datosAutos.setTypeface(new fonts(DatosAuto.this).getTypeFace(fonts.FLAG_MAMEY));
 		abs_layout_tv_titulo_datosAutos.setText(getResources().getString(R.string.datos_del_taxi));
-		
 		ab.setDisplayShowCustomEnabled(true);  
 	    ImageView abs_layout_iv_menu = (ImageView) view.findViewById(R.id.abs_layout_iv_menu);
 	    abs_layout_iv_menu.setOnClickListener(this);
@@ -133,7 +130,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		
 		
 		Button dialogo_datos_correctos_btn_noViajo = (Button) findViewById(R.id.dialogo_datos_correctos_btn_noViajo);
-		dialogo_datos_correctos_btn_noViajo.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
+		dialogo_datos_correctos_btn_noViajo.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		dialogo_datos_correctos_btn_noViajo.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -162,7 +159,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		});
 
 		Button dialogo_datos_correctos_btn_iniciar = (Button) findViewById(R.id.dialogo_datos_correctos_btn_iniciar);
-		dialogo_datos_correctos_btn_iniciar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
+		dialogo_datos_correctos_btn_iniciar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		dialogo_datos_correctos_btn_iniciar.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -548,7 +545,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			int positionOfMenuItem = 0; 
 			MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 			SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-			s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+			s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 			item.setTitle(s);
 
 			popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

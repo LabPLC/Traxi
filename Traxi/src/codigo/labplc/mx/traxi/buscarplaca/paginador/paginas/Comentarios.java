@@ -1,6 +1,8 @@
 package codigo.labplc.mx.traxi.buscarplaca.paginador.paginas;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.annotation.SuppressLint;
@@ -87,7 +89,7 @@ public class Comentarios extends View {
 		
 		TextView adeudos_titulo_tv_amigos=(TextView)view.findViewById(R.id.comentarios_titulo_tv_amigos);
 		adeudos_titulo_tv_amigos.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_titulo_tv_amigos.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		adeudos_titulo_tv_amigos.setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		btnLogin = (Button)view.findViewById(R.id.comentarios_btn_facebook);
 		btnLogin.setOnClickListener(new OnClickListener() {
@@ -110,8 +112,8 @@ public class Comentarios extends View {
 		}
 		if(autoBean.getArrayComentarioBean().size()<=0){
 			TextView tv = new TextView(context);
-			tv.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-			tv.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+			tv.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
+			tv.setTextColor(getResources().getColor(R.color.color_vivos));
 			LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT,1);
 			lp.gravity= Gravity.CENTER;
 			tv.setLayoutParams(lp);
@@ -121,8 +123,10 @@ public class Comentarios extends View {
 		}else{
 			TextView comentarios_tv_cuantos=(TextView)view.findViewById(R.id.comentarios_tv_cuantos);
 			comentarios_tv_cuantos.setText("("+autoBean.getArrayComentarioBean().size()+")");
+			comentarios_tv_cuantos.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 			
 			comentarios_tv_cinco_estrellas =(TextView)view.findViewById(R.id.comentarios_tv_cinco_estrellas);
+			comentarios_tv_cinco_estrellas.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 	
 			llenarEstrellas(valorTotal/autoBean.getArrayComentarioBean().size());
 		}
@@ -224,18 +228,43 @@ public class Comentarios extends View {
 	 * @param i (int) id del row
 	 * @param hora (String) hora del comentario
 	 */
+	@SuppressLint("SimpleDateFormat")
 	public void llenarComentario( String concepto, float valor,int i, String hora) {
 	final	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		view_row = inflater.inflate(R.layout.comentarios_row, null); 
+	view_row = inflater.inflate(R.layout.comentarios_row, null); 
 	final	TextView comentarios_row_tv_descripcion = (TextView)view_row.findViewById(R.id.comentarios_row_tv_descripcion);
 	comentarios_row_tv_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-	comentarios_row_tv_descripcion.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+	comentarios_row_tv_descripcion.setTextColor(getResources().getColor(R.color.color_vivos));
 	comentarios_row_tv_descripcion.setText(concepto);
 	
-	final	TextView comentarios_row_tv_horario = (TextView)view_row.findViewById(R.id.comentarios_row_tv_horario);
-	comentarios_row_tv_horario.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-	comentarios_row_tv_horario.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_CLARO));
-	comentarios_row_tv_horario.setText(hora);
+	final	TextView comentarios_row_tv_horario = (TextView)view_row.findViewById(R.id.comentarios_row_tv_horario_dia);
+	comentarios_row_tv_horario.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
+	comentarios_row_tv_horario.setTextColor(getResources().getColor(R.color.color_vivos));
+	
+	final	TextView comentarios_row_tv_horario_hora = (TextView)view_row.findViewById(R.id.comentarios_row_tv_horario_hora);
+	comentarios_row_tv_horario_hora.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
+	comentarios_row_tv_horario_hora.setTextColor(getResources().getColor(R.color.color_vivos));
+	
+	
+ 
+	try {
+		String[] partsHora = hora.split(" ");
+		Calendar c = Calendar.getInstance();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String horaAhora = sdf.format(c.getTime());
+		 if(horaAhora.equals(partsHora[0])){
+			 comentarios_row_tv_horario.setText(getResources().getString(R.string.comentarios_row_hoy));
+			
+		 }else{
+			 comentarios_row_tv_horario.setText(partsHora[0]);
+		 }
+		
+		comentarios_row_tv_horario_hora.setText(partsHora[1]);
+ 
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+
 		
 	valorTotal+=valor;
 	container.addView(view_row,i);
@@ -295,7 +324,7 @@ public class Comentarios extends View {
 					btnLogin.setVisibility(Button.GONE);
 					TextView tv = new TextView(context);
 					tv.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-					tv.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+					tv.setTextColor(getResources().getColor(R.color.color_vivos));
 					LinearLayout.LayoutParams lp= new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT,1);
 					lp.gravity= Gravity.CENTER;
 					tv.setLayoutParams(lp);

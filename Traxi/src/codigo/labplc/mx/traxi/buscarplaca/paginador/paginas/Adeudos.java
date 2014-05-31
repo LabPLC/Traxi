@@ -84,12 +84,12 @@ public class Adeudos extends View {
 		view_row = inflater.inflate(R.layout.adeudos_row, null);
 		
 		TextView adeudos_row_titulo = (TextView)view_row.findViewById(R.id.adeudos_row_titulo);
-		adeudos_row_titulo.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_GRIS_CLARO));
-		adeudos_row_titulo.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		adeudos_row_titulo.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
+		adeudos_row_titulo.setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		TextView adeudos_row_descripcion = (TextView)view_row.findViewById(R.id.adeudos_row_descripcion);
-		adeudos_row_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
-		adeudos_row_descripcion.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		adeudos_row_descripcion.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
+		adeudos_row_descripcion.setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		ImageView adeudos_row_iv = (ImageView)view_row.findViewById(R.id.adeudos_row_iv);
 		
@@ -100,13 +100,13 @@ public class Adeudos extends View {
 			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_paloma);
 			resp=true;
 		}else if(imagen==imagen_rojo){
-			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
+			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache_rojo);
 			resp=false;
 		}
 		
 		if(concepto.equals("")||autoBean.getCalificacion_final()==0){
 			adeudos_row_descripcion.setText(getResources().getString(R.string.adeudos_row_no_hay_datos));
-			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache);
+			adeudos_row_iv.setImageResource(R.drawable.ic_launcher_tache_rojo);
 			resp=false;
 		}
 		

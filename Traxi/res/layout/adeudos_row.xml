@@ -16,7 +16,7 @@
         android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@color/gris_claro" />
+        android:background="@color/gris_obscuro" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:padding="3dp"
             android:lines="2"
             android:text="@string/adeudos_row_no_hay_datos"
-            android:textColor="@color/gris_obscuro" />
+            android:textColor="@color/color_vivos" />
 
         <ImageView
             android:id="@+id/adeudos_row_iv"

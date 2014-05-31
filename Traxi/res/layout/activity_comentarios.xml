@@ -126,7 +126,7 @@
         android:gravity="center|left"
         android:paddingRight="5dp"
         android:text="(0)"
-        android:textColor="@color/gris_obscuro" />
+        android:textColor="@color/color_vivos" />
 
     <TextView
         android:id="@+id/comentarios_tv_cinco_estrellas"
@@ -138,6 +138,6 @@
         android:gravity="right"
         android:paddingRight="5dp"
         android:text="@string/tv_adeudos_estrellas"
-        android:textColor="@color/gris_obscuro" />
+        android:textColor="@color/color_vivos" />
 
 </RelativeLayout>

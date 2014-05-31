@@ -60,10 +60,11 @@
 
             <TextView
                 android:id="@+id/datos_tv_niveles_confianza"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="@string/datos_tv_niveles_confianza"
-                android:textColor="@color/gris_obscuro" />
+                android:textColor="@color/color_vivos" />
         </LinearLayout>
     </LinearLayout>
 
