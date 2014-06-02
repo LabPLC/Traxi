@@ -16,11 +16,11 @@ Dado por los usuarios:
                 
 Adicionalmente puedes ver quien de tus amigos de Facebook han tomado ese taxi y sus calificaciones.
 
-# Fotografia
+# Fotografía
 
 Puedes ingresar la placa del vehículo tomando una foto a la puerta o a su tablero del taxi.
 
-# Contacto de Emergencia y botón de panico
+# Contacto de Emergencia y seguridad
 
 Puedes agregar hasta dos contactos de emergencia en los que debes agregar su celular y correo, esto servira para poder activar el modo paranoico o utilizar el botón de panico
 
