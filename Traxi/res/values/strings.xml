@@ -241,7 +241,7 @@
 
     <!-- Tips -->
     <string name="tip_1">Nunca tomes un taxi que no tenga placas \n\n
-        Recuerda que deben de empezar con A, B ó M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
+        Recuerda que deben empezar con A, B ó M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
     <string name="tip_2">Revisa que el taxi al que te subas tenga visible el tarjeton verde y que la foto coincida con el chofer y que no este vencido</string>
     <string name="tip_3">La tarifa nocuturna aplica de 11 de la noche a 5:59 de la mañana</string>
     <string name="tip_4">Existen 3 tipos de tarifas\n\n 

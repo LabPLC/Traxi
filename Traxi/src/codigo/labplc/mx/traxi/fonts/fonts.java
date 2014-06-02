@@ -2,7 +2,6 @@ package codigo.labplc.mx.traxi.fonts;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import codigo.labplc.mx.traxi.R;
 
 /**
  * clase que controla las fuentes y color de textos
