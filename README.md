@@ -1,4 +1,4 @@
-![alt tag](https://github.com/mikesaurio/trackxi/raw/master/Trackxi/res/drawable-hdpi/ic_launcher.png) TRAXI
+![alt tag](https://github.com/LabPLC/Traxi/blob/master/Traxi/res/drawable-hdpi/ic_help.png) TRAXI
 ============
 
 App que te auxilia a la hora de tomar un taxi del Distrito Federal (DF), al ingresar una placa se te mostrarán los datos del vehículo ademas de un termómetro de confianza:
@@ -54,24 +54,24 @@ ___________________
 # Pantallas
 
 <p align="center">
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-55-17.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-57-40.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-57-55.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-00.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-26.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-44.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-59.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-06.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-23.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-41.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-27.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-38.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-55.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-05-49.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-07-13.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-07-20.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-09-28.png?raw=true" alt="Traxi" height="460" width="240"/>
-<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-10-00.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-17-55-17.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-17-57-40.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-17-57-55.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-01-00.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-01-26.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-01-44.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-01-59.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-02-06.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-02-23.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-02-41.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-03-27.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-03-38.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-03-55.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-05-49.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-07-13.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-07-20.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-09-28.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/LabPLC/Traxi/blob/master/screenshot/Screenshot_2014-06-02-18-10-00.png?raw=true" alt="Traxi" height="460" width="240"/>
 
 
 </p>
