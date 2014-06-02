@@ -1,4 +1,4 @@
-![alt tag](https://github.com/LabPLC/Traxi/blob/master/Traxi/res/drawable-hdpi/ic_help.png) TRAXI
+![alt tag](https://github.com/LabPLC/Traxi/raw/master/Traxi/res/drawable-hdpi/ic_launcher.png?raw=true) TRAXI
 ============
 
 App que te auxilia a la hora de tomar un taxi del Distrito Federal (DF), al ingresar una placa se te mostrarán los datos del vehículo ademas de un termómetro de confianza:
