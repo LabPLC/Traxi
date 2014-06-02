@@ -363,7 +363,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 				.setSmallIcon(R.drawable.ic_launcher)
 		
 				.addAction(R.drawable.ic_launcher_chinche, taxiActivity.getResources().getString(R.string.notificacion_viaje), pIntent)
-				.addAction(R.drawable.ic_launcher_fin_viaje, taxiActivity.getResources().getString(R.string.notificacion_finalizar),pIntent_cal)
+				.addAction(R.drawable.ic_launcher_fin_viaje_blanco, taxiActivity.getResources().getString(R.string.notificacion_finalizar),pIntent_cal)
 				.build();
 		
 		

@@ -74,11 +74,11 @@ public class Califica_taxi extends Activity {
 		}
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
-		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_ROJO));
+		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
 	     
 		 califica_taxi_tv_titulo_calif= (TextView)findViewById(R.id.califica_taxi_tv_titulo_calif);
 		califica_taxi_tv_titulo_calif.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
-		califica_taxi_tv_titulo_calif.setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		califica_taxi_tv_titulo_calif.setTextColor(getResources().getColor(R.color.color_vivos));
 					
 		ImageView califica_taxi_iv_no_calif=(ImageView)findViewById(R.id.califica_taxi_iv_no_calif);
 		califica_taxi_iv_no_calif.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,7 @@ public class Califica_taxi extends Activity {
 		
 		comentario = (EditText)findViewById(R.id.dialogo_califica_servicio_et_comentario);
 		comentario.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));
-		comentario.setTextColor(new fonts(Califica_taxi.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		comentario.setTextColor(getResources().getColor(R.color.color_vivos));
 		
 		rank = (RatingBar)findViewById(R.id.dialogo_califica_servicio_ratingBarServicio);
 		rank.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -140,7 +140,7 @@ public class Califica_taxi extends Activity {
 		});
 		
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
-		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_COLOR_BASE));
+		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
 			@SuppressLint("SimpleDateFormat")
 			@Override
@@ -156,7 +156,7 @@ public class Califica_taxi extends Activity {
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
 					 String finViaje = sdf.format(c.getTime());
 					 
-					String url= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentario"
+					String url= "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentario"
 							+"&id_usuario="+id_usuario
 							+"&calificacion="+Scalificacion
 							+"&comentario="+Scomentario

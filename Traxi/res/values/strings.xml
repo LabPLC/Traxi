@@ -308,5 +308,6 @@
     <string name="Califica_taxi_45">Excelente servicio</string>
     <string name="Califica_taxi_50">Servicio insuperable</string>
       <string name="comentarios_row_hoy">Today</string> 
+           <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>  
 
 </resources>

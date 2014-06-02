@@ -139,7 +139,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 				String face = prefs.getString("facebook", "0");
 				String UUID_local = prefs.getString("uuid", null);
 				try{
-				String url= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addnoviaje"
+				String url= "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addnoviaje"
 						+"&id_usuario="+UUID_local
 						+"&id_face="+face
 						+"&calificacion_final="+autoBean.getCalificacion_final()
@@ -210,7 +210,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	 */
 	private void cargaComentarios() {
 		try{
-			  String Sjson=  Utils.doHttpConnection("http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=getcomentario&placa="+placa);
+			  String Sjson=  Utils.doHttpConnection("http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=getcomentario&placa="+placa);
 		      JSONObject json= (JSONObject) new JSONTokener(Sjson).nextValue();
 		      JSONObject json2 = json.getJSONObject("message");
 		      JSONObject jsonResponse = new JSONObject(json2.toString());
@@ -250,7 +250,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	@SuppressLint("SimpleDateFormat")
 	private void datosVehiculo(boolean esta_en_revista) {
 		try{
-			  String Sjson=  Utils.doHttpConnection("http://dev.datos.labplc.mx/movilidad/vehiculos/"+placa+".json");
+			  String Sjson=  Utils.doHttpConnection("http://datos.labplc.mx/movilidad/vehiculos/"+placa+".json");
 			      JSONObject json= (JSONObject) new JSONTokener(Sjson).nextValue();
 			      JSONObject json2 = json.getJSONObject("consulta");
 			      JSONObject jsonResponse = new JSONObject(json2.toString());
@@ -360,7 +360,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	 */
 	private boolean estaEnRevista() {
 		try{
-		  String Sjson=  Utils.doHttpConnection("http://mikesaurio.dev.datos.labplc.mx/movilidad/taxis/"+placa+".json");
+		  String Sjson=  Utils.doHttpConnection("http://datos.labplc.mx/movilidad/taxis/"+placa+".json");
 		    String marca="",submarca="",anio="";
 		    
 		    JSONObject json= (JSONObject) new JSONTokener(Sjson).nextValue();

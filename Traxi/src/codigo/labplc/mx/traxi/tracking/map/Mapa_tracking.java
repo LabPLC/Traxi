@@ -44,6 +44,7 @@ import codigo.labplc.mx.traxi.TraxiMainActivity;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
+import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.utils.Utils;
@@ -78,7 +79,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	public final String TAG = this.getClass().getSimpleName();
 	
 	private static final int RESULT_SETTINGS = 1; //resultado del menu
-	 private GoogleMap map;
+	private GoogleMap map;
 	private double latitud=0;
 	private double longitud=0;
 	private MarkerOptions marker;
@@ -147,10 +148,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				// TODO Auto-generated method stub
 				CameraPosition cameraPosition;
 				if(latfin==0.0){
-					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(21).build();
+					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(18).build();
 					
 				}else{
-					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(21).build();
+					 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(18).build();
 				}
 				map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 			}
@@ -192,7 +193,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 
 		 Drawer = (SlidingDrawer) findViewById (R.id.drawer);
 
-	        final ImageView  tab = (ImageView) findViewById (R.id.handle);
+	        final ImageView  tab = (ImageView) findViewById (R.id.mitaxi_googlemaps_iv_abrir);
 
 	        Drawer.setOnDrawerOpenListener(new SlidingDrawer.OnDrawerOpenListener() {
 
@@ -216,6 +217,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		
 		//escucha de botones
 		mapa_tracking_terminoviaje =(Button)findViewById(R.id.mapa_tracking_terminoviaje);
+		mapa_tracking_terminoviaje.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		mapa_tracking_terminoviaje.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -237,6 +239,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	    actvDestination.setOnItemClickListener(this);
 		
 	     Button mitaxi_googlemaps_btn_destino =(Button)findViewById(R.id.mitaxi_googlemaps_btn_destino);
+	     mitaxi_googlemaps_btn_destino.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 	     mitaxi_googlemaps_btn_destino.setOnClickListener(new View.OnClickListener() {
 		
 	    	 @Override
@@ -311,11 +314,11 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			marker = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_tu_inicio));
 			marker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_chinche_llena));
 			
-			CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(21).build();
+			CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(latitud, longitud)).zoom(18).build();
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 			 
 			 marker_taxi = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_mi_posicion));
-			 marker_taxi.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_taxi));
+			 marker_taxi.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_txi));
 			// adding marker
 			map.addMarker(marker);
 			map.addMarker(marker_taxi);	
@@ -371,14 +374,14 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			 	}
 				 if(InfoPoint!=null){//
 					 try{
-					 String consulta2 = "http://datos.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
+					 String consulta2 = "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
 								+latfin+"&lngo="+lonfin
 								+"&latd="+InfoPoint.get(0).getDblLatitude()+"&lngd="+InfoPoint.get(0).getDblLongitude()+"&filtro=velocidad";
 						String querty2 = Utils.doHttpConnection(consulta2).replaceAll("\"", "");
 						String[] Squerty2 = querty2.split(",");
 						tiempo = Squerty2[0];
 						distancia =Squerty2[1];
-						marker_taxi.title(getResources().getString(R.string.mapa_estas)+distancia+", "+tiempo+getResources().getString(R.string.mapa_tu_destino));
+						marker_taxi.title(getResources().getString(R.string.mapa_estas)+" "+distancia+", "+tiempo+getResources().getString(R.string.mapa_tu_destino));
 					 }catch(Exception e){
 						 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					 }
@@ -387,9 +390,13 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 						
 						//.zoom(21);map.getCameraPosition().zoom
 						CameraPosition cameraPosition;
-						
-							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(21).build();
-							 map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+						if(isFirstLocation){
+							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(18).build();
+							 isFirstLocation= false;
+						}else{
+							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(map.getCameraPosition().zoom).build();
+							
+						}
 
 						 for (int i = 0; i < pointsLat.size() - 1; i++) {
 							 LatLng src = new LatLng(Double.parseDouble(pointsLat.get(i)),Double.parseDouble(pointsLon.get(i)));
@@ -397,11 +404,11 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			
 							Polyline line = map.addPolyline(new PolylineOptions() //mMap is the Map Object
 							 .add(new LatLng(src.latitude, src.longitude),
-							 new LatLng(dest.latitude,dest.longitude)).width(8).color(Color.BLUE).geodesic(true));
+							 new LatLng(dest.latitude,dest.longitude)).width(8).color(getResources().getColor(R.color.generic_verde)).geodesic(true));
 						  }
 					 
 						marker_taxi_destino = new MarkerOptions().position(new LatLng(InfoPoint.get(0).getDblLatitude(), InfoPoint.get(0).getDblLongitude())).title(getResources().getString(R.string.mapa_mi_destino));
-						marker_taxi_destino.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_fin_rojo));
+						marker_taxi_destino.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_fin_viaje));
 						map.addMarker(marker_taxi_destino);	
 						
 							String url = new DirectionsJSONParser().getDirectionsUrl(new LatLng(latfin,lonfin),new LatLng(InfoPoint.get(0).getDblLatitude(), InfoPoint.get(0).getDblLongitude()));					
@@ -415,7 +422,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 						//.zoom(21);map.getCameraPosition().zoom
 						CameraPosition cameraPosition;
 						if(isFirstLocation){
-							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(21).build();
+							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(18).build();
 							 isFirstLocation= false;
 						}else{
 							 cameraPosition = new CameraPosition.Builder().target(new LatLng(latfin, lonfin)).zoom(map.getCameraPosition().zoom).build();
@@ -429,7 +436,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 							 Polyline line = map.addPolyline(new PolylineOptions() //mMap is the Map Object
 							 .add(new LatLng(src.latitude, src.longitude),
 							 new LatLng(dest.latitude,dest.longitude))
-							 .width(8).color(Color.BLUE).geodesic(true));
+							 .width(8).color(getResources().getColor(R.color.generic_verde)).geodesic(true));
 						  }
 						
 					}
@@ -634,7 +641,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				int positionOfMenuItem = 0; 
 				MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 				SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-				s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.rojo_logo)), 0, s.length(), 0);
+				s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 				item.setTitle(s);
 
 				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {

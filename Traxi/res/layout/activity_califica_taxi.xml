@@ -47,7 +47,6 @@
                         android:gravity="center"
                         android:paddingLeft="3dp"
                         android:text="@string/califica_taxi_tv_titulo_calif"
-                        android:textColor="@color/gris_obscuro"
                         android:textSize="12sp" />
                 </LinearLayout>
 

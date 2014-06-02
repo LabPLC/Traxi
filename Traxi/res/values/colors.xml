@@ -57,6 +57,7 @@
     <color name="color_base">#efc03f</color>
      <color name="color_vivos">#000000</color>
       <color name="color_fondos">#FFFFFFFF</color>
+       <color name="color_fondos_trans">#00FFFFFF</color>
     <color name="rojo_logo">#FB0000</color>
      <color name="generic_naranja">#FBA200</color>
     <color name="generic_rojo_alfa">#BBFBA200</color>
