@@ -51,27 +51,6 @@ public class fonts {
 		return tf;
 	}
 
-	/**
-	 * color de la fuente
-	 * @param tipo (int) tipo de la fuente
-	 * @return (int) color
-	 */
-	public int getColorTypeFace(int tipo) {
-
-		if (tipo == FLAG_GRIS_CLARO) {
-			return activity.getResources().getColor(R.color.gris_claro);
-		} else if (tipo == FLAG_GRIS_OBSCURO) {
-			return activity.getResources().getColor(R.color.gris_obscuro);
-		} else if (tipo == FLAG_ROJO) {
-			return activity.getResources().getColor(R.color.rojo_logo);
-		} else if (tipo == FLAG_MAMEY) {
-			return activity.getResources().getColor(R.color.mamey);
-		} else if (tipo == FLAG_COLOR_BASE) {
-			return activity.getResources().getColor(R.color.color_base);
-		}else{
-			return R.color.rojo_logo;
-		}
-
-	}
+	
 
 }

@@ -1,4 +1,4 @@
-package codigo.labplc.mx.traxi.buscarplaca.emergencia;
+      package codigo.labplc.mx.traxi.buscarplaca.emergencia;
 
 import android.app.Activity;
 import android.content.Context;
@@ -46,7 +46,7 @@ public class Emergencia_activity extends Activity {
 		((TextView) findViewById(R.id.activity_emergencia_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
 	     
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTypeface(new fonts(Emergencia_activity.this).getTypeFace(fonts.FLAG_ROJO));	
-		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTextColor(new fonts(Emergencia_activity.this).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setTextColor(getResources().getColor(R.color.color_vivos));
 		((TextView) findViewById(R.id.activity_emergencia_tv_contenido)).setText((getResources().getText(R.string.mensaje_para_panic)));
 		Button activity_emergencia_btn_ok = (Button) findViewById(R.id.activity_emergencia_btn_ok);
 		activity_emergencia_btn_ok.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));

@@ -23,7 +23,7 @@
             android:padding="10dp" >
 
             <TextView
-                android:id="@+id/dialogo_paraque_tv_subtitulo"
+                 android:id="@+id/dialogo_salir_tv_subtitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"

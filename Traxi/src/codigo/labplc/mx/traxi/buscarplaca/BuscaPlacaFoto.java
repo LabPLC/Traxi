@@ -107,7 +107,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		
 		
 		((TextView)findViewById(R.id.busca_placa_tv_foto)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-		((TextView)findViewById(R.id.busca_placa_tv_foto)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
+		((TextView)findViewById(R.id.busca_placa_tv_foto)).setTextColor(getResources().getColor(R.color.color_vivos));
 
 		
 		

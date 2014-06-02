@@ -26,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -151,6 +152,17 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		 }
 		 });
 		 
+		 Button mitaxiregistermanually_btn_guardar =(Button)findViewById(R.id.mitaxiregistermanually_btn_guardar);
+		 mitaxiregistermanually_btn_guardar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		 mitaxiregistermanually_btn_guardar.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				back();
+			}
+		});
+		 
+		 
 		llenarContactos();
 		
 	}
@@ -264,9 +276,14 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 				  new EditTextValidator();
 				EditTextValidator.esNumero(valor, 10, 0, false);
 			     }catch(Exception e){
+			    	 try{
 			    	 if(valor.length() != 0){	 
 			    		 mitaxiregistermanually_et_telemer_2 .getText().delete(valor.length() - 1, valor.length());
-				 }	
+			    	 }
+			    	 }catch(Exception m){
+			    		 DatosLogBean.setDescripcion(Utils.getStackTrace(m));
+			    	 }
+				 
 			     }	
 			 }
 		});
@@ -364,12 +381,22 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 
 	@Override
 	public void onBackPressed() {
-		back();
+		back_dialog();
 	
 	}
 
 	/**
-	 * sobrescribe el metodo onBackPressed
+	 * sobrescribe el metodo onBackPressed 
+	 */
+	public void back_dialog(){
+		Dialogos.Toast(RegistroContactosEmergenciaActivity.this, getResources().getString(R.string.mitaxiregister_validar_contactos_datos_no_guardados), Toast.LENGTH_SHORT);
+		super.onBackPressed();
+		
+	}
+	
+	
+	/**
+	 * sobrescribe el metodo onBackPressed y guardamos
 	 */
 	public void back(){
 		if(validaEditText(R.string.Registro_manual_llena_todos_los_campos)){
@@ -380,7 +407,6 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 			}
 		}
 	}
-	
 
 	/**
 	 * guarda en preferencias los contactos de emergencia 
@@ -487,7 +513,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 			showPopup(v);
 		} else if (v.getId() == R.id.abs_layout_iv_logo) {
 			
-			back();
+			back_dialog();
 		}
 		
 	}

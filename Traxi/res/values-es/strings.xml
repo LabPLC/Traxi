@@ -10,17 +10,16 @@
     <string name="action_settings">Herramientas</string>
     <string name="action_cuenta">Cuenta</string>
     <string name="action_help">Guía</string>
-    <string name="hello_world">Hello world!</string>
 
     <!-- actionBar -->
     <string name="abs_layout_tv_titulo">Buscar</string>
 
     <!-- Registro -->
     <string name="mitaxiregister_btn_manually">Regístrate</string>
-    <string name="title_activity_busca_placa">BuscaPlaca</string>
+    <string name="title_activity_busca_placa">Busca Placa</string>
 
     <!-- Registro manualmente -->
-    <string name="mitaxiregister_name">Recuerda que el correo y el celular deben ser de la misma persona</string>
+    <string name="mitaxiregister_name">Recuerda que el correo y el celular deben ser de la misma persona.</string>
     <string name="mitaxiregister_error">Corrige los datos antes de avanzar.</string>
     <string name="mitaxiregister_error_string">Escribe cadena válida [a-z A-Z].</string>
     <string name="mitaxiregister_error_number">Escribe número válido [0 9].</string>
@@ -32,11 +31,12 @@
     <string name="mitaxiregister_et_teluser_hint">Teléfono</string>
     <string name="mitaxiregister_et_telemergency_hint">celular emergencia</string>
     <string name="mitaxiregistermanually_btn_contactos">+</string>
-    <string name="no_foto_add">Agrega una imagen</string>
     <string name="mitaxiregistermanually_subiendo_la_info">Subiendo la información, espere.</string>
+    <string name="mitaxiregister_validar_contactos_datos_no_guardados">Datos no guardados.</string>
+    <string name="mitaxiregister_validar_contactos_guardar">Guardar</string>
 
     <!-- adeudos_ROw -->
-    <string name="adeudos_row_titulo">Titulo</string>
+    <string name="adeudos_row_titulo">Título</string>
     <string name="adeudos_row_descripcion">Descripción</string>
     <string name="mitaxiregister_et_mailemergency_hint">correo emergencia</string>
     <string name="mitaxiregister_et_paraque">¿Para qué?</string>
@@ -52,23 +52,16 @@
     <string name="edittext_error_nickname">Escribe sólo [a-z A-Z 0&#8211;9 .-_ ].</string>
     <string name="edittext_error_email">Escribe sintaxis de correo válida.</string>
     <string name="edittext_error_formato_placa">Placa incompleta ejemplo: A12345</string>
-    <string name="edittext_error_telephone_repeated">Teléfono de usuario y emergencia no debe ser el mismo</string>
 
     <!-- Network -->
     <string name="no_internet_connection">No hay conexión a internet.</string>
-    <string name="transaction_wrong">Ops#8230; Ocurrió un error al hacer la conexión con el servidor.</string>
+    <string name="transaction_wrong">¡Ops!; Ocurrió un error al hacer la conexión con el servidor.</string>
 
     <!-- Para que DIALOGO -->
     <string name="paraque_subtitulo">Opciones de seguridad</string>
     <string name="paraque_titulo">AVISO</string>
-    <string name="paraque_nombre">Nombre: Para saber como te llamaremos.</string>
-    <string name="paraque_correo">Correo: Para identificarte.</string>
-    <string name="paraque_telemer">Celular emergencia: Para comunicarnos con un conocido en caso de que te sientas amenazado.</string>
-    <string name="paraque_correoemer">Correo emergencia: Para hacer el seguimiento de tu camino y estado mientras te sientas amenazado.</string>
-    <string name="paraque_foto">Foto: Para personaliar tu perfil.</string>
     <string name="paraque_aceptar">Aceptar</string>
     <string name="paraque_cancelar">Cancelar</string>
-    <string name="title_activity_buscar_chofer">BuscarChofer</string>
     <string name="title_activity_datos">Datos</string>
     <string name="title_activity_adeudos">Adeudos</string>
     <string name="title_activity_comentarios">Comentarios</string>
@@ -81,12 +74,12 @@
     <string name="gps_texto">¿Deseas activarlo?</string>
 
     <!-- Textos Datos Auto -->
-    <string name="texto_calificacion_25">Este vehículo no está registrado como un taxi, y presenta varios problemas en otros rubros. por lo que recibe una calificación reprobatoria. En caso de abordar el vehículo, sugerimos lo hagas con todas las precauciones posibles y mantenerte alerta.</string>
-    <string name="texto_calificacion_49">Este vehículo no está registrado como un taxi, y presenta inconsistencias en otros rubros. por lo que recibe una calificación reprobatoria. En caso de abordar el vehículo, se sugiere que lo hagas con todas las precauciones posibles y mantenerte muy alerta</string>
-    <string name="texto_calificacion_60">Este vehículo está registrado como un taxi, pero presenta varios problemas en otros rubros. Es un taxi de bajo riesgo, pero se sugiere que en caso de abordar el vehículo, lo hagas con todas las precauciones posibles y mantenerte alerta.</string>
-    <string name="texto_calificacion_80">Este vehículo está registrado como un taxi, pero presenta algunos problemas en otros rubros. Es un taxi de confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
-    <string name="texto_calificacion_90">Este vehículo es un taxi altamente confiable, pero aún tiene áreas de oportunidad para mejorar. Es un taxi confiable, pero como tu seguridad es importante se sugiere que te mantengas alerta.</string>
-    <string name="texto_calificacion_100">¡Felicidades! Encontraste un taxi altamente confiable y tienes una alta probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio y está pendiente de sus obligaciones legales, pero como tu seguridad es importante se sugiere que siempre te mantengas alerta.</string>
+    <string name="texto_calificacion_25">Este vehículo tiene un nivel de confianza muy bajo. En caso de abordar el vehículo, sugerimos lo hagas con todas las precauciones posibles y mantenerte muy alerta.</string>
+    <string name="texto_calificacion_49">Este vehículo tiene un nivel de confianza bajo. En caso de abordar el vehículo, sugerimos que lo hagas con todas las precauciones posibles y mantenerte alerta</string>
+    <string name="texto_calificacion_60">Este vehículo es de bajo riesgo, pero sugerimos que en caso de abordar el vehículo, lo hagas con todas las precauciones posibles y mantenerte alerta.</string>
+    <string name="texto_calificacion_80">Este vehículo tiene un nivel bueno, pero como tu seguridad es importante sugerimos que te mantengas alerta.</string>
+    <string name="texto_calificacion_90">Este vehículo tiene un nivel confiable pero como tu seguridad es importante, sugerimos que te mantengas alerta.</string>
+    <string name="texto_calificacion_100">Este vehículo es altamente confiable y tienes una buena probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, y está pendiente de sus obligaciones legales. Como tu seguridad es importante, sugerimos que te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
     <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
 
@@ -103,50 +96,44 @@
 
     <!-- Tenencia -->
     <string name="adeudo_tenencia">Tenencia</string>
-    <string name="sin_adeudo_tenencia">Este vehículo no tiene adeudos de tenencia</string>
-    <string name="con_adeudo_tenencia">Este vehículo tiene adeudos de tenencia</string>
+    <string name="sin_adeudo_tenencia">No presenta adeudos de tenencia</string>
+    <string name="con_adeudo_tenencia">Presenta adeudos de tenencia</string>
 
     <!-- Revista -->
     <string name="adeudo_revista">Revista vehícular</string>
-    <string name="sin_revista">Este vehículo no esta en la revista.</string>
-    <string name="con_revista">Este vehículo esta en la revista</string>
+    <string name="sin_revista">No se encuentra en la revista.</string>
+    <string name="con_revista">Se encuentra en la revista</string>
 
     <!-- año carro -->
     <string name="adeudo_anio">Vehículo</string>
-    <string name="carro_viejo">Este vehículo ya no es optimo.</string>
-    <string name="carro_nuevo">Este vehículo aun es optimo.</string>
+    <string name="carro_viejo">Ya no es optimo.</string>
+    <string name="carro_nuevo">Es optimo.</string>
 
     <!-- infraccion -->
     <string name="adeudo_infracciones">Infracciones</string>
-    <string name="tiene_infraccion">Este vehículo tiene multas</string>
-    <string name="no_tiene_infraccion">Este vehículo no tiene multas</string>
+    <string name="tiene_infraccion">Tiene multas</string>
+    <string name="no_tiene_infraccion">No tiene multas</string>
 
     <!-- verificaciones -->
-    <string name="adeudo_verificaciones">Verificacion</string>
-    <string name="tiene_verificaciones">Este vehículo tiene calcomanía: </string>
-    <string name="no_tiene_verificaciones">Este vehículo no tiene verificacion</string>
-    <string name="title_activity_trackxi_setting">TrackxiSettingActivity</string>
+    <string name="adeudo_verificaciones">Verificación</string>
+    <string name="tiene_verificaciones">Está verificado, tiene calcomanía: </string>
+    <string name="no_tiene_verificaciones">No tiene verificacion</string>
+
 
     <!-- Preferencias -->
-    <string name="pref_send_report">Enviar reportes de fallo</string>
+    <string name="pref_send_report">Envíar reportes de fallo</string>
     <string name="pref_send_report_summary">Ayudanos a mejorar la app</string>
     <string name="pref_sync_frequency">Frecuencia de rastreo</string>
-    <string name="pref_sync_frequency_summary">Selecciona la frecuencia</string>
-    <string name="pref_sync_frequency_paranoia">Frecuencia de avisos</string>
-    <string name="pref_sync_frequency_summary_paranoia">Frecuencia de cada cuanto quieres recibir avisos durante el viaje</string>
     <string name="pref_user_profile">Configuración</string>
     <string name="pref_update_setting">Rastreo</string>
     <string name="pref_update_setting_ayuda">Ayuda</string>
-    <string name="title_activity_mapa_tracking">Mapa_tracking</string>
-    <string name="title_activity_califica_chofer">Califica_chofer</string>
-    <string name="title_activity_califica_taxi">Califica_taxi</string>
 
     <!-- titulos paginador -->
     <string name="titulo_uno_general">GENERAL</string>
     <string name="titulo_dos_detalles">DETALLES</string>
     <string name="titulo_tres_comentarios">COMENTARIOS</string>
     <string name="title_activity_activity_null">Activity_null</string>
-    <string name="title_activity_send_foto">SendFoto</string>
+    
     <!-- activity_adeudos -->
     <string name="adeudos_titulo_tv_amigos">Mis amigos en este taxi:</string>
     <string name="mitaxiregistermanually_btn_facebook">Acceder a Facebook</string>
@@ -161,7 +148,7 @@
     <string name="califica_taxi_tv_titulo_opinion">Danos tu opinión</string>
     <string name="dialogo_califica_servicio_et_comentario">Comentario</string>
     <string name="dialogo_califica_servicio_btnCancelar">Finalizar</string>
-    <string name="dialogo_califica_servicio_btnAceptar">Enviar</string>
+    <string name="dialogo_califica_servicio_btnAceptar">Envíar</string>
     <string name="dialogo_califica_servicio_enviar_comentario">Tu comentario ha sido enviado</string>
     <string name="dialogo_califica_servicio_NO_enviar_comentario">Servicio terminado</string>
 
@@ -170,7 +157,7 @@
     <string name="mitaxi_googlemaps_btn_destino">Ir</string>
     <string name="mitaxi_googlemaps_actv_destination">Ejemplo: Colonia x calle 1</string>
     <string name="mapa_tracking_terminoviaje">Terminó viaje.</string>
-        <string name="mapa_tracking_miviaje">Mi viaje</string>
+    <string name="mapa_tracking_miviaje">Mi viaje</string>
 
     <!-- activity_datos -->
     <string name="datos_tv_titulo">Datos del vehículo</string>
@@ -185,7 +172,7 @@
     <string name="imagen_muy_grande">¡La imagen es muy grande!</string>
     <string name="falla_facebook">Algo falló al conectar con facebook</string>
     <string name="GPS_OFF">GPS apagado inesperadamente</string>
-    <string name="wifi_OFF">Falla! no te puedes localizar</string>
+    <string name="wifi_OFF">¡Falla! no te puedes localizar</string>
 
     <!-- setText -->
     <string name="datos_del_taxi">DATOS DEL TAXI</string>
@@ -203,8 +190,8 @@
     <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
     <string name="mapa_inicio_de_viaje_no">No lo tomo</string>
     <string name="mapa_mi_posicion">Mi posición</string>
-    <string name="mapa_estas">Estas a\t</string>
-    <string name="mapa_tu_destino">\tde tu destino</string>
+    <string name="mapa_estas">Estas a \t</string>
+    <string name="mapa_tu_destino">\t de tu destino</string>
     <string name="mapa_mi_destino">Mi destino</string>
 
     <!-- notificaciones -->
@@ -214,8 +201,8 @@
 
     <!-- panic -->
     <string name="panic_estoy_en_peligro">Estoy en peligro en taxi placas:</string>
-    <string name="panic_ubicacion">\tmi ubicación es https://www.google.com.mx/maps/place/</string>
-    <string name="panic_bateria">\tbatería:</string>
+    <string name="panic_ubicacion">\t mi ubicación es https://www.google.com.mx/maps/place/</string>
+    <string name="panic_bateria">\t batería:</string>
     <string name="panic_todo_bien">¿Todo bien?</string>
     <string name="panic_tocame">Tocame si es así</string>
 
@@ -239,18 +226,18 @@
     <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
     <string name="prefKeyResetQuests_texto">Aplicación realizada dentro del programa CÓDIGO.CDMX\n\n
         Desarrollador:\n
-        \tMike Morán @yosoymikesaurio\n\n
+        \t Mike Morán @yosoymikesaurio\n\n
         Colaboradores:\n
-        \tAntuan Chávez @ntuanChavez\n
-        \tSergio Beltrán @ssbeltran\n
-        \tEdgar Zavala @zace3d</string>
+        \t Antuan Chávez @ntuanChavez\n
+        \t Sergio Beltrán @ssbeltran\n
+        \t Edgar Zavala @zace3d</string>
     <string name="prefKeyResetQuests_boton">Aceptar</string>
 
     <!-- Tips -->
     <string name="tip_1">Nunca tomes un taxi que no tenga placas \n\n
         Recuerda que deben de empezar con A, B ó M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
-    <string name="tip_2">Revisa que el taxi al que te subas tenga visible el tarjeton verde y que la foto coincida con el chofer y que no este vencido</string>
-    <string name="tip_3">La tarifa nocuturna aplica de 11 de la noche a 5:59 de la mañana</string>
+    <string name="tip_2">Revisa que el taxi al que te subas tenga visible el tarjetón verde y que la foto coincida con el chofer y que no este vencido.</string>
+    <string name="tip_3">La tarifa nocuturna aplica de 11 de la noche a 5:59 de la mañana.</string>
     <string name="tip_4">Existen 3 tipos de tarifas\n\n 
     Libre:\n
     Banderazo $8.74\n
@@ -261,10 +248,10 @@
     Radio:\n
     Banderazo $27.30\n
     Ficha $1.84\n\n</string>
-    <string name="tip_5">Evita conversaciones relacionadas con tus actividades</string>
+    <string name="tip_5">Evita conversaciones relacionadas con tus actividades.</string>
     <string name="tip_6">De preferencia indíquele la ruta a seguir al chofer del taxi.</string>
-    <string name="tip_7">Nunca subestimen su sexto sentido. Si algo las hace sentir inseguras o nerviosas, bájense. No tengan miedo a terminar su recorrido antes, siempre pueden usar un pretexto</string>
-    <string name="tip_8">Inmediatamente después de que se suban asegúrense de que ambas puertas traseras tienen el seguro puesto, eviten agresiones externas de esta manera. Y si sienten que la agresión puede venir de adentro, ¡bájense inmediatamente!</string>
+    <string name="tip_7">Nunca subestimen su sexto sentido. Si algo las hace sentir inseguras o nerviosas, bájense. No tengan miedo a terminar su recorrido antes, siempre pueden usar un pretexto.</string>
+    <string name="tip_8">Inmediatamente después de que se suban asegúrense de que ambas puertas traseras tienen el seguro puesto, eviten agresiones externas de esta manera. Y si sienten que la agresión puede venir de adentro, ¡bájense inmediatamente!.</string>
     <string name="tip_9">Nunca compartas tu taxi con extraños ni con personas que acabas de conocer en un bar, en una terminal de buses o "la chica linda" que también espera taxi en tu misma esquina.</string>
     <string name="tip_10">Teléfonos de emergencia:\n\n
         SETRAVI: 52099913\n\n
@@ -298,8 +285,9 @@
     <string name="Califica_taxi_40">Muy buen servicio</string>
     <string name="Califica_taxi_45">Excelente servicio</string>
     <string name="Califica_taxi_50">Servicio insuperable</string>
-    <string name="comentarios_row_hoy">Hoy</string>   
-     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>   
-    
+    <string name="comentarios_row_hoy">Hoy</string>
+    <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
+    <string name="preferencias_version_titulo">1.4</string>
+    <string name="preferencias_version">Versión</string>
 
 </resources>
