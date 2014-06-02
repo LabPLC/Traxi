@@ -1,7 +1,7 @@
 ![alt tag](https://github.com/mikesaurio/trackxi/raw/master/Trackxi/res/drawable-hdpi/ic_launcher.png) TRAXI
 ============
 
-App que te auxilia en a la hora de tomar un taxi del Distrito Federal (DF), puedes tomar una foto al número de placa que esta en el tablero o en la puerta de un taxi o bien ingresarla manualmente, se te mostrarán los datos del vehículo ademas de un termómetro de confianza:
+App que te auxilia a la hora de tomar un taxi del Distrito Federal (DF), al ingresar una placa se te mostrarán los datos del vehículo ademas de un termómetro de confianza:
 
 Dado por la app:
 * revista vehicular
@@ -16,30 +16,33 @@ Dado por los usuarios:
                 
 Adicionalmente puedes ver quien de tus amigos de Facebook han tomado ese taxi y sus calificaciones.
 
-# REGISTRO
+# Fotografia
 
-La aplicacion pide un nombre de usuario, obtiene el correo enlazado al telefono, y pide 2 contactos de emergencia para ambos casos es telefono celular y correo electrónico, puedes poner una foto de perfil o una imagen de la galería, esta última opción no es obligatoria.
+Puedes ingresar la placa del vehículo tomando una foto a la puerta o a su tablero del taxi.
 
-En menu -> Cuenta
-Podras editar en todo momento tus contactos de emergencia y tu imagen de perfil, pero no podras cambiar ni tu correo ni tu usuario.
+# Contacto de Emergencia y botón de panico
 
-# NIVELES DE SEGURIDAD:
+Puedes agregar hasta dos contactos de emergencia en los que debes agregar su celular y correo, esto servira para poder activar el modo paranoico o utilizar el botón de panico
 
-* Una vez iniciado el viaje la app te rastreara cada 5 segundos, 1 minuto, 2 minutos o 5 minutos dependiendo lo configures.
 * Botón de pánico, durante tu viaje y sólo durante tu viaje puedes apretar 5 veces el botón de encendido del smartphone y se enviara un SMS a tu contacto de emergencia indicándole que revise su correo y n correos electrónicos mostrando tu ubicación y nivel de batería.
 * Modo paranoico, este esta desactivado por defecto per se puede hacer que te estén llegando notificaciones preguntando si te encuentras bien!, de no contestarla se envía un SMS a tu contacto de emergencia indicandole que revise su correo y n correos electrónicos mostrando tu ubicación y nivel de batería.
+
+Una vez iniciado el viaje la app te rastreara cada 5 segundos.
+
+# Tips:
+
+Traxi te da consejos de seguridad y para un buen uso de los taxis del DF.
+
 
 # MAPA
 
 Durante el viaje el usuario puede ver un mapa (googleMaps) donde ve el camino que a recorrido y puede poner el destino, si hace esto se mostrara la ruta posible que puede tomar el taxi, la distancia y el tiempo que le falta por recorrer.
 
+Si configuraste tus contactos de emergencia puedes activar el modo paranoico durante el viaje o desactivarlo.
+
 # CALIFICACIÓN
 
 Al final del viaje el usuario puede calificar el servicio del 0 al 5 y puede hacer un comentario de 50 caracteres.
-
-# CONFIGURACIÓN
-
-Podrás modificar la frecuencia con la que el telefono te rastrea, activar y decidir el tiempo de avisos en el modo paranoico, activar o desactivar si deseas enviar el reporte de fallos en caso que la app falle, ver el acerca de la aplicación.
 
 
 # IDIOMAS
@@ -51,21 +54,26 @@ ___________________
 # Pantallas
 
 <p align="center">
-  <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-32-02.png?raw=true" alt="Splash" height="460" width="240"/>
-    <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-47-11.png?raw=true" alt="Registro"  height="460" width="240"/>
-      <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-50-43.png?raw=true" alt="Buscar"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-51-38.png?raw=true" alt="Escudo"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-51-52.png?raw=true" alt="Adeudos"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-52-37.png?raw=true" alt="Comentarios"  height="460" width="240"/>
-    <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-53-15.png?raw=true" alt="conFaceBook"  height="460" width="240"/>
-      <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-54-04.png?raw=true" alt="Menu"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-54-11.png?raw=true" alt="Preferencias"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-54-34.png?raw=true" alt="Notificacion"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-57-17.png?raw=true" alt="Viaje"  height="460" width="240"/>
-    <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-13-57-36.png?raw=true" alt="Destino"  height="460" width="240"/>
-      <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-14-00-14.png?raw=true" alt="falta de viaje"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-14-00-29.png?raw=true" alt="Mi Destino"  height="460" width="240"/>
-        <img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-04-28-14-00-47.png?raw=true" alt="Calificar"  height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-55-17.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-57-40.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-17-57-55.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-00.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-26.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-44.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-01-59.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-06.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-23.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-02-41.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-27.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-38.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-03-55.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-05-49.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-07-13.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-07-20.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-09-28.png?raw=true" alt="Traxi" height="460" width="240"/>
+<img src="https://github.com/mikesaurio/trackxi/raw/master/screenshot/Screenshot_2014-06-02-18-10-00.png?raw=true" alt="Traxi" height="460" width="240"/>
+
+
 </p>
 
 
