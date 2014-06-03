@@ -13,8 +13,8 @@
 
     <!-- More info http://developer.android.com/design/style/color.html -->
 
-  <!--    <color name="white">#FFffffff</color>
-    <color name="black">#FF000000</color>-->
+    <color name="white">#FFffffff</color>
+    <color name="black">#FF000000</color>
     <color name="gray">#FF8c8c8c</color>
     <color name="android_blue">#FF33b5e5</color>
     <color name="android_darkblue">#FF0099cc</color>
@@ -31,7 +31,7 @@
     <color name="android_purple">#FFaa66cc</color>
     <color name="android_darkpurple">#FF9933cc</color>
     <color name="gris_obscuro_trans">#cc000000</color>
-
+    <color name="azul_facebook">#3b5998</color>
 
     <!-- colores del paginador -->
     <color name="vpi__background_holo_dark">#ff000000</color>
@@ -42,9 +42,10 @@
     <color name="vpi__bright_foreground_disabled_holo_light">#ffb2b2b2</color>
     <color name="vpi__bright_foreground_inverse_holo_dark">@color/vpi__bright_foreground_holo_light</color>
     <color name="vpi__bright_foreground_inverse_holo_light">@color/vpi__bright_foreground_holo_dark</color>
-    
-    <!-- Colores diseno  -->
-    <!-- <color name="generic_amarillo_mostaza">#EACC98</color>
+
+    <!-- Colores diseno -->
+    <!--
+    <color name="generic_amarillo_mostaza">#EACC98</color>
     <color name="generic_amarillo">#e0d04b</color>
     <color name="generic_rojo_alfa">#BBEF4147</color>
     <color name="rojo_logo">#EF4147</color>
@@ -53,19 +54,18 @@
     <color name="gris_obscuro">#6D6E70</color>
     #efc03f AMARILLO
     #336699 AZUL
-     -->
+    -->
     <color name="color_base">#efc03f</color>
-     <color name="color_vivos">#000000</color>
-      <color name="color_fondos">#FFFFFFFF</color>
-       <color name="color_fondos_trans">#00FFFFFF</color>
+    <color name="color_vivos">#000000</color>
+    <color name="color_fondos">#FFFFFFFF</color>
+    <color name="color_fondos_trans">#00FFFFFF</color>
     <color name="rojo_logo">#FB0000</color>
-     <color name="generic_naranja">#FBA200</color>
+    <color name="generic_naranja">#FBA200</color>
     <color name="generic_rojo_alfa">#BBFBA200</color>
-     <color name="generic_verde">#14CC54</color>
+    <color name="generic_verde">#14CC54</color>
     <color name="mamey">#EB8C6B</color>
-     <color name="generic_azul">#0000FF</color>
+    <color name="generic_azul">#0000FF</color>
     <color name="gris_claro">#E6E7E8</color>
-   <color name="gris_obscuro">#6D6E70</color>
-
+    <color name="gris_obscuro">#6D6E70</color>
 
 </resources>

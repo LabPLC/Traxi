@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/boton_redondo_press_face" android:state_pressed="true"></item>
+    <item android:drawable="@drawable/boton_redondo_focus_face" android:state_focused="true"></item>
+    <item android:drawable="@drawable/boton_redondo_focus_face" />
+
+</selector>

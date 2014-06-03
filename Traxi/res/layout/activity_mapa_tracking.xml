@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top"
-            android:background="@drawable/marco_rojo"
+            android:background="@drawable/marco_color_base"
             android:rotation="180" >
             <ImageView
                 android:id="@+id/mitaxi_googlemaps_iv_abrir"

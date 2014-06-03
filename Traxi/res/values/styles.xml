@@ -30,7 +30,7 @@
     </style>
 
     <style name="PopupMenu" parent="android:style/Widget.Holo.Light.ListPopupWindow">
-        <item name="android:popupBackground">@drawable/marco_rojo</item>
+        <item name="android:popupBackground">@drawable/marco_color_base</item>
         <item name="android:textSize">@drawable/selector_txt_boton_redondo</item>
     </style>
 

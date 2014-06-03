@@ -57,7 +57,7 @@
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/marco_rojo"
+            android:background="@drawable/marco_color_base"
             android:orientation="vertical"
             android:padding="5dp" >
 
