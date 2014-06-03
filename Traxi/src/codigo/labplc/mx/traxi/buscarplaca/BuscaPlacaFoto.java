@@ -96,7 +96,18 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 	public void init(Activity con){
 		DatosLogBean.setTagLog(TAG);
 
-		foto = Environment.getExternalStorageDirectory() + "/imagen"+ Utils.getCode() + ".jpg";
+		//creamos un directorio
+		File path=getFilesDir();
+		String fullPath =path.toString() + "/placas";
+		final File file = new File(fullPath);
+		if(!file.exists()){
+			file.mkdir();
+		}else{
+			Utils.DeleteRecursive(file);
+		}
+		
+		
+		foto = file + "/imagen"+ Utils.getCode() + ".jpg";
 		
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 		

@@ -1,6 +1,7 @@
 package codigo.labplc.mx.traxi.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -388,6 +389,16 @@ public class Utils {
 		ab.setCustomView(view);
 
 		return ab;
+	}
+	
+	/**
+	 * elimina todos los archivos de un directorio
+	 * @param fileOrDirectory
+	 */
+	public static void DeleteRecursive(File fileOrDirectory) {
+	    if (fileOrDirectory.isDirectory())
+	        for (File child : fileOrDirectory.listFiles())
+	            DeleteRecursive(child);
 	}
 
 }
