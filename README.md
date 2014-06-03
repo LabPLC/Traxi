@@ -20,7 +20,7 @@ Adicionalmente puedes ver quien de tus amigos de Facebook han tomado ese taxi y 
 
 Puedes ingresar la placa del vehículo tomando una foto a la puerta o a su tablero del taxi.
 
-# Contacto de Emergencia y seguridad
+# Contacto de emergencia y seguridad
 
 Puedes agregar hasta dos contactos de emergencia en los que debes agregar su celular y correo, esto servira para poder activar el modo paranoico o utilizar el botón de panico
 
@@ -34,18 +34,18 @@ Una vez iniciado el viaje la app te rastreara cada 5 segundos.
 Traxi te da consejos de seguridad y para un buen uso de los taxis del DF.
 
 
-# MAPA
+# Mapa
 
 Durante el viaje el usuario puede ver un mapa (googleMaps) donde ve el camino que a recorrido y puede poner el destino, si hace esto se mostrara la ruta posible que puede tomar el taxi, la distancia y el tiempo que le falta por recorrer.
 
 Si configuraste tus contactos de emergencia puedes activar el modo paranoico durante el viaje o desactivarlo.
 
-# CALIFICACIÓN
+# Calificación
 
 Al final del viaje el usuario puede calificar el servicio del 0 al 5 y puede hacer un comentario de 50 caracteres.
 
 
-# IDIOMAS
+# Idiomas
 
 La aplicación tiene soporte para idiomas español e ingles.
 
@@ -111,14 +111,14 @@ Estas se encuentran en la carpeta libs del proyecto.
 Debido a problemas de compativilidad con las versiones de Android acra-4.5.jar también debe ser agregada en caso de que no la reconozca dando clic derecho al proyecto-> Properties ->Java Build Path -> Libraries -> add JARs.. y agregarla de la carpeta libs que esta dentro del proyecto. 
 ___________________
 ___________________
-# ¿QUIÉRES PROBAR LA APP?
+# ¿Quiéres probar la app?
 
-Estamos en pruebas BETA así que debes enviar un correo (gmail preferentemente) a miguel.moran@codigo.labplc.mx una vez agregado al grupo TRAXI podras descargarla de aqui [Traxi Beta](https://play.google.com/apps/testing/codigo.labplc.mx.trackxi)
-
-
+Estamos en pruebas BETA así que debes enviar un correo (gmail preferentemente) a miguel.moran@codigo.labplc.mx una vez agregado al grupo TRAXI podras descargarla de aqui [Traxi Beta](https://play.google.com/apps/testing/codigo.labplc.mx.traxi﻿)
 
 
-# DUDAS
+
+
+# Dudas
 
     @yosoymikesaurio
     miguel.moran@codigo.labplc.mx
