@@ -318,7 +318,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 			 
 			 marker_taxi = new MarkerOptions().position(new LatLng(latitud, longitud)).title(getResources().getString(R.string.mapa_mi_posicion));
-			 marker_taxi.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_txi));
+			 marker_taxi.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_taxi));
 			// adding marker
 			map.addMarker(marker);
 			map.addMarker(marker_taxi);	
@@ -547,7 +547,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 						 Polyline line = map.addPolyline(new PolylineOptions() //mMap is the Map Object
 						 .add(new LatLng(src.latitude, src.longitude),
 						 new LatLng(dest.latitude,dest.longitude))
-						 .width(8).color(Color.BLUE).geodesic(true));
+						 .width(8).color(getResources().getColor(R.color.generic_verde)).geodesic(true));
 					  }
 		    	}catch(Exception e){
 		    		DatosLogBean.setDescripcion(Utils.getStackTrace(e));

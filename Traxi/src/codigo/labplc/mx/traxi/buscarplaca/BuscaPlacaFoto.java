@@ -16,6 +16,7 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -33,7 +34,6 @@ import android.hardware.Camera.ShutterCallback;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.SpannableString;

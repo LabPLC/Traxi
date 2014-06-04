@@ -61,7 +61,9 @@
                         android:id="@+id/descripcion_escudo_tv_contenido"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="" />
+                        android:lineSpacingExtra="2dp"
+                        android:text=""
+                        android:textSize="18sp" />
                 </LinearLayout>
             </ScrollView>
         </LinearLayout>

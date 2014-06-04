@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/mitaxi_trip_map"
         android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
         android:background="@drawable/selector_btn_generic"
         android:text="@string/mapa_tracking_terminoviaje"
         android:textColor="@drawable/selector_txt_boton_redondo" />
@@ -97,11 +98,9 @@
                     android:id="@+id/mitaxi_googlemaps_ll_paranoico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/marco"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal"
                     android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp" >
 
@@ -109,17 +108,18 @@
                         android:id="@+id/textView1"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight=".8"
-                        android:gravity="left|center"
+                        android:layout_weight=".9"
+                        android:paddingRight="5dp"
+                        android:gravity="right|center"
                         android:text="@string/panico_activar_modo_paranoico" />
 
                     <CheckBox
                         android:id="@+id/mitaxi_googlemaps_cv_paranoico"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight=".2"
+                        android:layout_weight=".1"
                         android:button="@drawable/checkbox_selector"
-                        android:gravity="left|center" />
+                        android:gravity="right" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

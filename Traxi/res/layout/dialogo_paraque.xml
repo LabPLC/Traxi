@@ -26,9 +26,7 @@
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_weight=".8"
-            android:background="@drawable/marco"
-            android:orientation="vertical"
-            android:padding="10dp" >
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/dialogo_paraque_tv_subtitulo"

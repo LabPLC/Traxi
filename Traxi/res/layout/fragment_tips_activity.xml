@@ -73,6 +73,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:text=""
+                            android:lineSpacingExtra="2dp"
                             android:textSize="18sp" />
                     </LinearLayout>
                 </ScrollView>
@@ -90,7 +91,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:layout_weight=".5"
-                android:src="@drawable/ic_launcher_back"
+                android:src="@drawable/ic_launcher_atras"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
 
             <TextView
@@ -107,7 +108,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="2dp"
                 android:layout_weight=".5"
-                android:src="@drawable/ic_launcher_next"
+                android:src="@drawable/ic_launcher_adelante"
                 android:textColor="@drawable/selector_txt_boton_redondo" />
         </LinearLayout>
     </LinearLayout>
@@ -116,11 +117,10 @@
         android:id="@+id/tips_activity_iv_cerrar"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignLeft="@+id/tips_activity_ll_tips"
+        android:layout_alignRight="@+id/tips_activity_ll_tips"
         android:layout_alignTop="@+id/tips_activity_ll_tips"
-        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_marginTop="3dp"
-        android:src="@drawable/ic_launcher_tache"
-        android:background="@drawable/marco" />
+        android:src="@drawable/ic_launcher_tache" />
 
 </RelativeLayout>

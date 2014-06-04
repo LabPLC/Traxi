@@ -119,6 +119,8 @@ public class Comentarios extends View {
 			tv.setLayoutParams(lp);
 			tv.setText(getResources().getString(R.string.sin_comentario));
 			container.addView(tv);
+			comentarios_tv_cinco_estrellas =(TextView)view.findViewById(R.id.comentarios_tv_cinco_estrellas);
+			comentarios_tv_cinco_estrellas.setText("");
 			
 		}else{
 			TextView comentarios_tv_cuantos=(TextView)view.findViewById(R.id.comentarios_tv_cuantos);
@@ -126,8 +128,9 @@ public class Comentarios extends View {
 			comentarios_tv_cuantos.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 			
 			comentarios_tv_cinco_estrellas =(TextView)view.findViewById(R.id.comentarios_tv_cinco_estrellas);
-			comentarios_tv_cinco_estrellas.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-	
+			comentarios_tv_cinco_estrellas.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_MAMEY));
+			comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_0));
+			
 			llenarEstrellas(valorTotal/autoBean.getArrayComentarioBean().size());
 		}
 	
@@ -158,52 +161,55 @@ public class Comentarios extends View {
 		 ImageView rating5_comentarios = (ImageView)view.findViewById(R.id.rating5_comentarios);
 		 
 
-			if(valor<=0.5){
-			comentarios_tv_cinco_estrellas.setText("Calificaci—n "+0.5+" de 5.0");
+		 	if(valor==0){
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_0));
+			}
+			if(valor>0&&valor<=0.5){
+			comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_05));
 			rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
 			}
 			if(valor<=1.0&&valor>0.5){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+1.0+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_10));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 			}
 			if(valor<=1.5&&valor>1.0){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+1.5+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_15));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
 				}
 			if(valor<=2.0&&valor>1.5){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+2.0+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_20));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				}
 			if(valor<=2.5&&valor>2.0){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+2.5+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_25));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
 				}
 			if(valor<=3.0&&valor>2.5){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+3.0+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_30));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				}
 			if(valor<=3.5&&valor>3.0){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+3.5+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_35));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
 				}
 			if(valor<=4.0&&valor>3.5){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+4.0+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_40));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating4_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				}
 			if(valor<=4.5&&valor>4.0){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+4.5+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_45));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
@@ -211,7 +217,7 @@ public class Comentarios extends View {
 				rating5_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star3));
 				}
 			if(valor>4.5){
-				comentarios_tv_cinco_estrellas.setText("Calificaci—n "+5.0+" de 5.0");
+				comentarios_tv_cinco_estrellas.setText(context.getResources().getString(R.string.Califica_taxi_50));
 				rating1_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating2_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));
 				rating3_comentarios.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_star2));

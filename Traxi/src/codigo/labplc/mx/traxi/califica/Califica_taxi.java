@@ -9,6 +9,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,7 @@ public class Califica_taxi extends Activity {
 	RatingBar rank;
 	private String Scalificacion = "0";
 	private String Scomentario;
+	private TextView dialogo_califica_tv_caracteres;
 
 	private TextView califica_taxi_tv_titulo_calif;
 	
@@ -75,6 +78,11 @@ public class Califica_taxi extends Activity {
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
+		
+		 dialogo_califica_tv_caracteres =(TextView)findViewById(R.id.dialogo_califica_tv_caracteres);
+		dialogo_califica_tv_caracteres.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));
+		dialogo_califica_tv_caracteres.setTextColor(getResources().getColor(R.color.color_vivos));
+		
 	     
 		 califica_taxi_tv_titulo_calif= (TextView)findViewById(R.id.califica_taxi_tv_titulo_calif);
 		califica_taxi_tv_titulo_calif.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));	
@@ -95,6 +103,8 @@ public class Califica_taxi extends Activity {
 		comentario = (EditText)findViewById(R.id.dialogo_califica_servicio_et_comentario);
 		comentario.setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_ROJO));
 		comentario.setTextColor(getResources().getColor(R.color.color_vivos));
+		
+		comentario.addTextChangedListener(mTextEditorWatcher);
 		
 		rank = (RatingBar)findViewById(R.id.dialogo_califica_servicio_ratingBarServicio);
 		rank.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
@@ -176,7 +186,6 @@ public class Califica_taxi extends Activity {
 			}
 		});
 		
-	
 		
 	}
 
@@ -213,5 +222,19 @@ public class Califica_taxi extends Activity {
 	}
 	
 
+	/**
+	 * escucha para saber cuantos caracteres quedan al dejar un comentario
+	 */
+	private final TextWatcher mTextEditorWatcher = new TextWatcher() {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
+
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        	dialogo_califica_tv_caracteres.setText(String.valueOf(s.length()+"/50"));
+        }
+
+        public void afterTextChanged(Editable s) {
+        }
+};
 	
 }

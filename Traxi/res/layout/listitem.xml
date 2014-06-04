@@ -11,6 +11,7 @@
         android:layout_height="70dp"
         android:src="@drawable/ic_launcher"
         android:layout_gravity="center"
+        android:layout_marginRight="5dp"
         android:contentDescription="@string/app_name" />
 
 

@@ -124,9 +124,11 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 				if (Splaca.length() == 6) {
 						placa.setError(null);
 						puedoAvanzar=true;
-						BorrarTrue();
+						NumbersTrue();
 						inicio_de_trabajo_iv_adelante.setImageResource(R.drawable.ic_launcher_adelante_verde);
-				} else {
+				} else if(Splaca.length() > 6){
+					isBack();
+				}else{
 					inicio_de_trabajo_iv_adelante.setImageResource(R.drawable.ic_launcher_adelante);
 					if (Splaca.length() >= 1&&Splaca.length()<6) {
 							puedoAvanzar=false;
@@ -252,7 +254,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		}else if (v != mBack) {
 			addText(v);
 		} else if (v == mBack) {
-			isBack(v);
+			isBack();
 		}
 		
 	}
@@ -262,7 +264,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	 * 
 	 * @param v
 	 */
-	private void isBack(View v) {
+	private void isBack() {
 			CharSequence cc = placa.getText();
 			if (cc != null && cc.length() > 0) {
 				{
@@ -400,63 +402,7 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	}
 	
 
-	/**
-	 * Activa el boton de borrado
-	 */
-	@SuppressLint("NewApi")
-	private void BorrarTrue() {
-		try{
-		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
-	    ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);
-		mBack.setEnabled(true);
-		mBack.setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
-		mBack.setTextColor(colors);
-		mB[0].setEnabled(false);
-		mB[0].setBackground(null);
-		mB[0].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[1].setEnabled(false);
-		mB[1].setBackground(null);
-		mB[1].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[2].setEnabled(false);
-		mB[2].setBackground(null);
-		mB[2].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[3].setEnabled(false);
-		mB[3].setBackground(null);
-		mB[3].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[4].setEnabled(false);
-		mB[4].setBackground(null);
-		mB[4].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[5].setEnabled(false);
-		mB[5].setBackground(null);
-		mB[5].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[6].setEnabled(false);
-		mB[6].setBackground(null);
-		mB[6].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[7].setEnabled(false);
-		mB[7].setBackground(null);
-		mB[7].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[8].setEnabled(false);
-		mB[8].setBackground(null);
-		mB[8].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[9].setEnabled(false);
-		mB[9].setBackground(null);
-		mB[9].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[10].setEnabled(false);
-		mB[10].setBackground(null);
-		mB[10].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[11].setEnabled(false);
-		mB[11].setBackground(null);
-		mB[11].setTextColor(getResources().getColor(R.color.gris_obscuro));
-		mB[12].setEnabled(false);
-		mB[12].setBackground(null);
-		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
-	} catch (XmlPullParserException e) {
-		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
-	} catch (IOException e) {
-		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
-	}
-	}
-
+	
 	/**
 	 * Activa los numeros del teclado
 	 */

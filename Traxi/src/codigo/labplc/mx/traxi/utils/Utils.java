@@ -371,6 +371,7 @@ public class Utils {
 	 * @param (float) tamaño del titulo
 	 * @return (ActionBar) inflado
 	 */
+	@SuppressLint("DefaultLocale")
 	public static ActionBar crearActionBar(Activity activity, int vista,String nombre,float tamano){
 		ActionBar ab	= activity.getActionBar();
 		ab.setDisplayShowHomeEnabled(false);
@@ -380,7 +381,7 @@ public class Utils {
 		View view = inflater.inflate(vista, null);
 		
 		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_MAMEY));
-		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(nombre);
+		((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setText(nombre.toUpperCase());
 		if(tamano!=0.0f){
 			((TextView) view.findViewById(R.id.abs_layout_tv_titulo)).setTextSize(tamano);
 		}
