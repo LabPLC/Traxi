@@ -57,8 +57,14 @@ public class Califica_taxi extends Activity {
 
 		DatosLogBean.setTagLog(TAG);
 		
+			try{
+			 Mapa_tracking.fa.finish();
+			}catch(Exception e){
+				DatosLogBean.setDescripcion(Utils.getStackTrace(e));
+			}
+		
 		//en caso de que se active si ya no existe el servicio
-		if(ServicioGeolocalizacion.serviceIsIniciado!=true){
+		if(ServicioGeolocalizacion.serviceIsIniciado!=true||ServicioGeolocalizacion.taxiActivity==null){
 			Mapa_tracking.isButtonExit= false;
 			ServicioGeolocalizacion.CancelNotification(Califica_taxi.this, 0);
 			Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
@@ -70,11 +76,7 @@ public class Califica_taxi extends Activity {
 		
 		setFinishOnTouchOutside(false);
 		
-		try{
-		 Mapa_tracking.fa.finish();
-		}catch(Exception e){
-			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
-		}
+		
 		
 	    ((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTypeface(new fonts(Califica_taxi.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.califica_taxi_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
@@ -221,7 +223,10 @@ public class Califica_taxi extends Activity {
 		super.onStart();
 	}
 	
+	
+	
 
+	
 	/**
 	 * escucha para saber cuantos caracteres quedan al dejar un comentario
 	 */

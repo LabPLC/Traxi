@@ -1,10 +1,12 @@
 package codigo.labplc.mx.traxi.panic;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.telephony.SmsManager;
@@ -49,10 +51,19 @@ public class PanicAlert {
       * @param phoneNumber (String) numero de emergencia
       * @param message (String) mensaje de emergencia
       */ 
-     public void sendSMS(String phoneNumber, String message)
-     {
-    	 SmsManager smsManager = SmsManager.getDefault();
-    	 smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+	@SuppressLint("NewApi")
+	public void sendSMS(String phoneNumber, String message)
+     { 
+    	
+    	 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) // Android 4.4 and up
+    	 {
+    	     //validacion para kitkat
+    	     
+    	 }else{
+    		SmsManager smsManager = SmsManager.getDefault();
+       	 smsManager.sendTextMessage(phoneNumber, null, message, null, null);
+    	}
+    	 
 
       }
 

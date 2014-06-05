@@ -95,8 +95,14 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	public void initUI() {
 		
 		TextView mitaxiregistermanually_tv_label= (TextView)findViewById(R.id.mitaxiregistermanually_tv_label);
-		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
+		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		 mitaxiregistermanually_tv_label.setTextColor(getResources().getColor(R.color.color_vivos));
+		 
+		 TextView mitaxiregistermanually_tv_paranoico_texto= (TextView)findViewById(R.id.mitaxiregistermanually_tv_paranoico_texto);
+		 mitaxiregistermanually_tv_paranoico_texto.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		 mitaxiregistermanually_tv_paranoico_texto.setTextColor(getResources().getColor(R.color.color_vivos));
+		 
+		 
 		 
 		 
 		 mitaxiregistermanually_ll_contactos =(LinearLayout)findViewById(R.id.mitaxiregistermanually_ll_contactos);

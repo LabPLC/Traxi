@@ -15,7 +15,6 @@ import codigo.labplc.mx.traxi.log.HockeySender;
  */
 @ReportsCrashes(formKey = "traxi", formUri ="http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog" )
 public class Traxi extends Application{
-
 	@Override
 	public void onCreate() {
 		
@@ -38,5 +37,7 @@ public class Traxi extends Application{
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 		return sharedPrefs.getBoolean(preferencia, true);
 	}
-
+	
+	
+	
 }

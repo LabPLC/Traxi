@@ -45,7 +45,7 @@
             android:layout_weight=".33"
             android:background="@drawable/marco"
             android:drawableTop="@drawable/ic_launcher_foto"
-            android:text="@string/busca_placa_btn_tomar_foto"
+            android:text="@string/busca_placa_btn_tomarfoto"
             android:textColor="@color/color_vivos"
             android:textSize="12sp" />
     </LinearLayout>

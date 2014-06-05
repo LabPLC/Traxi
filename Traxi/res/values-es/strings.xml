@@ -19,7 +19,7 @@
     <string name="title_activity_busca_placa">Busca Placa</string>
 
     <!-- Registro manualmente -->
-    <string name="mitaxiregister_name">Recuerda que el correo y el celular deben ser de la misma persona.</string>
+    <string name="mitaxiregister_name">El correo y el celular deben ser de la misma persona.</string>
     <string name="mitaxiregister_error">Corrige los datos antes de avanzar.</string>
     <string name="mitaxiregister_error_string">Escribe cadena válida [a-z A-Z].</string>
     <string name="mitaxiregister_error_number">Escribe número válido [0 9].</string>
@@ -92,7 +92,7 @@
     <string name="inicio_de_trabajo_et_placa">Placa</string>
     <string name="busca_placa_btn_emergencia">Emergencia</string>
     <string name="busca_placa_btn_tips">Tips</string>
-    <string name="busca_placa_btn_tomar_foto">Tomar foto</string>
+    <string name="busca_placa_tomar_foto">Foto</string>
 
     <!-- Tenencia -->
     <string name="adeudo_tenencia">Tenencia</string>
@@ -155,7 +155,7 @@
     <!-- mapa_tracking -->
     <string name="mitaxi_googlemaps_tv_destination">Destino del viaje</string>
     <string name="mitaxi_googlemaps_btn_destino">Ir</string>
-    <string name="mitaxi_googlemaps_actv_destination">Ejemplo: Colonia x calle 1</string>
+    <string name="mitaxi_googlemaps_actv_destination">Ejemplo: Colonia Roma calle 14</string>
     <string name="mapa_tracking_terminoviaje">Terminó viaje.</string>
     <string name="mapa_tracking_miviaje">Mi viaje</string>
 
@@ -166,7 +166,7 @@
     <string name="datos_tv_descripcion">blablablabla</string>
 
     <!-- TOAST -->
-    <string name="foto_fallida">¡La foto a fallado!, intenta de nuevo</string>
+    <string name="foto_fallida">¡La foto ha fallado!, intenta de nuevo</string>
     <string name="le_puso"> le puso </string>
     <string name="estrellas"> estrellas</string>
     <string name="imagen_muy_grande">¡La imagen es muy grande!</string>
@@ -182,7 +182,7 @@
 
     <string name="cargando_info">Cargando la información, espere....</string>
     <string name="cargando_foto">Procesando la foto, espere....</string>
-    <string name="sms_emer">Estoy en peligro!, eres mi contacto de emergencia, revisa tu correo por favor</string>
+    <string name="sms_emer">revisa tu correo para ver mi ubicación y contactarme </string>
 
     <!-- Mapa -->
     <string name="mapa_inicio_de_viaje">Lo tomo</string>
@@ -200,11 +200,13 @@
     <string name="notificacion_finalizar">Finalizar</string>
 
     <!-- panic -->
-    <string name="panic_estoy_en_peligro">Estoy en peligro en taxi placas:</string>
-    <string name="panic_ubicacion">\t mi ubicación es https://www.google.com.mx/maps/place/</string>
-    <string name="panic_bateria">\t batería:</string>
+    <string name="panic_estoy_en_peligro">NECESITO DE TU AYUDA.\n\n Activé mi botón de pánico en Traxi y tú eres mi contacto de emergencia. 
+Voy en el taxi con placas: </string>
+    <string name="panic_ubicacion">\n\n Èsta es mi última ubicación https://www.google.com.mx/maps/place/</string>
+    <string name="panic_bateria">\n\n mi nivel de batería:</string>
+    <string name="panic_mensaje_cuerpo">\n\nIntenta llamarme lo más pronto posible y asegúrate de que me encuentre bien. Si no logras contactarme, o si te das cuenta de que me encuentro en peligro, contacta a las autoridades por medio del número 066</string>
     <string name="panic_todo_bien">¿Todo bien?</string>
-    <string name="panic_tocame">Tocame si es así</string>
+    <string name="panic_tocame">si es así, ¡da clic!</string>
 
     <!-- Pass -->
     <string name="correo">mitraxisaurio@gmail.com</string>
@@ -218,7 +220,7 @@
     <!-- Facebook -->
     <string name="facebook_id">622752297805514</string>
     <string name="exception">Exception: %1$s</string>
-    <string name="face_no_amigos">Ningún amigo a tomado este taxi</string>
+    <string name="face_no_amigos">Ningún amigo ha tomado este taxi</string>
 
     <!-- preferences -->
     <string name="prefKeyResetQuests">resetQuests</string>
@@ -235,7 +237,7 @@
 
     <!-- Tips -->
     <string name="tip_1">Nunca tomes un taxi que no tenga placas \n\n
-        Recuerda que deben de empezar con A, B ó M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
+        Recuerda que deben de empezar con A, B o M y tener 5 números.\n\nEJEMPLO:\n A05601</string>
     <string name="tip_2">Revisa que el taxi al que te subas tenga visible el tarjetón verde y que la foto coincida con el chofer y que no este vencido.</string>
     <string name="tip_3">La tarifa nocuturna aplica de 11 de la noche a 5:59 de la mañana.</string>
     <string name="tip_4">Existen 3 tipos de tarifas\n\n 
@@ -250,7 +252,7 @@
     Ficha $1.84\n\n</string>
     <string name="tip_5">Evita conversaciones relacionadas con tus actividades.</string>
     <string name="tip_6">De preferencia indíquele la ruta a seguir al chofer del taxi.</string>
-    <string name="tip_7">Nunca subestimen su sexto sentido. Si algo las hace sentir inseguras o nerviosas, bájense. No tengan miedo a terminar su recorrido antes, siempre pueden usar un pretexto.</string>
+    <string name="tip_7">Nunca subestimen su sexto sentido. Si algo te hace sentir inseguro o nervioso, bájate. No tengan miedo a terminar su recorrido antes, siempre pueden usar un pretexto.</string>
     <string name="tip_8">Inmediatamente después de que se suban asegúrense de que ambas puertas traseras tienen el seguro puesto, eviten agresiones externas de esta manera. Y si sienten que la agresión puede venir de adentro, ¡bájense inmediatamente!.</string>
     <string name="tip_9">Nunca compartas tu taxi con extraños ni con personas que acabas de conocer en un bar, en una terminal de buses o "la chica linda" que también espera taxi en tu misma esquina.</string>
     <string name="tip_10">Teléfonos de emergencia:\n\n
@@ -258,11 +260,13 @@
         SSP: 066\n\n
         Cruz Roja: 065\n\n
         Locatel: 56581111</string>
-    <string name="mensaje_para_panic"><B>BOTÓN DE PANICO:</B> El cuál se funciona sólo durante el viaje, en caso de que te sientas amenazado durante el viaje puedes presionar 5 veces el boton de encendido de tu celular y se enviá un SMS al contacto que nos indiques y correos electronicos con tu posición, en que taxi te encuentras, tu nivel de bateria y unas recomendaciones de acción.\n\n<B>PARANÓICO:</B> Sí activas este módo la aplicación te estará preguntando cada determinados minutos(que tu seleccionas) si te encuentras bien, si no contestas en por lo menos un minuto se activara el botón de panico.\n\n\n<B>IMPORTANTE:</B> ESTA ES UNA PRUEA BETA DE LA APLICAIÓN POR LO QUE AUN PUEDE PRESENTAR FALLAS POR LO QUE DEBES TOMAR TODAS TUS PRECAUCIÓNES.\n\n
-            PARA EL ENVIO DE SMS DEBES TENER SALDO Y SE HARA EL COBRO DEPENDIENDO DE TU COMPAÑIA DE TELÉFONO, Y LOS CORREOS REQUIEREN QUE ESTES CONECTADO A UNA RED DE DATOS.\n\n
-            ES NECESARIO QUE ACEPTES PARA PODER ACCEDER A ESTA OPCIÓN.</string>
-    <string name="mensaje_para_panic_dialog"><B>BOTÓN DE PANICO:</B>El cuál se funciona sólo durante el viaje, en caso de que te sientas amenazado durante el viaje puedes presionar 5 veces el boton de encendido de tu celular y se enviá un SMS al contacto que nos indiques y correos electronicos con tu posición, en que taxi te encuentras, tu nivel de bateria y unas recomendaciones de acción.\n\n<B>PARANÓICO:</B> Sí activas este módo la aplicación te estará preguntando cada determinados minutos(que tu seleccionas) si te encuentras bien, si no contestas en por lo menos un minuto se activara el botón de panico.\n\n\n<B>IMPORTANTE:</B> ESTA ES UNA PRUEA BETA DE LA APLICAIÓN POR LO QUE AUN PUEDE PRESENTAR FALLAS POR LO QUE DEBES TOMAR TODAS TUS PRECAUCIÓNES.\n\n
-            PARA EL ENVIO DE SMS DEBES TENER SALDO Y SE HARA EL COBRO DEPENDIENDO DE TU COMPAÑIA DE TELÉFONO, Y LOS CORREOS REQUIEREN QUE ESTES CONECTADO A UNA RED DE DATOS.</string>
+    <string name="mensaje_para_panic"><B>BOTÓN DE PANICO: </B>Sólo funciona durante el transcurso de tu viaje. En caso de que te sientas amenazado estando dentro del taxi, puedes presionar 5 veces el botón de encendido de tu celular de manera consecutiva y se enviará un SMS a los contactos que nos indiques (max. 2) y correos electrónicos con tu posición, placas del taxi en el que te encuentras, tu nivel de batería y unas recomendaciones de acción.
+        \n\n<B>MODO PARANÓICO: </B>Si activas este modo, la aplicación te preguntará cada determinado tiempo (2 minutos) si te encuentras bien. Si no contestas dentro del minuto de respuesta programado, se activará el botón de pánico.\n\n\n<B>IMPORTANTE:</B> ÉSTA ES UNA PRUEBA BETA DE LA APLICACIÓN POR LO QUE AÚN PUEDE PRESENTAR FALLAS. PROCURA TOMAR TODAS TUS PRECAUCIONES.
+PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE TU COMPAÑIA DE TELÉFONO. LOS CORREOS REQUIEREN QUE ESTÉS CONECTADO/A A UNA RED DE DATOS.
+\n\nES NECESARIO QUE ACEPTES PARA PODER ACCEDER A ESTA OPCIÓN.\n\n</string>
+    <string name="mensaje_para_panic_dialog"><B>BOTÓN DE PANICO: </B>Sólo funciona durante el transcurso de tu viaje. En caso de que te sientas amenazado estando dentro del taxi, puedes presionar 5 veces el botón de encendido de tu celular de manera consecutiva y se enviará un SMS a los contactos que nos indiques (max. 2) y correos electrónicos con tu posición, placas del taxi en el que te encuentras, tu nivel de batería y unas recomendaciones de acción.
+        \n\n<B>MODO PARANÓICO: </B>Si activas este modo, la aplicación te preguntará cada determinado tiempo (2 minutos) si te encuentras bien. Si no contestas dentro del minuto de respuesta programado, se activará el botón de pánico.\n\n\n<B>IMPORTANTE:</B> ÉSTA ES UNA PRUEBA BETA DE LA APLICACIÓN POR LO QUE AÚN PUEDE PRESENTAR FALLAS. PROCURA TOMAR TODAS TUS PRECAUCIONES.
+PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE TU COMPAÑIA DE TELÉFONO. LOS CORREOS REQUIEREN QUE ESTÉS CONECTADO/A A UNA RED DE DATOS.</string>
     <string name="mensaje_para_panic_boton_aceptar">Acepto</string>
     <string name="mensaje_para_panic_boton_cancelar">Cancelar</string>
     <string name="mensaje_para_panic_titulo">Traxi cuenta con 2 niveles de seguridad:</string>
@@ -287,7 +291,7 @@
     <string name="Califica_taxi_50">Servicio insuperable</string>
     <string name="comentarios_row_hoy">Hoy</string>
     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
-    <string name="preferencias_version_titulo">1.4</string>
+    <string name="preferencias_version_titulo">1.6</string>
     <string name="preferencias_version">Versión</string>
 
 </resources>

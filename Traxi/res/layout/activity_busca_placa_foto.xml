@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="43dp"
+                android:layout_marginBottom="35dp"
                 android:background="@drawable/marco"
                 android:orientation="horizontal"
                 android:padding="5dp" >
@@ -112,12 +112,13 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="@color/color_fondos"
+                    android:drawableLeft="@drawable/ic_launcher"
                     android:gravity="center"
                     android:paddingRight="2dp"
-                    android:background="@color/color_fondos"
                     android:text="@string/camara_guia_foto"
-                    android:textColor="@color/color_vivos"
-                    android:drawableLeft="@drawable/ic_launcher"/>
+                    android:textColor="@color/color_vivos" />
+
             </LinearLayout>
 
         </RelativeLayout>
@@ -152,7 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:gravity="right"
         android:layout_margin="5dp"
         android:layout_marginTop="22dp"
         android:text="@string/inicio_de_trabajo_tv_foto"

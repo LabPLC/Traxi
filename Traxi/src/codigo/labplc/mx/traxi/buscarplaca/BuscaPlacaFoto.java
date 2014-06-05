@@ -112,7 +112,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 		getWindow().setFormat(PixelFormat.UNKNOWN);
 		
 		
-		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.mapa_tracking_miviaje),0.0f);//creamos el ActionBAr
+		Utils.crearActionBar(BuscaPlacaFoto.this, R.layout.abs_layout_back,getResources().getString(R.string.busca_placa_tomar_foto),0.0f);//creamos el ActionBAr
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
 		

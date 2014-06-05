@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity=""
-        android:padding="5dp"
         android:layout_margin="5dp"
         android:text="@string/mitaxiregister_name"
         android:textStyle="bold" />
@@ -69,13 +68,14 @@
         android:layout_margin="5dp"
         android:background="@drawable/marco"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:padding="1dp" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/mitaxiregistermanually_tv_paranoico_texto"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".8"
+            android:layout_marginLeft="3dp"
             android:gravity="left|center"
             android:text="@string/panico_activar_modo_paranoico" />
 
@@ -106,6 +106,7 @@
         android:background="@drawable/selector_btn_generic"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        android:paddingTop="3dp"
         android:text="@string/mitaxiregister_validar_contactos_guardar"
         android:textColor="@drawable/selector_txt_boton_redondo" />
 

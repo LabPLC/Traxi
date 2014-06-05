@@ -30,6 +30,7 @@ import android.os.Message;
 import android.os.ResultReceiver;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
@@ -99,6 +100,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
    private boolean panico;
    private boolean isActivado= false;
    private boolean flag_una_vez = true;
+   public static Service serv_;
 
     
     
@@ -107,7 +109,9 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+ 
+		serv_ = ServicioGeolocalizacion.this;
+		
 		//obtenemos la hora en la que inicia el servicio
 		Calendar c = Calendar.getInstance();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
@@ -346,7 +350,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 	public static  void showNotification() {
 		// notification is selected
-
+try{
 		Intent intent_mapa = new Intent(taxiActivity, Mapa_tracking.class);
 		intent_mapa.putExtra("latitud_inicial", ServicioGeolocalizacion.latitud_inicial);
 		intent_mapa.putExtra("longitud_inicial", ServicioGeolocalizacion.longitud_inicial);
@@ -372,7 +376,10 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		NotificationManager notificationManager = (NotificationManager) taxiActivity.getSystemService(NOTIFICATION_SERVICE);
 		
 		notificationManager.notify(0, noti);
-		
+		}catch(Exception e){
+				Mapa_tracking.isButtonExit= false;
+				serv_.stopSelf();
+		}
 		
 	}
 
@@ -419,7 +426,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     	    	panic.sendMail("TRAXI",
     	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
     	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%",
+    	    			panic.getLevelBattery()+"%"+getResources().getString(R.string.panic_mensaje_cuerpo),
 						getResources().getString(R.string.correo), 
 						correoemer);
     	}
@@ -429,7 +436,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     	    	panic.sendMail("TRAXI",
     	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
     	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%",
+    	    			panic.getLevelBattery()+"%"+getResources().getString(R.string.panic_mensaje_cuerpo),
 						getResources().getString(R.string.correo), 
 						correoemer2);
     	}
@@ -567,7 +574,6 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     	try{
     	 if(getPanicoActivado()){
     	 if(algoPaso){
-    		// Log.d(TAG, "enviando mensaje de panico");
     		   Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 			   v.vibrate(3000);
 			   SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);

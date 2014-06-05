@@ -73,6 +73,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	@Override
 	protected void onStart() {
 		ServicioGeolocalizacion.stopNotification();
+		
 		super.onStart();
 	}
 
@@ -110,14 +111,12 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mapa_tracking);
-
-		
 		DatosLogBean.setTagLog(TAG);
 		 
 		
 		fa = Mapa_tracking.this;
 		//en caso de que se active si ya no existe el servicio
-				if(ServicioGeolocalizacion.serviceIsIniciado!=true){
+				if(ServicioGeolocalizacion.serviceIsIniciado!=true||ServicioGeolocalizacion.taxiActivity==null){
 					Mapa_tracking.isButtonExit= false;
 					ServicioGeolocalizacion.CancelNotification(Mapa_tracking.this, 0);
 					Intent svc = new Intent(Mapa_tracking.this, ServicioGeolocalizacion.class);
@@ -266,16 +265,13 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	     }
 	    		
 		setUpMapIfNeeded();		
-			
-		
-		
-		
-		
 	}
 
 	
 	
-	 @Override
+
+
+	@Override
 	protected void onStop() {
 		if(isButtonExit){
 		ServicioGeolocalizacion.showNotification();
@@ -457,8 +453,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			registerReceiver(onBroadcast, new IntentFilter("key"));
 			isButtonExit= true;
 			ServicioGeolocalizacion.stopNotification();
-
-
+			ServicioGeolocalizacion.CancelNotification(Mapa_tracking.this, 0);
 			super.onResume();
 		}
 		
@@ -703,7 +698,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				pDialog.setCanceledOnTouchOutside(false);
 				pDialog.setMessage(getResources().getString(R.string.texto_significado_el_viaje_inicio));
 				pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-				pDialog.setCancelable(true);
+				pDialog.setCancelable(false);
 				pDialog.show();
 			}	
 			
