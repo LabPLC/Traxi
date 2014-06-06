@@ -273,7 +273,7 @@
     <string name="mensaje_para_panic_dialog"><B>PANIC BUTTON:</B>  It only works throughout the duration of your trip. In case you feel threatened while riding the taxi, you can press your on/off button 5 times and a text message will be sent to the emergency contacts that you determine beforehand (max. 2) and e-mails containing your location, the taxi’s license plate, percentage of remaining battery and a few recommendations as to how to react.
         \n\n<B>PARANÓICO:</B> If you activate this mode, the application will ask you every couple of minutes (you select the frequency) if you are doing okay. If you don’t reply within a minute, the panic button will activate on its own. 
         \n\n\n<B>WARNING:</B> THIS IS A BETA VERSION OF THE APPLICATION, WHICH MEANS THAT IT MAY PRESENT CERTAIN ERRORS. MAKE SURE YOU TAKE SERIOUS PRECAUTIONS AT ALL TIMES.
-        \n\nTO ENABLE TRAXI TO SEND A TEXT MESSAGE IN CASE YOU ACTIVATE THE PANIC BUTTON, YOU MUST HAVE ENOUGH CREDIT TO DO SO. YOU WILL BE CHARGED ACCORDING TO YOUR PHONE COMPANY’S RATES. TO SEND THE EMERGENCY E-MAIL, YOUR PHONE MUST HAVE ACCESS TO AN INTERNET CONNECTION.</string>
+        \n\n TO ENABLE TRAXI TO SEND A TEXT MESSAGE IN CASE YOU ACTIVATE THE PANIC BUTTON, YOU MUST HAVE ENOUGH CREDIT TO DO SO. YOU WILL BE CHARGED ACCORDING TO YOUR PHONE COMPANY’S RATES. TO SEND THE EMERGENCY E-MAIL, YOUR PHONE MUST HAVE ACCESS TO AN INTERNET CONNECTION.</string>
     <string name="mensaje_para_panic_boton_aceptar">Accept</string>
     <string name="mensaje_para_panic_boton_cancelar">Cancel</string>
     <string name="mensaje_para_panic_titulo">Traxi counts with 2 security levels:</string>

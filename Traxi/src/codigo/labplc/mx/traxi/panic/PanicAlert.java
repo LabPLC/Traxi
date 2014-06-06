@@ -51,18 +51,16 @@ public class PanicAlert {
       * @param phoneNumber (String) numero de emergencia
       * @param message (String) mensaje de emergencia
       */ 
-	@SuppressLint("NewApi")
 	public void sendSMS(String phoneNumber, String message)
      { 
     	
-    	 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) // Android 4.4 and up
-    	 {
-    	     //validacion para kitkat
-    	     
-    	 }else{
-    		SmsManager smsManager = SmsManager.getDefault();
+    try{
+		 SmsManager smsManager = SmsManager.getDefault();
        	 smsManager.sendTextMessage(phoneNumber, null, message, null, null);
-    	}
+    }catch(Exception e){
+    	DatosLogBean.setDescripcion(Utils.getStackTrace(e)); 
+    }
+    	
     	 
 
       }

@@ -411,7 +411,11 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	
 	@Override
 	public void onBackPressed() {
-		back();
+		Intent mainIntent = new Intent().setClass(DatosAuto.this, BuscaPlacaTexto.class);
+		startActivity(mainIntent);
+		pager=null;
+		DatosAuto.this.finish();
+		super.onBackPressed();
 		
 	}
 	
@@ -424,7 +428,6 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 		pager=null;
 		DatosAuto.this.finish();
 		Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.mapa_inicio_de_viaje_no_tomado), Toast.LENGTH_LONG);
-		
 		super.onBackPressed();
 	}
 	
@@ -519,7 +522,11 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	        if (v.getId() == R.id.abs_layout_iv_menu) {
 	            showPopup(v);
 	        }else if (v.getId() == R.id.abs_layout_iv_logo) {
-				back();
+	    		Intent mainIntent = new Intent().setClass(DatosAuto.this, BuscaPlacaTexto.class);
+	    		startActivity(mainIntent);
+	    		pager=null;
+	    		DatosAuto.this.finish();
+	        	super.onBackPressed();
 			}
 
 	       
