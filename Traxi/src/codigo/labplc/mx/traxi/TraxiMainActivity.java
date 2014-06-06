@@ -44,6 +44,7 @@ public class TraxiMainActivity extends Activity {
 				editor.commit();
 			}
 		
+			
 			if(ServicioGeolocalizacion.serviceIsIniciado==true){
 				iniciarSplash(3);
 			}else{

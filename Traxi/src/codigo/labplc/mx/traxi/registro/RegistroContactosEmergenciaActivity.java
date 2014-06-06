@@ -6,6 +6,7 @@ package codigo.labplc.mx.traxi.registro;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,14 +24,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
@@ -58,6 +61,8 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	private boolean[] emergencia_esta_Ocupado= {false,false};//maneja los contactos
 	private int RESULT_SETTINGS =10;
 	private CheckBox mitaxiregistermanually_cv_paranoico;
+	private  ArrayList<String> listaCels;
+	 AlertDialog customDialog= null;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +79,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	     
 		((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
 		((ImageView) findViewById(R.id.abs_layout_iv_logo)).setOnClickListener(this);
-	     
-	 
-		
+	    
 		initUI();
 
 	}
@@ -95,15 +98,12 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	public void initUI() {
 		
 		TextView mitaxiregistermanually_tv_label= (TextView)findViewById(R.id.mitaxiregistermanually_tv_label);
-		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
+		 mitaxiregistermanually_tv_label.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_MAMEY));
 		 mitaxiregistermanually_tv_label.setTextColor(getResources().getColor(R.color.color_vivos));
 		 
 		 TextView mitaxiregistermanually_tv_paranoico_texto= (TextView)findViewById(R.id.mitaxiregistermanually_tv_paranoico_texto);
 		 mitaxiregistermanually_tv_paranoico_texto.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		 mitaxiregistermanually_tv_paranoico_texto.setTextColor(getResources().getColor(R.color.color_vivos));
-		 
-		 
-		 
 		 
 		 mitaxiregistermanually_ll_contactos =(LinearLayout)findViewById(R.id.mitaxiregistermanually_ll_contactos);
 		
@@ -318,13 +318,14 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	public void getContactInfo(Intent intent, int tag)
 	{
 		try{
+			llenaCorreo(tag+"","");
+			llenaCelular(tag+"", "");
 			  @SuppressWarnings("deprecation")
 			Cursor   cursor =  managedQuery(intent.getData(), null, null, null, null);      
 			  if(!cursor.isClosed()&&cursor!=null){
 			   while (cursor.moveToNext()) 
 			   {           
 			       String contactId = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
-			       //String name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME)); 
 			       String hasPhone = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
 		
 			       if ( hasPhone.equalsIgnoreCase("1")){
@@ -336,41 +337,43 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 			       if (Boolean.parseBoolean(hasPhone)) 
 			       {
 			        Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = "+ contactId,null, null);
+			       listaCels= new ArrayList<String>();
 			        while (phones.moveToNext()) 
 			        {
+			     
 			          String phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-
-			          for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
-			        	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
-			        	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
-			        	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
-			        	  EditText et = (EditText) ll3.getChildAt(0);
-			        	  if(et.getTag().toString().equals(tag+"")){
-			        		  et.setText(phoneNumber.replaceAll(" ", ""));
+			          phoneNumber=  phoneNumber.replaceAll(" ", "");
+			          
+			          final char c = phoneNumber.charAt(0);
+			          if(c=='+'){
+			        	  try{
+			        		  phoneNumber =  phoneNumber.substring(3, 13); 
+			        	  }catch(Exception e){
+			        		  DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 			        	  }
 			          }
 			          
-			      
-			          break;
+			          listaCels.add(phoneNumber);
+			        }
+			        if(listaCels.size()==1){ //si tiene solo un telefono
+			        	llenaCelular(tag+"",listaCels.get(0)); 
+			        	
+			        }else if(listaCels.size()==0){//si no tiene telefono
+			        	llenaCelular(tag+"","");
+			        }else{
+			        	dialogoLista(tag+"");
 			        }
 			        phones.close();
 			       }
 		
 			       // Find Email Addresses
 			       Cursor emails = getContentResolver().query(ContactsContract.CommonDataKinds.Email.CONTENT_URI,null,ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = " + contactId,null, null);
+
 			       while (emails.moveToNext()) 
 			       {
 			        String emailAddress = emails.getString(emails.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
 			       
-			        for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
-			        	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
-			        	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
-			        	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
-			        	  EditText et = (EditText) ll3.getChildAt(1);
-			        	  if(et.getTag().toString().equals(tag+"")){
-			        		  et.setText(emailAddress);
-			        	  }
-			          }
+			        	llenaCorreo(tag+"",emailAddress);
 			        
 			        break;
 			       }
@@ -559,7 +562,66 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 	}
 
 	
+	/**
+	 * llena el telefono dinamicamente
+	 * @param tag  (String) tag de la vista
+	 * @param tel (String) telefono para mostrar
+	 */
+	public void llenaCelular(String tag, String tel){
+		for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
+      	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
+      	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+      	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
+      	  EditText et = (EditText) ll3.getChildAt(0);
+      	  if(et.getTag().toString().equals(tag)){
+      		  et.setText(tel);
+      	  }
+        }
+	}
+	
+	/**
+	 * llena el correo dinamicamente
+	 * @param tag  (String) tag de la vista
+	 * @param tel (String) correo para mostrar
+	 */
+	public void llenaCorreo(String tag, String correo){
+		  for (int i = 0, count = mitaxiregistermanually_ll_contactos.getChildCount(); i < count; ++i) {
+        	  LinearLayout ll = (LinearLayout) mitaxiregistermanually_ll_contactos.getChildAt(i);
+        	  LinearLayout ll2 = (LinearLayout) ll.getChildAt(0);
+        	  LinearLayout ll3 = (LinearLayout) ll2.getChildAt(0);
+        	  EditText et = (EditText) ll3.getChildAt(1);
+        	  if(et.getTag().toString().equals(tag)){
+        		  et.setText(correo);
+        	  }
+          }
+	}
+	
 
+	/**
+	 * agrega la vista del contacto de emergencua
+	 */
+	public void dialogoLista(final String tag){
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	    View view = getLayoutInflater().inflate(R.layout.dialogo_contactos, null);
+	    builder.setView(view);
+	    builder.setCancelable(true);
+		final ListView listview = (ListView) view.findViewById(R.id.dialogo_contacto_lv_contactos);
+		final MySimpleArrayAdapter adapter = new MySimpleArrayAdapter(this, listaCels);
+	    listview.setAdapter(adapter);
+	    listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+	    @Override
+	    public void onItemClick(AdapterView<?> parent, final View view,int position, long id) {
+	    final String item = (String) parent.getItemAtPosition(position);
+	    llenaCelular(tag, item.replaceAll(" ",""));
+	         customDialog.dismiss();
+	       }
+	     });
+	     customDialog=builder.create();
+	     customDialog.show();
+	}
+	
+	
 	/**
 	 * mustra las preferencias guardadas
 	 */
@@ -568,6 +630,10 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		StringBuilder builder = new StringBuilder();
 		builder.append("\n Send report:"+ sharedPrefs.getBoolean("prefSendReport", true));
 	}
+	
+	
+	
+	
 	
 
 }

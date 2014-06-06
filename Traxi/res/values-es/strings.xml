@@ -293,5 +293,8 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
     <string name="preferencias_version_titulo">1.6</string>
     <string name="preferencias_version">Versión</string>
+    
+     <string name="Selecciona_uno">Selecciona un número</string>
+    
 
 </resources>

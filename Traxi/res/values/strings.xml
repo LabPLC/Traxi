@@ -300,5 +300,7 @@
     <string name="panico_activar_modo_paranoico">Activate paranoid mode</string>
     <string name="preferencias_version_titulo">1.6</string>
     <string name="preferencias_version">Version</string>
+    
+     <string name="Selecciona_uno">Chose a number</string>
 
 </resources>
