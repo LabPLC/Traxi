@@ -46,9 +46,9 @@ public class Tips_activity extends Activity {
 		tips_activity_ll_tips.setLayoutParams(lp);
 
 		
-	    ((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
+	  /*  ((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTypeface(new fonts(Tips_activity.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.tips_activity_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
-		
+		*/
 		tips_activity_tv_cuantos =(TextView)findViewById(R.id.tips_activity_tv_cuantos);
 		
 		tv_contenido = (TextView) findViewById(R.id.tips_activity_tv_contenido);

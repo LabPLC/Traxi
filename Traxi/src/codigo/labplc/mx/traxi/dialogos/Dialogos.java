@@ -162,4 +162,40 @@ public class Dialogos {
 	
 	
 	
+	/**
+	 * Dialogo que muestra el acerca de
+	 *
+	 * @param Activity (actividad que llama al di‡logo)
+	 * @return Dialog (regresa el dialogo creado)
+	 **/
+	public Dialog mostrarAercaDe(Activity activity)
+    {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+	    View view = activity.getLayoutInflater().inflate(R.layout.dialogo_acercade, null);
+	    builder.setView(view);
+	    builder.setCancelable(false);
+        //tipografias
+	    ((Button) view.findViewById(R.id.dialogo_acercade_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
+	    
+	    
+	    ((TextView) view.findViewById(R.id.dialogo_acercade_tv_correo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
+	    ((TextView) view.findViewById(R.id.dialogo_acercade_tv_correo)).setTextColor(activity.getResources().getColor(R.color.color_vivos));
+	    
+
+	    
+	 
+
+	    
+	  //escucha del boton aceptar
+        ((Button) view.findViewById(R.id.dialogo_acercade_btnAceptar)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                customDialog.dismiss();    
+            }
+        });
+        return (customDialog=builder.create());// return customDialog;//regresamos el di‡logo
+    }   
+	
 }

@@ -463,7 +463,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 						int positionOfMenuItem = 0; 
 						MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
 						SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
-						s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_base)), 0, s.length(), 0);
+						s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 						item.setTitle(s);
 
 						popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
@@ -476,6 +476,10 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 										Intent i = new Intent(BuscaPlacaFoto.this,UserSettingActivity.class);
 										startActivityForResult(i, RESULT_SETTINGS);
 										return true;
+										
+								case R.id.configuracion_acerca_de:
+									new Dialogos().mostrarAercaDe(BuscaPlacaFoto.this).show();
+									return true;
 									
 								}
 								return false;

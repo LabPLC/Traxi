@@ -486,6 +486,10 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 						Intent i = new Intent(BuscaPlacaTexto.this,UserSettingActivity.class);
 						startActivityForResult(i, RESULT_SETTINGS);
 						return true;
+						
+				case R.id.configuracion_acerca_de:
+					new Dialogos().mostrarAercaDe(BuscaPlacaTexto.this).show();
+					return true;
 					
 				}
 				return false;

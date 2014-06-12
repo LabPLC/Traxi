@@ -5,7 +5,7 @@
         android:width="1dp" 
         android:color="@color/azul_facebook"/>
     <corners 
-        android:radius="10dp" />
+        android:radius="0dp" />
 
     <padding 
         android:left="1dp"

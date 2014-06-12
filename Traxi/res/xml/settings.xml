@@ -2,15 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory android:title="@string/action_settings" >
-       
-
-        <codigo.labplc.mx.traxi.configuracion.OptionDialogPreference
-            android:dialogIcon="@android:drawable/ic_dialog_info"
-            android:dialogMessage="@string/prefKeyResetQuests_texto"
-            android:key="@string/prefKeyResetQuests"
-            android:positiveButtonText="@string/prefKeyResetQuests_boton"
-            android:summary="@string/prefKeyResetQuests_subtitulo"
-            android:title="@string/prefKeyResetQuests_titulo" />
+        
          <Preference
             android:key="pref_static_field_key"
             android:selectable="false"

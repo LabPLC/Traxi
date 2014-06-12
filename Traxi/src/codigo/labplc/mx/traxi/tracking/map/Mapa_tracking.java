@@ -41,6 +41,7 @@ import android.widget.SlidingDrawer;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
+import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
@@ -377,7 +378,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 						String[] Squerty2 = querty2.split(",");
 						tiempo = Squerty2[0];
 						distancia =Squerty2[1];
-						marker_taxi.title(getResources().getString(R.string.mapa_estas)+" "+distancia+", "+tiempo+getResources().getString(R.string.mapa_tu_destino));
+						marker_taxi.title(getResources().getString(R.string.mapa_estas)+" "+distancia+", "+tiempo+" "+getResources().getString(R.string.mapa_tu_destino));
 					 }catch(Exception e){
 						 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 					 }
@@ -649,6 +650,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 								Intent i = new Intent(Mapa_tracking.this,UserSettingActivity.class);
 								startActivityForResult(i, RESULT_SETTINGS);
 								return true;
+								
+						case R.id.configuracion_acerca_de:
+							new Dialogos().mostrarAercaDe(Mapa_tracking.this).show();
+							return true;
 							
 						}
 						return false;

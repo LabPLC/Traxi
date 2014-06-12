@@ -1,12 +1,10 @@
 package codigo.labplc.mx.traxi.panic;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
-import android.os.Build;
 import android.os.StrictMode;
 import android.os.Vibrator;
 import android.telephony.SmsManager;

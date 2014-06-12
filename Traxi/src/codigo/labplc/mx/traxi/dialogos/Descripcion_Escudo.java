@@ -24,9 +24,9 @@ public class Descripcion_Escudo extends Activity {
 		Bundle bundle = getIntent().getExtras();
 		String texto = bundle.getString("descripcion_escudo");	
 
-	    ((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_MAMEY));	
+	  /*  ((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_MAMEY));	
 		((TextView) findViewById(R.id.descripcion_escudo_tv_titulo)).setTextColor(getResources().getColor(R.color.color_vivos));
-		
+		*/
 		
 		((TextView) findViewById(R.id.descripcion_escudo_tv_contenido)).setTypeface(new fonts(Descripcion_Escudo.this).getTypeFace(fonts.FLAG_ROJO));	
 		((TextView) findViewById(R.id.descripcion_escudo_tv_contenido)).setTextColor(getResources().getColor(R.color.color_vivos));

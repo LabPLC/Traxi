@@ -182,7 +182,7 @@
 
     <string name="cargando_info">Cargando la información, espere....</string>
     <string name="cargando_foto">Procesando la foto, espere....</string>
-    <string name="sms_emer">revisa tu correo para ver mi ubicación y contactarme </string>
+    <string name="sms_emer">Eres mi contacto de emergencia, revisa tu correo para ver mi ubicación y contactarme</string>
 
     <!-- Mapa -->
     <string name="mapa_inicio_de_viaje">Lo tomo</string>
@@ -190,8 +190,8 @@
     <string name="mapa_inicio_de_viaje_no_tomado">Taxi no tomado</string>
     <string name="mapa_inicio_de_viaje_no">No lo tomo</string>
     <string name="mapa_mi_posicion">Mi posición</string>
-    <string name="mapa_estas">Estas a \t</string>
-    <string name="mapa_tu_destino">\t de tu destino</string>
+    <string name="mapa_estas">Estas a</string>
+    <string name="mapa_tu_destino">de tu destino</string>
     <string name="mapa_mi_destino">Mi destino</string>
 
     <!-- notificaciones -->
@@ -202,7 +202,7 @@
     <!-- panic -->
     <string name="panic_estoy_en_peligro">NECESITO DE TU AYUDA.\n\n Activé mi botón de pánico en Traxi y tú eres mi contacto de emergencia. 
 Voy en el taxi con placas: </string>
-    <string name="panic_ubicacion">\n\n Èsta es mi última ubicación https://www.google.com.mx/maps/place/</string>
+    <string name="panic_ubicacion">\n\n Esta es mi última ubicación https://www.google.com.mx/maps/place/</string>
     <string name="panic_bateria">\n\n mi nivel de batería:</string>
     <string name="panic_mensaje_cuerpo">\n\nIntenta llamarme lo más pronto posible y asegúrate de que me encuentre bien. Si no logras contactarme, o si te das cuenta de que me encuentro en peligro, contacta a las autoridades por medio del número 066</string>
     <string name="panic_todo_bien">¿Todo bien?</string>
@@ -227,8 +227,10 @@ Voy en el taxi con placas: </string>
     <string name="prefKeyResetQuests_titulo">Acerca de</string>
     <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
     <string name="prefKeyResetQuests_texto">Aplicación realizada dentro del programa CÓDIGO.CDMX\n\n
-        Desarrollador:\n
+        Desarrollador Android:\n
         \t Mike Morán @yosoymikesaurio\n\n
+         Desarrollador IOS:\n
+        \t Carlos Castellanos @rocarloz\n\n
         Colaboradores:\n
         \t Antuan Chávez @ntuanChavez\n
         \t Sergio Beltrán @ssbeltran\n

@@ -188,7 +188,7 @@
 
     <string name="cargando_info">Loading information, please hold....</string>
     <string name="cargando_foto">Processing picture, please hold....</string>
-    <string name="sms_emer">check your email to see my location and contact me.</string>
+    <string name="sms_emer">You are my emergency contact, check your email to see my location and contact me.</string>
 
     <!-- Mapa -->
     <string name="mapa_inicio_de_viaje">I will take it.</string>
@@ -232,8 +232,10 @@
     <string name="prefKeyResetQuests_titulo">About</string>
     <string name="prefKeyResetQuests_subtitulo">TRAXI</string>
     <string name="prefKeyResetQuests_texto">This application was developed for CÓDIGO.CDMX\n\n
-        Developer:\n
+        Android developer:\n
         \tMike Morán @yosoymikesaurio\n\n
+        IOS developer:\n
+        \tCarlos Castellanos @rocarloz\n\n
         Collaborators:\n
         \tAntuan Chávez @ntuanChavez\n
         \tSergio Beltrán @ssbeltran\n

@@ -5,6 +5,11 @@
     android:showAsAction="ifRoom"
     android:title="@string/action_settings"/>
 
+<item
+    android:id="@+id/configuracion_acerca_de"
+    android:showAsAction="ifRoom"
+    android:title="@string/prefKeyResetQuests_titulo"/>
+
 
 
 

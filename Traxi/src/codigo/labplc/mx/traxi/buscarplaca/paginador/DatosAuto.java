@@ -38,6 +38,7 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
+import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaFoto;
 import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.traxi.buscarplaca.bean.ComentarioBean;
@@ -565,6 +566,10 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 							Intent i = new Intent(DatosAuto.this,UserSettingActivity.class);
 							startActivityForResult(i, RESULT_SETTINGS);
 							return true;
+							
+					case R.id.configuracion_acerca_de:
+						new Dialogos().mostrarAercaDe(DatosAuto.this).show();
+						return true;
 						
 					}
 					return false;
