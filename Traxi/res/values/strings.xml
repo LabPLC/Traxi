@@ -304,5 +304,6 @@
     <string name="preferencias_version">Version</string>
     
      <string name="Selecciona_uno">Chose a number</string>
+     <string name="mensaje_compartir">I am on a taxi whit license plate:</string>
 
 </resources>

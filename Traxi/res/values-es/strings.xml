@@ -297,6 +297,9 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="preferencias_version">Versión</string>
     
      <string name="Selecciona_uno">Selecciona un número</string>
+     
+     
+       <string name="mensaje_compartir">Estoy viajando en el taxi con placas:</string>
     
 
 </resources>

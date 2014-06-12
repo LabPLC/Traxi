@@ -38,7 +38,6 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaFoto;
 import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.buscarplaca.bean.AutoBean;
 import codigo.labplc.mx.traxi.buscarplaca.bean.ComentarioBean;

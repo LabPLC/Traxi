@@ -41,7 +41,6 @@ import android.widget.SlidingDrawer;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
-import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
@@ -128,8 +127,10 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				}
 		
 		//propiedades del action bar
-				Utils.crearActionBar(Mapa_tracking.this, R.layout.abs_layout,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
+				Utils.crearActionBar(Mapa_tracking.this, R.layout.abs_layout_compartir,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
 				((ImageView) findViewById(R.id.abs_layout_iv_menu)).setOnClickListener(this);
+				((ImageView) findViewById(R.id.abs_layout_iv_compratir)).setOnClickListener(this);
+				
 
 	     //obtenemos los adicionales 
 		Bundle bundle = getIntent().getExtras();
@@ -689,7 +690,18 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			public void onClick(View v) {
 				if (v.getId() == R.id.abs_layout_iv_menu) {
 					showPopup(v);
+				}else if(v.getId()==R.id.abs_layout_iv_compratir){
+					 SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+					 String placa = prefs.getString("placa", null);
+					
+					Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+					sharingIntent.setType("text/plain");
+					String shareBody = getResources().getString(R.string.mensaje_compartir) +" "+placa +" #Traxi";
+					sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "TRAXI");
+					sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+					startActivity(Intent.createChooser(sharingIntent, "Share via"));
 				}
+				
 				
 			}
 

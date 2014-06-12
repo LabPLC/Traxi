@@ -44,7 +44,6 @@ import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.registro.validador.EditTextValidator;
-import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
