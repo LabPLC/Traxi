@@ -174,7 +174,7 @@ public class Dialogos {
 		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 	    View view = activity.getLayoutInflater().inflate(R.layout.dialogo_acercade, null);
 	    builder.setView(view);
-	    builder.setCancelable(false);
+	    builder.setCancelable(true);
         //tipografias
 	    ((Button) view.findViewById(R.id.dialogo_acercade_btnAceptar)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
 	    
