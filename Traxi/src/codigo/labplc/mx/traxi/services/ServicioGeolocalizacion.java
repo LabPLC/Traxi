@@ -119,7 +119,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		 horaInicio = sdf.format(c.getTime());
 	
 		
-		 if(Utils.getPreferencia("prefBusquedaFina",this.getBaseContext())){
+		 if(Utils.getPreferencia("prefBusquedaFina",this.getBaseContext(),false)){
 			 tipo_locacion= LocationManager.GPS_PROVIDER;
 		 }else{
 			 tipo_locacion= LocationManager.NETWORK_PROVIDER; 

@@ -173,7 +173,7 @@
     <string name="estrellas"> estrellas</string>
     <string name="imagen_muy_grande">¡La imagen es muy grande!</string>
     <string name="falla_facebook">Algo falló al conectar con facebook</string>
-    <string name="GPS_OFF">GPS apagado inesperadamente</string>
+    <string name="GPS_OFF">Localización apagada inesperadamente</string>
     <string name="wifi_OFF">¡Falla! no te puedes localizar</string>
 
     <!-- setText -->
@@ -295,7 +295,7 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="Califica_taxi_50">Servicio insuperable</string>
     <string name="comentarios_row_hoy">Hoy</string>
     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
-    <string name="preferencias_version_titulo">1.6</string>
+    <string name="preferencias_version_titulo">1.8</string>
     <string name="preferencias_version">Versión</string>
     
      <string name="Selecciona_uno">Selecciona un número</string>

@@ -410,9 +410,9 @@ public class Utils {
 	 * @param preferencia
 	 * @return
 	 */
-	public static boolean getPreferencia(String preferencia,Context act) {
+	public static boolean getPreferencia(String preferencia,Context act,boolean defaul) {
 		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(act);
-		return sharedPrefs.getBoolean(preferencia, true);
+		return sharedPrefs.getBoolean(preferencia, defaul);
 	}
 	
 

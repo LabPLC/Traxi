@@ -133,8 +133,8 @@
     <string name="title_activity_mapa_tracking">Map_tracking</string>
     <string name="title_activity_califica_chofer">Rate_driver</string>
     <string name="title_activity_califica_taxi">Rate_taxi</string>
-    <string name="pref_busqueda_avanzada">Activar localización fina</string>
-    <string name="pref_busqueda_avanzada_summary">Si lo activas la localizacion se hace por GPS por lo que es más exacta</string>
+    <string name="pref_busqueda_avanzada">Activate fine location</string>
+    <string name="pref_busqueda_avanzada_summary">When active, location is defined by GPS, which is more accurate</string>
     
 
     <!-- titulos paginador -->
@@ -180,7 +180,7 @@
     <string name="estrellas"> stars</string>
     <string name="imagen_muy_grande">File is too big.</string>
     <string name="falla_facebook">Failure to connect to Facebook</string>
-    <string name="GPS_OFF">GPS turned off unexpectedly</string>
+    <string name="GPS_OFF">Location lost unexpectedly</string>
     <string name="wifi_OFF">Error: failure to locate your position</string>
 
     <!-- setText -->
@@ -303,7 +303,7 @@
     <string name="Califica_taxi_50">Superb service</string>
     <string name="comentarios_row_hoy">Today</string>
     <string name="panico_activar_modo_paranoico">Activate paranoid mode</string>
-    <string name="preferencias_version_titulo">1.6</string>
+    <string name="preferencias_version_titulo">1.8</string>
     <string name="preferencias_version">Version</string>
     
      <string name="Selecciona_uno">Chose a number</string>

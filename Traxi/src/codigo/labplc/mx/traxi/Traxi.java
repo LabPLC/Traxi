@@ -17,7 +17,7 @@ public class Traxi extends Application{
 	@Override
 	public void onCreate() {
 		
-		if(Utils.getPreferencia("prefSendReport",Traxi.this.getBaseContext())){
+		if(Utils.getPreferencia("prefSendReport",Traxi.this.getBaseContext(),true)){
 		 	String  envio= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog";
 	    	ACRA.init(this);
 	    	HockeySender MySender = new HockeySender(Traxi.this,envio);
