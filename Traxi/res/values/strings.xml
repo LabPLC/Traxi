@@ -133,6 +133,9 @@
     <string name="title_activity_mapa_tracking">Map_tracking</string>
     <string name="title_activity_califica_chofer">Rate_driver</string>
     <string name="title_activity_califica_taxi">Rate_taxi</string>
+    <string name="pref_busqueda_avanzada">Activar localización fina</string>
+    <string name="pref_busqueda_avanzada_summary">Si lo activas la localizacion se hace por GPS por lo que es más exacta</string>
+    
 
     <!-- titulos paginador -->
     <string name="titulo_uno_general">GENERAL</string>

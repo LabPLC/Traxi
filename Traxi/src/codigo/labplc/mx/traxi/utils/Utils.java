@@ -33,6 +33,7 @@ import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -42,6 +43,7 @@ import android.graphics.Paint;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -401,5 +403,17 @@ public class Utils {
 	        for (File child : fileOrDirectory.listFiles())
 	            DeleteRecursive(child);
 	}
+	
+	
+	/**
+	 * metodo que crea y regresa ek estado de as oreferencias
+	 * @param preferencia
+	 * @return
+	 */
+	public static boolean getPreferencia(String preferencia,Context act) {
+		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(act);
+		return sharedPrefs.getBoolean(preferencia, true);
+	}
+	
 
 }

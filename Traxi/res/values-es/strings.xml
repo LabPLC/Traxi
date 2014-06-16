@@ -127,6 +127,8 @@
     <string name="pref_user_profile">Configuración</string>
     <string name="pref_update_setting">Rastreo</string>
     <string name="pref_update_setting_ayuda">Ayuda</string>
+     <string name="pref_busqueda_avanzada">Activar localización fina</string>
+    <string name="pref_busqueda_avanzada_summary">Si lo activas la localizacion se hace por GPS por lo que es más exacta</string>
 
     <!-- titulos paginador -->
     <string name="titulo_uno_general">GENERAL</string>

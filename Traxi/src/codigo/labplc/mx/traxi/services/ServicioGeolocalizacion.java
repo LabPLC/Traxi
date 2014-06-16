@@ -101,6 +101,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
    private boolean isActivado= false;
    private boolean flag_una_vez = true;
    public static Service serv_;
+   private String tipo_locacion= LocationManager.GPS_PROVIDER;
 
     
     
@@ -117,7 +118,13 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
 		 horaInicio = sdf.format(c.getTime());
 	
-		   
+		
+		 if(Utils.getPreferencia("prefBusquedaFina",this.getBaseContext())){
+			 tipo_locacion= LocationManager.GPS_PROVIDER;
+		 }else{
+			 tipo_locacion= LocationManager.NETWORK_PROVIDER; 
+		 }  
+		 
 		 //escucha para la location 
 		mLocationListener = new MyLocationListener();
 		mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -281,9 +288,10 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	 * Hilo de la aplicacion para cargar las cordenadas del usuario
 	 */
 	public void run() {
-		if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+		
+		if (mLocationManager.isProviderEnabled(tipo_locacion)) {
 			Looper.prepare();
-			mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, intervaloLocation, 0, mLocationListener);
+			mLocationManager.requestLocationUpdates(tipo_locacion, intervaloLocation, 0, mLocationListener);
 			Looper.loop();
 			Looper.myLooper().quit();
 		} else {

@@ -9,6 +9,13 @@
             android:summary="@string/preferencias_version_titulo"
             android:title="@string/preferencias_version" />
 
+          <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="prefBusquedaFina"
+            android:summary="@string/pref_busqueda_avanzada_summary"
+            android:title="@string/pref_busqueda_avanzada" >
+        </CheckBoxPreference>
+        
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="prefSendReport"

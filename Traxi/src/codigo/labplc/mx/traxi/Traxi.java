@@ -4,9 +4,8 @@ import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
 import android.app.Application;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import codigo.labplc.mx.traxi.log.HockeySender;
+import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
  * clase que extiende de Aplicacion y contola los Log 
@@ -18,7 +17,7 @@ public class Traxi extends Application{
 	@Override
 	public void onCreate() {
 		
-		if(getPreferencia("prefSendReport")){
+		if(Utils.getPreferencia("prefSendReport",Traxi.this.getBaseContext())){
 		 	String  envio= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog";
 	    	ACRA.init(this);
 	    	HockeySender MySender = new HockeySender(Traxi.this,envio);
@@ -28,15 +27,6 @@ public class Traxi extends Application{
 	}
 
 	
-	/**
-	 * metodo que crea y regresa ek estado de as oreferencias
-	 * @param preferencia
-	 * @return
-	 */
-	private boolean getPreferencia(String preferencia) {
-		SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-		return sharedPrefs.getBoolean(preferencia, true);
-	}
 	
 	
 	
