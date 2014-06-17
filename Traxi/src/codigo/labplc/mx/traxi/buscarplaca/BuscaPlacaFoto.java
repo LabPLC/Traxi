@@ -372,7 +372,7 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 							}
 							in.close();
 							resultado = sb.toString();
-						//	Log.d("*************************", resultado+"");
+							//Log.d("*************************", resultado+"");
 							httpclient = null;
 							response = null;
 							if (resultado != null&&!resultado.equals("")){

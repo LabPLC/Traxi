@@ -246,10 +246,23 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	    	 @Override
 			public void onClick(View v) {
 		           if(!actvDestination.getText().toString().equals("")){
-		        	   InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-		        	   imm.hideSoftInputFromWindow(actvDestination.getWindowToken(), 0);
-		        	   llenarMapaConDestino();
-		        	   
+				    	String destino = actvDestination.getText().toString();
+		            	direccion_destino =destino;
+		            	destino = destino.replaceAll(" ", "+");
+		            	String consulta = "http://maps.googleapis.com/maps/api/geocode/json?address="+destino+"&sensor=true";
+						String querty = Utils.doHttpConnection(consulta);
+						InfoPoint = null;
+						InfoPoint = new DirectionsJSONParser().parsePoints(querty);
+		        		if(Utils.getDistanceMeters(InfoPoint.get(0).getDblLatitude(), InfoPoint.get(0).getDblLongitude(),latfin, lonfin)<=18000) {
+				        	   llenarMapaConDestino();
+						}else{
+								actvDestination.setText("");
+								direccion_destino =null;
+								InfoPoint = null;
+								Dialogos.Toast(Mapa_tracking.this, getResources().getString(R.string.Mapa_tracking_llena_direccion_lejos), Toast.LENGTH_LONG);
+						}
+        			InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+			        imm.hideSoftInputFromWindow(actvDestination.getWindowToken(), 0);
 		       		Drawer.animateClose();
 		           }else{
 		        	  Dialogos.Toast(Mapa_tracking.this, getResources().getString(R.string.Mapa_tracking_llena_direccion), Toast.LENGTH_LONG);
@@ -520,13 +533,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 			 @SuppressWarnings("unused")
 		    public void llenarMapaConDestino(){
 		    	try{
-			    	String destino = actvDestination.getText().toString();
-	            	direccion_destino =destino;
-	            	destino = destino.replaceAll(" ", "+");
-	            	String consulta = "http://maps.googleapis.com/maps/api/geocode/json?address="+destino+"&sensor=true";
-					String querty = Utils.doHttpConnection(consulta);
-					InfoPoint = null;
-					InfoPoint = new DirectionsJSONParser().parsePoints(querty);
+
 					map.clear();
 					marker_taxi_destino = new MarkerOptions().position(new LatLng(InfoPoint.get(0).getDblLatitude(), InfoPoint.get(0).getDblLongitude())).title(getResources().getString(R.string.mapa_mi_destino));
 					marker_taxi_destino.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher_fin_viaje));

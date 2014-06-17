@@ -415,5 +415,28 @@ public class Utils {
 		return sharedPrefs.getBoolean(preferencia, defaul);
 	}
 	
+	/**
+	  * metodo que regresa la distancia de 2 puntos en metros
+	  * @param lat1 (Double) latitud inicial
+	  * @param lng1 (Double) longitud inicial
+	  * @param lat2 (Double) latitud final
+	  * @param lng2 (Double) longitud final
+	  * @return (long) diatancia entre puntos
+	  */
+	 public static long getDistanceMeters(double lat1, double lng1, double lat2, double lng2) {
+
+		    double l1 = Math.toRadians(lat1);
+		    double l2 = Math.toRadians(lat2);
+		    double g1 = Math.toRadians(lng1);
+		    double g2 = Math.toRadians(lng2);
+
+		    double dist = Math.acos(Math.sin(l1) * Math.sin(l2) + Math.cos(l1) * Math.cos(l2) * Math.cos(g1 - g2));
+		    if(dist < 0) {
+		        dist = dist + Math.PI;
+		    }
+
+		    return Math.round(dist * 6378100);
+		}
+	
 
 }

@@ -282,6 +282,7 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="Registro_manual_datos_paranoico_sin_contac">No puedes activar el modo paranoico, los contactos están mal</string>
     <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
     <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
+     <string name="Mapa_tracking_llena_direccion_lejos">Dirección destino demasiado lejos</string>
     <string name="Califica_taxi_0">Muy deficiente servicio</string>
     <string name="Califica_taxi_05">Deficiente servicio</string>
     <string name="Califica_taxi_10">Muy mal servicio</string>
@@ -295,7 +296,7 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="Califica_taxi_50">Servicio insuperable</string>
     <string name="comentarios_row_hoy">Hoy</string>
     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
-    <string name="preferencias_version_titulo">1.8</string>
+    <string name="preferencias_version_titulo">1.9</string>
     <string name="preferencias_version">Versión</string>
     
      <string name="Selecciona_uno">Selecciona un número</string>
