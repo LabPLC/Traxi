@@ -290,6 +290,7 @@
     <string name="Registro_manual_datos_paranoico_sin_contac">You cannot activate paranoid mode when your emergency contact information is wrong.</string>
     <string name="Registro_manual_agregar_contacto">Add another contact</string>
     <string name="Mapa_tracking_llena_direccion">Type your destination</string>
+      <string name="Mapa_tracking_espere">please wait loading route</string>
      <string name="Mapa_tracking_llena_direccion_lejos">your destination is too far away</string>
     <string name="Califica_taxi_0">Very deficient service</string>
     <string name="Califica_taxi_05">Deficient service</string>
@@ -304,7 +305,7 @@
     <string name="Califica_taxi_50">Superb service</string>
     <string name="comentarios_row_hoy">Today</string>
     <string name="panico_activar_modo_paranoico">Activate paranoid mode</string>
-    <string name="preferencias_version_titulo">1.9</string>
+    <string name="preferencias_version_titulo">1.2.1</string>
     <string name="preferencias_version">Version</string>
     
      <string name="Selecciona_uno">Chose a number</string>

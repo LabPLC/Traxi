@@ -255,6 +255,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 						InfoPoint = new DirectionsJSONParser().parsePoints(querty);
 		        		if(Utils.getDistanceMeters(InfoPoint.get(0).getDblLatitude(), InfoPoint.get(0).getDblLongitude(),latfin, lonfin)<=18000) {
 				        	   llenarMapaConDestino();
+				        	   Dialogos.Toast(Mapa_tracking.this, getResources().getString(R.string.Mapa_tracking_espere), Toast.LENGTH_LONG);
 						}else{
 								actvDestination.setText("");
 								direccion_destino =null;

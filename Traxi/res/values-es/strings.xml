@@ -81,7 +81,7 @@
     <string name="texto_calificacion_90">Este vehículo tiene un nivel confiable pero como tu seguridad es importante, sugerimos que te mantengas alerta.</string>
     <string name="texto_calificacion_100">Este vehículo es altamente confiable y tienes una buena probabilidad de tener un viaje agradable. Este taxi es responsable al dar servicio, y está pendiente de sus obligaciones legales. Como tu seguridad es importante, sugerimos que te mantengas alerta.</string>
     <string name="texto_significado_calif"> ¿Qué significa esta calificación?</string>
-    <string name="texto_significado_el_viaje_inicio">¡El viaje inicio!\nEspera a que te localicemos.</string>
+    <string name="texto_significado_el_viaje_inicio">¡El viaje inició!\nEspera a que te localicemos.</string>
 
     <!-- buscar placa -->
     <string name="inicio_de_trabajo_tv_foto">¡Solo funciona en la puerta!</string>
@@ -281,6 +281,7 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="Registro_manual_datos_guardados">Información guardada</string>
     <string name="Registro_manual_datos_paranoico_sin_contac">No puedes activar el modo paranoico, los contactos están mal</string>
     <string name="Registro_manual_agregar_contacto"> Agregar otro contacto</string>
+          <string name="Mapa_tracking_espere">por favor espere cargando ruta</string>
     <string name="Mapa_tracking_llena_direccion">Pon una dirección destino</string>
      <string name="Mapa_tracking_llena_direccion_lejos">Dirección destino demasiado lejos</string>
     <string name="Califica_taxi_0">Muy deficiente servicio</string>
@@ -296,7 +297,7 @@ PARA EL ENVÍO DE SMS, DEBES CONTAR CON SALDO Y SE HARÁ EL COBRO DEPENDIENDO DE
     <string name="Califica_taxi_50">Servicio insuperable</string>
     <string name="comentarios_row_hoy">Hoy</string>
     <string name="panico_activar_modo_paranoico">Activar modo paranóico</string>
-    <string name="preferencias_version_titulo">1.9</string>
+    <string name="preferencias_version_titulo">1.2.1</string>
     <string name="preferencias_version">Versión</string>
     
      <string name="Selecciona_uno">Selecciona un número</string>
