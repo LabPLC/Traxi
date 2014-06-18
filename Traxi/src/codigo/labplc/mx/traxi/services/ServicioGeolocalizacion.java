@@ -119,7 +119,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		 horaInicio = sdf.format(c.getTime());
 	
 		
-		 if(Utils.getPreferencia("prefBusquedaFina",this.getBaseContext(),false)){
+		 if(Utils.getPreferencia("prefBusquedaFina",this.getBaseContext(),true)){
 			 tipo_locacion= LocationManager.GPS_PROVIDER;
 		 }else{
 			 tipo_locacion= LocationManager.NETWORK_PROVIDER; 
@@ -291,7 +291,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		
 		if (mLocationManager.isProviderEnabled(tipo_locacion)) {
 			Looper.prepare();
-			mLocationManager.requestLocationUpdates(tipo_locacion, intervaloLocation, 0, mLocationListener);
+			mLocationManager.requestLocationUpdates(tipo_locacion, intervaloLocation, 1, mLocationListener);
 			Looper.loop();
 			Looper.myLooper().quit();
 		} else {
