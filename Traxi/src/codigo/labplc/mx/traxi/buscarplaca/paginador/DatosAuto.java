@@ -165,7 +165,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			@Override
 			public void onClick(View v) {
 				
-				if(Utils.getPreferencia("prefBusquedaFina",DatosAuto.this.getBaseContext(),false)){
+				if(Utils.getPreferencia("prefBusquedaFina",DatosAuto.this.getBaseContext(),true)){
 					if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 						new Dialogos().showDialogGPS(DatosAuto.this).show();		
 					}else{

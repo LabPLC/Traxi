@@ -13,8 +13,8 @@
         android:layout_above="@+id/mapa_tracking_terminoviaje"
         android:layout_alignParentTop="true"
         class="com.google.android.gms.maps.MapFragment"
-        map:cameraTargetLat="19.0"
-        map:cameraTargetLng="-99.0"
+        map:cameraTargetLat="19.432727"
+        map:cameraTargetLng="-99.133179"
         map:cameraZoom="18" />
 
     <Button

@@ -75,7 +75,6 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	private Timer timer,timerParanoico;
 	public static boolean serviceIsIniciado = false;
 	private BroadcastReceiver mReceiver;
-
 	private ResultReceiver resultReceiver;
 	private static int countStart = -1;
 	private Handler handler_time = new Handler();
@@ -295,13 +294,15 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 			Looper.loop();
 			Looper.myLooper().quit();
 		} else {
-			taxiActivity.runOnUiThread(new Runnable() {
-				@Override
-				public void run() {
-					Dialogos.Toast(taxiActivity,getResources().getString(R.string.GPS_OFF), Toast.LENGTH_LONG);
-					
-				}
-			});
+			if(taxiActivity!=null){
+				taxiActivity.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						Dialogos.Toast(taxiActivity,getResources().getString(R.string.GPS_OFF), Toast.LENGTH_LONG);
+						
+					}
+				});
+			}
 		}
 	}
 
