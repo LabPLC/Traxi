@@ -47,6 +47,7 @@ import codigo.labplc.mx.traxi.fonts.fonts;
  * the right view (if exist). When the user scrolls the ViewPager then titles are
  * also scrolled.
  */
+@SuppressWarnings({"unused","deprecation","incomplete-switch"})
 public class TitlePageIndicator extends View implements PageIndicator {
     /**
      * Percentage indicating what percentage of the screen width away from
@@ -140,7 +141,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
     /** Left and right side padding for not active view titles. */
     private float mClipPadding;
     private float mFooterLineHeight;
-    @SuppressWarnings("unused")
+
 	private Context context;
 
     private static final int INVALID_POINTER = -1;
@@ -163,7 +164,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
         this.context=context;
     }
 
-    @SuppressWarnings("deprecation")
+
 	public TitlePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context=context;
@@ -360,7 +361,7 @@ public class TitlePageIndicator extends View implements PageIndicator {
      *
      * @see android.view.View#onDraw(android.graphics.Canvas)
      */
-    @SuppressWarnings("incomplete-switch")
+
 	@Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

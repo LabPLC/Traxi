@@ -24,6 +24,7 @@ import codigo.labplc.mx.traxi.fonts.fonts;
  *
  */
 @SuppressLint("ViewConstructor")
+@SuppressWarnings("deprecation")
 public class Datos extends View {
 
 	private TextView marca;
@@ -102,8 +103,7 @@ public class Datos extends View {
 		
 	}
 
-	@SuppressWarnings("deprecation")
-	@SuppressLint("ResourceAsColor")
+
 	public void crearTermometro(){
 		
 		LinearLayout verticalLayout = new LinearLayout(context);
@@ -116,6 +116,7 @@ public class Datos extends View {
 		Display display = context.getWindowManager().getDefaultDisplay(); 
 		int actionBarHeight = context.getActionBar().getHeight();
 		int newProgress = shield.getProgressWithJump(autoBean.getCalificacion_final(), ShieldView.JUMP_PROGRESS_ANIMATION); // Progress with jump
+
 
 		int size= display.getHeight()-actionBarHeight-actionBarHeight;
 		if(newProgress<=30){

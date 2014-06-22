@@ -35,7 +35,7 @@ import com.facebook.model.GraphUser;
  * @author mikesaurio
  *
  */
-@SuppressLint("ViewConstructor")
+@SuppressLint({ "SimpleDateFormat", "ViewConstructor" })
 public class Comentarios extends View {
 
 	private View view;
@@ -234,7 +234,7 @@ public class Comentarios extends View {
 	 * @param i (int) id del row
 	 * @param hora (String) hora del comentario
 	 */
-	@SuppressLint("SimpleDateFormat")
+
 	public void llenarComentario( String concepto, float valor,int i, String hora) {
 	final	LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	view_row = inflater.inflate(R.layout.comentarios_row, null); 

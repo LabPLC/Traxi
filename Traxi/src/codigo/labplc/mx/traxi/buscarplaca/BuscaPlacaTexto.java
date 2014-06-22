@@ -13,6 +13,7 @@ import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -53,6 +54,8 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
+@SuppressLint("NewApi")
+@SuppressWarnings("deprecation")
 public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTouchListener{
 
 	
@@ -96,11 +99,8 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 
 		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
 
-		
-		
 		//instancias y escuchas
 		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-		//((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		
 		mLayout = (LinearLayout) findViewById(R.id.xK1);
 		mKLayout = (RelativeLayout) findViewById(R.id.xKeyBoard);
@@ -114,7 +114,6 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		placa = (EditText) findViewById(R.id.inicio_de_trabajo_et_placa);
 		placa.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME| InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
 		placa.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-	//	placa.setTextColor(new fonts(context).getColorTypeFace(fonts.FLAG_GRIS_OBSCURO));
 		placa.setOnTouchListener(this);
 		placa.addTextChangedListener(new TextWatcher() {
 			@Override
@@ -346,58 +345,90 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	/**
 	 * Activa las letras del teclado
 	 */
-	@SuppressLint("NewApi")
+
 	private void LettersTrue()  {
 		try {
 		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
 		ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);
 		
 	    mBack.setEnabled(false);
-		mBack.setBackground(null);
-		mBack.setTextColor(getResources().getColor(R.color.gris_obscuro));
+	    mBack.setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[0].setEnabled(true);
-		mB[0].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[0].setTextColor(colors);
 		mB[1].setEnabled(true);
-		mB[1].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[1].setTextColor(colors);
 		mB[2].setEnabled(true);
-		mB[2].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+	
 		mB[2].setTextColor(colors);
 		mB[3].setEnabled(false);
-		mB[3].setBackground(null);
+		
 		mB[3].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[4].setEnabled(false);
-		mB[4].setBackground(null);
+		
 		mB[4].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[5].setEnabled(false);
-		mB[5].setBackground(null);
+		
 		mB[5].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[6].setEnabled(false);
-		mB[6].setBackground(null);
+		
 		mB[6].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[7].setEnabled(false);
-		mB[7].setBackground(null);
+	
 		mB[7].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[8].setEnabled(false);
-		mB[8].setBackground(null);
+		
 		mB[8].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[9].setEnabled(false);
-		mB[9].setBackground(null);
+		
 		mB[9].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[10].setEnabled(false);
-		mB[10].setBackground(null);
+	
 		mB[10].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[11].setEnabled(false);
-		mB[11].setBackground(null);
+		
 		mB[11].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[12].setEnabled(false);
-		mB[12].setBackground(null);
+		
 		mB[12].setTextColor(getResources().getColor(R.color.gris_obscuro));
+	   
+	    if (Build.VERSION.SDK_INT >= 16) {
+	    	mBack.setBackground(null);
+	    	mB[0].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+	    	mB[1].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+	    	mB[2].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+	    	mB[3].setBackground(null);
+	    	mB[4].setBackground(null);
+	    	mB[5].setBackground(null);
+	    	mB[6].setBackground(null);
+	    	mB[7].setBackground(null);
+	    	mB[8].setBackground(null);
+	    	mB[9].setBackground(null);
+	    	mB[10].setBackground(null);
+	    	mB[11].setBackground(null);
+	    	mB[12].setBackground(null);
+	    } else {
+	    	mBack.setBackgroundDrawable(null);
+	    	mB[0].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+	    	mB[1].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+	    	mB[2].setBackgroundDrawable(getResources().getDrawable(	R.drawable.selector_btn_generic));
+	    	mB[3].setBackgroundDrawable(null);
+	    	mB[4].setBackgroundDrawable(null);
+	    	mB[5].setBackgroundDrawable(null);
+	    	mB[6].setBackgroundDrawable(null);
+	    	mB[7].setBackgroundDrawable(null);
+	    	mB[8].setBackgroundDrawable(null);
+	    	mB[9].setBackgroundDrawable(null);
+	    	mB[10].setBackgroundDrawable(null);
+	    	mB[11].setBackgroundDrawable(null);
+	    	mB[12].setBackgroundDrawable(null);
+	    }
+	    
 		} catch (XmlPullParserException e) {
 			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
-		} catch (IOException e) {
-			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
+		} catch (IOException es) {
+			DatosLogBean.setDescripcion(Utils.getStackTrace(es));
 		}
 	}
 	
@@ -406,55 +437,88 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	/**
 	 * Activa los numeros del teclado
 	 */
-	@SuppressLint("NewApi")
 	private void NumbersTrue()  {
 		try{
 		XmlResourceParser parser = getResources().getXml(R.drawable.selector_txt_boton_redondo);
 	    ColorStateList colors = ColorStateList.createFromXml(getResources(), parser);
 	    
 		mBack.setEnabled(true);
-		mBack.setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+
 		mBack.setTextColor(colors);
 
 		mB[0].setEnabled(false);
-		mB[0].setBackground(null);
+		
 		mB[0].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[1].setEnabled(false);
-		mB[1].setBackground(null);
+		
 		mB[1].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[2].setEnabled(false);
-		mB[2].setBackground(null);
+		
 		mB[2].setTextColor(getResources().getColor(R.color.gris_obscuro));
 		mB[3].setEnabled(true);
-		mB[3].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[3].setTextColor(colors);
 		mB[4].setEnabled(true);
-		mB[4].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+		
 		mB[4].setTextColor(colors);
 		mB[5].setEnabled(true);
-		mB[5].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+		
 		mB[5].setTextColor(colors);
 		mB[6].setEnabled(true);
-		mB[6].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[6].setTextColor(colors);
 		mB[7].setEnabled(true);
-		mB[7].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[7].setTextColor(colors);
 		mB[8].setEnabled(true);
-		mB[8].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[8].setTextColor(colors);
 		mB[9].setEnabled(true);
-		mB[9].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[9].setTextColor(colors);
 		mB[10].setEnabled(true);
-		mB[10].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[10].setTextColor(colors);
 		mB[11].setEnabled(true);
-		mB[11].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[11].setTextColor(colors);
 		mB[12].setEnabled(true);
-		mB[12].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		
 		mB[12].setTextColor(colors);
+		
+		
+		 if (Build.VERSION.SDK_INT >= 16) {
+				mBack.setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[0].setBackground(null);
+				mB[1].setBackground(null);
+				mB[2].setBackground(null);
+				mB[3].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[4].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+				mB[5].setBackground(getResources().getDrawable(	R.drawable.selector_btn_generic));
+				mB[6].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[7].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[8].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[9].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[10].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[11].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[12].setBackground(getResources().getDrawable(R.drawable.selector_btn_generic));
+		    } else {
+		    	mBack.setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[0].setBackgroundDrawable(null);
+				mB[1].setBackgroundDrawable(null);
+				mB[2].setBackgroundDrawable(null);
+				mB[3].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[4].setBackgroundDrawable(getResources().getDrawable(	R.drawable.selector_btn_generic));
+				mB[5].setBackgroundDrawable(getResources().getDrawable(	R.drawable.selector_btn_generic));
+				mB[6].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[7].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[8].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[9].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[10].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[11].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+				mB[12].setBackgroundDrawable(getResources().getDrawable(R.drawable.selector_btn_generic));
+		    }
+		
 	} catch (XmlPullParserException e) {
 		DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 	} catch (IOException e) {

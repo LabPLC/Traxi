@@ -59,6 +59,8 @@ import codigo.labplc.mx.traxi.log.DatosLogBean;
  * @author mikesaurio
  *
  */
+@SuppressLint({"SimpleDateFormat","TrulyRandom","DefaultLocale"})
+@SuppressWarnings("unused")
 public class Utils {
 
 	/**
@@ -106,7 +108,7 @@ public class Utils {
 	 * 
 	 * @return photoCode
 	 * */
-	@SuppressLint("SimpleDateFormat")
+
 	public static String getCode() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		String date = dateFormat.format(new Date());
@@ -134,7 +136,7 @@ public class Utils {
 			httpPostRequest.setHeader("Accept", "application/json");
 			httpPostRequest.setHeader("Content-type", "application/json");
 			httpPostRequest.setHeader("Accept-Encoding", "gzip"); // only set this parameter if you would like to use gzip compression
-			@SuppressWarnings("unused")
+
 			long t = System.currentTimeMillis();
 			HttpResponse response = (HttpResponse) httpclient
 					.execute(httpPostRequest);
@@ -309,7 +311,8 @@ public class Utils {
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressLint("TrulyRandom")
+
+
 	public static String encriptar(String texto_a_encriptar) throws Exception {
 		final byte[] valor_clave = "0000000000000000".getBytes();
 		Key key = new SecretKeySpec(valor_clave, "AES");
@@ -373,7 +376,7 @@ public class Utils {
 	 * @param (float) tamaño del titulo
 	 * @return (ActionBar) inflado
 	 */
-	@SuppressLint("DefaultLocale")
+
 	public static ActionBar crearActionBar(Activity activity, int vista,String nombre,float tamano){
 		ActionBar ab	= activity.getActionBar();
 		ab.setDisplayShowHomeEnabled(false);

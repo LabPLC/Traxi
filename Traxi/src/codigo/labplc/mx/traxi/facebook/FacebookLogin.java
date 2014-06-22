@@ -37,6 +37,7 @@ import com.facebook.model.GraphUser;
  *
  */
 @SuppressWarnings("deprecation")
+@SuppressLint("HandlerLeak")
 public class FacebookLogin {
 	public static final String TAG = FacebookLogin.class.getName();
 
@@ -170,7 +171,7 @@ public class FacebookLogin {
 		}
 	}
 
-	@SuppressLint("HandlerLeak")
+
 	public Handler HandlerLoginFacebook = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {

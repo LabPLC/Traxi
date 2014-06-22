@@ -65,7 +65,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
  * @author mikesaurio
  *
  */
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation","unused"})
+
 public class Mapa_tracking extends Activity implements OnItemClickListener, OnClickListener {
 	
 	
@@ -268,7 +269,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 							 for (int i = 0; i < pointsLat.size() - 1; i++) {
 								 LatLng src = new LatLng(Double.parseDouble(pointsLat.get(i)),Double.parseDouble(pointsLon.get(i)));
 								 LatLng dest = new LatLng(Double.parseDouble(pointsLat.get(i+1)),Double.parseDouble(pointsLon.get(i+1)));
-								 @SuppressWarnings("unused")
+
 								Polyline line = map.addPolyline(new PolylineOptions() //mMap is the Map Object
 								 .add(new LatLng(src.latitude, src.longitude),
 								 new LatLng(dest.latitude,dest.longitude))
@@ -381,7 +382,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		/**
 		 * manejo de transmiciones
 		 */
-		 @SuppressWarnings("unused")
+		
 		private BroadcastReceiver onBroadcast = new BroadcastReceiver() {
 
 			@Override
@@ -532,7 +533,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 		
 		 @Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-				@SuppressWarnings("unused")
+				
 				String str = (String) adapterView.getItemAtPosition(position);
 			}
 		 
@@ -601,7 +602,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				protected void onPostExecute(List<List<HashMap<String, String>>> result) {
 					ArrayList<LatLng> points = null;
 					PolylineOptions lineOptions = null;
-					@SuppressWarnings("unused")
+				
 					MarkerOptions markerOptions = new MarkerOptions();
 					
 					// Traversing through all the routes

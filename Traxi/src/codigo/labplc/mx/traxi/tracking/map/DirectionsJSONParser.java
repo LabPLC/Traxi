@@ -23,10 +23,12 @@ import com.google.android.gms.maps.model.LatLng;
  * @author zaced
  *
  */
+
+@SuppressWarnings({"rawtypes","unchecked"})
 public class DirectionsJSONParser {
 	
 	/** Receives a JSONObject and returns a list of lists containing latitude and longitude */
-	@SuppressWarnings("unchecked")
+
 	public List<List<HashMap<String,String>>> parse(JSONObject jObject){
 		
 		List<List<HashMap<String, String>>> routes = new ArrayList<List<HashMap<String,String>>>() ;
@@ -41,7 +43,7 @@ public class DirectionsJSONParser {
 			/** Traversing all routes */
 			for(int i=0;i<jRoutes.length();i++){			
 				jLegs = ( (JSONObject)jRoutes.get(i)).getJSONArray("legs");
-				@SuppressWarnings("rawtypes")
+			
 				List path = new ArrayList<HashMap<String, String>>();
 				
 				/** Traversing all legs */
@@ -192,7 +194,7 @@ public class DirectionsJSONParser {
 	                {
 	                    JSONObject jsonTblPoint=jsonTblPoints.getJSONObject(j);
 	                    HashMap<String, Object> tblPoint=new HashMap<String, Object>();
-	                    @SuppressWarnings("unchecked")
+
 						Iterator<String> keys=jsonTblPoint.keys();
 	                    while(keys.hasNext())
 	                    {

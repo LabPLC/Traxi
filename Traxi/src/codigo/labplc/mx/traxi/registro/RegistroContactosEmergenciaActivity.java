@@ -51,6 +51,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
+@SuppressWarnings("deprecation")
 public class RegistroContactosEmergenciaActivity extends Activity implements OnClickListener{
 	
 	public final String TAG = this.getClass().getSimpleName();
@@ -320,7 +321,7 @@ public class RegistroContactosEmergenciaActivity extends Activity implements OnC
 		try{
 			llenaCorreo(tag+"","");
 			llenaCelular(tag+"", "");
-			  @SuppressWarnings("deprecation")
+			
 			Cursor   cursor =  managedQuery(intent.getData(), null, null, null, null);      
 			  if(!cursor.isClosed()&&cursor!=null){
 			   while (cursor.moveToNext()) 

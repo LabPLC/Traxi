@@ -12,13 +12,13 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
-@ReportsCrashes(formKey = "traxi", formUri ="http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog" )
+@ReportsCrashes(formKey = "traxi", formUri ="http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog" )
 public class Traxi extends Application{
 	@Override
 	public void onCreate() {
 		
 		if(Utils.getPreferencia("prefSendReport",Traxi.this.getBaseContext(),true)){
-		 	String  envio= "http://datos.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog";
+		 	String  envio= "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addlog";
 	    	ACRA.init(this);
 	    	HockeySender MySender = new HockeySender(Traxi.this,envio);
 	        ACRA.getErrorReporter().setReportSender(MySender);

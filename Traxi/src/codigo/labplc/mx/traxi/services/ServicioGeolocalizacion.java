@@ -49,7 +49,9 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  * 
  */
-@SuppressWarnings("unused")
+
+@SuppressLint({"SimpleDateFormat","HandlerLeak"})
+@SuppressWarnings({"deprecation","unused"})
 public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 	/*
@@ -105,7 +107,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
     
     
 
-	@SuppressLint("SimpleDateFormat")
+	
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -141,7 +143,6 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 	
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public void onStart(Intent intent, int startId) {
 		//Panic
@@ -218,7 +219,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	/**
 	 * handler
 	 */
-	@SuppressLint("HandlerLeak")
+
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -479,7 +480,7 @@ try{
    /**
     * muestra la notificacion de panico
     */
-   @SuppressWarnings("deprecation")
+
    public void showNotificationPanic() {
 		// notification is selected
 		Vibrator v = (Vibrator) taxiActivity.getSystemService(Context.VIBRATOR_SERVICE);

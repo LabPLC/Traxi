@@ -58,6 +58,8 @@ import com.viewpagerindicator.CirclePageIndicator;
  * @author mikesaurio
  *
  */
+@SuppressWarnings("deprecation")
+@SuppressLint("SimpleDateFormat")
 public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	
 	public final String TAG = this.getClass().getSimpleName();
@@ -198,7 +200,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	}
 	
 	
-	@SuppressWarnings("deprecation")
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -260,7 +262,7 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 	/**
 	 * metodo que verifica los datos de adeudos de un taxi
 	 */
-	@SuppressLint("SimpleDateFormat")
+
 	private void datosVehiculo(boolean esta_en_revista) {
 		try{
 			  String Sjson=  Utils.doHttpConnection("http://datos.labplc.mx/movilidad/vehiculos/"+placa+".json");

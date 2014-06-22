@@ -42,6 +42,7 @@ import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
  * Draws circles (one for each view). The current view position is filled and
  * others are only stroked.
  */
+@SuppressWarnings("deprecation")
 public class CirclePageIndicator extends View implements PageIndicator {
     private static final int INVALID_POINTER = -1;
 
@@ -73,7 +74,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
         this(context, attrs, R.attr.vpiCirclePageIndicatorStyle);
     }
 
-    @SuppressWarnings("deprecation")
+
 	public CirclePageIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         if (isInEditMode()) return;

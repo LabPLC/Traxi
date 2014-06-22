@@ -17,7 +17,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 
-import android.annotation.TargetApi;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -65,6 +65,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
  *
  */
 @SuppressWarnings("deprecation")
+@SuppressLint("NewApi")
 public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,OnClickListener{
 	
 	
@@ -177,22 +178,30 @@ public class BuscaPlacaFoto extends Activity implements SurfaceHolder.Callback,O
 /**
  * elimina 
  */
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+	
 	public void cerrarGuia() {
 		((ImageView) findViewById(R.id.busca_placa_iv_ayuda)).setVisibility(ImageView.VISIBLE);
 		busca_placa_btn_tomarfoto.setText(getResources().getString(R.string.busca_placa_btn_tomarfoto));
 		((LinearLayout)findViewById(R.id.busca_placa_ll_guia)).setVisibility(LinearLayout.GONE);
-		surfaceView.setBackground(null);
+		 if (Build.VERSION.SDK_INT >= 16) {
+			 surfaceView.setBackground(null);
+		    } else {
+		    surfaceView.setBackgroundDrawable(null);
+		    }
 	}
 
 	/**
 	 * abrir 
 	 */
-		@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 		public void abrirGuia() {
 			busca_placa_btn_tomarfoto.setText(getResources().getString(R.string.busca_placa_btn_tomarfoto_entendi));
 			((LinearLayout)findViewById(R.id.busca_placa_ll_guia)).setVisibility(LinearLayout.VISIBLE);
-			surfaceView.setBackground(getResources().getDrawable(R.drawable.carro));
+			 if (Build.VERSION.SDK_INT >= 16) {
+				 surfaceView.setBackground(getResources().getDrawable(R.drawable.carro));
+			    } else {
+			    	surfaceView.setBackgroundDrawable(getResources().getDrawable(R.drawable.carro));
+			    }
+			
 		}
 
 

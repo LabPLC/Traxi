@@ -34,6 +34,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * @author mikesaurio
  *
  */
+@SuppressLint("SimpleDateFormat")
 public class Califica_taxi extends Activity {
 
 	public final String TAG = this.getClass().getSimpleName();
@@ -154,7 +155,7 @@ public class Califica_taxi extends Activity {
 		calificar_aceptar =(Button)findViewById(R.id.dialogo_califica_servicio_btnAceptar);
 		calificar_aceptar.setTypeface(new fonts(this).getTypeFace(fonts.FLAG_ROJO));
 		calificar_aceptar.setOnClickListener(new View.OnClickListener() {
-			@SuppressLint("SimpleDateFormat")
+		
 			@Override
 			public void onClick(View v) {
 				

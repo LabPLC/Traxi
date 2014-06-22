@@ -38,7 +38,7 @@ URL: "http://mikesaurio.dev.datos.labplc.mx/movilidad/taxis/"+placa+".json"
 ---------------------------------------------------------------------------------
 Obtener Distancia y tiempo de un trayecto 
 Metodo GET
-URL: "http://datos.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
+URL: "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=chofer&type=getGoogleData&lato="
 								+latfin+"&lngo="+lonfin
 								+"&latd="+latini+"&lngd="+lonini+"&filtro=velocidad"
 
