@@ -204,9 +204,10 @@
     <!-- panic -->
     <string name="panic_estoy_en_peligro">NECESITO DE TU AYUDA.\n\n Activé mi botón de pánico en Traxi y tú eres mi contacto de emergencia. 
 Voy en el taxi con placas: </string>
+ <string name="panic_cell_off">QUISA NECESITO DE TU AYUDA.\n\nMi celular se apago y estoy en el taxi con placas: </string>
     <string name="panic_ubicacion">\n\n Esta es mi última ubicación https://www.google.com.mx/maps/place/</string>
     <string name="panic_bateria">\n\n mi nivel de batería:</string>
-    <string name="panic_mensaje_cuerpo">\n\nIntenta llamarme lo más pronto posible y asegúrate de que me encuentre bien. Si no logras contactarme, o si te das cuenta de que me encuentro en peligro, contacta a las autoridades por medio del número 066</string>
+    <string name="panic_mensaje_cuerpo">\t es mi número, intenta llamarme lo más pronto posible y asegúrate de que me encuentre bien. Si no logras contactarme, o si te das cuenta de que me encuentro en peligro, contacta a las autoridades por medio del número 066</string>
     <string name="panic_todo_bien">¿Todo bien?</string>
     <string name="panic_tocame">si es así, ¡da clic!</string>
 

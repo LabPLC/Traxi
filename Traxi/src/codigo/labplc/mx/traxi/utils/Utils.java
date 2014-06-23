@@ -313,6 +313,7 @@ public class Utils {
 	 */
 
 
+	@SuppressLint("TrulyRandom")
 	public static String encriptar(String texto_a_encriptar) throws Exception {
 		final byte[] valor_clave = "0000000000000000".getBytes();
 		Key key = new SecretKeySpec(valor_clave, "AES");

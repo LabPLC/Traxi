@@ -212,7 +212,7 @@
     <string name="panic_estoy_en_peligro">I activated Traxi’s panic button! You are my emergency contact. I’m riding a taxi w/ license plates:</string>
     <string name="panic_ubicacion">\t my location is: https://www.google.com.mx/maps/place/</string>
     <string name="panic_bateria">\t remaining battery:</string>
-     <string name="panic_mensaje_cuerpo">\n\nTry to call me as soon as possible and make sure everything is fine with me. If you can not reach me or if you think I am in danger, call the police with this number 066</string>
+     <string name="panic_mensaje_cuerpo">\t is my cellphone, try to call me as soon as possible and make sure everything is fine with me. If you can not reach me or if you think I am in danger, call the police with this number 066</string>
     <string name="panic_todo_bien">Is everything okay?</string>
     <string name="panic_tocame">Tap me to affirm</string>
 

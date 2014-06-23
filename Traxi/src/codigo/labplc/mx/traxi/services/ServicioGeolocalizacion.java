@@ -7,7 +7,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -21,7 +20,6 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -30,7 +28,7 @@ import android.os.Message;
 import android.os.ResultReceiver;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
-import android.util.Log;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
@@ -50,8 +48,9 @@ import codigo.labplc.mx.traxi.utils.Utils;
  * 
  */
 
-@SuppressLint({"SimpleDateFormat","HandlerLeak"})
+@SuppressLint({"SimpleDateFormat","HandlerLeak","NewApi"})
 @SuppressWarnings({"deprecation","unused"})
+
 public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 	/*
@@ -103,6 +102,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
    private boolean flag_una_vez = true;
    public static Service serv_;
    private String tipo_locacion= LocationManager.GPS_PROVIDER;
+   private String mPhoneNumber;
 
     
     
@@ -357,7 +357,8 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		}
 	}
 
-	@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+
+
 	public static  void showNotification() {
 		// notification is selected
 try{
@@ -431,12 +432,13 @@ try{
     	    @Override
     	    public void run() {
     	    	//nos sercioramos que envie un mail a la vez
+    	    	if(taxiActivity!=null){
     if(isMailFirst){
     	if(correoemer!=null){
     	    	panic.sendMail("TRAXI",
     	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
     	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%"+getResources().getString(R.string.panic_mensaje_cuerpo),
+    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
 						getResources().getString(R.string.correo), 
 						correoemer);
     	}
@@ -446,12 +448,15 @@ try{
     	    	panic.sendMail("TRAXI",
     	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
     	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%"+getResources().getString(R.string.panic_mensaje_cuerpo),
+    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
 						getResources().getString(R.string.correo), 
 						correoemer2);
     	}
     	    	isMailFirst=true;
     }
+    	    	}else{
+    	    		timer.cancel();
+    	    	}
     	    }
     	},
     	0,
@@ -586,6 +591,8 @@ try{
     	 if(algoPaso){
     		   Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 			   v.vibrate(3000);
+			   TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+   	    	 mPhoneNumber = tMgr.getLine1Number();
 			   SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 	           uuid = prefs.getString("uuid", null);
 	           telemer = prefs.getString("telemer", null);
