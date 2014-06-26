@@ -70,6 +70,7 @@ public class Califica_taxi extends Activity {
 			ServicioGeolocalizacion.CancelNotification(Califica_taxi.this, 0);
 			Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 			stopService(svc);
+			ServicioGeolocalizacion.serviceIsIniciado=false;
 	  		Intent mainIntent = new Intent().setClass(Califica_taxi.this, TraxiMainActivity.class);
 	  		startActivity(mainIntent);
 	  		finish();
@@ -97,8 +98,9 @@ public class Califica_taxi extends Activity {
 			@Override
 			public void onClick(View v) {
 				
-				cerrarDialog(R.string.dialogo_califica_servicio_NO_enviar_comentario);
 				
+				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_NO_enviar_comentario), Toast.LENGTH_LONG);
+				cerrarDialog();
 			}
 		});
 		
@@ -158,7 +160,7 @@ public class Califica_taxi extends Activity {
 		
 			@Override
 			public void onClick(View v) {
-				
+				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_enviar_comentario), Toast.LENGTH_LONG);
 				SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 				String placa = prefs.getString("placa", null);
 				String face = prefs.getString("facebook","0");
@@ -184,8 +186,8 @@ public class Califica_taxi extends Activity {
 
 					Utils.doHttpConnection(url);	
 				}
-	
-				cerrarDialog(R.string.dialogo_califica_servicio_enviar_comentario);
+				
+				cerrarDialog();
 			}
 		});
 		
@@ -197,7 +199,7 @@ public class Califica_taxi extends Activity {
 	 * termina la actividad y muestra un mensaje
 	 * @param cadena (int) String al cerrar la actividad
 	 */
-	public void cerrarDialog(int cadena ){
+	public void cerrarDialog( ){
 	
 	Mapa_tracking.isButtonExit= false;
 	try{
@@ -205,10 +207,12 @@ public class Califica_taxi extends Activity {
 		}catch(Exception e){
 			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
+
+	ServicioGeolocalizacion.serviceIsIniciado=false;
 	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 	stopService(svc);
-	ServicioGeolocalizacion.serviceIsIniciado=false;
-	Dialogos.Toast(Califica_taxi.this, getResources().getString(cadena), Toast.LENGTH_LONG);
+
+	
 	Califica_taxi.this.finish();
 }
 	

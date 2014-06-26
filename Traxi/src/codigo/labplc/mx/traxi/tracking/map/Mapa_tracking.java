@@ -122,6 +122,7 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 					ServicioGeolocalizacion.CancelNotification(Mapa_tracking.this, 0);
 					Intent svc = new Intent(Mapa_tracking.this, ServicioGeolocalizacion.class);
 					stopService(svc);
+					ServicioGeolocalizacion.serviceIsIniciado=false;
 			  		Intent mainIntent = new Intent().setClass(Mapa_tracking.this, TraxiMainActivity.class);
 			  		startActivity(mainIntent);
 			  		finish();
@@ -310,8 +311,8 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 	@Override
 	protected void onStop() {
 		if(isButtonExit){
-		ServicioGeolocalizacion.showNotification();
-		isButtonExit= false;
+				ServicioGeolocalizacion.showNotification();
+				isButtonExit= false;
 		 }
 		
 		super.onStop();

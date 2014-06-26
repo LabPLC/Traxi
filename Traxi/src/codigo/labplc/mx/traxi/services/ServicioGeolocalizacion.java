@@ -13,10 +13,12 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -29,6 +31,7 @@ import android.os.ResultReceiver;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
@@ -188,11 +191,14 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 
 	@Override
 	public void onDestroy() {
+		  super.onDestroy();
 		if (mLocationManager != null)
-			if (mLocationListener != null)
+			if (mLocationListener != null){
 				mLocationManager.removeUpdates(mLocationListener);
+				mLocationManager=null;
+			}
 
-		super.onDestroy();
+		
 		CancelNotification(this, 0);
 		timer.cancel();
 		CancelNotification(this, 1);
@@ -208,6 +214,16 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 		// panic
 		unregisterReceiver(mReceiver);
+	//	Log.d("*****************", "app terminanda");
+		 PackageManager pm  = getPackageManager();
+	        ComponentName componentName = new ComponentName(this, MyReceiver.class);
+	        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+	                        PackageManager.DONT_KILL_APP);
+	        
+
+	      //  Log.d("*****************", "proceso muerto");
+	        android.os.Process.killProcess(android.os.Process.myPid());
+	      
 	}
 
 	@Override

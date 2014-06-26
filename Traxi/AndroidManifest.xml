@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="codigo.labplc.mx.traxi"
-    android:versionCode="15"
-    android:versionName="1.2.5" >
+    android:versionCode="17"
+    android:versionName="1.2.7" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -27,10 +27,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/> 
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+  
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -42,7 +42,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyATL8HbP256OWPlghhBvyXIos5VfHEEbkY" />
+            android:value="AIzaSyBZkCnv9xCRe8beZeJqWXAmKP9Y5cFEpRg" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

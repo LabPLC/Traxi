@@ -85,8 +85,7 @@ public class Utils {
 	public static String doHttpConnection(String url) {
 		HttpClient Client = new DefaultHttpClient();
 		try {
-			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-					.permitAll().build();
+			StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 			StrictMode.setThreadPolicy(policy);
 			HttpGet httpget = new HttpGet(url);
 			HttpResponse hhrpResponse = Client.execute(httpget);
