@@ -2,6 +2,7 @@ package codigo.labplc.mx.traxi.buscarplaca.bean;
 
 public class ViajeBean {
 
+	private int[] id;
 	private String[] placa;
 	private String[] hora_inicio;
 	private String[] hora_fin;
@@ -9,6 +10,24 @@ public class ViajeBean {
 	private String[] comentario;
 	private String[] inicio_viaje;
 	private String[] fin_viaje;
+	
+	
+	/**
+	 * GET id
+	 * @return (int[]) identificador
+	 */
+	public int[] getId() {
+		return id;
+	}
+
+	/**
+	 * SET id[]
+	 * @param id (int[]) identificador
+	 */
+	public void setId(int[] id) {
+		this.id = id;
+	}
+
 	/**
 	 * GET placa
 	 * @return (String[]) placa del viaje

@@ -170,7 +170,17 @@ public class DBHelper extends SQLiteOpenHelper {
 	 */
 	public boolean setViaje(SQLiteDatabase bd,String placa,String hora_inicio,String hora_fin,String calificacion,String comentario,String inicio_viaje,String fin_viaje){
 		try{
-			bd.execSQL("insert into historial values ('"+placa+"','"+hora_inicio+"','"+hora_fin+"','"+calificacion+"','"+comentario+"','"+inicio_viaje+"','"+fin_viaje+"');");
+			bd.execSQL("insert into historial (placa,fecha_inicio,fecha_fin,calificacion,comentario,inicio_viaje,fin_viaje) values ('"+placa+"','"+hora_inicio+"','"+hora_fin+"','"+calificacion+"','"+comentario+"','"+inicio_viaje+"','"+fin_viaje+"');");
+			return true;
+		}catch(Exception e){
+		return false;
+		}
+	}
+	
+	
+	public boolean deleteViaje(SQLiteDatabase bd,String id){
+		try{
+			bd.execSQL("delete from historial where id = "+id);
 			return true;
 		}catch(Exception e){
 		return false;
@@ -184,7 +194,7 @@ public class DBHelper extends SQLiteOpenHelper {
     	
         if(c!=null&&c.getCount()>0){
         	bean = new ViajeBean();
-        	
+        	int[] identificador= new int[c.getCount()];
 	         String[] placa = new String[c.getCount()];
 	    	 String[] hora_inicio= new String[c.getCount()];
 	    	 String[] hora_fin= new String[c.getCount()];
@@ -196,6 +206,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	        c.moveToFirst();
 	        int i =0;
 	        while (!c.isAfterLast()){
+	        	identificador[i]=(c.getInt(c.getColumnIndex("id")));
 	        	placa[i]=(c.getString(c.getColumnIndex("placa")));
 	        	hora_inicio[i]=(c.getString(c.getColumnIndex("fecha_inicio")));
 	        	hora_fin[i]=(c.getString(c.getColumnIndex("fecha_fin")));
@@ -207,6 +218,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	        	i+=1;
 	        }
 	        if(i>0){
+	        	bean.setId(identificador);
 	        	bean.setPlaca(placa);
 	        	bean.setHora_inicio(hora_inicio);
 	        	bean.setHora_fin(hora_fin);

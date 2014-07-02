@@ -41,10 +41,12 @@ import android.widget.SlidingDrawer;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
+import codigo.labplc.mx.traxi.buscarplaca.BuscaPlacaTexto;
 import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
+import codigo.labplc.mx.traxi.historico.Historico_viajes;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.utils.Utils;
@@ -661,14 +663,26 @@ public class Mapa_tracking extends Activity implements OnItemClickListener, OnCl
 				inflater.inflate(R.menu.popup, popup.getMenu());
 				int positionOfMenuItem = 0; 
 				MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-				SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+				SpannableString s = new SpannableString(getResources().getString(R.string.action_historial));
 				s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 				item.setTitle(s);
+				 positionOfMenuItem = 1; 
+				 item = popup.getMenu().getItem(positionOfMenuItem);
+				 s = new SpannableString(getResources().getString(R.string.action_settings));
+				s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
+				item.setTitle(s);
+				
 
 				popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 					@Override
 					public boolean onMenuItemClick(MenuItem item) {
 						switch (item.getItemId()) {
+
+						case R.id.configuracion_historial:
+							startActivity(new Intent(Mapa_tracking.this,Historico_viajes.class));
+							return true;
+						
+
 
 						case R.id.configuracion_pref:
 

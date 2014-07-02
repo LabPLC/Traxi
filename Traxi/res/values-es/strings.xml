@@ -73,6 +73,7 @@
     <!-- GPS -->
     <string name="gps_subtitulo">GPS apagado</string>
     <string name="gps_texto">¿Deseas activarlo?</string>
+        <string name="row_historial_borrar">¿Deseas eliminar este registro?</string>
 
     <!-- Textos Datos Auto -->
     <string name="texto_calificacion_25">Este vehículo tiene un nivel de confianza muy bajo. En caso de abordar el vehículo, sugerimos lo hagas con todas las precauciones posibles y mantenerte muy alerta.</string>

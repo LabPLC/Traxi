@@ -13,7 +13,7 @@
 
     <!-- More info http://developer.android.com/design/style/color.html -->
 
-    <color name="white">#FFffffff</color>
+    <color name="white">#ffffffff</color>
     <color name="black">#FF000000</color>
     <color name="gray">#FF8c8c8c</color>
     <color name="android_blue">#FF33b5e5</color>
@@ -57,7 +57,7 @@
     -->
     <color name="color_base">#efc03f</color>
     <color name="color_vivos">#000000</color>
-    <color name="color_fondos">#FFFFFFFF</color>
+    <color name="color_fondos">#ffffffff</color>
     <color name="color_fondos_trans">#00FFFFFF</color>
     <color name="rojo_logo">#FB0000</color>
     <color name="generic_naranja">#FBA200</color>

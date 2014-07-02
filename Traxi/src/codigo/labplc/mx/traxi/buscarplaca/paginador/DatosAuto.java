@@ -45,6 +45,7 @@ import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.facebook.FacebookLogin;
 import codigo.labplc.mx.traxi.fonts.fonts;
+import codigo.labplc.mx.traxi.historico.Historico_viajes;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
@@ -566,14 +567,25 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			inflater.inflate(R.menu.popup, popup.getMenu());
 			int positionOfMenuItem = 0; 
 			MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-			SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+			SpannableString s = new SpannableString(getResources().getString(R.string.action_historial));
 			s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 			item.setTitle(s);
+			 positionOfMenuItem = 1; 
+			 item = popup.getMenu().getItem(positionOfMenuItem);
+			 s = new SpannableString(getResources().getString(R.string.action_settings));
+			s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
+			item.setTitle(s);
+			
 
 			popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 				@Override
 				public boolean onMenuItemClick(MenuItem item) {
 					switch (item.getItemId()) {
+
+					case R.id.configuracion_historial:
+						startActivity(new Intent(DatosAuto.this,Historico_viajes.class));
+						return true;
+					
 
 					case R.id.configuracion_pref:
 

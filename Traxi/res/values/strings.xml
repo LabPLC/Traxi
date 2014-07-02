@@ -73,6 +73,7 @@
     <!-- GPS -->
     <string name="gps_subtitulo">GPS off</string>
     <string name="gps_texto">Do you want to activate it?</string>
+    <string name="row_historial_borrar">Do you want to delete it?</string>
 
     <!-- Textos Datos Auto -->
     <string name="texto_calificacion_25">According to our records, this vehicle is NOT trustworthy. In case of boarding it, we advise that you do it while taking all possible preventive measures and staying alert at all times.</string>

@@ -182,11 +182,6 @@ public class Dialogos {
 	    ((TextView) view.findViewById(R.id.dialogo_acercade_tv_correo)).setTypeface(new fonts(activity).getTypeFace(fonts.FLAG_ROJO));
 	    ((TextView) view.findViewById(R.id.dialogo_acercade_tv_correo)).setTextColor(activity.getResources().getColor(R.color.color_vivos));
 	    
-
-	    
-	 
-
-	    
 	  //escucha del boton aceptar
         ((Button) view.findViewById(R.id.dialogo_acercade_btnAceptar)).setOnClickListener(new OnClickListener() {
             @Override
@@ -197,5 +192,8 @@ public class Dialogos {
         });
         return (customDialog=builder.create());// return customDialog;//regresamos el di‡logo
     }   
+	
+	
+	
 	
 }

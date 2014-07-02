@@ -19,6 +19,7 @@ import codigo.labplc.mx.traxi.fonts.fonts;
 public class CustomList extends ArrayAdapter<String> {
     private final Activity context;
     private final String[] placa;
+    private int[] identificador;
 	private final String[] hora_inicio;
     private final String[] hora_fin;
     private final String[] calificacion;
@@ -38,9 +39,10 @@ public class CustomList extends ArrayAdapter<String> {
      * @param inicio_viaje
      * @param fin_viaje
      */
-    public CustomList(Activity context, String[] placa,String[] hora_inicio, String[] hora_fin, String[] calificacion,String[] comentario, String[] inicio_viaje, String[] fin_viaje) {
+    public CustomList(Activity context, int[] identificador,String[] placa,String[] hora_inicio, String[] hora_fin, String[] calificacion,String[] comentario, String[] inicio_viaje, String[] fin_viaje) {
     	  super(context, R.layout.row_list_historial, placa);
           this.context = context;
+          this.identificador=identificador;
           this.placa=placa;
           this.hora_inicio=hora_inicio;
           this.hora_fin=hora_fin;
@@ -55,6 +57,8 @@ public class CustomList extends ArrayAdapter<String> {
     public View getView(int position, View view, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.row_list_historial, null, true);
+        rowView.setTag(identificador[position]+"");
+       
         TextView txtPlaca = (TextView) rowView.findViewById(R.id.row_historial_tv_placa);
         txtPlaca.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
         txtPlaca.setText(placa[position]);
@@ -65,7 +69,7 @@ public class CustomList extends ArrayAdapter<String> {
         
         TextView txtComentario = (TextView) rowView.findViewById(R.id.row_historial_tv_comentario);
         txtComentario.setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
-        txtComentario.setText(calificacion[position]+": "+comentario[position]);
+        txtComentario.setText(calificacion[position]+" "+comentario[position]);
        
         
         return rowView;

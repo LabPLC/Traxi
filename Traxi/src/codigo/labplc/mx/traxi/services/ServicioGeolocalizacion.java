@@ -214,15 +214,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 		// panic
 		unregisterReceiver(mReceiver);
-	//	Log.d("*****************", "app terminanda");
-		 PackageManager pm  = getPackageManager();
-	        ComponentName componentName = new ComponentName(this, MyReceiver.class);
-	        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-	                        PackageManager.DONT_KILL_APP);
-	        
-
-	      //  Log.d("*****************", "proceso muerto");
-	        android.os.Process.killProcess(android.os.Process.myPid());
+	
 	      
 	}
 
