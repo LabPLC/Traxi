@@ -18,8 +18,6 @@
         android:background="@drawable/marco"
         android:orientation="vertical" >
 
-        
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -39,10 +37,8 @@
                     android:id="@+id/imageView1"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_launcher_icono_texto" 
-                    android:scaleType="centerCrop"/>
-
-               
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_icono_texto" />
             </LinearLayout>
 
             <LinearLayout
@@ -67,8 +63,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text=""
                             android:lineSpacingExtra="2dp"
+                            android:text=""
                             android:textSize="18sp" />
                     </LinearLayout>
                 </ScrollView>

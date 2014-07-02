@@ -1,5 +1,6 @@
 package codigo.labplc.mx.traxi.califica;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -8,6 +9,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
 import codigo.labplc.mx.traxi.TraxiMainActivity;
+import codigo.labplc.mx.traxi.bd.DBHelper;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
@@ -166,10 +169,23 @@ public class Califica_taxi extends Activity {
 				String face = prefs.getString("facebook","0");
 				String id_usuario = prefs.getString("uuid", null);
 				Scomentario=comentario.getText().toString().replaceAll(" ", "+");
-				if(!Scomentario.equals("")){
+				if(!Scomentario.equals("")){     
 					Calendar c = Calendar.getInstance();
 					SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd+HH:mm:ss");
 					 String finViaje = sdf.format(c.getTime());
+					 
+					 
+					try {
+						DBHelper	BD = new DBHelper(Califica_taxi.this);
+						SQLiteDatabase bd = BD.loadDataBase(Califica_taxi.this, BD);
+						BD.setViaje(bd, placa, ServicioGeolocalizacion.horaInicio, finViaje, Scalificacion, comentario.getText().toString(), 
+								ServicioGeolocalizacion.latitud_inicial+","+ServicioGeolocalizacion.longitud_inicial, 
+								ServicioGeolocalizacion.latitud+","+ServicioGeolocalizacion.longitud);
+						BD.close();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
 					 
 					String url= "http://codigo.labplc.mx/~mikesaurio/taxi.php?act=pasajero&type=addcomentario"
 							+"&id_usuario="+id_usuario
@@ -184,7 +200,10 @@ public class Califica_taxi extends Activity {
 							+"&horainicio="+ServicioGeolocalizacion.horaInicio
 							+"&horafin="+finViaje;
 
-					Utils.doHttpConnection(url);	
+					Utils.doHttpConnection(url);
+					
+					
+					
 				}
 				
 				cerrarDialog();

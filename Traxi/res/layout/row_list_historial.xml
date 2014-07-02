@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/row_historial_tv_placa"
+            android:layout_width="0dp"
+            android:layout_weight=".25"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp"
+            android:text="A05601" 
+            android:textColor="@color/color_vivos"/>
+
+        <TextView
+            android:id="@+id/row_historial_tv_fecha"
+            android:layout_width="0dp"
+            android:layout_weight=".3"
+            android:layout_height="wrap_content"
+            android:text="5 estrellas"
+            android:padding="5dp"
+            android:layout_gravity="center"
+            android:textColor="@color/color_vivos" />
+
+        <TextView
+            android:id="@+id/row_historial_tv_comentario"
+            android:layout_width="0dp"
+            android:layout_weight=".45"
+            android:layout_height="wrap_content"
+            android:text="Comentario"
+             android:padding="5dp"
+             android:lines="3"
+             android:gravity="center|left"
+            android:layout_gravity="center|right"
+            android:textColor="@color/color_vivos" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -8,6 +8,7 @@
     <!-- general -->
     <string name="app_name">Traxi</string>
     <string name="action_settings">Tools</string>
+    <string name="action_historial">Historical</string>
     <string name="action_cuenta">Account</string>
     <string name="action_help">Guide</string>
 
@@ -21,7 +22,7 @@
     <!-- Registro manualmente -->
     <string name="mitaxiregister_name">The emergency e-mail and cell phone number must belong to the same person.</string>
     <string name="mitaxiregister_error">Verify that you have entered your emergency contact information correctly before you proceed.</string>
-	<string name="mitaxiregister_error_string">Insert valid chain [a-z A-Z].</string>
+    <string name="mitaxiregister_error_string">Insert valid chain [a-z A-Z].</string>
     <string name="mitaxiregister_error_number">Insert valid number [0 9].</string>
     <string name="mitaxiregister_error_email">Use a valid e-mail format.</string>
     <string name="mitaxiregister_empty">No fields may be left empty.</string>
@@ -119,7 +120,6 @@
     <string name="tiene_verificaciones">Owns verified permit sticker</string>
     <string name="no_tiene_verificaciones">None found</string>
 
-
     <!-- Preferencias -->
     <string name="pref_send_report">Send report</string>
     <string name="pref_send_report_summary">Help us improve this app</string>
@@ -135,7 +135,6 @@
     <string name="title_activity_califica_taxi">Rate_taxi</string>
     <string name="pref_busqueda_avanzada">Activate fine location</string>
     <string name="pref_busqueda_avanzada_summary">When active, location is defined by GPS, which is more accurate</string>
-    
 
     <!-- titulos paginador -->
     <string name="titulo_uno_general">GENERAL</string>
@@ -212,7 +211,7 @@
     <string name="panic_estoy_en_peligro">I activated Traxi’s panic button! You are my emergency contact. I’m riding a taxi w/ license plates:</string>
     <string name="panic_ubicacion">\t my location is: https://www.google.com.mx/maps/place/</string>
     <string name="panic_bateria">\t remaining battery:</string>
-     <string name="panic_mensaje_cuerpo">\t is my cellphone, try to call me as soon as possible and make sure everything is fine with me. If you can not reach me or if you think I am in danger, call the police with this number 066</string>
+    <string name="panic_mensaje_cuerpo">\t is my cellphone, try to call me as soon as possible and make sure everything is fine with me. If you can not reach me or if you think I am in danger, call the police with this number 066</string>
     <string name="panic_todo_bien">Is everything okay?</string>
     <string name="panic_tocame">Tap me to affirm</string>
 
@@ -290,8 +289,8 @@
     <string name="Registro_manual_datos_paranoico_sin_contac">You cannot activate paranoid mode when your emergency contact information is wrong.</string>
     <string name="Registro_manual_agregar_contacto">Add another contact</string>
     <string name="Mapa_tracking_llena_direccion">Type your destination</string>
-      <string name="Mapa_tracking_espere">please wait loading route</string>
-     <string name="Mapa_tracking_llena_direccion_lejos">your destination is too far away</string>
+    <string name="Mapa_tracking_espere">please wait loading route</string>
+    <string name="Mapa_tracking_llena_direccion_lejos">your destination is too far away</string>
     <string name="Califica_taxi_0">Very deficient service</string>
     <string name="Califica_taxi_05">Deficient service</string>
     <string name="Califica_taxi_10">Terrible service</string>
@@ -307,8 +306,9 @@
     <string name="panico_activar_modo_paranoico">Activate paranoid mode</string>
     <string name="preferencias_version_titulo">1.2.1</string>
     <string name="preferencias_version">Version</string>
-    
-     <string name="Selecciona_uno">Chose a number</string>
-     <string name="mensaje_compartir">I am on a taxi whit license plate:</string>
+    <string name="Selecciona_uno">Chose a number</string>
+    <string name="mensaje_compartir">I am on a taxi whit license plate:</string>
+    <string name="title_activity_historico_viajes">Historico_viajes</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

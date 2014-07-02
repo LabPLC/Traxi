@@ -30,7 +30,6 @@
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
-  
     <uses-feature
         android:glEsVersion="0x00020000"
         android:required="true" />
@@ -71,7 +70,6 @@
             android:label="@string/title_activity_busca_placa"
             android:screenOrientation="portrait" >
         </activity>
-      
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto"
             android:configChanges="orientation"
@@ -85,7 +83,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
-      
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.paginador.paginas.Datos"
             android:configChanges="orientation"
@@ -105,13 +102,12 @@
         <activity
             android:name="codigo.labplc.mx.traxi.configuracion.UserSettingActivity"
             android:configChanges="orientation"
-             android:label="@string/app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan" >
         </activity>
-        
-        
+
         <service android:name="codigo.labplc.mx.traxi.services.ServicioGeolocalizacion" />
 
         <activity
@@ -122,19 +118,19 @@
         <activity
             android:name="codigo.labplc.mx.traxi.califica.Califica_taxi"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" 
-              android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
-                 android:windowSoftInputMode="stateVisible|adjustResize">
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Holo.Dialog.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" >
         </activity>
 
         <receiver android:name="codigo.labplc.mx.traxi.panic.MyReceiver" >
-      <intent-filter >
-             <action android:name="android.intent.action.BOOT_COMPLETED" />
-             <action android:name="android.intent.action.ACTION_SHUTDOWN" />
-             <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-             <action android:name="android.intent.action.BATTERY_CHANGED" />
-             <action android:name="android.intent.action.AIRPLANE_MODE"/>
-         </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BATTERY_CHANGED" />
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
         </receiver>
 
         <activity
@@ -161,23 +157,32 @@
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.tips.Tips_activity"
             android:configChanges="orientation"
-             android:label="@string/app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="codigo.labplc.mx.traxi.buscarplaca.emergencia.Emergencia_activity"
             android:configChanges="orientation"
-             android:label="@string/app_name"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="codigo.labplc.mx.traxi.dialogos.Descripcion_Escudo"
-              android:label="@string/app_name" 
-                        android:configChanges="orientation"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen">
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="codigo.labplc.mx.traxi.historico.Historico_viajes"
+            android:label="@string/title_activity_historico_viajes"
+            android:configChanges="orientation"
+                 android:screenOrientation="portrait"
+                   android:windowSoftInputMode="stateHidden" 
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+            >
         </activity>
     </application>
 

@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gris_obscuro_trans"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="${packageName}.${activityClass}" >
+
+    <LinearLayout
+        android:id="@+id/historial_activity_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+          android:background="@drawable/marco"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+              android:background="@drawable/marco"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_icono_texto" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/marco" >
+
+            <TextView
+                android:id="@+id/historico_viajes_titulo_tv_placa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight=".25"
+                android:padding="5dp"
+                android:text="Placa" 
+                android:textColor="@color/color_vivos"/>
+
+            <TextView
+                android:id="@+id/historico_viajes_titulo_tv_calif"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight=".3"
+                android:padding="5dp"
+                android:text="Fecha"
+                android:textColor="@color/color_vivos" />
+
+            <TextView
+                android:id="@+id/historico_viajes_titulo_tv_comentario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_weight=".45"
+                android:padding="5dp"
+                android:text="Comentario" 
+                android:textColor="@color/color_vivos"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/historico_viajes_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/marco"
+            android:fadeScrollbars="false"
+            android:overScrollMode="never" >
+        </ListView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/historico_activity_iv_cerrar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignRight="@+id/historial_activity_ll"
+        android:layout_alignTop="@+id/historial_activity_ll"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_launcher_tache" />
+
+</RelativeLayout>

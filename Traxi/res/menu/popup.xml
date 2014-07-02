@@ -1,5 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
+ <item
+    android:id="@+id/configuracion_historial"
+    android:showAsAction="ifRoom"
+    android:title="@string/action_historial"/>   
+    
 <item
     android:id="@+id/configuracion_pref"
     android:showAsAction="ifRoom"

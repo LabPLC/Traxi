@@ -45,6 +45,7 @@ import codigo.labplc.mx.traxi.buscarplaca.tips.Tips_activity;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
+import codigo.labplc.mx.traxi.historico.Historico_viajes;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
 import codigo.labplc.mx.traxi.utils.Utils;
 
@@ -78,6 +79,8 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 	public boolean puedoAvanzar=false;
 	private Button activity_buscar_placa_btn_emergencia;
 	private ImageView inicio_de_trabajo_iv_adelante;
+	
+
 
 	
 	
@@ -99,6 +102,10 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 
 		Utils.crearActionBar(BuscaPlacaTexto.this,R.layout.abs_layout ,getResources().getString(R.string.app_name),0.0f);//creamos el ActionBAr
 
+		
+
+		
+		
 		//instancias y escuchas
 		((TextView) findViewById(R.id.inicio_de_trabajo_tv_nombre)).setTypeface(new fonts(context).getTypeFace(fonts.FLAG_ROJO));
 		
@@ -537,15 +544,25 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 		inflater.inflate(R.menu.popup, popup.getMenu());
 		int positionOfMenuItem = 0; 
 		MenuItem item = popup.getMenu().getItem(positionOfMenuItem);
-		SpannableString s = new SpannableString(getResources().getString(R.string.action_settings));
+		SpannableString s = new SpannableString(getResources().getString(R.string.action_historial));
 		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
 		item.setTitle(s);
+		 positionOfMenuItem = 1; 
+		 item = popup.getMenu().getItem(positionOfMenuItem);
+		 s = new SpannableString(getResources().getString(R.string.action_settings));
+		s.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_vivos)), 0, s.length(), 0);
+		item.setTitle(s);
+		
 
 		popup.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			@Override
 			public boolean onMenuItemClick(MenuItem item) {
 				switch (item.getItemId()) {
 
+				case R.id.configuracion_historial:
+					startActivity(new Intent(BuscaPlacaTexto.this,Historico_viajes.class));
+					return true;
+				
 				case R.id.configuracion_pref:
 						Intent i = new Intent(BuscaPlacaTexto.this,UserSettingActivity.class);
 						startActivityForResult(i, RESULT_SETTINGS);
@@ -603,5 +620,6 @@ public class BuscaPlacaTexto extends Activity implements OnClickListener , OnTou
 			return true;
 		}
 
-	
+		
+		
 }
