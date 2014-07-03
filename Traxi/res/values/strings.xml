@@ -311,5 +311,10 @@
     <string name="mensaje_compartir">I am on a taxi whit license plate:</string>
     <string name="title_activity_historico_viajes">Historico_viajes</string>
     <string name="hello_world">Hello world!</string>
+    
+     <!-- historial -->
+           <string name="historial_et_placa">L. P.</string>
+           <string name="historial_et_fecha">Date</string>
+           <string name="historial_et_comentario">Review</string>
 
 </resources>

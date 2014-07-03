@@ -45,7 +45,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".25"
                 android:padding="5dp"
-                android:text="Placa" 
+                android:text="@string/historial_et_placa" 
                 android:textColor="@color/color_vivos"/>
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_weight=".3"
                 android:padding="5dp"
-                android:text="Fecha"
+                android:text="@string/historial_et_fecha"
                 android:textColor="@color/color_vivos" />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_gravity="center|right"
                 android:layout_weight=".45"
                 android:padding="5dp"
-                android:text="Comentario" 
+                android:text="@string/historial_et_comentario" 
                 android:textColor="@color/color_vivos"/>
         </LinearLayout>
 
