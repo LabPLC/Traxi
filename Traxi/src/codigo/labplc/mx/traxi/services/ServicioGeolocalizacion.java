@@ -139,6 +139,7 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		// para le panic
 		IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_ON);
 		filter.addAction(Intent.ACTION_SCREEN_OFF);
+		filter.addAction(Intent.ACTION_SHUTDOWN);
 		mReceiver = new MyReceiver();
 		registerReceiver(mReceiver, filter);
 	}
@@ -214,6 +215,15 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 	
 		// panic
 		unregisterReceiver(mReceiver);
+		
+		
+		 PackageManager pm  = getPackageManager();
+	        ComponentName componentName = new ComponentName(this, MyReceiver.class);
+	        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+	                        PackageManager.DONT_KILL_APP);
+	        
+
+	        android.os.Process.killProcess(android.os.Process.myPid());
 	
 	      
 	}
@@ -279,9 +289,9 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 			intent.putExtra("latitud", pointsLat);
 			intent.putExtra("longitud", pointsLon);
 			getApplicationContext().sendBroadcast(intent);
-
+		//	Log.d("***********", "localice");
 			if(isSendMesagge){
-
+				//Log.d("***********", "entre if");
 				enviaCorreo();
 				isSendMesagge=false;
 				
@@ -440,32 +450,32 @@ try{
     	    @Override
     	    public void run() {
     	    	//nos sercioramos que envie un mail a la vez
-    	    	if(taxiActivity!=null){
-    if(isMailFirst){
-    	if(correoemer!=null){
-    	    	panic.sendMail("TRAXI",
-    	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
-    	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
-						getResources().getString(R.string.correo), 
-						correoemer);
-    	}
-    	    	isMailFirst=false;
-    }else{
-    	if(correoemer2!=null){
-    	    	panic.sendMail("TRAXI",
-    	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
-    	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
-    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
-						getResources().getString(R.string.correo), 
-						correoemer2);
-    	}
-    	    	isMailFirst=true;
-    }
-    	    	}else{
-    	    		timer.cancel();
-    	    	}
-    	    }
+			if(taxiActivity!=null){
+			    if(isMailFirst){
+			    	if(correoemer!=null){
+			    	    	panic.sendMail("TRAXI",
+			    	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
+			    	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
+			    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
+									getResources().getString(R.string.correo), 
+									correoemer);
+			    	}
+			    	    	isMailFirst=false;
+			    }else{
+			    	if(correoemer2!=null){
+			    	    	panic.sendMail("TRAXI",
+			    	    			getResources().getString(R.string.panic_estoy_en_peligro)+placa+
+			    	    			getResources().getString(R.string.panic_ubicacion)+latitud+","+longitud+getResources().getString(R.string.panic_bateria)+ 
+			    	    			panic.getLevelBattery()+"%"+" "+mPhoneNumber+getResources().getString(R.string.panic_mensaje_cuerpo),
+									getResources().getString(R.string.correo), 
+									correoemer2);
+			    	}
+			    	    	isMailFirst=true;
+			    }
+			}else{
+				timer.cancel();
+			}
+    	   }
     	},
     	0,
     	intervaloLocation_mail);
@@ -600,7 +610,8 @@ try{
     		   Vibrator v = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
 			   v.vibrate(3000);
 			   TelephonyManager tMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-   	    	 mPhoneNumber = tMgr.getLine1Number();
+			   mPhoneNumber = tMgr.getLine1Number();
+			 
 			   SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 	           uuid = prefs.getString("uuid", null);
 	           telemer = prefs.getString("telemer", null);
@@ -611,12 +622,14 @@ try{
 	           panic = new PanicAlert(ServicioGeolocalizacion.this.getApplicationContext());
 	           panic.activate();
 	           String mensajeEmer= getResources().getString(R.string.sms_emer);
+	        
 	           if(telemer!=null){
 	        	   panic.sendSMS(telemer,mensajeEmer);
 	           }
 	          if(telemer2!=null){
-	           panic.sendSMS(telemer2,mensajeEmer);
+	        	  panic.sendSMS(telemer2,mensajeEmer);
 	          }
+	          
 	           isSendMesagge=true;
 	           algoPaso=false;
 	         
@@ -624,7 +637,8 @@ try{
 	           intervaloLocation =5000;
 			
 			CancelNotification(this, 1);
-			timerParanoico.cancel();//dejamos de mostrar si esta bien dado que no lo est‡
+
+
 		}
      }
     	}catch(Exception e){

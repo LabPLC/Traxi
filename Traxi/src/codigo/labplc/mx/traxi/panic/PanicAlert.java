@@ -72,11 +72,14 @@ public class PanicAlert {
       */
      public void sendMail(String cabecera,String mensaje,String correoRemitente,String correoDestino ){
     	 try {   
+    		// Log.d("***********", "intentando enviar correo");
     		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
     		 StrictMode.setThreadPolicy(policy); 
              GMailSender sender = new GMailSender(correoRemitente,Utils.getMAilKey(context));
              sender.sendMail(cabecera, mensaje,correoRemitente, correoDestino);  
-         } catch (Exception e) {   
+         } catch (Exception e) {  
+        	 e.getMessage();
+        	 
         	 DatosLogBean.setDescripcion(Utils.getStackTrace(e));  
          } 
      }

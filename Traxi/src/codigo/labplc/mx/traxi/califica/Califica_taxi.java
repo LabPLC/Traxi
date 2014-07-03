@@ -6,11 +6,9 @@ import java.util.Calendar;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,7 +27,6 @@ import codigo.labplc.mx.traxi.bd.DBHelper;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
-import codigo.labplc.mx.traxi.panic.MyReceiver;
 import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.tracking.map.Mapa_tracking;
 import codigo.labplc.mx.traxi.utils.Utils;
@@ -43,23 +40,7 @@ import codigo.labplc.mx.traxi.utils.Utils;
 @SuppressLint("SimpleDateFormat")
 public class Califica_taxi extends Activity {
 
-	@Override
-	protected void onDestroy() {
-//		Log.d("*****************", "app terminanda");
-			 PackageManager pm  = getPackageManager();
-		        ComponentName componentName = new ComponentName(this, MyReceiver.class);
-		        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-		                        PackageManager.DONT_KILL_APP);
-		        
-
-		      //  Log.d("*****************", "proceso muerto");
-		        android.os.Process.killProcess(android.os.Process.myPid());
-		super.onDestroy();
-	}
-
-
-
-
+	
 
 	public final String TAG = this.getClass().getSimpleName();
 	
@@ -251,8 +232,6 @@ public class Califica_taxi extends Activity {
 	ServicioGeolocalizacion.serviceIsIniciado=false;
 	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
 	stopService(svc);
-
-	
 	Califica_taxi.this.finish();
 }
 	
@@ -268,9 +247,6 @@ public class Califica_taxi extends Activity {
 		super.onStart();
 	}
 	
-	
-	
-
 	
 	/**
 	 * escucha para saber cuantos caracteres quedan al dejar un comentario

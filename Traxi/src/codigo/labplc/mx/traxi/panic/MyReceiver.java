@@ -20,28 +20,31 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-    	
+    	if(Intent.ACTION_SHUTDOWN.equalsIgnoreCase(intent.getAction())) {
+	       	  SharedPreferences prefs = context.getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+	      	  TelephonyManager tMgr = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE); 
+	          try {   
+	     		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+	     		 StrictMode.setThreadPolicy(policy); 
+	             GMailSender sender = new GMailSender(context.getResources().getString(R.string.correo),Utils.getMAilKey(context));
+	             sender.sendMail("TRAXI", context.getResources().getString(R.string.panic_cell_off)+prefs.getString("placa", null)+context.getResources().getString(R.string.panic_bateria)+ 
+		    			new PanicAlert(context).getLevelBattery()+"%"+", "+tMgr.getLine1Number()+context.getResources().getString(R.string.panic_mensaje_cuerpo),
+		    			context.getResources().getString(R.string.correo), prefs.getString("correoemer", null));  
+	          } catch (Exception e) {   
+	         	 DatosLogBean.setDescripcion(Utils.getStackTrace(e));  
+	          } 
+    	}
         if (intent.getAction().equals(Intent.ACTION_SCREEN_OFF)) {
             screenOff = true;
+            comunicacion(context);
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             screenOff = false;
+            comunicacion(context);
         }
-        if(Intent.ACTION_SHUTDOWN.equalsIgnoreCase(intent.getAction())) {
-        	 SharedPreferences prefs = context.getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
-        	 TelephonyManager tMgr = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE); 
-            try {   
-       		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-       		 StrictMode.setThreadPolicy(policy); 
-             GMailSender sender = new GMailSender(context.getResources().getString(R.string.correo),Utils.getMAilKey(context));
-             sender.sendMail("TRAXI", context.getResources().getString(R.string.panic_cell_off)+prefs.getString("placa", null)+context.getResources().getString(R.string.panic_bateria)+ 
- 	    			new PanicAlert(context).getLevelBattery()+"%"+", "+tMgr.getLine1Number()+context.getResources().getString(R.string.panic_mensaje_cuerpo),context.getResources().getString(R.string.correo), prefs.getString("correoemer", null));  
-            } catch (Exception e) {   
-           	 DatosLogBean.setDescripcion(Utils.getStackTrace(e));  
-            } 
-            // database operation
-      }
-        Intent i = new Intent(context, ServicioGeolocalizacion.class);
+    }
+    
+    public void comunicacion(Context context){
+    	Intent i = new Intent(context, ServicioGeolocalizacion.class);
         i.putExtra("screen_state", screenOff);
         context.startService(i);
     }

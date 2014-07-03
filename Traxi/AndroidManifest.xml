@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="codigo.labplc.mx.traxi"
-    android:versionCode="17"
-    android:versionName="1.2.7" >
+    android:versionCode="18"
+    android:versionName="1.2.8" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -13,7 +13,6 @@
         android:protectionLevel="signature" />
 
     <uses-permission android:name="codigo.labplc.mx.traxi.maps.googlev2.permission.MAPS_RECEIVE" />
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -27,6 +26,10 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -124,13 +127,14 @@
         </activity>
 
         <receiver android:name="codigo.labplc.mx.traxi.panic.MyReceiver" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.ACTION_SHUTDOWN" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="android.intent.action.BATTERY_CHANGED" />
-                <action android:name="android.intent.action.AIRPLANE_MODE" />
-            </intent-filter>
+          <intent-filter >
+             <action android:name="android.intent.action.BOOT_COMPLETED" />
+             <action android:name="android.intent.action.ACTION_SHUTDOWN" />
+             <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+             <action android:name="android.intent.action.BATTERY_CHANGED" />
+             <action android:name="android.intent.action.AIRPLANE_MODE"/>
+             <action android:name="android.intent.action.QUICKBOOT_POWEROFF"/>
+         </intent-filter>
         </receiver>
 
         <activity
@@ -177,12 +181,11 @@
         </activity>
         <activity
             android:name="codigo.labplc.mx.traxi.historico.Historico_viajes"
-            android:label="@string/title_activity_historico_viajes"
             android:configChanges="orientation"
-                 android:screenOrientation="portrait"
-                   android:windowSoftInputMode="stateHidden" 
+            android:label="@string/title_activity_historico_viajes"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-            >
+            android:windowSoftInputMode="stateHidden" >
         </activity>
     </application>
 

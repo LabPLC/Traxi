@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -40,17 +39,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import codigo.labplc.mx.traxi.R;
-import codigo.labplc.mx.traxi.bd.DBHelper;
 import codigo.labplc.mx.traxi.buscarplaca.emergencia.Emergencia_activity;
 import codigo.labplc.mx.traxi.buscarplaca.paginador.DatosAuto;
 import codigo.labplc.mx.traxi.buscarplaca.tips.Tips_activity;
-import codigo.labplc.mx.traxi.califica.Califica_taxi;
 import codigo.labplc.mx.traxi.configuracion.UserSettingActivity;
 import codigo.labplc.mx.traxi.dialogos.Dialogos;
 import codigo.labplc.mx.traxi.fonts.fonts;
 import codigo.labplc.mx.traxi.historico.Historico_viajes;
 import codigo.labplc.mx.traxi.log.DatosLogBean;
-import codigo.labplc.mx.traxi.services.ServicioGeolocalizacion;
 import codigo.labplc.mx.traxi.utils.Utils;
 
 /**
