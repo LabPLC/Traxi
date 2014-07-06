@@ -313,44 +313,46 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 					 Date lm = new Date();
 					 String lasmod = new SimpleDateFormat("yyyy-MM-dd").format(lm);
 					 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-					
+					Boolean yaValide=true;
 				      for (int i=0; i<cast2.length(); i++) {
 				          	JSONObject oneObject = cast2.getJSONObject(i);
 							 try {
+									if(!esta_en_revista&&yaValide){
+										 autoBean.setMarca((String) oneObject.getString("marca"));
+										 autoBean.setSubmarca((String)  oneObject.getString("submarca"));
+										 autoBean.setAnio((String)  oneObject.getString("modelo"));
+										 
+										 autoBean.setDescripcion_revista(getResources().getString(R.string.sin_revista));
+										 autoBean.setImagen_revista(imagen_rojo);
+										 
+										 Calendar calendar = Calendar.getInstance();
+										 int thisYear = calendar.get(Calendar.YEAR);
+										 
+										 if(thisYear-Integer.parseInt(autoBean.getAnio())<=10){
+											 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
+											 autoBean.setImagen_vehiculo(imagen_verde);
+										 }else{
+											 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
+											 autoBean.setImagen_vehiculo(imagen_rojo);
+											 PUNTOS_APP-=PUNTOS_ANIO_VEHICULO;
+										 }
+										 yaValide=false;
+									}
 								 Date date1 = formatter.parse(lasmod);
 								 Date date2 = formatter.parse(oneObject.getString("vigencia").toString());
 								 int comparison = date2.compareTo(date1);
-								 if(comparison==1||comparison==0){
+								 if((comparison==1||comparison==0)&&!oneObject.getString("resultado").toString().equals("RECHAZO")){
 									 autoBean.setDescripcion_verificacion(getResources().getString(R.string.tiene_verificaciones)+" "+oneObject.getString("resultado").toString());
 									 autoBean.setImagen_verificacion(imagen_verde); 
 									 hasVerificacion=true;
+									 break;
 								 }else{
 									 autoBean.setDescripcion_verificacion(getResources().getString(R.string.no_tiene_verificaciones));
 									 autoBean.setImagen_verificacion(imagen_rojo);
 									 hasVerificacion=false;
 									 
 								 }
-								if(!esta_en_revista){
-									 autoBean.setMarca((String) oneObject.getString("marca"));
-									 autoBean.setSubmarca((String)  oneObject.getString("submarca"));
-									 autoBean.setAnio((String)  oneObject.getString("modelo"));
-									 
-									 autoBean.setDescripcion_revista(getResources().getString(R.string.sin_revista));
-									 autoBean.setImagen_revista(imagen_rojo);
-									 
-									 Calendar calendar = Calendar.getInstance();
-									 int thisYear = calendar.get(Calendar.YEAR);
-									 
-									 if(thisYear-Integer.parseInt(autoBean.getAnio())<=10){
-										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_nuevo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
-										 autoBean.setImagen_vehiculo(imagen_verde);
-									 }else{
-										 autoBean.setDescripcion_vehiculo(getResources().getString(R.string.carro_viejo)+" "+getResources().getString(R.string.Anio)+" "+autoBean.getAnio());
-										 autoBean.setImagen_vehiculo(imagen_rojo);
-										 PUNTOS_APP-=PUNTOS_ANIO_VEHICULO;
-									 }
-								}
-								break;
+						
 							 } catch (JSONException e) { 
 								 DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 							 } catch (ParseException e) {
