@@ -63,17 +63,6 @@ import codigo.labplc.mx.traxi.log.DatosLogBean;
 @SuppressWarnings("unused")
 public class Utils {
 
-	/**
-	 * Revisa si existe coneccion a internet
-	 * @param context
-	 * @return
-	 */
-	public static boolean isNetworkConnectionOk(Context context) {
-		ConnectivityManager connectivityManager = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-		return networkInfo != null && networkInfo.isConnected();
-	}
 
 	/**
 	 * metodo que hace la conexion al servidor con una url especifica

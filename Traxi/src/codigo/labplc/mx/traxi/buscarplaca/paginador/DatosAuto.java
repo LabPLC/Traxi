@@ -167,10 +167,21 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 			
 			@Override
 			public void onClick(View v) {
-				
-				if(Utils.getPreferencia("prefBusquedaFina",DatosAuto.this.getBaseContext(),true)){
-					if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-						new Dialogos().showDialogGPS(DatosAuto.this).show();		
+				if (Utils.hasInternet(DatosAuto.this)) {
+					if(Utils.getPreferencia("prefBusquedaFina",DatosAuto.this.getBaseContext(),true)){
+						if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+							new Dialogos().showDialogGPS(DatosAuto.this).show();		
+						}else{
+							ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
+							startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
+							
+							Intent intent_mapa = new Intent(DatosAuto.this, Mapa_tracking.class);
+							intent_mapa.putExtra("latitud_inicial", 19.0);
+							intent_mapa.putExtra("longitud_inicial", -99.0);
+							startActivity(intent_mapa);
+							
+							DatosAuto.this.finish();
+						}
 					}else{
 						ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
 						startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
@@ -182,18 +193,9 @@ public class DatosAuto extends FragmentActivity implements OnClickListener  {
 						
 						DatosAuto.this.finish();
 					}
-				}else{
-					ServicioGeolocalizacion.taxiActivity = DatosAuto.this;
-					startService(new Intent(DatosAuto.this,ServicioGeolocalizacion.class));
-					
-					Intent intent_mapa = new Intent(DatosAuto.this, Mapa_tracking.class);
-					intent_mapa.putExtra("latitud_inicial", 19.0);
-					intent_mapa.putExtra("longitud_inicial", -99.0);
-					startActivity(intent_mapa);
-					
-					DatosAuto.this.finish();
+				}else {
+					Dialogos.Toast(DatosAuto.this, getResources().getString(R.string.no_internet_connection),Toast.LENGTH_LONG);
 				}
-	
 				
 			}
 		});
