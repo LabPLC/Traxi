@@ -23,14 +23,22 @@ public class MyReceiver extends BroadcastReceiver {
     	if(Intent.ACTION_SHUTDOWN.equalsIgnoreCase(intent.getAction())) {
 	       	  SharedPreferences prefs = context.getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
 	      	  TelephonyManager tMgr = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE); 
-	          try {   
-	     		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-	     		 StrictMode.setThreadPolicy(policy); 
-	             GMailSender sender = new GMailSender(context.getResources().getString(R.string.correo),Utils.getMAilKey(context));
-	             sender.sendMail("TRAXI", context.getResources().getString(R.string.panic_cell_off)+prefs.getString("placa", null)+context.getResources().getString(R.string.panic_bateria)+ 
-		    			new PanicAlert(context).getLevelBattery()+"%"+", "+tMgr.getLine1Number()+context.getResources().getString(R.string.panic_mensaje_cuerpo),
-		    			context.getResources().getString(R.string.correo), prefs.getString("correoemer", null));  
-	          } catch (Exception e) {   
+	      	  
+	          
+	          try {  
+	        	  if(!prefs.getString("placa", null).toString().equals("null")){
+		     		 StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+		     		 StrictMode.setThreadPolicy(policy); 
+		             GMailSender sender = new GMailSender(context.getResources().getString(R.string.correo),Utils.getMAilKey(context));
+		             sender.sendMail("TRAXI", context.getResources().getString(R.string.panic_cell_off)+prefs.getString("placa", null)+context.getResources().getString(R.string.panic_bateria)+ 
+			    			new PanicAlert(context).getLevelBattery()+"%"+", "+tMgr.getLine1Number()+context.getResources().getString(R.string.panic_mensaje_cuerpo),
+			    			context.getResources().getString(R.string.correo), prefs.getString("correoemer", null)); 
+		            
+		             SharedPreferences.Editor editor = prefs.edit();
+						editor.putString("placa", null);
+						editor.commit();
+	        	  } 
+	        } catch (Exception e) {   
 	         	 DatosLogBean.setDescripcion(Utils.getStackTrace(e));  
 	          } 
     	}

@@ -45,7 +45,6 @@ public class Califica_taxi extends Activity {
 	public final String TAG = this.getClass().getSimpleName();
 	
 	Button calificar_aceptar;
-	Button calificar_cancelar;
 	EditText comentario;
 	RatingBar rank;
 	private String Scalificacion = "0";
@@ -102,7 +101,6 @@ public class Califica_taxi extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				
 				
 				Dialogos.Toast(Califica_taxi.this, getResources().getString(R.string.dialogo_califica_servicio_NO_enviar_comentario), Toast.LENGTH_LONG);
 				cerrarDialog();
@@ -223,15 +221,18 @@ public class Califica_taxi extends Activity {
 	public void cerrarDialog( ){
 	
 	Mapa_tracking.isButtonExit= false;
+	
+	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
+	stopService(svc);
+	
+
 	try{
 		 Mapa_tracking.fa.finish();
 		}catch(Exception e){
 			DatosLogBean.setDescripcion(Utils.getStackTrace(e));
 		}
 
-	ServicioGeolocalizacion.serviceIsIniciado=false;
-	Intent svc = new Intent(Califica_taxi.this, ServicioGeolocalizacion.class);
-	stopService(svc);
+	
 	Califica_taxi.this.finish();
 }
 	

@@ -217,13 +217,20 @@ public class ServicioGeolocalizacion extends Service implements Runnable {
 		unregisterReceiver(mReceiver);
 		
 		
+		
+		  SharedPreferences prefs = getSharedPreferences("MisPreferenciasTrackxi",Context.MODE_PRIVATE);
+			
+			 SharedPreferences.Editor editor = prefs.edit();
+				editor.putString("placa", null);
+				editor.commit();
+		
 		 PackageManager pm  = getPackageManager();
 	        ComponentName componentName = new ComponentName(this, MyReceiver.class);
 	        pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
 	                        PackageManager.DONT_KILL_APP);
 	        
 
-	        android.os.Process.killProcess(android.os.Process.myPid());
+	     android.os.Process.killProcess(android.os.Process.myPid());
 	
 	      
 	}
