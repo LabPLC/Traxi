@@ -113,7 +113,7 @@ ___________________
 ___________________
 # ¿Quiéres probar la app?
 
-Estamos en pruebas BETA así que debes enviar un correo (gmail preferentemente) a miguel.moran@codigo.labplc.mx una vez agregado al grupo TRAXI podras descargarla de aqui [Traxi Beta](https://play.google.com/apps/testing/codigo.labplc.mx.traxi﻿)
+https://play.google.com/store/apps/details?id=codigo.labplc.mx.traxi&hl=es
 
 
 
